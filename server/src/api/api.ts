@@ -1,4 +1,3 @@
-
 export const init = (app: any) => {
   // An api endpoint that returns a short list of items
   app.get('/api/cards', (req: any, res: any) => {
@@ -9,4 +8,3 @@ export const init = (app: any) => {
     console.log('Sent list of cards');
   });
 }
-
