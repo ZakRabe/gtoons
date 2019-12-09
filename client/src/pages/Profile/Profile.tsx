@@ -16,9 +16,9 @@ class Profile extends React.Component<{ socket: any }, { cards: string[] }>{
   }
 
   getList = () => {
-    fetch('/api/cards')
-      .then(res => res.json())
-      .then(cards => this.setState({ cards }))
+    // fetch('/api/cards')
+    //   .then(res => res.json())
+    //   .then(cards => this.setState({ cards }))
   }
 
   sendSocketMessage = () => {
