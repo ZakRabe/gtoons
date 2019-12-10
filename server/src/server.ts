@@ -7,16 +7,22 @@ import { createConnection } from "typeorm";
 import { Routes } from "./routes";
 import socket from './socket';
 
+
+
+// create express app
+const app = express();
+app.use(helmet());
+app.use(bodyParser.json());
+app.set("port", process.env.PORT || 5000);
+const http = require("http").Server(app);
+const io = require("socket.io")(http);
+socket.init(io)
+
+const server = http.listen(5000, function () {
+  console.log("listening on *:5000");
+});
+
 createConnection().then(async connection => {
-
-  // create express app
-  const app = express();
-  app.use(helmet());
-  app.use(bodyParser.json());
-  const http = require("http").Server(app);
-  const io = require("socket.io")(http);
-  socket.init(io)
-
   // register express routes from defined application routes
   Routes.forEach(route => {
     (app as any)[route.method](route.route, (req: Request, res: Response, next: Function) => {
@@ -29,10 +35,6 @@ createConnection().then(async connection => {
     });
   });
 
-  app.set("port", process.env.PORT || 5000);
 
-  const server = http.listen(5000, function () {
-    console.log("listening on *:5000");
-  });
 
 }).catch(error => console.log(error));
