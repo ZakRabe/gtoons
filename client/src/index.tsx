@@ -7,7 +7,7 @@ import { SocketProvider } from 'socket.io-react';
 import App from './App/App';
 import './index.css';
 
-const socket = io.connect({ path: '/api' });
+const socket = io.connect({ path: '/api/socket-io', port: "5000" });
 socket.on('message', (msg: any) => console.log(msg));
 
 ReactDOM.render((
