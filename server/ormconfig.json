@@ -2,10 +2,9 @@
    "type": "mysql",
    "host": "localhost",
    "port": 3306,
-   "username": "test",
+   "username": "gtoons",
    "password": "test",
-   "database": "test",
-   "synchronize": true,
+   "database": "gtoons",
    "logging": false,
    "entities": [
       "src/entity/**/*.ts"
