@@ -3,7 +3,7 @@ import * as bodyParser from "body-parser";
 import * as helmet from "helmet";
 import { Request, Response } from "express";
 import "reflect-metadata";
-import { createConnection, getConnectionOptions } from "typeorm";
+import { createConnection } from "typeorm";
 import { Routes } from "./routes";
 import socket from "./socket";
 
