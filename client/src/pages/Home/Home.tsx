@@ -1,11 +1,11 @@
-import * as React from "react";
+import * as React from 'react';
 
-
-export default class Home extends React.Component<{}, {}>{
-
+export default class Home extends React.Component<{}, {}> {
   render() {
-    return <div>
-      <p>Im a home page </p>
-    </div>
+    return (
+      <div>
+        <p>Im a home page </p>
+      </div>
+    );
   }
 }
