@@ -21,8 +21,7 @@ const server = http.listen(5000, function() {
 });
 
 app.use(function(req, res, next) {
-  console.log(req.method);
-  console.log(req.path);
+  console.log(`${req.method} ${req.path}`);
   next();
 });
 
