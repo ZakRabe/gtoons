@@ -1,3 +1,5 @@
+import { Modifier } from './Modifer';
+
 export enum Color {
   RED = 'RED',
   ORANGE = 'ORANGE',
@@ -30,23 +32,9 @@ export default class Card {
   points: number;
 
   applyAttributeModifiers = () => {
-    const copy = { ...this };
+    let copy;
     this.modifiers.map(mod => {
-      const replaceOnly = ['character', 'color'];
-      // these values can only be replaced
-      if (replaceOnly.includes(mod.attribute)) {
-        (copy[mod.attribute] as string | Color) = mod.value as string | Color;
-      } else {
-        //  all other attributes can be replaced or added to
-        if (mod.type === 'replace') {
-          (copy[mod.attribute] as string[]) = [mod.value];
-        } else {
-          (copy[mod.attribute] as string[]) = [
-            ...copy[mod.attribute],
-            mod.value
-          ];
-        }
-      }
+      copy = mod.apply(this);
     });
   };
 }
