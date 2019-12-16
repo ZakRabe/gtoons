@@ -9,6 +9,6 @@ export class RegisterController {
     const existingUser = await this.userRepository.find({
       username: request.params.username
     });
-    return existingUser.length > 1;
+    return existingUser.length === 0;
   }
 }
