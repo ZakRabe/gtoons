@@ -3,7 +3,7 @@
     "id": 1,
     "title": "Absolution",
     "character": "Absolution",
-    "color": "SILVER",
+    "colors": ["SILVER"],
     "description": "+5 if any Tom is in play",
     "rarity": "RARE",
     "group": null,

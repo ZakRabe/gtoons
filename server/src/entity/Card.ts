@@ -24,7 +24,7 @@ export default class Card {
   title: string;
   description: string;
   character: string;
-  color: Color;
+  color: Color[];
   rarity: Rarity;
   groups: string[];
   types: string[];
