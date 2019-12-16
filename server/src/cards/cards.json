@@ -1,12 +1,5910 @@
 [
   {
-    "id": 1,
-    "title": "Absolution",
-    "character": "Absolution",
-    "colors": ["SILVER"],
-    "description": "+5 if any Tom is in play",
-    "rarity": "RARE",
-    "group": null,
-    "types": ["VEHICLE"]
+    "id" : 1,
+    "title" : "Absolution",
+    "character" : "Absolution",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+5 if any TOM is in play",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "VEHICLE"
+    ]
+  },
+  {
+    "id" : 2,
+    "title" : "Abuelito",
+    "character" : "Abuelito",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "No Power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 3,
+    "title" : "Action Hank",
+    "character" : "Action Hank",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "HERO",
+      "PROP"
+    ]
+  },
+  {
+    "id" : 4,
+    "title" : "Agent Honeydew",
+    "character" : "Agent Honeydew",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [
+      "G.L.O.B.A.L."
+    ],
+    "types" : [
+      "FEMALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 5,
+    "title" : "Ah-Ma",
+    "character" : "Ah-Ma",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "+3 to Juniper Lee; x2 if Granny is in play",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 6,
+    "title" : "Aku",
+    "character" : "Aku",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 7,
+    "title" : "Aku Bat",
+    "character" : "Aku",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "x2 if next to any Samurai Jack",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 8,
+    "title" : "Aku Beast",
+    "character" : "Aku",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 9,
+    "title" : "Alex",
+    "character" : "Alex",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [
+      "WOOHP"
+    ],
+    "types" : [
+      "FEMALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 10,
+    "title" : "Alfred Pennyworth",
+    "character" : "Alfred Pennyworth",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "+4 if next to any Hero; +3 to any Batman",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 11,
+    "title" : "Amazo",
+    "character" : "Amazo",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+2 for each Justice League member in play",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 12,
+    "title" : "Amoeba Boys",
+    "character" : "Amoeba Boys",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "-5 to neighboring and opposite Villains",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 13,
+    "title" : "Aqualad",
+    "character" : "Aqualad",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 14,
+    "title" : "Aquaman",
+    "character" : "Aquaman",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "+3 to all Green cards",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 15,
+    "title" : "Astro",
+    "character" : "Astro",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 16,
+    "title" : "Atomic Betty",
+    "character" : "Atomic Betty",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "FEMALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 17,
+    "title" : "Baby Bugs",
+    "character" : "Bugs Bunny",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 18,
+    "title" : "Baby Daffy",
+    "character" : "Daffy Duck",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "-5 to opposing card if not an Animal",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 19,
+    "title" : "Baby Lola",
+    "character" : "Lola",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "+4 for each opponent Red card",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "FEMALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 20,
+    "title" : "Baby Sylvester",
+    "character" : "Sylvester",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "+3 to all other Purple cards",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 21,
+    "title" : "Baby Taz",
+    "character" : "Taz",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "-3 to all Props",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 22,
+    "title" : "Baby Tweety",
+    "character" : "Tweety",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 23,
+    "title" : "Bamm-Bamm Baby",
+    "character" : "Bamm-Bamm",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 24,
+    "title" : "Bamm-Bamm Teen",
+    "character" : "Bamm-Bamm",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 25,
+    "title" : "Barney Rubble",
+    "character" : "Barney Rubble",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "+10 if next to any Fred Flintstone",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 26,
+    "title" : "Batgirl",
+    "character" : "Batgirl",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "FEMALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 27,
+    "title" : "Batman",
+    "character" : "Batman",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "-5 to opposite card if not a Hero",
+    "rarity" : "COMMON",
+    "groups" : [
+      "JUSTICE LEAGUE"
+    ],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 28,
+    "title" : "Batman Running",
+    "character" : "Batman",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "No Power",
+    "rarity" : "UNCOMMON",
+    "groups" : [
+      "JUSTICE LEAGUE"
+    ],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 29,
+    "title" : "Batmobile",
+    "character" : "Batmobile",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "VEHICLE"
+    ]
+  },
+  {
+    "id" : 30,
+    "title" : "Beast Boy",
+    "character" : "Beast Boy",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "+3 if Robin is in play",
+    "rarity" : "COMMON",
+    "groups" : [
+      "TEEN TITANS"
+    ],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 31,
+    "title" : "Beast Boy Gorilla",
+    "character" : "Beast Boy",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [
+      "TEEN TITANS"
+    ],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 32,
+    "title" : "Beast Boy Kitten",
+    "character" : "Beast Boy",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+8 if next to Thunder; -1 to all Female cards",
+    "rarity" : "RARE",
+    "groups" : [
+      "TEEN TITANS"
+    ],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 33,
+    "title" : "Betty Rubble",
+    "character" : "Betty Rubble",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "+6 if any Barney Rubble is in play",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 34,
+    "title" : "Bigfoot",
+    "character" : "Bigfoot",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "-5 to opposing card it not a Monster",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MONSTER"
+    ]
+  },
+  {
+    "id" : 35,
+    "title" : "Billy",
+    "character" : "Billy",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 36,
+    "title" : "Billy's Dad",
+    "character" : "Billy's Dad",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "+3 to all Orange cards",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 37,
+    "title" : "Billy's Mom",
+    "character" : "Billy's Mom",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 38,
+    "title" : "Bizarro",
+    "character" : "Bizarro",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 39,
+    "title" : "Black Knight",
+    "character" : "Black Knight",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 40,
+    "title" : "Bloo",
+    "character" : "Bloo",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [
+      "IMAGINARY FRIEND"
+    ],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 41,
+    "title" : "Blossom Fighting",
+    "character" : "Blossom",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [
+      "POWERPUFF GIRLS"
+    ],
+    "types" : [
+      "FEMALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 42,
+    "title" : "Blossom Landing",
+    "character" : "Blossom",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [
+      "POWERPUFF GIRLS"
+    ],
+    "types" : [
+      "FEMALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 43,
+    "title" : "Blossom with Bunny",
+    "character" : "Blossom",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "+5 if any Bugs Bunny is in play",
+    "rarity" : "COMMON",
+    "groups" : [
+      "POWERPUFF GIRLS"
+    ],
+    "types" : [
+      "FEMALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 44,
+    "title" : "Boo Boo Bear",
+    "character" : "Boo Boo Bear",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "+3 to all Animals; +5 if any Yogi Bear is in play",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 45,
+    "title" : "Booster Gold",
+    "character" : "Booster Gold",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+6 to all 8s",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 46,
+    "title" : "Boskov",
+    "character" : "Boskov",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 47,
+    "title" : "Brainiac",
+    "character" : "Brainiac",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "+4 if next to any Lex Luthor; +4 if any Superman is in play",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 48,
+    "title" : "Bubbles Flying",
+    "character" : "Bubbles",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [
+      "POWERPUFF GIRLS"
+    ],
+    "types" : [
+      "FEMALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 49,
+    "title" : "Bubbles Laughing",
+    "character" : "Bubbles",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "+6 to any other Powerpuff Girls member",
+    "rarity" : "COMMON",
+    "groups" : [
+      "POWERPUFF GIRLS"
+    ],
+    "types" : [
+      "FEMALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 50,
+    "title" : "Bubbles with Flowers",
+    "character" : "Bubbles",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "+2 to any Buttercup, Blossom, Ms. Keane, or Professor Utonium",
+    "rarity" : "COMMON",
+    "groups" : [
+      "POWERPUFF GIRLS"
+    ],
+    "types" : [
+      "FEMALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 51,
+    "title" : "Bubbles with Octi",
+    "character" : "Bubbles",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [
+      "POWERPUFF GIRLS"
+    ],
+    "types" : [
+      "FEMALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 52,
+    "title" : "Buena Girl",
+    "character" : "Buena Girl",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "x2 to Rikochet if the Flea is in play",
+    "rarity" : "RARE",
+    "groups" : [
+      "MUCHA LUCHA"
+    ],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 53,
+    "title" : "Bugs Grinnin'",
+    "character" : "Bugs Bunny",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 54,
+    "title" : "Bugs Laughin'",
+    "character" : "Bugs Bunny",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 55,
+    "title" : "Bugs Singin'",
+    "character" : "Bugs Bunny",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "+5 if next to any Daffy Duck",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 56,
+    "title" : "Bugs Teasin'",
+    "character" : "Bugs Bunny",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 57,
+    "title" : "Bugs with Carrot",
+    "character" : "Bugs Bunny",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 58,
+    "title" : "Bunny Bravo",
+    "character" : "Bunny Bravo",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "+5 if next to any Johnny Bravo",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 59,
+    "title" : "Buttercup Fighting",
+    "character" : "Buttercup",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "+1 for each Villain in play",
+    "rarity" : "RARE",
+    "groups" : [
+      "POWERPUFF GIRLS"
+    ],
+    "types" : [
+      "FEMALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 60,
+    "title" : "Buttercup Frowning",
+    "character" : "Buttercup",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [
+      "POWERPUFF GIRLS"
+    ],
+    "types" : [
+      "FEMALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 61,
+    "title" : "Buttercup with Snowball",
+    "character" : "Buttercup",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [
+      "POWERPUFF GIRLS"
+    ],
+    "types" : [
+      "FEMALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 62,
+    "title" : "Captain Dodgers",
+    "character" : "Duck Dodgers",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 63,
+    "title" : "Carl",
+    "character" : "Carl",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 64,
+    "title" : "Carlotta",
+    "character" : "Carlotta",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "FEMALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 65,
+    "title" : "Catwoman",
+    "character" : "Catwoman",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "FEMALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 66,
+    "title" : "Cheetah",
+    "character" : "Cheetah",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [
+      "INJUSTICE GANG"
+    ],
+    "types" : [
+      "FEMALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 67,
+    "title" : "Chemical X",
+    "character" : "Chemical X",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+1 for each Female in Play",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "PROP"
+    ]
+  },
+  {
+    "id" : 68,
+    "title" : "Chewy",
+    "character" : "Chewy",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 69,
+    "title" : "Chicago Gangsters",
+    "character" : "Chicago Gangsters",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 70,
+    "title" : "Chicken",
+    "character" : "Chicken",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 71,
+    "title" : "Chicken from Outer Space",
+    "character" : "Chicken from Outer Space",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+3 for each Courage, Eustace, and Muriel in play",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 72,
+    "title" : "Chritchellites Leader",
+    "character" : "Chritchellites Leader",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 73,
+    "title" : "Cinderblock",
+    "character" : "Cinderblock",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "-2 to all Purple cards",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 74,
+    "title" : "Cindy Bear",
+    "character" : "Cindy Bear",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "+10 if next to any Yogi Bear",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "FEMALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 75,
+    "title" : "Clam",
+    "character" : "Clam",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "x2 to Raj if Lazlo is in play",
+    "rarity" : "RARE",
+    "groups" : [
+      "BEAN SCOUTS"
+    ],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 76,
+    "title" : "Clayface",
+    "character" : "Clayface",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "-2 to all Orange cards",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN",
+      "MONSTER"
+    ]
+  },
+  {
+    "id" : 77,
+    "title" : "Clover",
+    "character" : "Clover",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [
+      "WOOHP"
+    ],
+    "types" : [
+      "FEMALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 78,
+    "title" : "Clyde 50",
+    "character" : "Clyde 50",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+10 if next to any TOM",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "PROP"
+    ]
+  },
+  {
+    "id" : 79,
+    "title" : "Coco",
+    "character" : "Coco",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "+2 to all Props",
+    "rarity" : "COMMON",
+    "groups" : [
+      "IMAGINARY FRIEND"
+    ],
+    "types" : [
+      "FEMALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 80,
+    "title" : "Commander General",
+    "character" : "Commander General",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [
+      "G.L.O.B.A.L."
+    ],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 81,
+    "title" : "Common Cold",
+    "character" : "Common Cold",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "-3 to all other Orange cards",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 82,
+    "title" : "Coop",
+    "character" : "Coop",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "x2 to Megas",
+    "rarity" : "SLAM",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 83,
+    "title" : "Cootie Bug",
+    "character" : "Cootie Bug",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "-2 to all Males",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 84,
+    "title" : "Copperhead",
+    "character" : "Copperhead",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "+2 to any Injustice Gang member",
+    "rarity" : "COMMON",
+    "groups" : [
+      "INJUSTICE GANG"
+    ],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 85,
+    "title" : "Cosmo Spacely",
+    "character" : "Cosmo Spacely",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "-4 to any George Jetson; -1 if any Stella Spacely is in play",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 86,
+    "title" : "Count Muerte",
+    "character" : "Count Muerte",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 87,
+    "title" : "Courage Mecha",
+    "character" : "Courage",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "-2 to all Animals",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MONSTER"
+    ]
+  },
+  {
+    "id" : 88,
+    "title" : "Courage Screaming",
+    "character" : "Courage",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 89,
+    "title" : "Courage Sleeping",
+    "character" : "Courage",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "-2 for each Monster in play",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 90,
+    "title" : "Cow",
+    "character" : "Cow",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "FEMALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 91,
+    "title" : "Creeper",
+    "character" : "Creeper",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN",
+      "MONSTER"
+    ]
+  },
+  {
+    "id" : 92,
+    "title" : "Cyborg",
+    "character" : "Cyborg",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [
+      "TEEN TITANS"
+    ],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 93,
+    "title" : "Cyborg Quits",
+    "character" : "Cyborg",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 94,
+    "title" : "Daffy Duck",
+    "character" : "Daffy Duck",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 95,
+    "title" : "Daphne Blake",
+    "character" : "Daphne Blake",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [
+      "MYSTERY, INC."
+    ],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 96,
+    "title" : "Daphne Celebrating",
+    "character" : "Daphne Blake",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [
+      "MYSTERY, INC."
+    ],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 97,
+    "title" : "Deadshot",
+    "character" : "Deadshot",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 98,
+    "title" : "Dee Dee",
+    "character" : "Dee Dee",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "+5 if next to Dexter",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 99,
+    "title" : "Dee Dee Ballerina",
+    "character" : "Dee Dee",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 100,
+    "title" : "Dee Dee Monster",
+    "character" : "Dee Dee",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "FEMALE",
+      "MONSTER"
+    ]
+  },
+  {
+    "id" : 101,
+    "title" : "Delightful Children",
+    "character" : "Delightful Children",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 102,
+    "title" : "Denny Yogman",
+    "character" : "Denny Yogman",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+2 to all Red cards",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 103,
+    "title" : "Dexter",
+    "character" : "Dexter",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 104,
+    "title" : "Dexter Dimwit",
+    "character" : "Dexter",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "+3 to any Ed, Edd, or Eddy in play",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 105,
+    "title" : "Dexter Geezer",
+    "character" : "Dexter",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 106,
+    "title" : "Dexter's Dad",
+    "character" : "Dexter's Dad",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 107,
+    "title" : "Dexter's Mom",
+    "character" : "Dexter's Mom",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+10 if next to any Dexter's Dad",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 108,
+    "title" : "Dino",
+    "character" : "Dino",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 109,
+    "title" : "Disappearo Device",
+    "character" : "Disappearo Device",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "No power",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "PROP"
+    ]
+  },
+  {
+    "id" : 110,
+    "title" : "Dove",
+    "character" : "Dove",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "+6 if Hawk is in play",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "FEMALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 111,
+    "title" : "Dr. Fate",
+    "character" : "Dr. Fate",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "Treats opposing card as Black",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 112,
+    "title" : "Dr. I.Q. Hi",
+    "character" : "Dr. I.Q. Hi",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 113,
+    "title" : "Dr. Woe",
+    "character" : "Dr. Woe",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 114,
+    "title" : "Dracula",
+    "character" : "Dracula",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "+5 if next to Vampire Bat",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 115,
+    "title" : "Drake Darkstar",
+    "character" : "Drake Darkstar",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 116,
+    "title" : "Drill Sergeant",
+    "character" : "Drill Sergeant",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "Opposing card loses all adjacency effects",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 117,
+    "title" : "Duck Codgers",
+    "character" : "Duck Dodgers",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "+4 for each opponent Blue card",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "HERO",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 118,
+    "title" : "Duck Dodgers",
+    "character" : "Duck Dodgers",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 119,
+    "title" : "Eager Young Space Cadet",
+    "character" : "Porky Pig",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "-5 to any opponent's Props",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "HERO",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 120,
+    "title" : "Earl",
+    "character" : "Earl",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 121,
+    "title" : "Ed Running",
+    "character" : "Ed",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "+4 for each Edd and Eddy in play",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 122,
+    "title" : "Ed with Flashlight",
+    "character" : "Ed",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 123,
+    "title" : "Edd",
+    "character" : "Edd",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "+2 for each Prop in play",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 124,
+    "title" : "Eddy",
+    "character" : "Eddy",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 125,
+    "title" : "Eddy in Shades",
+    "character" : "Eddy",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 126,
+    "title" : "Eduardo",
+    "character" : "Eduardo",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "x4 if opposite card is purple",
+    "rarity" : "RARE",
+    "groups" : [
+      "IMAGINARY FRIEND"
+    ],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 127,
+    "title" : "Edward",
+    "character" : "Edward",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "+2 for each other Bean Scout in play",
+    "rarity" : "COMMON",
+    "groups" : [
+      "BEAN SCOUTS"
+    ],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 128,
+    "title" : "Elmer Fudd",
+    "character" : "Elmer Fudd",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "x2 if any Huntor is in play",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 129,
+    "title" : "Elroy Jetson",
+    "character" : "Elroy Jetson",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+7 if any Dexter is in play",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 130,
+    "title" : "Emperor",
+    "character" : "Emperor",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 131,
+    "title" : "Enrique Jr.",
+    "character" : "Enrique Jr.",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 132,
+    "title" : "Eustace",
+    "character" : "Eustace",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 133,
+    "title" : "Eustace Masked",
+    "character" : "Eustace",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "-3 to any Courage",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 134,
+    "title" : "Evil Zombie",
+    "character" : "Evil Zombie",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN",
+      "MONSTER"
+    ]
+  },
+  {
+    "id" : 135,
+    "title" : "Exo-Jock 4000",
+    "character" : "Exo-Jock 4000",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "PROP"
+    ]
+  },
+  {
+    "id" : 136,
+    "title" : "Felix Faust",
+    "character" : "Felix Faust",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 137,
+    "title" : "Flash",
+    "character" : "Flash",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [
+      "JUSTICE LEAGUE"
+    ],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 138,
+    "title" : "Flea",
+    "character" : "Flea",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "Adjacent cards get -1 for each Yellow card in play",
+    "rarity" : "UNCOMMON",
+    "groups" : [
+      "MUCHA LUCHA"
+    ],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 139,
+    "title" : "Flem",
+    "character" : "Flem",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+5 if next to Chicken; +5 to Earl",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 140,
+    "title" : "Flying Ark",
+    "character" : "Flying Ark",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "-1 to all Villains; +1 to all Animals",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "VEHICLE"
+    ]
+  },
+  {
+    "id" : 141,
+    "title" : "Frankenstein's Monster",
+    "character" : "Frankenstein's Monster",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "+4 for each neighboring Green card",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN",
+      "MONSTER"
+    ]
+  },
+  {
+    "id" : 142,
+    "title" : "Frankie",
+    "character" : "Frankie",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "All Imaginary Friends get +1 for each Red card and -1 for each Blue card in play",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 143,
+    "title" : "Freaky Fred",
+    "character" : "Freaky Fred",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "-5 to opposing card if not Male",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 144,
+    "title" : "Fred Falling",
+    "character" : "Fred Jones",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [
+      "MYSTERY, INC."
+    ],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 145,
+    "title" : "Fred Flintstone",
+    "character" : "Fred Flintstone",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 146,
+    "title" : "Fred Jones",
+    "character" : "Fred Jones",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "x2 if next to any Daphne Blake",
+    "rarity" : "COMMON",
+    "groups" : [
+      "MYSTERY, INC."
+    ],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 147,
+    "title" : "Fretul Larry 3000",
+    "character" : "Larry 3000",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "Opposing card loses all adjacency effects",
+    "rarity" : "COMMON",
+    "groups" : [
+      "TIME SQUAD"
+    ],
+    "types" : [
+      "MALE",
+      "PROP"
+    ]
+  },
+  {
+    "id" : 148,
+    "title" : "Funland Robot",
+    "character" : "Funland Robot",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "VILLAIN",
+      "PROP"
+    ]
+  },
+  {
+    "id" : 149,
+    "title" : "Fusilli",
+    "character" : "The Great Fusilli",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "+5 if next to any Courage, -3 to all other Blue cards",
+    "rarity" : "",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 150,
+    "title" : "Fuzzy Lumpkins",
+    "character" : "Fuzzy Lumpkins",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN",
+      "MONSTER"
+    ]
+  },
+  {
+    "id" : 151,
+    "title" : "Gangreen Gang",
+    "character" : "Gangreen Gang",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+8 if next to any Buttercup; +1 to any Blossom and any Bubbles",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 152,
+    "title" : "General Skarr",
+    "character" : "General Skarr",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 153,
+    "title" : "George Jetson",
+    "character" : "George Jetson",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 154,
+    "title" : "Ghost Clown",
+    "character" : "Ghost Clown",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "+10 if next to any Funland Robot",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 155,
+    "title" : "Ghost of Redbeard",
+    "character" : "Ghost of Redbeard",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "+2 for each neighboring Red card",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 156,
+    "title" : "Gizmo",
+    "character" : "Gizmo",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "+7 to any Numbah Two",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 157,
+    "title" : "Gladiator Tuddrussel",
+    "character" : "Buck Tuddrussel",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [
+      "TIME SQUAD"
+    ],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 158,
+    "title" : "Glorft",
+    "character" : "Glorft",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "x4 if opposite card is Blue",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 159,
+    "title" : "Goat",
+    "character" : "Goat",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "+1 for each Hero in play",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 160,
+    "title" : "Gooey",
+    "character" : "Gooey",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "-3 to all Vehicles",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 161,
+    "title" : "Gorilla Grodd",
+    "character" : "Gorilla Grodd",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 162,
+    "title" : "Gorrath",
+    "character" : "Gorrath",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "VILLAIN",
+      "MALE"
+    ]
+  },
+  {
+    "id" : 163,
+    "title" : "Goth Metal Grim",
+    "character" : "Grim",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 164,
+    "title" : "Gramma Stuffum",
+    "character" : "Gramma Stuffum",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+10 if next to Liver & Onions",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "FEMALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 165,
+    "title" : "Granny",
+    "character" : "Granny",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "x2 to Tweety; -3 to Sylvester",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 166,
+    "title" : "Green Ghost",
+    "character" : "Green Ghost",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "+2 for each Mystery, Inc. member in play",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 167,
+    "title" : "Green Lantern",
+    "character" : "Green Lantern",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "Treats neighboring cards as Green",
+    "rarity" : "COMMON",
+    "groups" : [
+      "JUSTICE LEAGUE"
+    ],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 168,
+    "title" : "Green Lantern Flying",
+    "character" : "Green Lantern",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [
+      "JUSTICE LEAGUE"
+    ],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 169,
+    "title" : "Green Loontern Dodgers",
+    "character" : "Duck Dodgers",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "-2 to all other Heroes",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "HERO",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 170,
+    "title" : "Grim",
+    "character" : "Grim",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "+1 to all Black cards in play",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 171,
+    "title" : "Harmony Bunny",
+    "character" : "Harmony Bunny",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "+5 for each neighboring Female Animal",
+    "rarity" : "SLAM",
+    "groups" : [],
+    "types" : [
+      "FEMALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 172,
+    "title" : "Harry Vermin",
+    "character" : "Harry Vermin",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "x3 to any Ratman; +1 to any neighboring Animal",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 173,
+    "title" : "Hawkgirl",
+    "character" : "Hawkgirl",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "+5 to any Flash",
+    "rarity" : "COMMON",
+    "groups" : [
+      "JUSTICE LEAGUE"
+    ],
+    "types" : [
+      "FEMALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 174,
+    "title" : "Hawkgirl Attacking",
+    "character" : "Hawkgirl",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [
+      "JUSTICE LEAGUE"
+    ],
+    "types" : [
+      "FEMALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 175,
+    "title" : "Headmistress",
+    "character" : "Headmistress",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "+1 for each Mucha Lucha; +5 for each Female opponent",
+    "rarity" : "SLAM",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 176,
+    "title" : "Heckhound",
+    "character" : "Heckhound",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 177,
+    "title" : "Hector Con Carne",
+    "character" : "Hector Con Carne",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 178,
+    "title" : "Him",
+    "character" : "Him",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 179,
+    "title" : "Hoss Delgado",
+    "character" : "Hoss Delgado",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "-3 to all other Blue cards",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 180,
+    "title" : "Huntor",
+    "character" : "Huntor",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "+1 for each Animal in play",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 181,
+    "title" : "I.M. Weasel",
+    "character" : "I.M. Weasel",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "-5 to opposing card if not a Prop",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 182,
+    "title" : "I.R. Baboon",
+    "character" : "I.R. Baboon",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 183,
+    "title" : "Imperium",
+    "character" : "Imperium",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 184,
+    "title" : "Irwin",
+    "character" : "Irwin",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 185,
+    "title" : "Jack Armored",
+    "character" : "Samurai Jack",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 186,
+    "title" : "Jack Attack!",
+    "character" : "Samurai Jack",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 187,
+    "title" : "Jack Bruised",
+    "character" : "Samurai Jack",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "-2 to all Black cards",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 188,
+    "title" : "Jack Fighting",
+    "character" : "Samurai Jack",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 189,
+    "title" : "Jack the Astronaut",
+    "character" : "Samurai Jack",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "+6 if any Chicken from Outer Space is in play",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 190,
+    "title" : "Jack the Ronin",
+    "character" : "Samurai Jack",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 191,
+    "title" : "Jack the Samurai",
+    "character" : "Samurai Jack",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "-5 to any Aku",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 192,
+    "title" : "Jack the Warrior",
+    "character" : "Samurai Jack",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 193,
+    "title" : "Jack Training",
+    "character" : "Samurai Jack",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "+1 for each Hero in play",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 194,
+    "title" : "Jack with Sword",
+    "character" : "Samurai Jack",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 195,
+    "title" : "Jamie",
+    "character" : "Jamie",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "VILLAIN",
+      "MALE"
+    ]
+  },
+  {
+    "id" : 196,
+    "title" : "Jane Jetson",
+    "character" : "Jane Jetson",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 197,
+    "title" : "Javelin-7",
+    "character" : "Javelin-7",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "VEHICLE"
+    ]
+  },
+  {
+    "id" : 198,
+    "title" : "Jawbreakers",
+    "character" : "Jawbreakers",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "x3 to any neighboring Ed, Edd, and Eddy",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "PROP"
+    ]
+  },
+  {
+    "id" : 199,
+    "title" : "Jellystone Park",
+    "character" : "Jellystone Park",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "PLACE"
+    ]
+  },
+  {
+    "id" : 200,
+    "title" : "Jerry",
+    "character" : "Jerry Lewis",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+7 to all Blue 7s",
+    "rarity" : "RARE",
+    "groups" : [
+      "WOOHP"
+    ],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 201,
+    "title" : "Jet Screamer",
+    "character" : "Jet Screamer",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "x2 if any Val Hallen is in play",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 202,
+    "title" : "Jim Gordon",
+    "character" : "Jim Gordon",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+2 to all Heroes",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 203,
+    "title" : "Jimmy",
+    "character" : "Jimmy",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 204,
+    "title" : "Jimmy Olson",
+    "character" : "Jimmy Olson",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [
+      "DAILY PLANET"
+    ],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 205,
+    "title" : "Jinx",
+    "character" : "Jinx",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "+4 for each opponent Yellow card",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "FEMALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 206,
+    "title" : "Johnny Flexing",
+    "character" : "Johnny Bravo",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 207,
+    "title" : "Johnny Superhero",
+    "character" : "Johnny Bravo",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 208,
+    "title" : "Joker",
+    "character" : "Joker",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [
+      "INJUSTICE GANG"
+    ],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 209,
+    "title" : "Joker in Vegas",
+    "character" : "Joker",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "+5 if the Royal Flush Gang is in play",
+    "rarity" : "RARE",
+    "groups" : [
+      "INJUSTICE GANG"
+    ],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 210,
+    "title" : "Judy Jetson",
+    "character" : "Judy Jetson",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+10 if next to any Jet Screamer",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 211,
+    "title" : "Jungle Boy",
+    "character" : "Jungle Boy",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 212,
+    "title" : "Juniper Lee",
+    "character" : "Juniper Lee",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "x2 if next to Monroe; +1 for each Villain in play",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "FEMALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 213,
+    "title" : "Junkyard",
+    "character" : "Junkyard",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "PLACE"
+    ]
+  },
+  {
+    "id" : 214,
+    "title" : "K-9",
+    "character" : "K-9",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "+10 if next to Marvin the Martian",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 215,
+    "title" : "Katz",
+    "character" : "Katz",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "+2 to all Silver cards",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 216,
+    "title" : "Kaz",
+    "character" : "Kaz Harada",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 217,
+    "title" : "Klub Katz",
+    "character" : "Katz",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "-5 to opposing card if not a Villain",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 218,
+    "title" : "Knightbrace",
+    "character" : "Knightbrace",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "-3 to all other Red cards",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 219,
+    "title" : "Krunk",
+    "character" : "Krunk",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+8 if Major Glory and Val Hallen are both in play",
+    "rarity" : "RARE",
+    "groups" : [
+      "JUSTICE FRIENDS"
+    ],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 220,
+    "title" : "Lantern on Trial",
+    "character" : "Green Lantern",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [
+      "JUSTICE LEAGUE"
+    ],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 221,
+    "title" : "Larry 3000",
+    "character" : "Larry 3000",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [
+      "TIME SQUAD"
+    ],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 222,
+    "title" : "Lava Monster",
+    "character" : "Lava Monster",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "x3 if Magmanamus is in play",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MONSTER",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 223,
+    "title" : "Lazlo",
+    "character" : "Lazlo",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "+7 to all Yellow 7s",
+    "rarity" : "RARE",
+    "groups" : [
+      "BEAN SCOUTS"
+    ],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 224,
+    "title" : "Lee Lee",
+    "character" : "Lee Lee",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 225,
+    "title" : "Legion",
+    "character" : "Legion",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "x2 to any Superman",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "HERO"
+    ]
+  },
+  {
+    "id" : 226,
+    "title" : "Lenny Yogman",
+    "character" : "Lenny Yogman",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+10 if next to any Denny Yogman",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 227,
+    "title" : "Leonardo da Vinci",
+    "character" : "Leonardo da Vinci",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "HERO"
+    ]
+  },
+  {
+    "id" : 228,
+    "title" : "Lex Luthor",
+    "character" : "Lex Luthor",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [
+      "INJUSTICE GANG"
+    ],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 229,
+    "title" : "Liberty Belle",
+    "character" : "Liberty Belle",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "+4 to all other Female Heroes",
+    "rarity" : "SLAM",
+    "groups" : [],
+    "types" : [
+      "FEMALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 230,
+    "title" : "Lisa the Babysitter",
+    "character" : "Lisa the Babysitter",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "x2 to any Dexter",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 231,
+    "title" : "Liver & Onions",
+    "character" : "Liver & Onions",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 232,
+    "title" : "Lobo",
+    "character" : "Lobo",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "+10 if next to the Wolfman",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 233,
+    "title" : "Lois Lane",
+    "character" : "Lois Lane",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [
+      "DAILY PLANET"
+    ],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 234,
+    "title" : "Lotta Litter",
+    "character" : "Lotta Litter",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "FEMALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 235,
+    "title" : "Lumpus",
+    "character" : "Scout Master Lumpus",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "+5 to all Green 7s",
+    "rarity" : "COMMON",
+    "groups" : [
+      "BEAN SCOUTS"
+    ],
+    "types" : [
+      "ANIMAL",
+      "MALE"
+    ]
+  },
+  {
+    "id" : 236,
+    "title" : "Mac",
+    "character" : "Mac",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 237,
+    "title" : "Mad Jack",
+    "character" : "Samurai Jack",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 238,
+    "title" : "Mad Mod",
+    "character" : "Mad Mod",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "+4 to Shaggy; -2 to any Teen Titan",
+    "rarity" : "SLAM",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 239,
+    "title" : "Magilla Gorilla",
+    "character" : "Magilla Gorilla",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 240,
+    "title" : "Magmanamus",
+    "character" : "Magmanamus",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN",
+      "MONSTER"
+    ]
+  },
+  {
+    "id" : 241,
+    "title" : "Major Dr. Ghastly",
+    "character" : "Major Dr. Ghastly",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "+10 if next to any General Skarr",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "FEMALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 242,
+    "title" : "Major Glory",
+    "character" : "Major Glory",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "-7 to any Major Man",
+    "rarity" : "COMMON",
+    "groups" : [
+      "JUSTICE FRIENDS"
+    ],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 243,
+    "title" : "Major Man",
+    "character" : "Major Man",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 244,
+    "title" : "Mammoth",
+    "character" : "Mammoth",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 245,
+    "title" : "Mandark",
+    "character" : "Mandark",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "+2 if any Dee Dee is in play; -1 to any Dexter",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 246,
+    "title" : "Mandark's Giant Robot",
+    "character" : "Mandark's Giant Robot",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "PROP"
+    ]
+  },
+  {
+    "id" : 247,
+    "title" : "Mandy",
+    "character" : "Mandy",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "x3 if next to any Billy",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 248,
+    "title" : "Mandy the Merciless",
+    "character" : "Mandy",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 249,
+    "title" : "Mange",
+    "character" : "Mange",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+2 for each Black card in play",
+    "rarity" : "SLAM",
+    "groups" : [],
+    "types" : [
+      "FEMALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 250,
+    "title" : "Manhunter Android",
+    "character" : "Manhunter Android",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "-4 to any Green Lantern",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "VILLAIN",
+      "PROP"
+    ]
+  },
+  {
+    "id" : 251,
+    "title" : "Martian Commander",
+    "character" : "Marvin the Martian",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 252,
+    "title" : "Martian Manhunter",
+    "character" : "Martian Manhunter",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "x3 if next to another Justice League member",
+    "rarity" : "RARE",
+    "groups" : [
+      "JUSTICE LEAGUE"
+    ],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 253,
+    "title" : "Martian Manhunter Flying",
+    "character" : "Martian Manhunter",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [
+      "JUSTICE LEAGUE"
+    ],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 254,
+    "title" : "Martian Queen",
+    "character" : "Martian Queen",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "Opposing card loses all adjacency effects",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "FEMALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 255,
+    "title" : "Marvin the Martian",
+    "character" : "Marvin the Martian",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "x2 if any Martian Manhunter is in play",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 256,
+    "title" : "Mayor",
+    "character" : "Mayor",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 257,
+    "title" : "Mee Mee",
+    "character" : "Mee Mee",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "+4 for each Dee Dee and Lee Lee in play",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 258,
+    "title" : "Mojo Brain Power",
+    "character" : "Mojo Jojo",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 259,
+    "title" : "Mojo Jojo",
+    "character" : "Mojo Jojo",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 260,
+    "title" : "Mojo Sandcastle",
+    "character" : "Mojo Jojo",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "x3 to any Simion; +3 to any neighboring Powerpuff Girls member",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 261,
+    "title" : "Mom Droid",
+    "character" : "Mom Droid",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+10 if next to any Dexter's Dad",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 262,
+    "title" : "Mongul",
+    "character" : "Mongul",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+5 for each neighboring Hero",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 263,
+    "title" : "Monkey",
+    "character" : "Monkey",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "x2 to any Agent Honeydew",
+    "rarity" : "COMMON",
+    "groups" : [
+      "G.L.O.B.A.L."
+    ],
+    "types" : [
+      "MALE",
+      "ANIMAL",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 264,
+    "title" : "Monroe",
+    "character" : "Monroe",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "-4 to all Yellow 10s",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 265,
+    "title" : "Monster Mayor",
+    "character" : "Mayor",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "MONSTER",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 266,
+    "title" : "Moodnesium",
+    "character" : "Moodnesium",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "x2 to Porky Pig if Duck Dodgers is in play",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "PROP"
+    ]
+  },
+  {
+    "id" : 267,
+    "title" : "Mopey Popo",
+    "character" : "Mopey Popo",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 268,
+    "title" : "Morgan Moonscar",
+    "character" : "Morgan Moonscar",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "+10 if next to any Simone",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "MONSTER"
+    ]
+  },
+  {
+    "id" : 269,
+    "title" : "Mr. Cogswell",
+    "character" : "Mr. Cogswell",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 270,
+    "title" : "Mr. Herriman",
+    "character" : "Mr. Herriman",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "+6 if Foster's Home is in play; -6 to Bugs Bunny",
+    "rarity" : "RARE",
+    "groups" : [
+      "IMAGINARY FRIEND"
+    ],
+    "types" : [
+      "ANIMAL",
+      "MALE"
+    ]
+  },
+  {
+    "id" : 271,
+    "title" : "Mr. Mxyzptlk",
+    "character" : "Mr. Mxyzptlk",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 272,
+    "title" : "Mr. Slate",
+    "character" : "Mr. Slate",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 273,
+    "title" : "Ms. Keane",
+    "character" : "Ms. Keane",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "+3 to all Purple cards",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 274,
+    "title" : "Muriel",
+    "character" : "Muriel",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 275,
+    "title" : "Muriel Toddler",
+    "character" : "Muriel",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "-2 to all Yellow cards",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 276,
+    "title" : "Mystery Machine",
+    "character" : "Mystery Machine",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "VEHICLE"
+    ]
+  },
+  {
+    "id" : 277,
+    "title" : "Nergal",
+    "character" : "Nergal",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "VILLAIN",
+      "MONSTER"
+    ]
+  },
+  {
+    "id" : 278,
+    "title" : "Nowhere",
+    "character" : "Nowhere",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "PLACE"
+    ]
+  },
+  {
+    "id" : 279,
+    "title" : "Numbuh Five",
+    "character" : "Numbuh Five",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 280,
+    "title" : "Numbuh Four",
+    "character" : "Numbuh Four",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 281,
+    "title" : "Numbuh One",
+    "character" : "Numbuh One",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+2 to all Red cards",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 282,
+    "title" : "Numbuh Three",
+    "character" : "Numbuh Three",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "No power",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 283,
+    "title" : "Numbuh Two",
+    "character" : "Numbuh Two",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "+7 to all Vehicles",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 284,
+    "title" : "Octi",
+    "character" : "Octi",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "+5 to any Bubbles; +7 if next to any Him",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "PROP"
+    ]
+  },
+  {
+    "id" : 285,
+    "title" : "Ophelia",
+    "character" : "Ophelia",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 286,
+    "title" : "Orm",
+    "character" : "Orm",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 287,
+    "title" : "Patsy Smiles",
+    "character" : "Patsy Smiles",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "+10 if next to Lazlo",
+    "rarity" : "COMMON",
+    "groups" : [
+      "SQUIRREL SCOUTS"
+    ],
+    "types" : [
+      "FEMALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 288,
+    "title" : "Pebbles Baby",
+    "character" : "Pebbles",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "+5 if next to any Bamm-Bamm; +1 to all Females",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 289,
+    "title" : "Pebbles Teen",
+    "character" : "Pebbles",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "+4 if any Dee Dee is in play",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 290,
+    "title" : "Penguin",
+    "character" : "Penguin",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+10 if next to any Batman; +2 to all Purple cards",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 291,
+    "title" : "Pepe Le Pew",
+    "character" : "Pepe Le Pew",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+2 to all Blue cards",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 292,
+    "title" : "Pig of Action",
+    "character" : "Porky Pig",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 293,
+    "title" : "Planet Killer",
+    "character" : "Grrkek the Planet Killer",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "All Villains get +2 for each Prop in play",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "VILLAIN",
+      "MALE"
+    ]
+  },
+  {
+    "id" : 294,
+    "title" : "Plasmus",
+    "character" : "Plasmus",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "VILLAIN",
+      "MONSTER",
+      "MALE"
+    ]
+  },
+  {
+    "id" : 295,
+    "title" : "Ponypuff Princess",
+    "character" : "Ponypuff Princess",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "-1 to all Males",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "PROP"
+    ]
+  },
+  {
+    "id" : 296,
+    "title" : "Pops",
+    "character" : "Pops",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 297,
+    "title" : "Porky Pig",
+    "character" : "Porky Pig",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "+10 if played as the last card",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 298,
+    "title" : "Professor Utonium",
+    "character" : "Professor Utonium",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "+5 if next to any Ms. Keane",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 299,
+    "title" : "Puddle Queen",
+    "character" : "Puddle Queen",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "+5 if Eustace is in play",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "FEMALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 300,
+    "title" : "Pup Named Scooby",
+    "character" : "Scooby-Doo",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 301,
+    "title" : "R.E.G.I.S.",
+    "character" : "R.E.G.I.S.",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "-3 to Megas; +3 to Dexter",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 302,
+    "title" : "Raj",
+    "character" : "Raj",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "x2 to Johnny Bravo; +1 to each adjacent card",
+    "rarity" : "SLAM",
+    "groups" : [
+      "BEAN SCOUTS"
+    ],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 303,
+    "title" : "Ranger Smith",
+    "character" : "Ranger Smith",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "+6 if Jellystone Park is in play",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 304,
+    "title" : "Ratman",
+    "character" : "Ratman",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "-3 to any Batman",
+    "rarity" : "COMMON",
+    "groups" : [
+      "JUSTICE FRIENDS"
+    ],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 305,
+    "title" : "Raven",
+    "character" : "Raven",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "-2 to all Silver cards; +1 to all Black cards",
+    "rarity" : "RARE",
+    "groups" : [
+      "TEEN TITANS"
+    ],
+    "types" : [
+      "FEMALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 306,
+    "title" : "Raven Visions",
+    "character" : "Raven",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [
+      "TEEN TITANS"
+    ],
+    "types" : [
+      "FEMALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 307,
+    "title" : "Ray-Ray",
+    "character" : "Ray-Ray",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 308,
+    "title" : "Red Guy",
+    "character" : "Red Guy",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "+10 if next to Him",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 309,
+    "title" : "Red X",
+    "character" : "Red X",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "+6 if next to Slade",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 310,
+    "title" : "Riddler",
+    "character" : "Riddler",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 311,
+    "title" : "Roach Coach",
+    "character" : "Roach Coach",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "-4 to Townsville",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 312,
+    "title" : "Robin",
+    "character" : "Robin",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+5 if any other Hero is in play",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 313,
+    "title" : "Robin Kicking",
+    "character" : "Robin",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [
+      "TEEN TITANS"
+    ],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 314,
+    "title" : "Robot Jones",
+    "character" : "Robot Jones",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 315,
+    "title" : "Robot Spider",
+    "character" : "Robot Spider",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "-2 to all Red cards",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "VILLAIN",
+      "PROP"
+    ]
+  },
+  {
+    "id" : 316,
+    "title" : "Roboto",
+    "character" : "Roboto",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 317,
+    "title" : "Rogue Aquaman",
+    "character" : "Aquaman",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 318,
+    "title" : "Rolf",
+    "character" : "Rolf",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+3 for each member of Ed, Edd 'n Eddy in play",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 319,
+    "title" : "Rosey",
+    "character" : "Rosey",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "+2 to all Places",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 320,
+    "title" : "Rowdyruff Boys",
+    "character" : "Rowdyruff Boys",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 321,
+    "title" : "Royal Flush Gang",
+    "character" : "Royal Flush Gang",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 322,
+    "title" : "S-Force",
+    "character" : "S-Force",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "HERO"
+    ]
+  },
+  {
+    "id" : 323,
+    "title" : "Sam",
+    "character" : "Sam",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "x2 if Alex or Clover is in play",
+    "rarity" : "SLAM",
+    "groups" : [
+      "WOOHP"
+    ],
+    "types" : [
+      "FEMALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 324,
+    "title" : "Sara",
+    "character" : "Sara",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 325,
+    "title" : "Sara Bellum",
+    "character" : "Sara Bellum",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 326,
+    "title" : "Sarah",
+    "character" : "Sarah",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "-3 to any Ed; -1 to all Males",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 327,
+    "title" : "Scooby Hiding",
+    "character" : "Scooby-Doo",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "+10 if next to the Mystery Machine",
+    "rarity" : "RARE",
+    "groups" : [
+      "MYSTERY, INC."
+    ],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 328,
+    "title" : "Scooby-Dee",
+    "character" : "Scooby-Dee",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "x2 to any Scooby-Doo",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "FEMALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 329,
+    "title" : "Scooby-Doo",
+    "character" : "Scooby-Doo",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [
+      "MYSTERY, INC."
+    ],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 330,
+    "title" : "Scooby-Dum",
+    "character" : "Scooby-Dum",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 331,
+    "title" : "Scotsman",
+    "character" : "Scotsman",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+2 to all Yellow cards",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 332,
+    "title" : "Scrappy-Doo",
+    "character" : "Scrappy-Doo",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "+2 for each Monster",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 333,
+    "title" : "Sedusa (Ima Goodlady)",
+    "character" : "Sedusa",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+2 to all Orange cards",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 334,
+    "title" : "Sgt. Rock",
+    "character" : "Sgt. Rock",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 335,
+    "title" : "Shade",
+    "character" : "Shade",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "+3 for each neighboring Black card",
+    "rarity" : "COMMON",
+    "groups" : [
+      "INJUSTICE GANG"
+    ],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 336,
+    "title" : "Shaggy Running",
+    "character" : "Shaggy",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "-2 to all Monsters",
+    "rarity" : "RARE",
+    "groups" : [
+      "MYSTERY, INC."
+    ],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 337,
+    "title" : "Shaggy Sandwich",
+    "character" : "Shaggy",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [
+      "MYSTERY, INC."
+    ],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 338,
+    "title" : "Simion",
+    "character" : "Simion",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "-5 to any Agent Honeydew",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 339,
+    "title" : "Simone Lenoir",
+    "character" : "Simone",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "x3 if Catwoman is in play",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "FEMALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 340,
+    "title" : "Sinestro",
+    "character" : "Sinestro",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "+4 for each opponent Black card",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 341,
+    "title" : "Slade",
+    "character" : "Slade",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 342,
+    "title" : "Slinkman",
+    "character" : "Slinkman",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "-5 to all Black 10s; +5 if next to Lumpus",
+    "rarity" : "RARE",
+    "groups" : [
+      "BEAN SCOUTS"
+    ],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 343,
+    "title" : "Smiling Gizmo",
+    "character" : "Gizmo",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "+3 for each Prop",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 344,
+    "title" : "Snagglepuss",
+    "character" : "Snagglepuss",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 345,
+    "title" : "Snow Beast",
+    "character" : "Snow Beast",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+5 to Fred Jones",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "MONSTER"
+    ]
+  },
+  {
+    "id" : 346,
+    "title" : "Solomon Grundy",
+    "character" : "Solomon Grundy",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [
+      "INJUSTICE GANG"
+    ],
+    "types" : [
+      "MALE",
+      "VILLAIN",
+      "MONSTER"
+    ]
+  },
+  {
+    "id" : 347,
+    "title" : "Star Sapphire",
+    "character" : "Star Sapphire",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [
+      "INJUSTICE GANG"
+    ],
+    "types" : [
+      "FEMALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 348,
+    "title" : "Starfire",
+    "character" : "Starfire",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "+3 if Robin is in play",
+    "rarity" : "COMMON",
+    "groups" : [
+      "TEEN TITANS"
+    ],
+    "types" : [
+      "FEMALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 349,
+    "title" : "Starfire Flying",
+    "character" : "Starfire",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+10 if next to Bubbles",
+    "rarity" : "RARE",
+    "groups" : [
+      "TEEN TITANS"
+    ],
+    "types" : [
+      "FEMALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 350,
+    "title" : "Steel",
+    "character" : "Steel",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+2 to all Green cards",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 351,
+    "title" : "Stella Spacely",
+    "character" : "Stella Spacely",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+2 to all Females",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 352,
+    "title" : "Steve",
+    "character" : "Steve",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+3 for each Powerpuff Girl in play",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "MONSTER"
+    ]
+  },
+  {
+    "id" : 353,
+    "title" : "Stickybeard",
+    "character" : "Stickybeard",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "-3 to all other Yellow cards",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 354,
+    "title" : "Super Monkey",
+    "character" : "Monkey",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "x2 to any Dexter, Dee Dee, Dexter's Mom, or Dexter's Dad",
+    "rarity" : "SLAM",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 355,
+    "title" : "Supergirl",
+    "character" : "Supergirl",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "FEMALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 356,
+    "title" : "Superman",
+    "character" : "Superman",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [
+      "JUSTICE LEAGUE"
+    ],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 357,
+    "title" : "Superman Unchained",
+    "character" : "Superman",
+    "colors" : [
+      "YELLOW"
+    ],
+    "description" : "+3 to all Blue cards",
+    "rarity" : "RARE",
+    "groups" : [
+      "JUSTICE LEAGUE"
+    ],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 358,
+    "title" : "Suzy",
+    "character" : "Suzy",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+10 if next to any Johnny Bravo",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 359,
+    "title" : "Suzy's Teacher",
+    "character" : "Suzy's Teacher",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 360,
+    "title" : "Sylvester",
+    "character" : "Sylvester",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 361,
+    "title" : "T.H.U.M.P.E.R.",
+    "character" : "T.H.U.M.P.E.R.",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "+3 to all Red cards",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "PROP"
+    ]
+  },
+  {
+    "id" : 362,
+    "title" : "Talking Dog",
+    "character" : "Talking Dog",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 363,
+    "title" : "Taz",
+    "character" : "Taz",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "+5 to each neighboring Animal",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 364,
+    "title" : "Titans Tower",
+    "character" : "Titans Tower",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "PLACE"
+    ]
+  },
+  {
+    "id" : 365,
+    "title" : "Toilenator",
+    "character" : "Toilenator",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "+4 for each opponent Orange card",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 366,
+    "title" : "TOM",
+    "character" : "TOM",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "Treat opposing card as Black",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 367,
+    "title" : "TOM Classic",
+    "character" : "TOM",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "No power",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 368,
+    "title" : "Townsville",
+    "character" : "Townsville",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "+2 to any Mojo Jojo and any Powerpuff Girls member",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "PLACE"
+    ]
+  },
+  {
+    "id" : 369,
+    "title" : "Townsville Prisoner",
+    "character" : "Townsville Prisoner",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 370,
+    "title" : "Tweety",
+    "character" : "Tweety",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+8 if Sylvester is in play",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 371,
+    "title" : "Two-Face",
+    "character" : "Two-Face",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "No power",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 372,
+    "title" : "Ultra-Humanite",
+    "character" : "Ultra-Humanite",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [
+      "INJUSTICE GANG"
+    ],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 373,
+    "title" : "Val Hallen",
+    "character" : "Val Hallen",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "x2 if the Warrior Women is in play",
+    "rarity" : "COMMON",
+    "groups" : [
+      "JUSTICE FRIENDS"
+    ],
+    "types" : [
+      "MALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 374,
+    "title" : "Vampire Bat",
+    "character" : "Vampire Bat",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 375,
+    "title" : "Velma Dinkley",
+    "character" : "Velma Dinkley",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [
+      "MYSTERY, INC."
+    ],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 376,
+    "title" : "Velma Nearsighted",
+    "character" : "Velma Dinkley",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "x2 to any Johnny Bravo",
+    "rarity" : "COMMON",
+    "groups" : [
+      "MYSTERY, INC."
+    ],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 377,
+    "title" : "Warrior Woman",
+    "character" : "Warrior Woman",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 378,
+    "title" : "Watchtower",
+    "character" : "Watchtower",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "+3 to any Justice League member",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "PLACE"
+    ]
+  },
+  {
+    "id" : 379,
+    "title" : "Weremole Muriel",
+    "character" : "Muriel",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "+4 for each opponent Green card",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "FEMALE",
+      "MONSTER"
+    ]
+  },
+  {
+    "id" : 380,
+    "title" : "Wilma Flintstone",
+    "character" : "Wilma Flintstone",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
+  },
+  {
+    "id" : 381,
+    "title" : "Wintergreen",
+    "character" : "Wintergreen",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "-3 to all other Green cards",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 382,
+    "title" : "Wishing Well",
+    "character" : "Wishing Well",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "PLACE"
+    ]
+  },
+  {
+    "id" : 383,
+    "title" : "Witch Doctor",
+    "character" : "Witch Doctor",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "+10 if next to any Velma Dinkley",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 384,
+    "title" : "Wolfman",
+    "character" : "Wolfman",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "No power",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "VILLAIN"
+    ]
+  },
+  {
+    "id" : 385,
+    "title" : "Wonder Woman",
+    "character" : "Wonder Woman",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "+3 for each Female Villain in play",
+    "rarity" : "RARE",
+    "groups" : [
+      "JUSTICE LEAGUE"
+    ],
+    "types" : [
+      "FEMALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 386,
+    "title" : "Wonder Woman With Lariat",
+    "character" : "Wonder Woman",
+    "colors" : [
+      "ORANGE"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [
+      "JUSTICE LEAGUE"
+    ],
+    "types" : [
+      "FEMALE",
+      "HERO"
+    ]
+  },
+  {
+    "id" : 387,
+    "title" : "Woolie",
+    "character" : "Woolie",
+    "colors" : [
+      "PURPLE"
+    ],
+    "description" : "+10 if next to any Mitchellites",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 388,
+    "title" : "Wright Bros.",
+    "character" : "Wright Bros.",
+    "colors" : [
+      "BLUE"
+    ],
+    "description" : "+5 if next to any Vehicle",
+    "rarity" : "COMMON",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 389,
+    "title" : "Yakky Doodle",
+    "character" : "Yakky Doodle",
+    "colors" : [
+      "BLACK"
+    ],
+    "description" : "No power",
+    "rarity" : "UNCOMMON",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 390,
+    "title" : "Yogi Bear",
+    "character" : "Yogi Bear",
+    "colors" : [
+      "GREEN"
+    ],
+    "description" : "+3 to all Yellow cards",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE",
+      "ANIMAL"
+    ]
+  },
+  {
+    "id" : 391,
+    "title" : "Yosemite Sam",
+    "character" : "Yosemite Sam",
+    "colors" : [
+      "RED"
+    ],
+    "description" : "-5 to opposing card if not a Female",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "MALE"
+    ]
+  },
+  {
+    "id" : 392,
+    "title" : "Yumi",
+    "character" : "Yumi",
+    "colors" : [
+      "SILVER"
+    ],
+    "description" : "x2 to Buttercup",
+    "rarity" : "RARE",
+    "groups" : [],
+    "types" : [
+      "FEMALE"
+    ]
   }
 ]
