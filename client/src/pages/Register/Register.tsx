@@ -2,6 +2,8 @@ import * as React from 'react';
 import { RegisterState, RegisterProps } from './types';
 import { isEqual, debounce } from 'lodash';
 import { request, queryParams } from '../../utils/api';
+import { TextField } from '@material-ui/core';
+import { isValidEmail } from '../../utils/validation';
 
 export default class Register extends React.Component<
   RegisterProps,
@@ -11,20 +13,25 @@ export default class Register extends React.Component<
     super(props);
     this.state = {
       usernameAvailable: null,
+      emailAvailable: null,
       username: '',
       email: '',
       password: '',
       confirmPassword: ''
     };
 
-    // wait a second after the user has stopped typing to fire the API call
+    // wait a second after the user has stopped typing to fire the API calls
     this.getUsernameIsValid = debounce(this.getUsernameIsValid, 1000);
+    this.getEmailIsValid = debounce(this.getEmailIsValid, 1000);
   }
 
   componentDidUpdate(_prevProps: RegisterProps, prevState: RegisterState) {
-    const { username } = this.state;
+    const { username, email } = this.state;
     if (!isEqual(prevState.username, username)) {
       this.getUsernameIsValid();
+    }
+    if (!isEqual(prevState.email, email)) {
+      this.getEmailIsValid();
     }
   }
 
@@ -32,10 +39,23 @@ export default class Register extends React.Component<
     const { username } = this.state;
     request({
       method: 'get',
-      url: `register/username${queryParams({
+      url: `register/validUsername${queryParams({
         username
       })}`
     }).then(usernameAvailable => this.setState({ usernameAvailable }));
+  };
+
+  getEmailIsValid = () => {
+    const { email } = this.state;
+    if (!isValidEmail(email)) {
+      return;
+    }
+    request({
+      method: 'get',
+      url: `register/validEmail${queryParams({
+        email
+      })}`
+    }).then(emailAvailable => this.setState({ emailAvailable }));
   };
 
   onInputChange = (e: React.ChangeEvent) => {
@@ -61,35 +81,43 @@ export default class Register extends React.Component<
       : 'This username is not available.';
   };
 
+  renderEmailAvailable = () => {
+    const { emailAvailable, email } = this.state;
+    if (emailAvailable === null || !email || emailAvailable) {
+      return null;
+    }
+    return 'An account exists for this email. ';
+  };
+
   render() {
     const { username, email, password, confirmPassword } = this.state;
     return (
       <div>
         <h1>Register to play GToons</h1>
         <div>
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
+          <TextField
+            label="Username"
             name="username"
             id="username"
             value={username}
+            helperText={this.renderUsernameAvailable()}
             onChange={this.onInputChange}
           />
-          {this.renderUsernameAvailable()}
         </div>
         <div>
-          <label htmlFor="email">Email</label>
-          <input
-            type="text"
+          <TextField
+            type="email"
+            label="Email"
             name="email"
             id="email"
             value={email}
+            helperText={this.renderEmailAvailable()}
             onChange={this.onInputChange}
           />
         </div>
         <div>
-          <label htmlFor="password">Password</label>
-          <input
+          <TextField
+            label="Password"
             type="password"
             name="password"
             id="password"
@@ -98,8 +126,8 @@ export default class Register extends React.Component<
           />
         </div>
         <div>
-          <label htmlFor="confirmPassword">Confirm Password</label>
-          <input
+          <TextField
+            label="Confirm Password"
             type="password"
             name="confirmPassword"
             id="confirmPassword"
