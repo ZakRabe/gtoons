@@ -7,7 +7,6 @@ import { createConnection } from 'typeorm';
 import { Routes } from './routes';
 import socket from './socket';
 
-// create express app
 const app = express();
 app.use(helmet());
 
