@@ -15,6 +15,9 @@ export default class User extends BaseEntity {
   password: string;
 
   @Column()
+  salt: string;
+
+  @Column()
   created: string;
 
   toJson = () => {

@@ -1,6 +1,7 @@
-import { getRepository } from 'typeorm';
 import { NextFunction, Request, Response } from 'express';
+import { getRepository } from 'typeorm';
 import User from '../entity/User';
+const crypto = require('crypto');
 
 export class RegisterController {
   private userRepository = getRepository(User);
@@ -31,6 +32,28 @@ export class RegisterController {
     const existingUsers = await this.getUsersByEmail(request.params.email);
     return existingUsers.length === 0;
   }
+
+  getSalt = length => {
+    return crypto
+      .randomBytes(Math.ceil(length / 2))
+      .toString('hex')
+      .slice(0, length);
+  };
+
+  hashPassword = (password: string, salt: string) => {
+    const hash = crypto.createHmac('sha512', salt);
+    hash.update(password);
+    const value = hash.digest('hex');
+    return {
+      salt: salt,
+      passwordHash: value
+    };
+  };
+
+  saltHashPassword = (password: string) => {
+    const salt = this.getSalt(16);
+    return this.hashPassword(password, salt);
+  };
 
   async submit(request: Request, response: Response, _next: NextFunction) {
     const newUser = { ...request.body };
@@ -81,9 +104,22 @@ export class RegisterController {
         .json({ errors, message: 'Unable to Register User' });
     }
 
-    // save the user
-    // const savedUser = await this.userRepository.save(newUser);
+    // hash the password for secure sortage
+    const { salt, passwordHash } = this.saltHashPassword(newUser.password);
 
-    return null;
+    // save the user
+    const userModel = {
+      ...newUser,
+      salt,
+      password: passwordHash
+    };
+
+    const { id } = await this.userRepository.save(userModel);
+
+    const savedUser = await this.userRepository.findOne({
+      id
+    });
+
+    return savedUser.toJson();
   }
 }

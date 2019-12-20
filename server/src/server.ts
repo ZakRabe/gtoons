@@ -41,7 +41,7 @@ createConnection()
               .then(output => {
                 // if the result has a statusCode attribute,
                 // we'll assume its a full response, and just return it
-                if (output.statusCode) {
+                if (validResult(output) && output.statusCode) {
                   return output;
                 } else {
                   return validResult(output) ? res.send(output) : undefined;
