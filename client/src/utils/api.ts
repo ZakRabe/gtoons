@@ -6,6 +6,7 @@ const client = axios.create({
 
 export const request = (options: AxiosRequestConfig) => {
   const onSuccess = (response: any) => {
+    console.log(response);
     return response.data;
   };
 
@@ -27,7 +28,6 @@ export const request = (options: AxiosRequestConfig) => {
       // Something else happened while setting up the request that triggered an error
       console.error('Error Message:', error.message);
     }
-
     return Promise.reject(error.response || error.message);
   };
 

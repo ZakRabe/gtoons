@@ -152,9 +152,11 @@ export default class Register extends React.Component<
         password,
         confirmPassword
       }
-    }).then(response => {
-      console.log(response);
-    });
+    })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => console.log(error));
   };
 
   render() {
