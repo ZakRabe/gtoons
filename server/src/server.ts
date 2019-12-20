@@ -40,7 +40,7 @@ createConnection()
             result
               .then(output => {
                 // if the result has a statusCode attribute,
-                // we'll assume its a fully formed response
+                // we'll assume its a full response, and just return it
                 if (output.statusCode) {
                   return output;
                 } else {
