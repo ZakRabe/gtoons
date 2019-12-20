@@ -120,7 +120,7 @@ export default class Register extends React.Component<
     return (
       <ul>
         {passwordErrors.map(error => {
-          return <li>{error}</li>;
+          return <li key={error}>{error}</li>;
         })}
       </ul>
     );
@@ -159,8 +159,37 @@ export default class Register extends React.Component<
       .catch(error => console.log(error));
   };
 
+  hasErrors = () => {
+    const {
+      username,
+      email,
+      passwordErrors,
+      password,
+      confirmPassword,
+      usernameAvailable,
+      emailAvailable
+    } = this.state;
+
+    return (
+      passwordErrors.length > 0 ||
+      confirmPassword !== password ||
+      !usernameAvailable ||
+      !emailAvailable ||
+      username.length === 0 ||
+      email.length === 0 ||
+      password.length === 0 ||
+      confirmPassword.length === 0
+    );
+  };
+
   render() {
-    const { username, email, password, confirmPassword } = this.state;
+    const {
+      username,
+      email,
+      password,
+      confirmPassword,
+      passwordErrors
+    } = this.state;
     return (
       <div>
         <h1>Register to play GToons</h1>
@@ -197,7 +226,7 @@ export default class Register extends React.Component<
               this.onInputChange(e);
             }}
           />
-          {this.state.passwordErrors.length > 0 && this.renderPasswordErrors()}
+          {passwordErrors.length > 0 && this.renderPasswordErrors()}
         </div>
         <div>
           <TextField
@@ -210,7 +239,12 @@ export default class Register extends React.Component<
           />
           {this.renderConfirmPasswordErrors()}
         </div>
-        <Button variant="contained" color="primary" onClick={this.submit}>
+        <Button
+          disabled={this.hasErrors()}
+          variant="contained"
+          color="primary"
+          onClick={this.submit}
+        >
           Submit
         </Button>
       </div>
