@@ -12,5 +12,11 @@ export const RegisterRoutes = [
     route: '/register/validEmail',
     controller: RegisterController,
     action: 'validEmail'
+  },
+  {
+    method: 'post',
+    route: '/register/submit',
+    controller: RegisterController,
+    action: 'submit'
   }
 ];
