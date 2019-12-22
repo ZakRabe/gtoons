@@ -2,7 +2,7 @@ import * as React from 'react';
 import { RegisterState, RegisterProps } from './types';
 import { isEqual, debounce } from 'lodash';
 import { request, queryParams } from '../../utils/api';
-import { TextField } from '@material-ui/core';
+import { TextField, Button } from '@material-ui/core';
 import { isValidEmail } from '../../utils/validation';
 
 export default class Register extends React.Component<
@@ -17,7 +17,8 @@ export default class Register extends React.Component<
       username: '',
       email: '',
       password: '',
-      confirmPassword: ''
+      confirmPassword: '',
+      passwordErrors: []
     };
 
     // wait a second after the user has stopped typing to fire the API calls
@@ -89,8 +90,106 @@ export default class Register extends React.Component<
     return 'An account exists for this email. ';
   };
 
-  render() {
+  validatePassword = (password: string) => {
+    // 7 character min
+    // 1 uppercase
+    // 1 lowercase
+
+    const passwordErrors = [];
+
+    if (password.length < 7) {
+      passwordErrors.push('Must be at least 7 characters');
+    }
+    const hasUppercase = /[A-Z]/.test(password);
+    if (!hasUppercase) {
+      passwordErrors.push('Must contain at least 1 uppercase letter');
+    }
+    const hasLowercase = /[a-z]/.test(password);
+    if (!hasLowercase) {
+      passwordErrors.push('Must contain at least 1 lowercase charater');
+    }
+
+    this.setState({
+      passwordErrors
+    });
+  };
+
+  renderPasswordErrors = () => {
+    const { passwordErrors } = this.state;
+
+    return (
+      <ul>
+        {passwordErrors.map(error => {
+          return <li key={error}>{error}</li>;
+        })}
+      </ul>
+    );
+  };
+
+  renderConfirmPasswordErrors = () => {
+    const { password, confirmPassword } = this.state;
+
+    if (password === confirmPassword) {
+      return null;
+    }
+    return (
+      <ul>
+        <li>Passwords don't match</li>
+      </ul>
+    );
+  };
+
+  submit = () => {
+    console.log('submit');
     const { username, email, password, confirmPassword } = this.state;
+
+    request({
+      method: 'post',
+      url: 'register/submit',
+      data: {
+        username,
+        email,
+        password,
+        confirmPassword
+      }
+    })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => console.log(error));
+  };
+
+  hasErrors = () => {
+    const {
+      username,
+      email,
+      passwordErrors,
+      password,
+      confirmPassword,
+      usernameAvailable,
+      emailAvailable
+    } = this.state;
+
+    return (
+      passwordErrors.length > 0 ||
+      confirmPassword !== password ||
+      !usernameAvailable ||
+      !emailAvailable ||
+      username.length === 0 ||
+      email.length === 0 ||
+      password.length === 0 ||
+      confirmPassword.length === 0
+    );
+  };
+
+  render() {
+    const {
+      username,
+      email,
+      password,
+      confirmPassword,
+      passwordErrors
+    } = this.state;
     return (
       <div>
         <h1>Register to play GToons</h1>
@@ -122,8 +221,12 @@ export default class Register extends React.Component<
             name="password"
             id="password"
             value={password}
-            onChange={this.onInputChange}
+            onChange={e => {
+              this.validatePassword(e.target.value);
+              this.onInputChange(e);
+            }}
           />
+          {passwordErrors.length > 0 && this.renderPasswordErrors()}
         </div>
         <div>
           <TextField
@@ -134,7 +237,16 @@ export default class Register extends React.Component<
             value={confirmPassword}
             onChange={this.onInputChange}
           />
+          {this.renderConfirmPasswordErrors()}
         </div>
+        <Button
+          disabled={this.hasErrors()}
+          variant="contained"
+          color="primary"
+          onClick={this.submit}
+        >
+          Submit
+        </Button>
       </div>
     );
   }

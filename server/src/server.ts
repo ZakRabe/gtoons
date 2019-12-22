@@ -37,9 +37,19 @@ createConnection()
         (req: Request, res: Response, next: Function) => {
           const result = (new controller() as any)[action](req, res, next);
           if (result instanceof Promise) {
-            result.then(output =>
-              validResult(output) ? res.send(output) : undefined
-            );
+            result
+              .then(output => {
+                // if the result has a statusCode attribute,
+                // we'll assume its a full response, and just return it
+                if (validResult(output) && output.statusCode) {
+                  return output;
+                } else {
+                  return validResult(output) ? res.send(output) : undefined;
+                }
+              })
+              .catch(error => {
+                console.log(error);
+              });
           } else if (validResult(result)) {
             res.json(result);
           }

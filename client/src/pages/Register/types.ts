@@ -5,6 +5,7 @@ export interface RegisterState {
   confirmPassword: string;
   usernameAvailable: boolean | null;
   emailAvailable: boolean | null;
+  passwordErrors: string[];
 }
 
 export interface RegisterProps {}
