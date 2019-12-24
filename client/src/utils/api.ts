@@ -6,7 +6,12 @@ const client = axios.create({
 
 export const request = (options: AxiosRequestConfig) => {
   const onSuccess = (response: any) => {
-    console.log(response);
+    // check for the auth token
+    const { token } = response.headers;
+    if (token) {
+      localStorage.setItem('authToken', token);
+    }
+
     return response.data;
   };
 
