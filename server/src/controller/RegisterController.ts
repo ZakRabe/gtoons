@@ -7,7 +7,7 @@ export class RegisterController {
   private userRepository = getRepository(User);
 
   async getUsersByUsername(username: string) {
-    return this.userRepository.find({
+    return await this.userRepository.find({
       username
     });
   }
@@ -17,11 +17,10 @@ export class RegisterController {
     _response: Response,
     _next: NextFunction
   ) {
-    const existingUsers = await this.getUsersByUsername(
-      request.params.username
-    );
+    const existingUsers = await this.getUsersByUsername(request.query.username);
     return existingUsers.length === 0;
   }
+
   async getUsersByEmail(email: string) {
     return this.userRepository.find({
       email: email
@@ -29,7 +28,7 @@ export class RegisterController {
   }
 
   async validEmail(request: Request, _response: Response, _next: NextFunction) {
-    const existingUsers = await this.getUsersByEmail(request.params.email);
+    const existingUsers = await this.getUsersByEmail(request.query.email);
     return existingUsers.length === 0;
   }
 

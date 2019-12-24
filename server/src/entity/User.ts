@@ -18,14 +18,18 @@ export default class User extends BaseEntity {
   salt: string;
 
   @Column()
+  role?: string;
+
+  @Column()
   created: string;
 
   toJson = () => {
     // we don't want to expose user's email address or password via JSON
-    const { id, username, created } = this;
+    const { id, username, created, role } = this;
     return {
       id,
       username,
+      role,
       created
     };
   };

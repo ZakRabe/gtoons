@@ -21,7 +21,8 @@ export const request = (options: AxiosRequestConfig) => {
 
       switch (error.response.status) {
         case 401:
-          console.error('Login expired. Logging the user out');
+          // this means the token was invalid, and we should clear it
+          localStorage.removeItem('authToken');
           break;
       }
     } else {
@@ -31,7 +32,12 @@ export const request = (options: AxiosRequestConfig) => {
     return Promise.reject(error.response || error.message);
   };
 
-  return client(options)
+  return client({
+    ...options,
+    headers: {
+      auth: localStorage.getItem('authToken')
+    }
+  })
     .then(onSuccess)
     .catch(onError);
 };
