@@ -3,6 +3,8 @@ import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import Home from '../pages/Home';
 import Profile from '../pages/Profile';
+import Play from '../pages/Play';
+import Game from '../pages/Game';
 
 
 
@@ -14,6 +16,8 @@ const App: React.FC = () => {
       <Switch>
         <Route exact path='/' component={Home} />
         <Route path='/profile' component={Profile} />
+        <Route path='/play' component={Play} />
+        <Route path='/game' component={Game} />
       </Switch>
     </div>
   )
