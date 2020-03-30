@@ -2,43 +2,36 @@ import * as React from 'react';
 import CSS from 'csstype';
 import PlayerZonesRowOne from '../PlayerZonesRowOne';
 import PlayerZonesRowTwo from '../PlayerZonesRowTwo';
+import { PlayerZonesProps } from './types';
 
 const styles: CSS.Properties = {
-  display:'block',
-  position:'relative',
-  width:'100%',
-  height:'49%',
-  marginTop:'5px',
-  marginBottom:'5px',
-  backgroundColor:'lightgreen'
-}
+  display: 'block',
+  position: 'relative',
+  width: '100%',
+  height: '49%',
+  marginTop: '5px',
+  marginBottom: '5px',
+  backgroundColor: 'lightgreen'
+};
 
-const container: CSS.Properties = {
-  width:'100%',
-  height:'100%',
-  backgroundColor:'slateblue'
-}
-
-
-export default class PlayerZones extends React.Component<{}, {}> {
+export default class PlayerZones extends React.Component<PlayerZonesProps, {}> {
   render() {
-    let x = true;
-    const renderBoard = () => {
-      if(x == true){
-        return <div style={container}>
-          <PlayerZonesRowOne />
-          <PlayerZonesRowTwo />
-        </div>
-      } else {
-        return <div style={container}>
-          <PlayerZonesRowTwo />
-          <PlayerZonesRowOne />
-        </div>
-      }
-    }
+    const { isOpponent } = this.props;
+
+    const container: CSS.Properties = {
+      width: '100%',
+      height: '100%',
+      backgroundColor: 'slateblue',
+      display: 'flex',
+      flexDirection: isOpponent ? 'column-reverse' : 'column'
+    };
+
     return (
       <div style={styles}>
-        {renderBoard()}
+        <div style={container}>
+          <PlayerZonesRowOne />
+          <PlayerZonesRowTwo />
+        </div>
       </div>
     );
   }

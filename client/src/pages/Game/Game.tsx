@@ -1,23 +1,24 @@
 import * as React from 'react';
 import Board from './components/Board';
 import Info from './components/Info';
-import CSS from 'csstype'; 
+import CSS from 'csstype';
 
 const styles: CSS.Properties = {
-  display:'inline-block',
-  position:'absolute',
-  width:'100%',
-  height:'89.8vh', //set to screen size?
-  alignItems:'stretch'
-}
+  display: 'flex',
+  height: '100%',
+  width: '100%'
+};
 
 export default class Game extends React.Component<{}, {}> {
+  player1Name = 'Player 1';
+  player2Name = 'Player 2';
+
   render() {
     return (
-      <div style={styles}>
+      <main style={styles}>
         <Board />
-        <Info />
-      </div>
+        <Info player1Name={this.player1Name} player2Name={this.player2Name} />
+      </main>
     );
   }
 }
