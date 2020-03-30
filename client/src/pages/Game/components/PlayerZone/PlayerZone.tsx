@@ -2,14 +2,16 @@ import * as React from 'react';
 import CSS from 'csstype';
 
 const styles: CSS.Properties = {
-  display:'block',
+  display:'inline-block',
   position:'relative',
-  width:'100%',
-  height:'49%',
+  width:'20%',
+  height:'95%',
   marginTop:'5px',
   marginBottom:'5px',
-  backgroundColor:'lightgreen'
+  marginLeft:'25px',
+  backgroundColor:'powderblue'
 }
+
 
 export default class PlayerZone extends React.Component<{}, {}> {
   render() {
