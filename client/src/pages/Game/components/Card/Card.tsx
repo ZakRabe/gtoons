@@ -17,7 +17,7 @@ export default class Card extends React.Component<CardProps, {}> {
 
     return (
       <div style={styles}>
-        <img style={{ width: '100%',height:'100%',border:'10px solid orange',borderRadius:'50%' }} src={"/images/"+ cardID + ".gif"} />
+        <img style={{ width: '100%',height:'100%',border:'10px solid orange',borderRadius:'50%' }} src={"/images/JPG/RELEASED/"+ cardID + ".jpg"} />
       </div>
     );
   }
