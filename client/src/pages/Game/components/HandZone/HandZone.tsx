@@ -16,7 +16,7 @@ export default class HandZone extends React.Component<{}, {}> {
   render() {
     return (
       <div style={styles}>
-        <Card />
+        <Card cardID='couragescreaming' cardColor='green' cardScore='1' useAnimated={true} />
       </div>
     );
   }
