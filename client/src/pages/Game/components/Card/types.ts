@@ -1,5 +1,7 @@
 export interface CardProps {
     cardID: string;
-    cardColor: String;
+    cardColor: string;
+    cardScore: string;
+    useAnimated: boolean; 
   }
   
