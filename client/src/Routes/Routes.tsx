@@ -4,6 +4,7 @@ import Home from '../pages/Home';
 import Profile from '../pages/Profile';
 import Register from '../pages/Register';
 import Login from '../pages/Login';
+import Game from  '../pages/Game';
 
 export default class Routes extends React.Component {
   render() {
@@ -13,6 +14,7 @@ export default class Routes extends React.Component {
         <Route path="/profile" component={Profile} />
         <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
+        <Route path="/game" component={Game} />
       </Switch>
     );
   }
