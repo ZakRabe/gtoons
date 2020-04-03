@@ -1,4 +1,4 @@
-import { Modifier } from './Modifer';
+import { Modifier, VariableModifer } from './Modifer';
 
 export enum Color {
   RED = 'RED',
