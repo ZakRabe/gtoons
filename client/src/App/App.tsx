@@ -3,10 +3,6 @@ import React from 'react';
 import Routes from '../Routes';
 import theme from '../utils/theme';
 import './App.css';
-import Home from '../pages/Home';
-import Profile from '../pages/Profile';
-import Play from '../pages/Play';
-import Game from '../pages/Game';
 
 const App: React.FC = () => {
   const App = () => (
