@@ -6,10 +6,10 @@ import './App.css';
 
 const App: React.FC = () => {
   const App = () => (
-    <div>
-      <h1>GToons</h1>
+    <>
+      <h1 style={{ marginTop: 0 }}>GToons</h1>
       <Routes />
-    </div>
+    </>
   );
   return (
     <ThemeProvider theme={theme}>

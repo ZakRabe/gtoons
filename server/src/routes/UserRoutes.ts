@@ -1,5 +1,5 @@
 import { UserController } from '../controller/UserController';
-import { checkJwt } from '../middleware/checkJWT';
+import { checkJwt } from '../middleware/checkJwt';
 import { checkRoles } from '../middleware/checkRoles';
 
 export const UserRoutes = [

@@ -33,7 +33,7 @@ export interface ColorsMod extends VariableMod {
   value: Color;
 }
 
-// modifer for points attirbute, adds the value to the existing points values
+// modifer for points attirbute, adds or subtracts the value to the existing points values
 export interface PointsMod extends Modifier {
   attribute: 'points';
   value: number;
@@ -72,7 +72,7 @@ export class ReplaceModifer implements ReplaceMod {
 export class CharacterModifier extends ReplaceModifer implements CharacterMod {
   attribute: 'character';
   value: string;
-  surce: number;
+  source: number;
 
   constructor(value: string, source: number) {
     super(value, source);
