@@ -1,19 +1,20 @@
-import { MatchMakingController } from './controllers/MatchMakingController';
+import { Socket } from 'socket.io';
+import socketConfigs from './configs';
 
 export const init = (io: any) => {
-  io.on('connection', function(socket: any) {
+  io.on('connection', function(socket: Socket) {
     socket.on('message', function(message: any) {
       console.log(message);
       socket.emit('message', "Here's a message back!");
     });
 
-    const MMController = new MatchMakingController();
+    socketConfigs.forEach(config => {
+      const { controller, event, action } = config;
+      const ctrl = new controller(socket);
 
-    socket.on('openLobby', MMController.openLobby);
-
-    socket.on('getOpenLobbies', async () => {
-      const lobbies = await MMController.getOpenLobbies();
-      socket.emit('lobbyList', lobbies);
+      socket.on(event, async () => {
+        const response = await ctrl[action]();
+      });
     });
 
     console.log('a user connected');

@@ -6,6 +6,7 @@ import 'reflect-metadata';
 import { createConnection } from 'typeorm';
 import { Routes } from './routes';
 import socket from './socket';
+import { RouteConfig } from './types';
 
 const app = express();
 app.use(helmet());
@@ -26,14 +27,6 @@ app.use(function(req, _res, next) {
 });
 
 const validResult = (result: any) => result !== null && result !== undefined;
-
-interface RouteConfig {
-  method: string;
-  route: string;
-  action: string;
-  controller: any;
-  middleware?: any;
-}
 
 createConnection()
   .then(async _connection => {

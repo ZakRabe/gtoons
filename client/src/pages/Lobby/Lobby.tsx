@@ -22,11 +22,11 @@ export const Lobby = (props: LobbyProps) => {
 
   return (
     <section>
-      <Button>{isOpen ? `Find Match` : `Cancel`}</Button>
+      <Button>{isOpen ? 'Cancel' : 'Create a Lobby'}</Button>
       <ul>
         {lobbies.map((lobby: any) => {
           return (
-            <li>
+            <li key={lobby.id}>
               #{lobby.id}: Started by Player: {lobby.player1}
             </li>
           );
