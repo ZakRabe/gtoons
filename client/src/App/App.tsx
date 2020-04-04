@@ -3,11 +3,12 @@ import React from 'react';
 import Routes from '../Routes';
 import theme from '../utils/theme';
 import './App.css';
+import AppHeader from './AppHeader';
 
 const App: React.FC = () => {
   const App = () => (
     <>
-      <h1 style={{ marginTop: 0 }}>GToons</h1>
+      <AppHeader />
       <Routes />
     </>
   );

@@ -158,7 +158,6 @@ export default class Register extends React.Component<
       },
     })
       .then((response) => {
-        console.log(response);
         if (response.id) {
           this.setState({ complete: true });
         }
