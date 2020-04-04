@@ -14,9 +14,6 @@ module.exports = function(app) {
     '/socket.io',
     proxy({
       target: 'http://localhost:5000',
-      pathRewrite: {
-        '^/api': ''
-      },
       changeOrigin: true
     })
   );

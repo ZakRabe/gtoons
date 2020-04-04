@@ -1,5 +1,5 @@
 import { EngineController } from '../controller/EngineController';
-import { checkJwt } from '../middleware/checkJWT';
+import { checkJwt } from '../middleware/checkJwt';
 
 export const EngineRoutes = [
     {

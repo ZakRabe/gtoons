@@ -3,7 +3,6 @@ import { getRepository } from 'typeorm';
 import User from '../entity/User';
 import { hashPassword } from '../util';
 import * as jwt from 'jsonwebtoken';
-import { checkJwt } from '../middleware/checkJWT';
 
 export class LoginController {
   private userRepository = getRepository(User);

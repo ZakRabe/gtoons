@@ -4,7 +4,7 @@ import User from '../entity/User';
 
 export const checkRoles = (roles: Array<string>) => {
   return async (req: Request, res: Response, next: NextFunction) => {
-    //Get the user ID from previous midleware
+    //Get the user ID from previous middleware
     const id = res.locals.jwtPayload.userId;
 
     //Get user role from the database

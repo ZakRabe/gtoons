@@ -12,7 +12,9 @@
     "experimentalDecorators": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
-    "pretty": true
+    "pretty": true,
+    "jsx": "preserve",
+    "resolveJsonModule": true
   },
   "exclude": ["node_modules", "build"]
 }
