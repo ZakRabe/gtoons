@@ -1,11 +1,12 @@
 import { Socket } from 'socket.io';
 import socketConfigs from './configs';
+import * as cards from '../cards/cards.json';
 
 export const init = (io: any) => {
   io.on('connection', function(socket: Socket) {
     socket.on('message', function(message: any) {
       console.log(message);
-      socket.emit('message', "Here's a message back!");
+      socket.emit('message', cards);
     });
 
     socketConfigs.forEach(config => {

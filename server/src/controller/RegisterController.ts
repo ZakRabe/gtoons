@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import { getRepository } from 'typeorm';
 import Collection from '../entity/Collection';
 import User from '../entity/User';
+import * as cards from '../cards/cards.json';
 const crypto = require('crypto');
 
 export class RegisterController {
@@ -117,9 +118,11 @@ export class RegisterController {
 
     const { id } = await this.userRepository.save(userModel);
 
+    const allCards = cards.map(card => card.id);
+
     await this.collectionRepository.save({
       player: id,
-      cards: '"[]"'
+      cards: JSON.stringify(allCards)
     });
 
     const savedUser = await this.userRepository.findOne({
