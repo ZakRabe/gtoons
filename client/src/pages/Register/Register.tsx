@@ -1,9 +1,9 @@
+import { Button, TextField } from '@material-ui/core';
+import { debounce, isEqual } from 'lodash';
 import * as React from 'react';
-import { RegisterState, RegisterProps } from './types';
-import { isEqual, debounce } from 'lodash';
-import { request, queryParams } from '../../utils/api';
-import { TextField, Button } from '@material-ui/core';
+import { queryParams, request } from '../../utils/api';
 import { isValidEmail } from '../../utils/validation';
+import { RegisterProps, RegisterState } from './types';
 
 export default class Register extends React.Component<
   RegisterProps,
@@ -18,7 +18,9 @@ export default class Register extends React.Component<
       email: '',
       password: '',
       confirmPassword: '',
-      passwordErrors: []
+      passwordErrors: [],
+      complete: false,
+      failed: false,
     };
 
     // wait a second after the user has stopped typing to fire the API calls
@@ -41,9 +43,9 @@ export default class Register extends React.Component<
     request({
       method: 'get',
       url: `register/validUsername${queryParams({
-        username
-      })}`
-    }).then(usernameAvailable => this.setState({ usernameAvailable }));
+        username,
+      })}`,
+    }).then((usernameAvailable) => this.setState({ usernameAvailable }));
   };
 
   getEmailIsValid = () => {
@@ -54,20 +56,20 @@ export default class Register extends React.Component<
     request({
       method: 'get',
       url: `register/validEmail${queryParams({
-        email
-      })}`
-    }).then(emailAvailable => this.setState({ emailAvailable }));
+        email,
+      })}`,
+    }).then((emailAvailable) => this.setState({ emailAvailable }));
   };
 
   onInputChange = (e: React.ChangeEvent) => {
     const {
-      target: { name, value }
+      target: { name, value },
     } = e as any;
 
-    this.setState(prevState => {
+    this.setState((prevState) => {
       return {
         ...prevState,
-        [name]: value
+        [name]: value,
       };
     });
   };
@@ -110,7 +112,7 @@ export default class Register extends React.Component<
     }
 
     this.setState({
-      passwordErrors
+      passwordErrors,
     });
   };
 
@@ -119,7 +121,7 @@ export default class Register extends React.Component<
 
     return (
       <ul>
-        {passwordErrors.map(error => {
+        {passwordErrors.map((error) => {
           return <li key={error}>{error}</li>;
         })}
       </ul>
@@ -140,7 +142,10 @@ export default class Register extends React.Component<
   };
 
   submit = () => {
-    console.log('submit');
+    if (this.hasErrors()) {
+      return;
+    }
+
     const { username, email, password, confirmPassword } = this.state;
 
     request({
@@ -150,49 +155,52 @@ export default class Register extends React.Component<
         username,
         email,
         password,
-        confirmPassword
-      }
+        confirmPassword,
+      },
     })
-      .then(response => {
-        console.log(response);
+      .then((response) => {
+        if (response.id) {
+          this.setState({ complete: true });
+        }
       })
-      .catch(error => console.log(error));
+      .catch((error) => this.setState({ failed: true }));
   };
 
-  hasErrors = () => {
-    const {
-      username,
-      email,
-      passwordErrors,
-      password,
-      confirmPassword,
-      usernameAvailable,
-      emailAvailable
-    } = this.state;
-
+  renderSuccess = () => {
     return (
-      passwordErrors.length > 0 ||
-      confirmPassword !== password ||
-      !usernameAvailable ||
-      !emailAvailable ||
-      username.length === 0 ||
-      email.length === 0 ||
-      password.length === 0 ||
-      confirmPassword.length === 0
+      <section>
+        <h2>Registration complete!</h2>
+        <Button
+          color="primary"
+          onClick={() => {
+            const { history } = this.props;
+            history.push('/login');
+          }}
+        >
+          Go to Login
+        </Button>
+      </section>
     );
   };
 
-  render() {
+  renderForm = () => {
     const {
       username,
       email,
       password,
       confirmPassword,
-      passwordErrors
+      passwordErrors,
+      failed,
     } = this.state;
+
     return (
-      <div>
-        <h1>Register to play GToons</h1>
+      <form onSubmit={this.submit}>
+        {failed && (
+          <h3>
+            Sorry we were unable to proccess your registration, please try
+            again.
+          </h3>
+        )}
         <div>
           <TextField
             label="Username"
@@ -221,7 +229,7 @@ export default class Register extends React.Component<
             name="password"
             id="password"
             value={password}
-            onChange={e => {
+            onChange={(e) => {
               this.validatePassword(e.target.value);
               this.onInputChange(e);
             }}
@@ -240,6 +248,7 @@ export default class Register extends React.Component<
           {this.renderConfirmPasswordErrors()}
         </div>
         <Button
+          style={{ marginTop: 10 }}
           disabled={this.hasErrors()}
           variant="contained"
           color="primary"
@@ -247,6 +256,39 @@ export default class Register extends React.Component<
         >
           Submit
         </Button>
+      </form>
+    );
+  };
+
+  hasErrors = () => {
+    const {
+      username,
+      email,
+      passwordErrors,
+      password,
+      confirmPassword,
+      usernameAvailable,
+      emailAvailable,
+    } = this.state;
+
+    return (
+      passwordErrors.length > 0 ||
+      confirmPassword !== password ||
+      !usernameAvailable ||
+      !emailAvailable ||
+      username.length === 0 ||
+      email.length === 0 ||
+      password.length === 0 ||
+      confirmPassword.length === 0
+    );
+  };
+
+  render() {
+    const { complete } = this.state;
+    return (
+      <div>
+        <h1>Register to play GToons</h1>
+        {!complete ? this.renderForm() : this.renderSuccess()}
       </div>
     );
   }
