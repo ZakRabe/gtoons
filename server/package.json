@@ -6,7 +6,10 @@
   "scripts": {
     "build": "tsc",
     "watch": "ts-node-dev src/server.ts",
-    "start": "ts-node src/server.ts"
+    "start": "ts-node src/server.ts",
+    "typeorm": "ts-node ./node_modules/typeorm/cli.js",
+    "migrate": "npm run typeorm migration:run",
+    "migrate:new": "npm run typeorm migration:create -n"
   },
   "author": "zak rabe",
   "license": "MIT",

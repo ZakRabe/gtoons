@@ -12,7 +12,8 @@
     "experimentalDecorators": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
-    "pretty": true
+    "pretty": true,
+    "jsx": "preserve"
   },
   "exclude": ["node_modules", "build"]
 }
