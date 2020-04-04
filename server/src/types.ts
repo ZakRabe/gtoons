@@ -5,6 +5,7 @@ export interface RouteConfig {
   controller: any;
   middleware?: any;
 }
+
 export interface SocketConfig {
   event: string;
   controller: any;
