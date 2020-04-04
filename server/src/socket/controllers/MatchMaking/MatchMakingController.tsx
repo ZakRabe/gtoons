@@ -18,3 +18,5 @@ export class MatchMakingController {
     this.socket.emit('lobbyList', openLobbies);
   }
 }
+
+export default MatchMakingController;

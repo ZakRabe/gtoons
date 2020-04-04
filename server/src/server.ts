@@ -15,7 +15,6 @@ app.use(bodyParser.json());
 app.set('port', process.env.PORT || 5000);
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
-socket.init(io);
 
 const server = http.listen(5000, function() {
   console.log('listening on *:5000');
@@ -30,6 +29,9 @@ const validResult = (result: any) => result !== null && result !== undefined;
 
 createConnection()
   .then(async _connection => {
+    // initialize socket events
+    socket.init(io);
+
     // register express routes from defined application routes
     Routes.forEach((routeConfig: RouteConfig) => {
       const { method, route, action, controller, middleware } = routeConfig;
