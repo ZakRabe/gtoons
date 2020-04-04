@@ -6,7 +6,7 @@ import 'reflect-metadata';
 import { createConnection } from 'typeorm';
 import { Routes } from './routes';
 import socket from './socket';
-import { checkJwt } from './middleware/checkJWT';
+import { checkJwt } from './middleware/checkJwt';
 
 const app = express();
 app.use(helmet());
