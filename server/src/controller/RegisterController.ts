@@ -1,10 +1,12 @@
 import { NextFunction, Request, Response } from 'express';
 import { getRepository } from 'typeorm';
+import Collection from '../entity/Collection';
 import User from '../entity/User';
 const crypto = require('crypto');
 
 export class RegisterController {
   private userRepository = getRepository(User);
+  private collectionRepository = getRepository(Collection);
 
   async getUsersByUsername(username: string) {
     return await this.userRepository.find({
@@ -114,6 +116,11 @@ export class RegisterController {
     };
 
     const { id } = await this.userRepository.save(userModel);
+
+    await this.collectionRepository.save({
+      player: id,
+      cards: '"[]"'
+    });
 
     const savedUser = await this.userRepository.findOne({
       id
