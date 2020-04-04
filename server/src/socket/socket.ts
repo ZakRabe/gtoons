@@ -1,24 +1,19 @@
 import { Socket } from 'socket.io';
 import socketConfigs from './configs';
-import * as cards from '../cards/cards.json';
 
 export const init = (io: any) => {
-  io.on('connection', function(socket: Socket) {
-    socket.on('message', function(message: any) {
-      console.log(message);
-      socket.emit('message', cards);
-    });
+  io.on('connection', function (socket: Socket) {
+    console.log('a user connected');
 
-    socketConfigs.forEach(config => {
+    socketConfigs.forEach((config) => {
       const { controller, event, action } = config;
       const ctrl = new controller(socket);
 
-      socket.on(event, async () => {
-        const response = await ctrl[action]();
+      socket.on(event, async (...params) => {
+        const response = await ctrl[action](...params);
       });
     });
 
-    console.log('a user connected');
     // socket.on('findMatch', (data: { deckId: number }) => {
     //   // do some sort of db logic here to create a game,
     //   // add the user id, the deck they select
