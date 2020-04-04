@@ -9,6 +9,7 @@ export interface RegisterState {
   emailAvailable: boolean | null;
   passwordErrors: string[];
   complete: boolean;
+  failed: boolean;
 }
 
 export interface RegisterProps extends HasRouter {}

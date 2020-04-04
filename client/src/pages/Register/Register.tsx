@@ -20,6 +20,7 @@ export default class Register extends React.Component<
       confirmPassword: '',
       passwordErrors: [],
       complete: false,
+      failed: false,
     };
 
     // wait a second after the user has stopped typing to fire the API calls
@@ -162,7 +163,7 @@ export default class Register extends React.Component<
           this.setState({ complete: true });
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => this.setState({ failed: true }));
   };
 
   renderSuccess = () => {
@@ -189,10 +190,17 @@ export default class Register extends React.Component<
       password,
       confirmPassword,
       passwordErrors,
+      failed,
     } = this.state;
 
     return (
       <form onSubmit={this.submit}>
+        {failed && (
+          <h3>
+            Sorry we were unable to proccess your registration, please try
+            again.
+          </h3>
+        )}
         <div>
           <TextField
             label="Username"
