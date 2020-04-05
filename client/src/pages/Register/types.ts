@@ -1,4 +1,4 @@
-import { HasRouter } from '../../App/type';
+import { HasRouter } from '../../App/types';
 
 export interface RegisterState {
   username: string;

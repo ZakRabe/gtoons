@@ -19,7 +19,8 @@ const AppHeader: React.FunctionComponent<AppHeaderProps> = (props) => {
           <ul>
             <li onClick={goto('/lobbies')}>Play</li>
             <li onClick={goto('/profile')}>Profile</li>
-            <li onClick={goto('/decks')}>Deck Builder</li>
+            <li onClick={goto('/deckBuilder')}>Deck Builder</li>
+            <li onClick={goto('/login')}>Login</li>
           </ul>
         </nav>
       </header>
