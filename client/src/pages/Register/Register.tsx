@@ -1,6 +1,6 @@
-import { Button, TextField } from '@material-ui/core';
 import { debounce, isEqual } from 'lodash';
 import * as React from 'react';
+import { Button, Header, Input } from 'semantic-ui-react';
 import { queryParams, request } from '../../utils/api';
 import { isValidEmail } from '../../utils/validation';
 import { RegisterProps, RegisterState } from './types';
@@ -171,7 +171,6 @@ export default class Register extends React.Component<
       <section>
         <h2>Registration complete!</h2>
         <Button
-          color="primary"
           onClick={() => {
             const { history } = this.props;
             history.push('/login');
@@ -202,7 +201,7 @@ export default class Register extends React.Component<
           </h3>
         )}
         <div>
-          <TextField
+          <Input
             label="Username"
             name="username"
             id="username"
@@ -212,7 +211,7 @@ export default class Register extends React.Component<
           />
         </div>
         <div>
-          <TextField
+          <Input
             type="email"
             label="Email"
             name="email"
@@ -223,7 +222,7 @@ export default class Register extends React.Component<
           />
         </div>
         <div>
-          <TextField
+          <Input
             label="Password"
             type="password"
             name="password"
@@ -237,7 +236,7 @@ export default class Register extends React.Component<
           {passwordErrors.length > 0 && this.renderPasswordErrors()}
         </div>
         <div>
-          <TextField
+          <Input
             label="Confirm Password"
             type="password"
             name="confirmPassword"
@@ -251,7 +250,6 @@ export default class Register extends React.Component<
           style={{ marginTop: 10 }}
           disabled={this.hasErrors()}
           variant="contained"
-          color="primary"
           onClick={this.submit}
         >
           Submit
@@ -287,7 +285,7 @@ export default class Register extends React.Component<
     const { complete } = this.state;
     return (
       <div>
-        <h1>Register to play GToons</h1>
+        <Header as="h1">Register to play GToons</Header>
         {!complete ? this.renderForm() : this.renderSuccess()}
       </div>
     );

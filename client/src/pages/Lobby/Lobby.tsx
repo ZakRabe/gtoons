@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { LobbyProps } from './types';
+import { Button, Header } from 'semantic-ui-react';
 import {
-  socketConnect
+  socketConnect,
   // @ts-ignore: no types for this
 } from 'socket.io-react';
-import { Button } from '@material-ui/core';
+import { LobbyProps } from './types';
 
 export const Lobby = (props: LobbyProps) => {
   const { socket } = props;
@@ -21,7 +21,8 @@ export const Lobby = (props: LobbyProps) => {
   }, []);
 
   return (
-    <section>
+    <>
+      <Header as="h1">Lobbies</Header>
       <Button>{isOpen ? 'Cancel' : 'Create a Lobby'}</Button>
       <ul>
         {lobbies.map((lobby: any) => {
@@ -32,7 +33,7 @@ export const Lobby = (props: LobbyProps) => {
           );
         })}
       </ul>
-    </section>
+    </>
   );
 };
 
