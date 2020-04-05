@@ -1,3 +1,3 @@
-import { HasRouter } from '../type';
+import { HasRouter } from '../types';
 
 export interface AppHeaderProps extends HasRouter {}

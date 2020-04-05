@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { Header } from 'semantic-ui-react';
 import {
-  socketConnect
+  socketConnect,
   // @ts-ignore: no types for this
 } from 'socket.io-react';
 
@@ -15,12 +16,12 @@ class Profile extends React.Component<{ socket: any }, {}> {
 
   render() {
     return (
-      <div>
-        <h2>Profile</h2>
+      <>
+        <Header as="h1">Profile</Header>
         <button onClick={this.sendSocketMessage}>
           Hello World to the server
         </button>
-      </div>
+      </>
     );
   }
 }

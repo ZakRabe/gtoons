@@ -1,5 +1,7 @@
 import React from 'react';
+import { Header } from 'semantic-ui-react';
 import { AppHeaderProps } from './types';
+import AppMenu from '../AppMenu';
 
 const AppHeader: React.FunctionComponent<AppHeaderProps> = (props) => {
   const goto = (path: string) => {
@@ -8,20 +10,17 @@ const AppHeader: React.FunctionComponent<AppHeaderProps> = (props) => {
       history.push(path);
     };
   };
-
   const renderAppHeader = () => {
     return (
       <header>
-        <h1 onClick={goto('/')} style={{ marginTop: 0 }}>
-          GToons
-        </h1>
-        <nav>
-          <ul>
-            <li onClick={goto('/lobbies')}>Play</li>
-            <li onClick={goto('/profile')}>Profile</li>
-            <li onClick={goto('/decks')}>Deck Builder</li>
-          </ul>
-        </nav>
+        <Header
+          as="h2"
+          onClick={goto('/')}
+          style={{ marginTop: 0, cursor: 'pointer' }}
+        >
+          GToons Revived
+        </Header>
+        <AppMenu />
       </header>
     );
   };

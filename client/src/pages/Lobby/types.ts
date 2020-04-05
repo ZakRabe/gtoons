@@ -1,3 +1,3 @@
-import { HasSocket } from '../../App/type';
+import { HasSocket } from '../../App/types';
 
 export interface LobbyProps extends HasSocket {}
