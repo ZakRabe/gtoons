@@ -1,22 +1,20 @@
-import { ThemeProvider } from '@material-ui/core';
 import React from 'react';
+import 'semantic-ui-css/semantic.min.css';
 import Routes from '../Routes';
-import theme from '../utils/theme';
 import './App.css';
 import AppHeader from './AppHeader';
+import AppMenu from './AppMenu';
 
 const App: React.FC = () => {
   const App = () => (
     <>
-      <AppHeader />
-      <Routes />
+      <section style={{ display: 'flex' }}>
+        <AppHeader />
+        <Routes />
+      </section>
     </>
   );
-  return (
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
-  );
+  return <App />;
 };
 
 export default App;

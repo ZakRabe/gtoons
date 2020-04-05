@@ -1,4 +1,4 @@
-import { Button, TextField } from '@material-ui/core';
+import { Button, Header, Input } from 'semantic-ui-react';
 import * as React from 'react';
 import { request } from '../../utils/api';
 import { LoginProps, LoginState } from './types';
@@ -9,7 +9,7 @@ export default class Login extends React.Component<LoginProps, LoginState> {
 
     this.state = {
       username: '',
-      password: ''
+      password: '',
     };
   }
 
@@ -18,7 +18,7 @@ export default class Login extends React.Component<LoginProps, LoginState> {
     const authToken = localStorage.getItem('authToken');
     if (authToken) {
       request({
-        url: 'login/validateToken'
+        url: 'login/validateToken',
       })
         .then(() => {
           // this means the token was still valid, so there's no need to be on this page
@@ -33,59 +33,69 @@ export default class Login extends React.Component<LoginProps, LoginState> {
 
   onInputChange = (e: React.ChangeEvent) => {
     const {
-      target: { name, value }
+      target: { name, value },
     } = e as any;
 
-    this.setState(prevState => {
+    this.setState((prevState) => {
       return {
         ...prevState,
-        [name]: value
+        [name]: value,
       };
     });
   };
 
-  submit = () => {
+  submit = (e?: React.FormEvent) => {
+    if (e) {
+      e.preventDefault();
+    }
     const { username, password } = this.state;
     const { history } = this.props;
+    this.setState({ error: '' });
+
     request({
       method: 'post',
       url: 'login/submit',
-      data: { username, password }
+      data: { username, password },
     })
-      .then(token => {
+      .then((token) => {
         localStorage.setItem('authToken', token);
         history.push('/profile');
       })
-      .catch(console.log);
+      .catch((error) => {
+        this.setState({ error: error.data.message });
+      });
   };
 
   render() {
-    const { username, password } = this.state;
+    const { username, password, error } = this.state;
 
     return (
-      <div>
-        <h2>Login to Play GToons!</h2>
-        <div>
-          <TextField
-            name="username"
-            label="Username"
-            value={username}
-            onChange={this.onInputChange}
-          />
-        </div>
-        <div>
-          <TextField
-            name="password"
-            type="password"
-            label="Password"
-            value={password}
-            onChange={this.onInputChange}
-          />
-        </div>
-        <Button variant="contained" color="primary" onClick={this.submit}>
-          Submit
-        </Button>
-      </div>
+      <>
+        <Header as="h1">Login to Play GToons!</Header>
+        <form action="" onSubmit={this.submit}>
+          <div>
+            <Input
+              name="username"
+              label="Username"
+              value={username}
+              onChange={this.onInputChange}
+            />
+          </div>
+          <div>
+            <Input
+              name="password"
+              type="password"
+              label="Password"
+              value={password}
+              onChange={this.onInputChange}
+            />
+          </div>
+          <p>{error}</p>
+          <Button variant="contained" onClick={this.submit}>
+            Submit
+          </Button>
+        </form>
+      </>
     );
   }
 }
