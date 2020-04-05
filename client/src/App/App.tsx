@@ -1,5 +1,6 @@
 import { ThemeProvider } from '@material-ui/core';
 import React from 'react';
+import 'semantic-ui-css/semantic.min.css';
 import Routes from '../Routes';
 import theme from '../utils/theme';
 import './App.css';
