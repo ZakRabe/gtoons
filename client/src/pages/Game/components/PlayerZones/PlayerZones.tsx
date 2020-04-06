@@ -11,7 +11,7 @@ const styles: CSS.Properties = {
   height: '49%',
   marginTop: '5px',
   marginBottom: '5px',
-  backgroundColor: 'lightgreen'
+  backgroundColor: 'lightgreen',
 };
 
 export default class PlayerZones extends React.Component<PlayerZonesProps, {}> {
@@ -23,7 +23,7 @@ export default class PlayerZones extends React.Component<PlayerZonesProps, {}> {
       height: '100%',
       backgroundColor: 'slateblue',
       display: 'flex',
-      flexDirection: isOpponent ? 'column-reverse' : 'column'
+      flexDirection: isOpponent ? 'column-reverse' : 'column',
     };
 
     return (

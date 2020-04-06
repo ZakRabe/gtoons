@@ -7,7 +7,7 @@ const styles: CSS.Properties = {
   position: 'relative',
   width: '75%',
   height: '100%',
-  backgroundColor: 'teal'
+  backgroundColor: 'teal',
 };
 
 export default class Board extends React.Component<{}, {}> {

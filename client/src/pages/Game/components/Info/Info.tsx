@@ -9,7 +9,7 @@ const styles: CSS.Properties = {
   position: 'relative',
   width: '25%',
   height: '100%',
-  backgroundColor: 'green'
+  backgroundColor: 'green',
 };
 
 export default class Info extends React.Component<InfoProps, InfoState> {

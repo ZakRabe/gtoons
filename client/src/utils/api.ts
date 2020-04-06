@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from 'axios';
 
 const client = axios.create({
-  baseURL: `/api/`
+  baseURL: `/api/`,
 });
 
 export const request = (options: AxiosRequestConfig) => {
@@ -40,8 +40,8 @@ export const request = (options: AxiosRequestConfig) => {
   return client({
     ...options,
     headers: {
-      auth: localStorage.getItem('authToken')
-    }
+      auth: localStorage.getItem('authToken'),
+    },
   })
     .then(onSuccess)
     .catch(onError);
@@ -49,6 +49,6 @@ export const request = (options: AxiosRequestConfig) => {
 
 export const queryParams = (params: any) => {
   console.log(params);
-  const query = Object.keys(params).map(key => `${key}=${params[key]}`);
+  const query = Object.keys(params).map((key) => `${key}=${params[key]}`);
   return `?${query.join('&')}`;
 };

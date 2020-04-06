@@ -14,7 +14,7 @@
   font-size: 3rem;
   color: #003366;
   text-shadow: -2px -2px white;
-  font-family: "Bebas Neue";
+  font-family: 'Bebas Neue';
 }
 #App-wrapper > main {
   padding: 15px;
@@ -24,7 +24,7 @@
 
 h1,
 h2 {
-  font-family: "Bebas Neue" !important;
+  font-family: 'Bebas Neue' !important;
 }
 
 #App-wrapper > main h1 {

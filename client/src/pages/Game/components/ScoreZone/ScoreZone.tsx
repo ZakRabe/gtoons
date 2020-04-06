@@ -10,21 +10,21 @@ const styles: CSS.Properties = {
   marginTop: '5px',
   marginBottom: '5px',
   marginLeft: '5px',
-  backgroundColor: 'pink'
+  backgroundColor: 'pink',
 };
 
 const scoreStyle: CSS.Properties = {
-  height: '73%'
+  height: '73%',
 };
 
 const playerNameStyles: CSS.Properties = {
-  textAlign: 'center'
+  textAlign: 'center',
 };
 
 const score: CSS.Properties = {
   fontSize: '75px',
   textAlign: 'center',
-  margin: '0'
+  margin: '0',
 };
 
 export default class ScoreZone extends React.Component<ScoreZoneProps, {}> {
