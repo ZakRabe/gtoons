@@ -7,7 +7,11 @@ const AppMenu: React.FunctionComponent<AppMenuProps> = (props) => {
   const goto = (path: string) => {
     return () => {
       const { history } = props;
-      history.push(path);
+      if (path[0] === "/") {
+        history.push(path);
+      } else {
+        window.location = path as any;
+      }
     };
   };
 
