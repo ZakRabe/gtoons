@@ -10,7 +10,7 @@ const AppMenu: React.FunctionComponent<AppMenuProps> = (props) => {
       if (path[0] === "/") {
         history.push(path);
       } else {
-        window.location = path as any;
+        window.open(path);
       }
     };
   };
