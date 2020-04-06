@@ -11,22 +11,26 @@ export class DeckBuilderController {
 
   async myCollection(request: Request, response: Response, next: NextFunction) {
     const user = response.locals.jwtPayload;
-    const collection = await this.collectionRepository.findOne({player : user.userId});
+    const collection = await this.collectionRepository.findOne({
+      player: user.userId,
+    });
     return collection;
   }
 
-  async saveDeck(request: Request, response: Response, next: NextFunction){
+  async saveDeck(request: Request, response: Response, next: NextFunction) {
     const user = response.locals.jwtPayload;
-  
+
+    const deckName = JSON.stringify(request.body.name);
     const newDeck = JSON.stringify(request.body.deck);
-    console.log(newDeck)
-    const deck = {player_id:user.userId,
-      cards:newDeck
-    }
+    console.log(newDeck);
+    const deck = { player_id: user.userId, name: deckName, cards: newDeck };
     await this.deckRepository.save(deck);
-}
+  }
 
-async myDeckList(request: Request, response: Response, next: NextFunction){
+  async myDeckList(request: Request, response: Response, next: NextFunction) {
+    const user = response.locals.jwtPayload;
+    const deckList = await this.deckRepository.find({ player_id: user.userId });
 
-}
+    return deckList ? deckList : [];
+  }
 }

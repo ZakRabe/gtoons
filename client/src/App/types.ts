@@ -15,3 +15,10 @@ export interface Card {
   groups: string[];
   types: string[];
 }
+
+export interface Deck {
+  id: number;
+  player_id: number;
+  name: string;
+  cards: string;
+}

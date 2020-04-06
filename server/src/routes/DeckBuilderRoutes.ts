@@ -1,14 +1,13 @@
 import { checkJwt } from '../middleware/checkJwt';
 import { DeckBuilderController } from '../controller/DeckBuilderController';
 
-
 export const DeckBuilderRoutes = [
   {
     method: 'get',
     route: '/deckBuilder/myCollection',
     middleware: [checkJwt],
     controller: DeckBuilderController,
-    action: 'myCollection'
+    action: 'myCollection',
   },
 
   {
@@ -16,7 +15,7 @@ export const DeckBuilderRoutes = [
     route: '/deckBuilder/saveDeck',
     middleware: [checkJwt],
     controller: DeckBuilderController,
-    action: 'saveDeck'
+    action: 'saveDeck',
   },
 
   {
@@ -24,6 +23,6 @@ export const DeckBuilderRoutes = [
     route: '/deckBuilder/myDeckList',
     middleware: [checkJwt],
     controller: DeckBuilderController,
-    action: 'myDeckList'
+    action: 'myDeckList',
   },
 ];
