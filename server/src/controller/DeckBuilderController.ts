@@ -17,14 +17,16 @@ export class DeckBuilderController {
 
   async saveDeck(request: Request, response: Response, next: NextFunction){
     const user = response.locals.jwtPayload;
-
-    console.log("here")
   
     const newDeck = JSON.stringify(request.body.deck);
     console.log(newDeck)
     const deck = {player_id:user.userId,
-      cards:JSON.stringify(newDeck)
+      cards:newDeck
     }
     await this.deckRepository.save(deck);
+}
+
+async myDeckList(request: Request, response: Response, next: NextFunction){
+
 }
 }

@@ -1,7 +1,7 @@
-import React from "react";
-import { Header, Divider } from "semantic-ui-react";
-import { AppHeaderProps } from "./types";
-import AppMenu from "../AppMenu";
+import React from 'react';
+import { Header, Divider } from 'semantic-ui-react';
+import { AppHeaderProps } from './types';
+import AppMenu from '../AppMenu';
 
 const AppHeader: React.FunctionComponent<AppHeaderProps> = (props) => {
   const goto = (path: string) => {
@@ -13,7 +13,7 @@ const AppHeader: React.FunctionComponent<AppHeaderProps> = (props) => {
   const renderAppHeader = () => {
     return (
       <header>
-        <Header as='h2' onClick={goto("/")} style={{ cursor: "pointer" }}>
+        <Header as="h2" onClick={goto('/')} style={{ cursor: 'pointer' }}>
           gToons Revived
         </Header>
         <Divider />

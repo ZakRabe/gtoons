@@ -1,14 +1,14 @@
 import * as React from 'react';
 import CSS from 'csstype';
 import PlayerZone from '../PlayerZone';
- 
+
 const styles: CSS.Properties = {
-  display:'inline-block',
-  position:'relative',
-  width:'100%',
-  height:'50%',
-  backgroundColor:'tomato'
-}
+  display: 'inline-block',
+  position: 'relative',
+  width: '100%',
+  height: '50%',
+  backgroundColor: 'tomato',
+};
 
 export default class PlayerZonesRowTwo extends React.Component<{}, {}> {
   render() {
