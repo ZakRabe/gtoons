@@ -4,9 +4,10 @@ import {
   socketConnect,
   // @ts-ignore: no types for this
 } from 'socket.io-react';
-import { Button } from '@material-ui/core';
+import { Button } from 'semantic-ui-react';
 import { request } from '../../utils/api';
 import { Card } from '../../App/types';
+import CSS from 'csstype';
 
 export const DeckBuilder = (props: DeckBuilderProps) => {
   const { socket } = props;
@@ -22,6 +23,12 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
   // save the deck
   // delete the deck
   // Name a deck
+
+  const styles: CSS.Properties = {
+    display: 'flex',
+    height: '100%',
+    width: '100%',
+  };
 
   React.useEffect(() => {
     request({
@@ -47,11 +54,30 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
 
   const renderCollection = () => {
     return (
-      <ul>
+      <ul
+        style={{
+          width: '100%',
+        }}
+      >
         {cards.map((card: Card) => {
           return (
-            <li key={card.id} onClick={onCollectionCardClick(card.id)}>
-              #{card.id} : {card.title}
+            <li key={card.id} style={{ display: 'inline-block' }}>
+              <div onClick={onCollectionCardClick(card.id)}>
+                <div
+                  style={{
+                    display: 'inline-block',
+                    margin: '7px',
+                    height: '150px',
+                    width: '150px',
+                    borderRadius: '50%',
+                    border: '6px solid ' + card.colors[0],
+                    backgroundImage: `url(/images/normal/released/${card.id}.jpg)`,
+                    backgroundSize: '100% 100%',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                  }}
+                ></div>
+              </div>
             </li>
           );
         })}
@@ -73,8 +99,7 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
   };
 
   return (
-    <section>
-      <Button>{collection.length > 0 ? 'Build a Deck' : 'No Card'}</Button>
+    <section style={styles}>
       {renderCollection()}
       {renderDeckList()}
     </section>

@@ -12,17 +12,6 @@ import DeckBuilder from '../pages/DeckBuilder';
 export default class Routes extends React.Component {
   render() {
     return (
-<<<<<<< HEAD
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/profile" component={Profile} />
-        <Route path="/register" component={Register} />
-        <Route path="/login" component={Login} />
-        <Route path="/game" component={Game} />
-        <Route path="/lobbies" component={Lobby} />
-        <Route path="/deckBuilder" component={DeckBuilder} />
-      </Switch>
-=======
       <main>
         <Container fluid>
           <Switch>
@@ -32,10 +21,10 @@ export default class Routes extends React.Component {
             <Route path="/login" component={Login} />
             <Route path="/game" component={Game} />
             <Route path="/lobbies" component={Lobby} />
+            <Route path="/deckBuilder" component={DeckBuilder} />
           </Switch>
         </Container>
       </main>
->>>>>>> d6108b464dc2492b6c00782d7653df8e9791aa82
     );
   }
 }
