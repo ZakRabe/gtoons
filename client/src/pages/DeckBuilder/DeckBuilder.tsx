@@ -42,9 +42,8 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
   }, []);
 
   const onCollectionCardClick = (cardId: number) => (e: React.MouseEvent) => {
-    console.log(e);
-    console.log(cardId);
-    if (deck.includes(cardId)) {
+    //console.log(cardId);
+    if (deck.includes(cardId) || deck.length >= 12) {
       return;
     }
     const newDeck = [...deck];
@@ -52,17 +51,68 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
     setDeck(newDeck);
   };
 
+  const onDeckCardClick = (cardId: number) => (e:React.MouseEvent) => {
+    console.log(e)
+    console.log(cardId);
+
+    const newDeck = [...deck].filter(id => id !== cardId);
+    setDeck(newDeck)
+  };
+
+  const saveDeck =() => {
+    if(deck.length !== 12){
+      console.log("not enough cards in you deck");
+      return;
+    }
+
+    request({
+      method:'post',
+      url: 'deckBuilder/saveDeck',
+      data: {deck
+      },
+    });
+  }
+
+  const onHover = (card:Card) =>{
+    //console.log(card.title)
+    const elemnt:HTMLElement = document.getElementById('cardInfo') as HTMLElement;
+    const children = elemnt.children as HTMLCollection;
+    
+    for(let i = 0; i < children.length;i++){
+      switch(children[i].id){
+        case 'cardImage':
+          (children[i] as HTMLElement).style.setProperty('background-image',`url(/images/normal/released/${card.id}.jpg)`);
+          (children[i] as HTMLElement).style.setProperty('border-color',`${card.colors[0]}`);
+        break;
+        case 'cardName':
+          (children[i] as HTMLElement).innerHTML = card.title;
+        break;
+        case 'cardPower':
+          (children[i] as HTMLElement).innerHTML = card.description;
+        break;
+        default:
+          break;
+      }
+      //console.log(children[i].id)
+    }
+   
+    
+    //elemnt.style.setProperty('background-image',`url(/images/normal/released/1.jpg)`)
+    //console.log(newStyle)
+    //elemnt?.childNodes[0]
+  }
+
   const renderCollection = () => {
     return (
       <ul
         style={{
-          width: '100%',
+          width: '75%',
         }}
       >
         {cards.map((card: Card) => {
           return (
             <li key={card.id} style={{ display: 'inline-block' }}>
-              <div onClick={onCollectionCardClick(card.id)}>
+              <div onClick={onCollectionCardClick(card.id)} onMouseOver={() => onHover(card)}>
                 <div
                   style={{
                     display: 'inline-block',
@@ -87,13 +137,30 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
 
   const renderDeckList = () => {
     return (
-      <div>
+      <div style={{width:'20%',position:'fixed',right:'0'}}>
+        <div id='cardInfo' style={{width:'100%',height:"350px",backgroundColor:'white'}}>
+          <div id='cardImage' style={{display: 'flex',
+          justifyContent:'center',
+          alignItems:'center',
+          margin: 'auto',
+          height: '250px',
+          width: '250px',
+          borderRadius: '50%',
+          border: '6px solid grey',
+          backgroundSize: '100% 100%',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          }}></div>
+          <p id='cardName' style={{textAlign:'center', fontSize:'20px', fontWeight:'bolder'}}>Name</p>
+          <p id='cardPower' style={{marginLeft:'25px', fontSize:'15px'}}>Power</p>
+        </div>
         <ul>
           {deck.map((cardId) => {
             const card = cards.find((item: Card) => item.id === cardId) as Card;
-            return card ? <li key={cardId}>Added {card.title}</li> : null;
+            return card ? <li key={cardId}  style={{display:'block'}} onClick={onDeckCardClick(card.id)} onMouseOver={() => onHover(card)}>{card.title}</li> : null;
           })}
         </ul>
+        <button style={{width:'100%'}} onClick={() => saveDeck()}>SAVE DECK</button>
       </div>
     );
   };

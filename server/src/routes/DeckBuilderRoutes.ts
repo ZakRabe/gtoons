@@ -10,4 +10,12 @@ export const DeckBuilderRoutes = [
     controller: DeckBuilderController,
     action: 'myCollection'
   },
+
+  {
+    method: 'post',
+    route: '/deckBuilder/saveDeck',
+    middleware: [checkJwt],
+    controller: DeckBuilderController,
+    action: 'saveDeck'
+  },
 ];
