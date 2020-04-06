@@ -285,7 +285,7 @@ export default class Register extends React.Component<
     const { complete } = this.state;
     return (
       <div>
-        <Header as="h1">Register to play GToons</Header>
+        <Header as="h1">Register to play gToons</Header>
         {!complete ? this.renderForm() : this.renderSuccess()}
       </div>
     );
