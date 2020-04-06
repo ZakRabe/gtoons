@@ -1,28 +1,28 @@
-import { Button, Header, Input } from 'semantic-ui-react';
-import * as React from 'react';
-import { request } from '../../utils/api';
-import { LoginProps, LoginState } from './types';
+import { Button, Header, Input } from "semantic-ui-react";
+import * as React from "react";
+import { request } from "../../utils/api";
+import { LoginProps, LoginState } from "./types";
 
 export default class Login extends React.Component<LoginProps, LoginState> {
   constructor(props: LoginProps) {
     super(props);
 
     this.state = {
-      username: '',
-      password: '',
+      username: "",
+      password: "",
     };
   }
 
   componentDidMount() {
     const { history } = this.props;
-    const authToken = localStorage.getItem('authToken');
+    const authToken = localStorage.getItem("authToken");
     if (authToken) {
       request({
-        url: 'login/validateToken',
+        url: "login/validateToken",
       })
         .then(() => {
           // this means the token was still valid, so there's no need to be on this page
-          history.push('/profile');
+          history.push("/profile");
         })
         .catch(() => {
           // this means the token was invalid, so we dont need to do anything.
@@ -50,16 +50,16 @@ export default class Login extends React.Component<LoginProps, LoginState> {
     }
     const { username, password } = this.state;
     const { history } = this.props;
-    this.setState({ error: '' });
+    this.setState({ error: "" });
 
     request({
-      method: 'post',
-      url: 'login/submit',
+      method: "post",
+      url: "login/submit",
       data: { username, password },
     })
       .then((token) => {
-        localStorage.setItem('authToken', token);
-        history.push('/profile');
+        localStorage.setItem("authToken", token);
+        history.push("/profile");
       })
       .catch((error) => {
         this.setState({ error: error.data.message });
@@ -71,27 +71,27 @@ export default class Login extends React.Component<LoginProps, LoginState> {
 
     return (
       <>
-        <Header as="h1">Login to Play GToons!</Header>
-        <form action="" onSubmit={this.submit}>
+        <Header as='h1'>Login to start playing!</Header>
+        <form action='' onSubmit={this.submit}>
           <div>
             <Input
-              name="username"
-              label="Username"
+              name='username'
+              label='Username'
               value={username}
               onChange={this.onInputChange}
             />
           </div>
           <div>
             <Input
-              name="password"
-              type="password"
-              label="Password"
+              name='password'
+              type='password'
+              label='Password'
               value={password}
               onChange={this.onInputChange}
             />
           </div>
           <p>{error}</p>
-          <Button variant="contained" onClick={this.submit}>
+          <Button variant='contained' onClick={this.submit}>
             Submit
           </Button>
         </form>
