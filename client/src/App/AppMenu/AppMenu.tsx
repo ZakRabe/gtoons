@@ -7,7 +7,6 @@ const AppMenu: React.FunctionComponent<AppMenuProps> = (props) => {
   const goto = (path: string) => {
     return () => {
       const { history } = props;
-      console.log("goto", path);
       history.push(path);
     };
   };
@@ -88,7 +87,6 @@ const AppMenu: React.FunctionComponent<AppMenuProps> = (props) => {
             <Menu.Item
               onClick={() => {
                 logOut();
-                console.log("logged out");
                 goto("/")();
               }}
             >
