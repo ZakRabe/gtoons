@@ -104,6 +104,9 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
     }).then((newDeck: Deck) => {
       const newDeckList: Deck[] = [...deckList];
       newDeckList.push(newDeck);
+      setDeckId(newDeck.id);
+      setName(newDeck.name);
+      setDeck(JSON.parse(newDeck.cards));
       setDeckList(newDeckList);
     });
   };

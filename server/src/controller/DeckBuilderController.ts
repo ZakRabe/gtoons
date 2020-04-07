@@ -20,7 +20,7 @@ export class DeckBuilderController {
   async saveDeck(request: Request, response: Response, next: NextFunction) {
     const user = response.locals.jwtPayload;
 
-    const deckName = JSON.stringify(request.body.name);
+    const deckName = request.body.name;
     const newDeck = JSON.stringify(request.body.deck);
     console.log(newDeck);
     const deck = { player_id: user.userId, name: deckName, cards: newDeck };
