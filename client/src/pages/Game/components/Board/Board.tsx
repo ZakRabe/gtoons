@@ -13,10 +13,10 @@ const styles: CSS.Properties = {
 export default class Board extends React.Component<{}, {}> {
   render() {
     return (
-      <div style={styles}>
+      <section style={styles}>
         <PlayerZones isOpponent={true} />
         <PlayerZones />
-      </div>
+      </section>
     );
   }
 }

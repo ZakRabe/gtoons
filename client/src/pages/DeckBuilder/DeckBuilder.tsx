@@ -96,6 +96,11 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
       method: 'post',
       url: 'deckBuilder/saveDeck',
       data: { name, deck },
+    }).then((newDeck: Deck) => {
+      console.log();
+      const newDeckList: Deck[] = [...deckList];
+      newDeckList.push(newDeck);
+      setDeckList(newDeckList);
     });
   };
 

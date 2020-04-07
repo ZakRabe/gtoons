@@ -25,6 +25,8 @@ export class DeckBuilderController {
     console.log(newDeck);
     const deck = { player_id: user.userId, name: deckName, cards: newDeck };
     await this.deckRepository.save(deck);
+
+    return deck;
   }
 
   async myDeckList(request: Request, response: Response, next: NextFunction) {
@@ -32,5 +34,11 @@ export class DeckBuilderController {
     const deckList = await this.deckRepository.find({ player_id: user.userId });
 
     return deckList ? deckList : [];
+  }
+
+  async updateDeck(request: Request, response: Response, next: NextFunction) {
+    const user = response.locals.jwtPayload;
+
+    //Do validation before trying to update?
   }
 }
