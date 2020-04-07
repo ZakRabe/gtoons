@@ -38,7 +38,16 @@ export class DeckBuilderController {
 
   async updateDeck(request: Request, response: Response, next: NextFunction) {
     const user = response.locals.jwtPayload;
+    const { deckId, name: newName, deck } = request.body;
 
     //Do validation before trying to update?
+
+    //Update deck
+    const updated = await this.deckRepository.update(deckId, {
+      name: newName,
+      cards: JSON.stringify(deck),
+    });
+
+    return { id: deckId, name, cards: deck };
   }
 }

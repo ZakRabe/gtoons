@@ -16,6 +16,7 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
   const [cards, setCards] = React.useState<Card[]>([]);
   const [name, setName] = React.useState('New Deck');
 
+  const [deckId, setDeckId] = React.useState(-1);
   const [deck, setDeck] = React.useState<number[]>([]);
   const [deckList, setDeckList] = React.useState<Deck[]>([]);
 
@@ -72,9 +73,13 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
 
   const onDeckClick = (clickedDeck: Deck) => (e: React.MouseEvent) => {
     console.log(clickedDeck);
+    const id = clickedDeck.id;
+    const deckName = clickedDeck.name;
     const savedDeck = JSON.parse(clickedDeck.cards);
     console.log(savedDeck);
+    setDeckId(id);
     setDeck(savedDeck);
+    setName(deckName);
   };
 
   const onDeckCardClick = (cardId: number) => (e: React.MouseEvent) => {
@@ -97,8 +102,23 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
       url: 'deckBuilder/saveDeck',
       data: { name, deck },
     }).then((newDeck: Deck) => {
-      console.log();
       const newDeckList: Deck[] = [...deckList];
+      newDeckList.push(newDeck);
+      setDeckList(newDeckList);
+    });
+  };
+
+  const updateDeck = () => {
+    request({
+      method: 'post',
+      url: 'deckBuilder/updateDeck',
+      data: { deckId, name, deck },
+    }).then((newDeck: Deck) => {
+      //update copy on the page
+      const newDeckList = [...deckList].filter(
+        (deck) => deck.id !== newDeck.id
+      );
+
       newDeckList.push(newDeck);
       setDeckList(newDeckList);
     });
@@ -252,8 +272,11 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
             ) : null;
           })}
         </ul>
-        <button style={{ width: '100%' }} onClick={() => saveDeck()}>
+        <button style={{ width: '50%' }} onClick={() => saveDeck()}>
           SAVE DECK
+        </button>
+        <button style={{ width: '50%' }} onClick={() => updateDeck()}>
+          UPDATE DECK
         </button>
       </div>
     );
