@@ -15,7 +15,10 @@ export class MatchMakingController {
 
   async getOpenLobbies() {
     const openLobbies = await this.gameRepository.find({ winner: null });
-    this.socket.emit('lobbyList', openLobbies);
+    this.socket.emit(
+      'lobbyList',
+      openLobbies.map((lobby) => lobby.toJson())
+    );
   }
 }
 

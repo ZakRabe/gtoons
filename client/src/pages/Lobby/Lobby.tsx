@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { Button, Header } from 'semantic-ui-react';
+import {
+  Button,
+  Header,
+  List,
+  Image,
+  Container,
+  Card,
+} from 'semantic-ui-react';
 import {
   socketConnect,
   // @ts-ignore: no types for this
@@ -15,24 +22,45 @@ export const Lobby = (props: LobbyProps) => {
   React.useEffect(() => {
     socket.emit('getOpenLobbies');
     socket.on('lobbyList', (data: any) => {
-      console.log(data);
       setLobbies(data);
     });
   }, []);
 
   return (
     <>
-      <Header as="h1">Lobbies</Header>
+      <Header as="h1">Play gToons Revived</Header>
       <Button>{isOpen ? 'Cancel' : 'Create a Lobby'}</Button>
-      <ul>
+      <Header as="h2">Active Lobbies</Header>
+
+      <Card.Group>
         {lobbies.map((lobby: any) => {
+          const { id, player1, player2 } = lobby;
           return (
-            <li key={lobby.id}>
-              #{lobby.id}: Started by Player: {lobby.player1}
-            </li>
+            <Card key={id}>
+              <Card.Content>
+                <Image
+                  floated="left"
+                  size="mini"
+                  circular
+                  src="http://placehold.it/100x100"
+                />
+                <Card.Header>{player1.username}</Card.Header>
+                <Card.Meta>created: 10 minutes ago</Card.Meta>
+              </Card.Content>
+              <Card.Content extra>
+                <div className="ui two buttons">
+                  <Button disabled={player2} basic color="green">
+                    Join
+                  </Button>
+                  <Button basic color="purple">
+                    Spectate
+                  </Button>
+                </div>
+              </Card.Content>
+            </Card>
           );
         })}
-      </ul>
+      </Card.Group>
     </>
   );
 };

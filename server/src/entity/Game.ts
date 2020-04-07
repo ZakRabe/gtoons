@@ -1,21 +1,34 @@
-import { Entity, Column, PrimaryGeneratedColumn, BaseEntity } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  BaseEntity,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
+import User from './User';
+import Deck from './Deck';
 
 @Entity()
 export default class Game extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ name: 'player1_id' })
-  player1: number;
+  @ManyToOne((type) => User, { eager: true })
+  @JoinColumn({ name: 'player1_id' })
+  player1: User;
 
-  @Column({ name: 'player2_id' })
-  player2: number;
+  @ManyToOne((type) => User, { eager: true })
+  @JoinColumn({ name: 'player2_id' })
+  player2: User;
 
-  @Column({ name: 'player1Deck_id' })
-  player1Deck: number;
+  @ManyToOne((type) => Deck, { eager: true })
+  @JoinColumn({ name: 'player1Deck_id' })
+  player1Deck: Deck;
 
-  @Column({ name: 'player2Deck_id' })
-  player2Deck: number;
+  @ManyToOne((type) => Deck, { eager: true })
+  @JoinColumn({ name: 'player2Deck_id' })
+  player2Deck: Deck;
 
   @Column()
   color1: string;
@@ -23,19 +36,20 @@ export default class Game extends BaseEntity {
   @Column()
   color2: string;
 
-  @Column({ name: 'winner_id' })
-  winner: number;
+  @ManyToOne((type) => User, { eager: true })
+  @JoinColumn({ name: 'winner_id' })
+  winner: User;
 
   toJson = () => {
     const { id, player1, player2, player1Deck, player2Deck, winner } = this;
 
     return {
       id,
-      player1,
-      player2,
-      player1Deck,
-      player2Deck,
-      winner
+      player1: player1.toJson(),
+      player2: player2 && player2.toJson(),
+      player1Deck: player1Deck.toJson(),
+      player2Deck: player2Deck && player1Deck.toJson(),
+      winner: winner && winner.toJson(),
     };
   };
 }

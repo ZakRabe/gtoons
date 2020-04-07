@@ -27,6 +27,11 @@ h2 {
   font-family: 'Bebas Neue' !important;
 }
 
+h2.ui.header {
+  color: #00ffff;
+  text-shadow: -2px -2px black;
+}
+
 #App-wrapper > main h1 {
   color: #00ffff;
   font-size: 2.5rem;
