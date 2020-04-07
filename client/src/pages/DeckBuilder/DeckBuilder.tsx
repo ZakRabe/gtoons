@@ -115,6 +115,7 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
       data: { deckId, name, deck },
     }).then((newDeck: Deck) => {
       //update copy on the page
+      //console.log(newDeck);
       const newDeckList = [...deckList].filter(
         (deck) => deck.id !== newDeck.id
       );

@@ -48,6 +48,13 @@ export class DeckBuilderController {
       cards: JSON.stringify(deck),
     });
 
-    return { id: deckId, name, cards: deck };
+    const newDeck = {
+      id: deckId,
+      player_id: user.userId,
+      name: newName,
+      cards: deck,
+    };
+
+    return newDeck;
   }
 }
