@@ -172,7 +172,14 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
 
   const renderDeckList = () => {
     return (
-      <div style={{ width: '20%', position: 'fixed', right: '0' }}>
+      <div
+        style={{
+          width: '20%',
+          position: 'fixed',
+          right: '0',
+          backgroundColor: 'white',
+        }}
+      >
         <ul>
           {deckList.map((deck: Deck) => {
             return (
@@ -225,7 +232,7 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
             style={{ width: '100%' }}
           />
         </div>
-        <ul>
+        <ul style={{ backgroundColor: 'white' }}>
           {deck.map((cardId) => {
             const card = cards.find((item: Card) => item.id === cardId) as Card;
             return card ? (
