@@ -73,8 +73,7 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
 
   const onDeckClick = (clickedDeck: Deck) => (e: React.MouseEvent) => {
     console.log(clickedDeck);
-    const id = clickedDeck.id;
-    const deckName = clickedDeck.name;
+const { id, name } = clickedDeck;
     const savedDeck = JSON.parse(clickedDeck.cards);
     console.log(savedDeck);
     setDeckId(id);
