@@ -72,14 +72,12 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
   };
 
   const onDeckClick = (clickedDeck: Deck) => (e: React.MouseEvent) => {
-    console.log(clickedDeck);
-    const id = clickedDeck.id;
-    const deckName = clickedDeck.name;
+    const { id, name } = clickedDeck;
     const savedDeck = JSON.parse(clickedDeck.cards);
     console.log(savedDeck);
     setDeckId(id);
     setDeck(savedDeck);
-    setName(deckName);
+    setName(name);
   };
 
   const onDeckCardClick = (cardId: number) => (e: React.MouseEvent) => {
@@ -118,12 +116,11 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
       data: { deckId, name, deck },
     }).then((newDeck: Deck) => {
       //update copy on the page
-      //console.log(newDeck);
-      const newDeckList = [...deckList].filter(
-        (deck) => deck.id !== newDeck.id
-      );
-
-      newDeckList.push(newDeck);
+      const newDeckList = [
+        ...deckList.filter((deck) => deck.id !== newDeck.id),
+        newDeck,
+      ];
+      console.log(newDeckList);
       setDeckList(newDeckList);
     });
   };
