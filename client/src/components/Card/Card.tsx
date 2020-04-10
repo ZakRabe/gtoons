@@ -11,6 +11,7 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
     border: '1px solid silver',
     background: 'linear-gradient(to right, white, #030303)',
     padding: 3,
+    position: 'relative' as any,
   };
   const cardBorderStyles = {
     borderRadius: '50%',
@@ -20,13 +21,30 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
   const cardStyles = {
     height,
     width,
-    border: '10px inset rgba(255,255,255,.5)',
+    border: '8px inset rgba(255,255,255,.5)',
     borderRadius: '50%',
     backgroundImage: `url(/images/normal/released/${card.id}.jpg)`,
-    backgroundSize: '100% 100%',
+    backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     cursor: onClick ? 'pointer' : 'default',
+  };
+
+  const pointStyles = {
+    position: 'absolute' as any,
+    bottom: '10%',
+    right: '13%',
+    borderRadius: '50%',
+    fontSize: width / 6,
+    padding: width / 15,
+    width: width / 3,
+    height: width / 3,
+    lineHeight: `${width / 5}px`,
+    backgroundColor: card.colors[0],
+    color: 'white',
+    textAlign: 'center' as any,
+    boxSizing: 'border-box' as any,
+    textShadow: '-2px -2px rgba(0,0,0,.7)',
   };
 
   const renderCard = () => {
@@ -35,6 +53,7 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
         <div onClick={onClick} onMouseOver={onHover}>
           <div style={cardWrapperStyles}>
             <div style={cardBorderStyles}>
+              <span style={pointStyles}>{card.points}</span>
               <div style={cardStyles}></div>
             </div>
           </div>
