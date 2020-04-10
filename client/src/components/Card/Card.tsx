@@ -6,12 +6,13 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
 
   const cardWrapperStyles = {
     display: 'inline-flex',
-    margin: '7px',
+
     borderRadius: '50%',
     border: '1px solid silver',
     background: 'linear-gradient(to right, white, #030303)',
     padding: 3,
     position: 'relative' as any,
+    margin: 'auto' as any,
   };
   const cardBorderStyles = {
     borderRadius: '50%',
@@ -49,13 +50,15 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
 
   const renderCard = () => {
     return (
-      <section>
-        <div onClick={onClick} onMouseOver={onHover}>
-          <div style={cardWrapperStyles}>
-            <div style={cardBorderStyles}>
-              <span style={pointStyles}>{card.points}</span>
-              <div style={cardStyles}></div>
-            </div>
+      <section
+        style={{ display: 'inline-flex' }}
+        onClick={onClick}
+        onMouseOver={onHover}
+      >
+        <div style={cardWrapperStyles}>
+          <div style={cardBorderStyles}>
+            <span style={pointStyles}>{card.points}</span>
+            <div style={cardStyles}></div>
           </div>
         </div>
       </section>

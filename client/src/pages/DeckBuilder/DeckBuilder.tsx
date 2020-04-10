@@ -11,7 +11,7 @@ import CardComponent from '../../components/Card';
 import CSS from 'csstype';
 
 export const DeckBuilder = (props: DeckBuilderProps) => {
-  const { socket } = props;
+  // const { socket } = props;
 
   const [collection, setCollection] = React.useState([]);
   const [hoveredCard, setHoveredCard] = React.useState<Card | null>(null);
@@ -31,8 +31,13 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
 
   const styles: CSS.Properties = {
     display: 'flex',
+    flexDirection: 'column',
     height: '100%',
     width: '100%',
+  };
+
+  const filtersStyles = {
+    display: 'flex',
   };
 
   const onInputChange = (e: React.ChangeEvent) => {
@@ -149,84 +154,131 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
 
   const renderDeckList = () => {
     return (
-      <div
-        style={{
-          width: '20%',
-          position: 'fixed',
-          right: '0',
-          backgroundColor: 'white',
-        }}
-      >
-        <ul>
-          {deckList.map((deck: Deck) => {
-            return (
-              <li key={deck.id} style={{ display: 'block', width: '100%' }}>
-                <p onClick={onDeckClick(deck)}>{deck.name}</p>
-              </li>
-            );
-          })}
-        </ul>
-        <div
-          id="cardInfo"
-          style={{ width: '100%', height: '350px', backgroundColor: 'white' }}
-        >
-          {hoveredCard && (
-            <CardComponent model={hoveredCard} width={250} height={250} />
-          )}
-          <p
-            id="cardName"
+      <>
+        <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+          <div
             style={{
+              display: 'flex',
+              backgroundColor: 'white',
+              flexDirection: 'column',
               textAlign: 'center',
-              fontSize: '20px',
-              fontWeight: 'bolder',
             }}
           >
-            {hoveredCard && hoveredCard.title}
-          </p>
-          <p id="cardPower" style={{ marginLeft: '25px', fontSize: '15px' }}>
-            {hoveredCard && hoveredCard.description}
-          </p>
+            {hoveredCard && (
+              <CardComponent model={hoveredCard} width={250} height={250} />
+            )}
+            <p
+              id="cardName"
+              style={{
+                textAlign: 'center',
+                fontSize: '20px',
+                fontWeight: 'bolder',
+              }}
+            >
+              {hoveredCard && hoveredCard.title}
+            </p>
+            <p id="cardPower" style={{ fontSize: '15px' }}>
+              {hoveredCard && hoveredCard.description}
+            </p>
+          </div>
+          <div style={{ display: 'flex' }}>
+            <Input
+              name="name"
+              label="Deck Name"
+              value={name}
+              onChange={onInputChange}
+              style={{ width: '100%' }}
+            />
+          </div>
+          <div
+            style={{ display: 'flex', flexGrow: 1, flexDirection: 'column' }}
+          >
+            <ul
+              style={{
+                backgroundColor: 'white',
+                display: 'flex',
+                flexDirection: 'column',
+                flexGrow: 1,
+              }}
+            >
+              {deck.map((cardId) => {
+                const card = cards.find(
+                  (item: Card) => item.id === cardId
+                ) as Card;
+                return card ? (
+                  <li
+                    key={cardId}
+                    onClick={onDeckCardClick(card.id)}
+                    onMouseOver={() => onHover(card)}
+                  >
+                    {card.title}
+                  </li>
+                ) : null;
+              })}
+            </ul>
+          </div>
+          <div>
+            <Button style={{ width: '50%' }} onClick={() => saveDeck()}>
+              SAVE DECK
+            </Button>
+          </div>
         </div>
-        <div>
-          <Input
-            name="name"
-            label="Deck Name"
-            value={name}
-            onChange={onInputChange}
-            style={{ width: '100%' }}
-          />
-        </div>
-        <ul style={{ backgroundColor: 'white' }}>
-          {deck.map((cardId) => {
-            const card = cards.find((item: Card) => item.id === cardId) as Card;
-            return card ? (
-              <li
-                key={cardId}
-                style={{ display: 'block' }}
-                onClick={onDeckCardClick(card.id)}
-                onMouseOver={() => onHover(card)}
-              >
-                {card.title}
-              </li>
-            ) : null;
-          })}
-        </ul>
-        <button style={{ width: '50%' }} onClick={() => saveDeck()}>
-          SAVE DECK
-        </button>
-        <button style={{ width: '50%' }} onClick={() => updateDeck()}>
-          UPDATE DECK
-        </button>
-      </div>
+      </>
     );
+  };
+
+  // {/* <ul>
+  //       {deckList.map((deck: Deck) => {
+  //         return (
+  //           <li key={deck.id} style={{ display: 'block', width: '100%' }}>
+  //             <p onClick={onDeckClick(deck)}>{deck.name}</p>
+  //           </li>
+  //         );
+  //       })}
+  //     </ul> */}
+  //
+
+  const editorStyles = {
+    display: 'flex',
+    flexGrow: 1,
+  };
+
+  const deckListStyles = {
+    display: 'flex',
+    width: '20vw',
+    flexShrink: 0,
+  };
+
+  const collectionContainerStyles = {
+    display: 'flex',
+    flexGrow: 1,
+    overflow: 'hidden',
+    position: 'relative' as any,
+  };
+  const collectionWrapperStyles = {
+    position: 'absolute' as any,
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    overflow: 'auto',
   };
 
   return (
     <section style={styles}>
-      {renderCollection()}
-      {renderDeckList()}
+      <section style={filtersStyles}>
+        <img src="http://placehold.it/100x100" />
+      </section>
+      <section style={editorStyles}>
+        <section style={collectionContainerStyles}>
+          <section style={collectionWrapperStyles}>
+            {renderCollection()}
+          </section>
+        </section>
+        <section style={deckListStyles}>{renderDeckList()} </section>
+      </section>
     </section>
   );
 };
 
-export default socketConnect(DeckBuilder);
+export default DeckBuilder;
