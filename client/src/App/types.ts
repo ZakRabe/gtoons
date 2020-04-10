@@ -14,6 +14,7 @@ export interface Card {
   rarity: string;
   groups: string[];
   types: string[];
+  points: number;
 }
 
 export interface Deck {

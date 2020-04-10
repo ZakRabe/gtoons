@@ -7,12 +7,14 @@ import {
 import { Button, Input } from 'semantic-ui-react';
 import { request } from '../../utils/api';
 import { Card, Deck } from '../../App/types';
+import CardComponent from '../../components/Card';
 import CSS from 'csstype';
 
 export const DeckBuilder = (props: DeckBuilderProps) => {
   const { socket } = props;
 
   const [collection, setCollection] = React.useState([]);
+  const [hoveredCard, setHoveredCard] = React.useState<Card | null>(null);
   const [cards, setCards] = React.useState<Card[]>([]);
   const [name, setName] = React.useState('New Deck');
 
@@ -127,74 +129,22 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
   };
 
   const onHover = (card: Card) => {
-    //console.log(card.title)
-    const elemnt: HTMLElement =
-      document.getElementById('cardInfo') as HTMLElement;
-    const children = elemnt.children as HTMLCollection;
-
-    for (let i = 0; i < children.length; i++) {
-      switch (children[i].id) {
-        case 'cardImage':
-          (children[i] as HTMLElement).style.setProperty(
-            'background-image',
-            `url(/images/normal/released/${card.id}.jpg)`
-          );
-          (children[i] as HTMLElement).style.setProperty(
-            'border-color',
-            `${card.colors[0]}`
-          );
-          break;
-        case 'cardName':
-          (children[i] as HTMLElement).innerHTML = card.title;
-          break;
-        case 'cardPower':
-          (children[i] as HTMLElement).innerHTML = card.description;
-          break;
-        default:
-          break;
-      }
-      //console.log(children[i].id)
-    }
-
-    //elemnt.style.setProperty('background-image',`url(/images/normal/released/1.jpg)`)
-    //console.log(newStyle)
-    //elemnt?.childNodes[0]
+    setHoveredCard(card);
   };
 
   const renderCollection = () => {
-    return (
-      <ul
-        style={{
-          width: '75%',
-        }}
-      >
-        {cards.map((card: Card) => {
-          return (
-            <li key={card.id} style={{ display: 'inline-block' }}>
-              <div
-                onClick={onCollectionCardClick(card.id)}
-                onMouseOver={() => onHover(card)}
-              >
-                <div
-                  style={{
-                    display: 'inline-block',
-                    margin: '7px',
-                    height: '150px',
-                    width: '150px',
-                    borderRadius: '50%',
-                    border: '6px solid ' + card.colors[0],
-                    backgroundImage: `url(/images/normal/released/${card.id}.jpg)`,
-                    backgroundSize: '100% 100%',
-                    backgroundPosition: 'center',
-                    backgroundRepeat: 'no-repeat',
-                  }}
-                ></div>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
-    );
+    return cards.map((card: Card) => {
+      return (
+        <CardComponent
+          key={card.id}
+          model={card}
+          onClick={onCollectionCardClick(card.id)}
+          onHover={() => onHover(card)}
+          width={150}
+          height={150}
+        />
+      );
+    });
   };
 
   const renderDeckList = () => {
@@ -220,22 +170,9 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
           id="cardInfo"
           style={{ width: '100%', height: '350px', backgroundColor: 'white' }}
         >
-          <div
-            id="cardImage"
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              margin: 'auto',
-              height: '250px',
-              width: '250px',
-              borderRadius: '50%',
-              border: '6px solid grey',
-              backgroundSize: '100% 100%',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat',
-            }}
-          ></div>
+          {hoveredCard && (
+            <CardComponent model={hoveredCard} width={250} height={250} />
+          )}
           <p
             id="cardName"
             style={{
@@ -244,10 +181,10 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
               fontWeight: 'bolder',
             }}
           >
-            Name
+            {hoveredCard && hoveredCard.title}
           </p>
           <p id="cardPower" style={{ marginLeft: '25px', fontSize: '15px' }}>
-            Power
+            {hoveredCard && hoveredCard.description}
           </p>
         </div>
         <div>
