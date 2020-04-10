@@ -3,11 +3,12 @@ import { Route, Switch } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
 import Game from '../pages/Game';
 import Home from '../pages/Home';
-import Lobby from '../pages/Lobby/Lobby';
+import Lobbies from '../pages/Lobbies';
 import Login from '../pages/Login';
 import Profile from '../pages/Profile';
 import Register from '../pages/Register';
 import DeckBuilder from '../pages/DeckBuilder';
+import AuthRoute from '../components/AuthRoute';
 
 export default class Routes extends React.Component {
   render() {
@@ -16,12 +17,13 @@ export default class Routes extends React.Component {
         <Container fluid>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/profile" component={Profile} />
             <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />
-            <Route path="/game" component={Game} />
-            <Route path="/lobbies" component={Lobby} />
-            <Route path="/deckBuilder" component={DeckBuilder} />
+
+            <AuthRoute path="/profile" component={Profile} />
+            <AuthRoute path="/game" component={Game} />
+            <AuthRoute path="/lobbies" component={Lobbies} />
+            <AuthRoute path="/deckBuilder" component={DeckBuilder} />
           </Switch>
         </Container>
       </main>
