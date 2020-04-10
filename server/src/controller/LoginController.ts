@@ -12,7 +12,7 @@ export class LoginController {
     // so we return a generic error message
     return response.status(401.1).json({
       message: 'Unable to log you in with these credentials',
-      errors: ['Invalid Username or Password']
+      errors: ['Invalid Username or Password'],
     });
   };
 

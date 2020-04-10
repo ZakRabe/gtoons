@@ -6,6 +6,7 @@ import {
   socketConnect,
   // @ts-ignore: no types for this
 } from 'socket.io-react';
+import PlayerZones from './components/PlayerZones';
 
 const styles: CSS.Properties = {
   display: 'flex',
@@ -19,10 +20,11 @@ class Game extends React.Component<{}, {}> {
 
   render() {
     return (
-      <section style={styles}>
-        <Board />
-        <Info player1Name={this.player1Name} player2Name={this.player2Name} />
-      </section>
+      <div className="ui grid container"></div>
+      // <section style={styles}>
+      //   {/* <Board />
+      //   <Info player1Name={this.player1Name} player2Name={this.player2Name} /> */}
+      // </section>
     );
   }
 }

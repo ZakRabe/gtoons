@@ -13,7 +13,7 @@ export default class Routes extends React.Component {
   render() {
     return (
       <main>
-        <Container fluid>
+        <Container fluid style={{ height: '100%' }}>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/profile" component={Profile} />

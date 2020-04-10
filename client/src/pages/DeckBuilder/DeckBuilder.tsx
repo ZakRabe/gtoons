@@ -16,6 +16,7 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
   const [cards, setCards] = React.useState<Card[]>([]);
   const [name, setName] = React.useState('New Deck');
 
+  const [deckId, setDeckId] = React.useState(-1);
   const [deck, setDeck] = React.useState<number[]>([]);
   const [deckList, setDeckList] = React.useState<Deck[]>([]);
 
@@ -72,9 +73,12 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
 
   const onDeckClick = (clickedDeck: Deck) => (e: React.MouseEvent) => {
     console.log(clickedDeck);
+    const { id, name } = clickedDeck;
     const savedDeck = JSON.parse(clickedDeck.cards);
     console.log(savedDeck);
+    setDeckId(id);
     setDeck(savedDeck);
+    setName(name);
   };
 
   const onDeckCardClick = (cardId: number) => (e: React.MouseEvent) => {
@@ -96,6 +100,29 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
       method: 'post',
       url: 'deckBuilder/saveDeck',
       data: { name, deck },
+    }).then((newDeck: Deck) => {
+      const newDeckList: Deck[] = [...deckList];
+      newDeckList.push(newDeck);
+      setDeckId(newDeck.id);
+      setName(newDeck.name);
+      setDeck(JSON.parse(newDeck.cards));
+      setDeckList(newDeckList);
+    });
+  };
+
+  const updateDeck = () => {
+    request({
+      method: 'post',
+      url: 'deckBuilder/updateDeck',
+      data: { deckId, name, deck },
+    }).then((newDeck: Deck) => {
+      //update copy on the page
+      const newDeckList = [
+        ...deckList.filter((deck) => deck.id !== newDeck.id),
+        newDeck,
+      ];
+      console.log(newDeckList);
+      setDeckList(newDeckList);
     });
   };
 
@@ -172,7 +199,14 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
 
   const renderDeckList = () => {
     return (
-      <div style={{ width: '20%', position: 'fixed', right: '0' }}>
+      <div
+        style={{
+          width: '20%',
+          position: 'fixed',
+          right: '0',
+          backgroundColor: 'white',
+        }}
+      >
         <ul>
           {deckList.map((deck: Deck) => {
             return (
@@ -225,7 +259,7 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
             style={{ width: '100%' }}
           />
         </div>
-        <ul>
+        <ul style={{ backgroundColor: 'white' }}>
           {deck.map((cardId) => {
             const card = cards.find((item: Card) => item.id === cardId) as Card;
             return card ? (
@@ -240,8 +274,11 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
             ) : null;
           })}
         </ul>
-        <button style={{ width: '100%' }} onClick={() => saveDeck()}>
+        <button style={{ width: '50%' }} onClick={() => saveDeck()}>
           SAVE DECK
+        </button>
+        <button style={{ width: '50%' }} onClick={() => updateDeck()}>
+          UPDATE DECK
         </button>
       </div>
     );
