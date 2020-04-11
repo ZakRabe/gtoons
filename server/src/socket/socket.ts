@@ -1,7 +1,7 @@
 import { Socket } from 'socket.io';
 import socketConfigs from './configs';
 
-export const init = (io: any) => {
+export const init = (io: any, lobbies, games) => {
   io.on('connection', function (socket: Socket) {
     console.log('a user connected');
 
@@ -40,5 +40,13 @@ export const init = (io: any) => {
     //   if (p1Board.isValid() && p2Board.isValid()) {
     //     socket.emit('nextTurn', {});
     //   }
+  });
+
+  lobbies.on('connection', function (socket: Socket) {
+    console.log('user connected to the lobbies namespace');
+  });
+
+  games.on('connection', function (socket: Socket) {
+    console.log('user connected to the games namespace');
   });
 };
