@@ -2,5 +2,26 @@
   "javascript.preferences.quoteStyle": "single",
   "typescript.preferences.quoteStyle": "single",
   "prettier.jsxSingleQuote": true,
-  "prettier.configPath": "./.prettierrc"
+  "prettier.configPath": "./.prettierrc",
+  "macros": {
+    // https://marketplace.visualstudio.com/items?itemName=jeff-hykin.macro-commander
+    "gtoonsDev": [
+      "workbench.action.terminal.new",
+      // a command with arguments, that sends text to the terminal
+      {
+        "command": "workbench.action.terminal.sendSequence",
+        "args": {
+          "text": "cd client; npm run start\n"
+        }
+      },
+      "workbench.action.terminal.split",
+      // a command with arguments, that sends text to the terminal
+      {
+        "command": "workbench.action.terminal.sendSequence",
+        "args": {
+          "text": "cd server; npm run watch\n"
+        }
+      }
+    ]
+  }
 }
