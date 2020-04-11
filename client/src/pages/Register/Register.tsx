@@ -142,7 +142,8 @@ export default class Register extends React.Component<
     );
   };
 
-  submit = () => {
+  submit = (e?: React.FormEvent) => {
+    e?.preventDefault();
     if (this.hasErrors()) {
       return;
     }
@@ -160,9 +161,7 @@ export default class Register extends React.Component<
       },
     })
       .then((response) => {
-        if (response.id) {
-          this.setState({ complete: true });
-        }
+        this.setState({ complete: true });
       })
       .catch((error) => this.setState({ failed: true }));
   };
@@ -208,9 +207,9 @@ export default class Register extends React.Component<
               name="username"
               id="username"
               value={username}
-              helperText={this.renderUsernameAvailable()}
               onChange={this.onInputChange}
             />
+            {this.renderUsernameAvailable()}
           </div>
           <div>
             <Input
@@ -219,9 +218,10 @@ export default class Register extends React.Component<
               name="email"
               id="email"
               value={email}
-              helperText={this.renderEmailAvailable()}
+              error={!!this.renderEmailAvailable()}
               onChange={this.onInputChange}
             />
+            {this.renderEmailAvailable()}
           </div>
           <div>
             <Input
@@ -230,6 +230,7 @@ export default class Register extends React.Component<
               name="password"
               id="password"
               value={password}
+              error={!!passwordErrors.length}
               onChange={(e) => {
                 this.validatePassword(e.target.value);
                 this.onInputChange(e);
@@ -244,6 +245,7 @@ export default class Register extends React.Component<
               name="confirmPassword"
               id="confirmPassword"
               value={confirmPassword}
+              error={!!this.renderConfirmPasswordErrors()}
               onChange={this.onInputChange}
             />
             {this.renderConfirmPasswordErrors()}

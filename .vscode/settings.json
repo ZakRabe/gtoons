@@ -1,5 +1,6 @@
 {
   "javascript.preferences.quoteStyle": "single",
   "typescript.preferences.quoteStyle": "single",
-  "prettier.jsxSingleQuote": true
+  "prettier.jsxSingleQuote": true,
+  "prettier.configPath": "./.prettierrc"
 }

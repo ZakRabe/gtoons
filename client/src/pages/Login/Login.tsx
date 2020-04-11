@@ -3,6 +3,7 @@ import * as React from 'react';
 import { request } from '../../utils/api';
 import { LoginProps, LoginState } from './types';
 import { Link } from 'react-router-dom';
+import { isLoggedIn } from '../../utils/auth';
 
 export default class Login extends React.Component<LoginProps, LoginState> {
   constructor(props: LoginProps) {
@@ -16,7 +17,7 @@ export default class Login extends React.Component<LoginProps, LoginState> {
 
   componentDidMount() {
     const { history } = this.props;
-    const authToken = localStorage.getItem('authToken');
+    const authToken = isLoggedIn();
     if (authToken) {
       request({
         url: 'login/validateToken',
