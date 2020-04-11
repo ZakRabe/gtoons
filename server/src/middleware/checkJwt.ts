@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import * as jwt from 'jsonwebtoken';
+import { verifyToken } from '../util';
 
 export const checkJwt = (req: Request, res: Response, next: NextFunction) => {
   //Get the jwt token from the head
@@ -9,7 +10,7 @@ export const checkJwt = (req: Request, res: Response, next: NextFunction) => {
   //Try to validate the token and get data
   try {
     // TODO: load from environment variable
-    jwtPayload = <any>jwt.verify(token, 'GToons2019SecretToken');
+    jwtPayload = verifyToken(token);
     res.locals.jwtPayload = jwtPayload;
   } catch (error) {
     //If token is not valid, respond with 401 (unauthorized)
@@ -22,7 +23,7 @@ export const checkJwt = (req: Request, res: Response, next: NextFunction) => {
   const { userId, username } = jwtPayload;
   // TODO: load from environment variable
   const newToken = jwt.sign({ userId, username }, 'GToons2019SecretToken', {
-    expiresIn: '1h'
+    expiresIn: '1h',
   });
   res.setHeader('token', newToken);
 
