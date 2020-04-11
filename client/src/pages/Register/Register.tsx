@@ -4,6 +4,7 @@ import { Button, Header, Input } from 'semantic-ui-react';
 import { queryParams, request } from '../../utils/api';
 import { isValidEmail } from '../../utils/validation';
 import { RegisterProps, RegisterState } from './types';
+import { Link } from 'react-router-dom';
 
 export default class Register extends React.Component<
   RegisterProps,
@@ -141,7 +142,8 @@ export default class Register extends React.Component<
     );
   };
 
-  submit = () => {
+  submit = (e?: React.FormEvent) => {
+    e?.preventDefault();
     if (this.hasErrors()) {
       return;
     }
@@ -159,9 +161,7 @@ export default class Register extends React.Component<
       },
     })
       .then((response) => {
-        if (response.id) {
-          this.setState({ complete: true });
-        }
+        this.setState({ complete: true });
       })
       .catch((error) => this.setState({ failed: true }));
   };
@@ -193,68 +193,79 @@ export default class Register extends React.Component<
     } = this.state;
 
     return (
-      <form onSubmit={this.submit}>
-        {failed && (
-          <h3>
-            Sorry we were unable to proccess your registration, please try
-            again.
-          </h3>
-        )}
-        <div>
-          <Input
-            label="Username"
-            name="username"
-            id="username"
-            value={username}
-            helperText={this.renderUsernameAvailable()}
-            onChange={this.onInputChange}
-          />
-        </div>
-        <div>
-          <Input
-            type="email"
-            label="Email"
-            name="email"
-            id="email"
-            value={email}
-            helperText={this.renderEmailAvailable()}
-            onChange={this.onInputChange}
-          />
-        </div>
-        <div>
-          <Input
-            label="Password"
-            type="password"
-            name="password"
-            id="password"
-            value={password}
-            onChange={(e) => {
-              this.validatePassword(e.target.value);
-              this.onInputChange(e);
-            }}
-          />
-          {passwordErrors.length > 0 && this.renderPasswordErrors()}
-        </div>
-        <div>
-          <Input
-            label="Confirm Password"
-            type="password"
-            name="confirmPassword"
-            id="confirmPassword"
-            value={confirmPassword}
-            onChange={this.onInputChange}
-          />
-          {this.renderConfirmPasswordErrors()}
-        </div>
-        <Button
-          style={{ marginTop: 10 }}
-          disabled={this.hasErrors()}
-          variant="contained"
-          onClick={this.submit}
-        >
-          Submit
-        </Button>
-      </form>
+      <>
+        <form onSubmit={this.submit}>
+          {failed && (
+            <h3>
+              Sorry we were unable to proccess your registration, please try
+              again.
+            </h3>
+          )}
+          <div>
+            <Input
+              label="Username"
+              name="username"
+              id="username"
+              value={username}
+              onChange={this.onInputChange}
+            />
+            {this.renderUsernameAvailable()}
+          </div>
+          <div>
+            <Input
+              type="email"
+              label="Email"
+              name="email"
+              id="email"
+              value={email}
+              error={!!this.renderEmailAvailable()}
+              onChange={this.onInputChange}
+            />
+            {this.renderEmailAvailable()}
+          </div>
+          <div>
+            <Input
+              label="Password"
+              type="password"
+              name="password"
+              id="password"
+              value={password}
+              error={!!passwordErrors.length}
+              onChange={(e) => {
+                this.validatePassword(e.target.value);
+                this.onInputChange(e);
+              }}
+            />
+            {passwordErrors.length > 0 && this.renderPasswordErrors()}
+          </div>
+          <div>
+            <Input
+              label="Confirm Password"
+              type="password"
+              name="confirmPassword"
+              id="confirmPassword"
+              value={confirmPassword}
+              error={!!this.renderConfirmPasswordErrors()}
+              onChange={this.onInputChange}
+            />
+            {this.renderConfirmPasswordErrors()}
+          </div>
+          <Button
+            style={{ marginTop: 10 }}
+            disabled={this.hasErrors()}
+            variant="contained"
+            onClick={this.submit}
+          >
+            Submit
+          </Button>
+        </form>
+        <aside>
+          <span style={{ marginRight: 10 }}>Already registered?</span>
+          <Link to="/login" component={Button}>
+            Log In!
+          </Link>
+        </aside>
+      </>
     );
   };
 

@@ -5,8 +5,13 @@ const socketConfigs: SocketConfig[] = [
   {
     event: 'getOpenLobbies',
     controller: MatchMakingController,
-    action: 'getOpenLobbies'
-  }
+    action: 'getOpenLobbies',
+  },
+  {
+    event: 'createLobby',
+    controller: MatchMakingController,
+    action: 'createLobby',
+  },
 ];
 
 export default socketConfigs;
