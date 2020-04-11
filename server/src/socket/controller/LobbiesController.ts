@@ -1,15 +1,17 @@
 import { getRepository } from 'typeorm';
-import Deck from '../../../entity/Deck';
-import Game from '../../../entity/Game';
-import User from '../../../entity/User';
-import { verifyToken } from '../../../util';
-import { SockerController } from '../SocketController';
+import Deck from '../../common/entity/Deck';
+import Game from '../../common/entity/Game';
+import User from '../../common/entity/User';
+import { verifyToken } from '../../util';
+import { SockerController } from './SocketController';
 
-export class MatchMakingController extends SockerController {
+// TODO: ALL THIS LOGIC IS ACTUALLY FOR LOBBIES, Remove GAME stuff. lobbies are different
+export class LobbyController extends SockerController {
   private gameRepository = getRepository(Game);
   private userRepository = getRepository(User);
   private deckRepository = getRepository(Deck);
 
+  // TODO. dont need deck to create a lobby
   async createLobby({ user: token, deck }) {
     let userId;
     try {
@@ -42,10 +44,17 @@ export class MatchMakingController extends SockerController {
     const newLobby = this.gameRepository.create({
       player1,
       player1Deck,
+      color1: 'RED',
     });
+
     await newLobby.save();
 
-    this.socket.emit('lobbyCreated', newLobby.toJson());
+    const lobbyRoom = `lobby/${newLobby.id}`;
+    this.socket.join(lobbyRoom);
+    this.io
+      .to(lobbyRoom)
+      .emit('roomMessage', `I sent this only to people in ${lobbyRoom}`);
+    this.io.emit('lobbyCreated', newLobby.toJson());
   }
 
   async getOpenLobbies() {
@@ -57,4 +66,4 @@ export class MatchMakingController extends SockerController {
   }
 }
 
-export default MatchMakingController;
+export default LobbyController;

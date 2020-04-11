@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 import { getRepository } from 'typeorm';
-import Collection from '../entity/Collection';
-import User from '../entity/User';
-import * as cards from '../cards/cards.json';
+import Collection from '../../common/entity/Collection';
+import User from '../../common/entity/User';
+import * as cards from '../../cards/cards.json';
 const crypto = require('crypto');
 
 export class RegisterController {
@@ -11,7 +11,7 @@ export class RegisterController {
 
   async getUsersByUsername(username: string) {
     return await this.userRepository.find({
-      username
+      username,
     });
   }
 
@@ -26,7 +26,7 @@ export class RegisterController {
 
   async getUsersByEmail(email: string) {
     return this.userRepository.find({
-      email: email
+      email: email,
     });
   }
 
@@ -35,7 +35,7 @@ export class RegisterController {
     return existingUsers.length === 0;
   }
 
-  getSalt = length => {
+  getSalt = (length) => {
     return crypto
       .randomBytes(Math.ceil(length / 2))
       .toString('hex')
@@ -48,7 +48,7 @@ export class RegisterController {
     const value = hash.digest('hex');
     return {
       salt: salt,
-      passwordHash: value
+      passwordHash: value,
     };
   };
 
@@ -113,20 +113,20 @@ export class RegisterController {
     const userModel = {
       ...newUser,
       salt,
-      password: passwordHash
+      password: passwordHash,
     };
 
     const { id } = await this.userRepository.save(userModel);
 
-    const allCards = cards.map(card => card.id);
+    const allCards = cards.map((card) => card.id);
 
     await this.collectionRepository.save({
       player: id,
-      cards: JSON.stringify(allCards)
+      cards: JSON.stringify(allCards),
     });
 
     const savedUser = await this.userRepository.findOne({
-      id
+      id,
     });
 
     return savedUser.toJson();

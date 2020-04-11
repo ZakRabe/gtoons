@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Card, Image } from 'semantic-ui-react';
 import { LobbyProps } from './types';
 
 const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
-  const { id, player1, player2 } = props;
+  const { id, player1, player2, lobbiesSocket } = props;
+
+  useEffect(() => {
+    lobbiesSocket.on('connectToRoom', (data: any) => {
+      console.log(data);
+    });
+  }, []);
+
   const renderLobby = () => {
     return (
       <Card key={id}>

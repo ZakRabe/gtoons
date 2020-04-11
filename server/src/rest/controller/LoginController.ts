@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { getRepository } from 'typeorm';
-import User from '../entity/User';
-import { hashPassword } from '../util';
+import User from '../../common/entity/User';
+import { hashPassword } from '../../util';
 import * as jwt from 'jsonwebtoken';
 
 export class LoginController {

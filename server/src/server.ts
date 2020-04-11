@@ -4,7 +4,7 @@ import { Request, Response } from 'express';
 import * as helmet from 'helmet';
 import 'reflect-metadata';
 import { createConnection } from 'typeorm';
-import { Routes } from './routes';
+import { Routes } from './rest/routes';
 import socket from './socket';
 import { RouteConfig } from './types';
 
@@ -33,7 +33,7 @@ const validResult = (result: any) => result !== null && result !== undefined;
 
 createConnection()
   .then(async (_connection) => {
-    // initialize socket events
+    // initialize socket events across the namespaces
     socket.init(io, lobbies, games);
 
     // register express routes from defined application routes
