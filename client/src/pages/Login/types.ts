@@ -1,6 +1,6 @@
-import { RouteComponentProps } from 'react-router-dom';
+import { HasRouter } from '../../App/types';
 
-export interface LoginProps extends RouteComponentProps {}
+export interface LoginProps extends HasRouter {}
 export interface LoginState {
   username: string;
   password: string;

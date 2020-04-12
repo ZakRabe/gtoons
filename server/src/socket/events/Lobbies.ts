@@ -1,15 +1,15 @@
-import { MatchMakingController } from './MatchMakingController';
-import { SocketConfig } from '../../../types';
+import LobbiesController from '../controller/LobbiesController';
+import { SocketConfig } from '../../types';
 
 const socketConfigs: SocketConfig[] = [
   {
     event: 'getOpenLobbies',
-    controller: MatchMakingController,
+    controller: LobbiesController,
     action: 'getOpenLobbies',
   },
   {
     event: 'createLobby',
-    controller: MatchMakingController,
+    controller: LobbiesController,
     action: 'createLobby',
   },
 ];

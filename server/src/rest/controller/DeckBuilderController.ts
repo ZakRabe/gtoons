@@ -1,9 +1,9 @@
 import { getRepository } from 'typeorm';
 import { NextFunction, Request, Response } from 'express';
-import User from '../entity/User';
-import Collection from '../entity/Collection';
+import User from '../../common/entity/User';
+import Collection from '../../common/entity/Collection';
 import * as jwt from 'jsonwebtoken';
-import Deck from '../entity/Deck';
+import Deck from '../../common/entity/Deck';
 
 export class DeckBuilderController {
   private collectionRepository = getRepository(Collection);
@@ -38,7 +38,7 @@ export class DeckBuilderController {
       player_id: user.userId,
     });
 
-    return deckLists.map(deck => deck.toJson());
+    return deckLists.map((deck) => deck.toJson());
   }
 
   async updateDeck(request: Request, response: Response, next: NextFunction) {

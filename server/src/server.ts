@@ -4,7 +4,7 @@ import { Request, Response } from 'express';
 import * as helmet from 'helmet';
 import 'reflect-metadata';
 import { createConnection } from 'typeorm';
-import { Routes } from './routes';
+import { Routes } from './rest/routes';
 import socket from './socket';
 import { RouteConfig } from './types';
 
@@ -14,7 +14,11 @@ app.use(helmet());
 app.use(bodyParser.json());
 app.set('port', process.env.PORT || 5000);
 const http = require('http').Server(app);
+
 const io = require('socket.io')(http);
+
+const lobbies = io.of('/lobbies');
+const games = io.of('/games');
 
 const server = http.listen(5000, function () {
   console.log('listening on *:5000');
@@ -29,8 +33,8 @@ const validResult = (result: any) => result !== null && result !== undefined;
 
 createConnection()
   .then(async (_connection) => {
-    // initialize socket events
-    socket.init(io);
+    // initialize socket events across the namespaces
+    socket.init(io, lobbies, games);
 
     // register express routes from defined application routes
     Routes.forEach((routeConfig: RouteConfig) => {

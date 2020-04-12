@@ -6,6 +6,7 @@ import './App.css';
 import AppHeader from './AppHeader';
 
 const App: React.FC = () => {
+  const [username, setUsername] = React.useState('');
   const App = () => (
     <section id="App-wrapper">
       <AppHeader />

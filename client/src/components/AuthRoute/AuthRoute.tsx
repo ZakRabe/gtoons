@@ -5,15 +5,11 @@ import { isLoggedIn } from '../../utils/auth';
 import { request } from '../../utils/api';
 
 const AuthRoute: React.FunctionComponent<AuthRouteProps> = (props) => {
-  const [verified, setVerified] = useState(false);
   useEffect(() => {
     request({
       url: 'login/validateToken',
     })
-      .then(() => {
-        setVerified(true);
-        // this means the token was still valid, so there's no need to be on this page
-      })
+      .then(() => {})
       .catch(() => {});
   }, []);
 
@@ -25,7 +21,7 @@ const AuthRoute: React.FunctionComponent<AuthRouteProps> = (props) => {
     );
   };
 
-  return verified ? renderAuthRoute() : null;
+  return renderAuthRoute();
 };
 
 export default AuthRoute;

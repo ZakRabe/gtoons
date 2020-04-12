@@ -7,25 +7,31 @@ import {
 import { LobbiesProps } from './types';
 import Lobby from './Lobby/Lobby';
 import { isLoggedIn } from '../../utils/auth';
+import { useSocketNamespace } from '../../utils/hooks';
 
 export const Lobbies = (props: LobbiesProps) => {
-  const { socket } = props;
+  const lobbiesSocket = useSocketNamespace('/lobbies');
 
   const [isOpen, setOpen] = React.useState(false);
   const [lobbies, setLobbies] = React.useState<any[]>([]);
 
   React.useEffect(() => {
-    socket.emit('getOpenLobbies');
-    socket.on('lobbyList', (data: any) => {
+    // connect to lobbies namespace socket
+    if (!lobbiesSocket) {
+      return;
+    }
+    lobbiesSocket.emit('getOpenLobbies');
+    lobbiesSocket.on('lobbyList', (data: any) => {
       setLobbies(data);
     });
-    socket.on('lobbyCreated', (newLobby: any) => {
+    lobbiesSocket.on('lobbyCreated', (newLobby: any) => {
       setLobbies((prevLobbies) => [...prevLobbies, newLobby]);
     });
-  }, []);
+    lobbiesSocket.on('roomMessage', console.log);
+  }, [lobbiesSocket]);
 
   const createLobby = () => {
-    socket.emit('createLobby', { user: isLoggedIn(), deck: 1 });
+    lobbiesSocket.emit('createLobby', { user: isLoggedIn(), deck: 1 });
   };
 
   return (
@@ -36,11 +42,17 @@ export const Lobbies = (props: LobbiesProps) => {
 
       <Card.Group>
         {lobbies.map((lobby: any) => {
-          return <Lobby {...lobby}></Lobby>;
+          return (
+            <Lobby
+              key={lobby.id}
+              {...lobby}
+              lobbiesSocket={lobbiesSocket}
+            ></Lobby>
+          );
         })}
       </Card.Group>
     </>
   );
 };
 
-export default socketConnect(Lobbies);
+export default Lobbies;

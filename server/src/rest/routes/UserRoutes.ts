@@ -8,27 +8,27 @@ export const UserRoutes = [
     route: '/users',
     middleware: [checkJwt, checkRoles(['ADMIN'])],
     controller: UserController,
-    action: 'all'
+    action: 'all',
   },
   {
     method: 'get',
     route: '/users/:id',
     middleware: [checkJwt, checkRoles(['ADMIN'])],
     controller: UserController,
-    action: 'one'
+    action: 'one',
   },
   {
     method: 'post',
     route: '/users',
     middleware: [checkJwt, checkRoles(['ADMIN'])],
     controller: UserController,
-    action: 'save'
+    action: 'save',
   },
   {
     method: 'delete',
     route: '/users/:id',
     middleware: [checkJwt, checkRoles(['ADMIN'])],
     controller: UserController,
-    action: 'remove'
-  }
+    action: 'remove',
+  },
 ];

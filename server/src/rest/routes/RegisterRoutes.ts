@@ -5,18 +5,18 @@ export const RegisterRoutes = [
     method: 'get',
     route: '/register/validUsername',
     controller: RegisterController,
-    action: 'validUsername'
+    action: 'validUsername',
   },
   {
     method: 'get',
     route: '/register/validEmail',
     controller: RegisterController,
-    action: 'validEmail'
+    action: 'validEmail',
   },
   {
     method: 'post',
     route: '/register/submit',
     controller: RegisterController,
-    action: 'submit'
-  }
+    action: 'submit',
+  },
 ];
