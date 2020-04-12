@@ -4,7 +4,7 @@ import { Request, Response } from 'express';
 import * as helmet from 'helmet';
 import 'reflect-metadata';
 import { createConnection } from 'typeorm';
-import { Routes } from './routes';
+import { Routes } from './rest/routes';
 import socket from './socket';
 import { RouteConfig } from './types';
 
@@ -14,13 +14,17 @@ app.use(helmet());
 app.use(bodyParser.json());
 app.set('port', process.env.PORT || 5000);
 const http = require('http').Server(app);
+
 const io = require('socket.io')(http);
 
-const server = http.listen(5000, function() {
+const lobbies = io.of('/lobbies');
+const games = io.of('/games');
+
+const server = http.listen(5000, function () {
   console.log('listening on *:5000');
 });
 
-app.use(function(req, _res, next) {
+app.use(function (req, _res, next) {
   console.log(`${req.method} ${req.path}`);
   next();
 });
@@ -28,9 +32,9 @@ app.use(function(req, _res, next) {
 const validResult = (result: any) => result !== null && result !== undefined;
 
 createConnection()
-  .then(async _connection => {
-    // initialize socket events
-    socket.init(io);
+  .then(async (_connection) => {
+    // initialize socket events across the namespaces
+    socket.init(io, lobbies, games);
 
     // register express routes from defined application routes
     Routes.forEach((routeConfig: RouteConfig) => {
@@ -42,7 +46,7 @@ createConnection()
           const result = (new controller() as any)[action](req, res, next);
           if (result instanceof Promise) {
             result
-              .then(output => {
+              .then((output) => {
                 // if the result has a statusCode attribute,
                 // we'll assume its a full response, and just return it
                 if (validResult(output) && output.statusCode) {
@@ -51,7 +55,7 @@ createConnection()
                   return validResult(output) ? res.send(output) : undefined;
                 }
               })
-              .catch(error => {
+              .catch((error) => {
                 console.log(error);
               });
           } else if (validResult(result)) {
@@ -61,4 +65,4 @@ createConnection()
       );
     });
   })
-  .catch(error => console.log(error));
+  .catch((error) => console.log(error));

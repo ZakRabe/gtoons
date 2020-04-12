@@ -1,5 +1,8 @@
 const crypto = require('crypto');
-export const getSalt = length => {
+import * as jwt from 'jsonwebtoken';
+import { AuthTokenUser } from './types';
+
+export const getSalt = (length) => {
   return crypto
     .randomBytes(Math.ceil(length / 2))
     .toString('hex')
@@ -12,11 +15,15 @@ export const hashPassword = (password: string, salt: string) => {
   const value = hash.digest('hex');
   return {
     salt: salt,
-    passwordHash: value
+    passwordHash: value,
   };
 };
 
 export const saltHashPassword = (password: string) => {
   const salt = this.getSalt(16);
   return hashPassword(password, salt);
+};
+
+export const verifyToken = (token): AuthTokenUser => {
+  return jwt.verify(token, 'GToons2019SecretToken');
 };

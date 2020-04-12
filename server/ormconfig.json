@@ -6,12 +6,12 @@
   "password": "test",
   "database": "gtoons",
   "logging": false,
-  "entities": ["src/entity/**/*.ts", "entity/**/*.js"],
-  "migrations": ["src/migration/**/*.ts", "migration/**/*.js"],
-  "subscribers": ["src/subscriber/**/*.ts", "subscriber/**/*.js"],
+  "entities": ["src/common/entity/**/*.ts", "common/entity/**/*.js"],
+  "migrations": ["src/common/migration/**/*.ts", "common/migration/**/*.js"],
+  "subscribers": ["src/common/subscriber/**/*.ts", "common/subscriber/**/*.js"],
   "cli": {
-    "entitiesDir": "src/entity",
-    "migrationsDir": "src/migration",
-    "subscribersDir": "src/subscriber"
+    "entitiesDir": "src/common/entity",
+    "migrationsDir": "src/common/migration",
+    "subscribersDir": "src/common/subscriber"
   }
 }

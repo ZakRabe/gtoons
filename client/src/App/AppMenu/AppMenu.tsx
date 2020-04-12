@@ -4,6 +4,8 @@ import { AppMenuProps } from './types';
 import { isLoggedIn, logOut } from '../../utils/auth';
 
 const AppMenu: React.FunctionComponent<AppMenuProps> = (props) => {
+  const user = isLoggedIn();
+
   const goto = (path: string) => {
     return () => {
       const { history } = props;

@@ -11,3 +11,10 @@ export interface SocketConfig {
   controller: any;
   action: string;
 }
+
+export interface AuthTokenUser {
+  userId: number;
+  username: string;
+  iat: number;
+  exp: number;
+}

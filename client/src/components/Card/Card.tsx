@@ -6,7 +6,6 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
 
   const cardWrapperStyles = {
     display: 'inline-flex',
-
     borderRadius: '50%',
     border: '1px solid silver',
     background: 'linear-gradient(to right, white, #030303)',
