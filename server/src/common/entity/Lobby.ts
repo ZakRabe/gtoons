@@ -3,11 +3,9 @@ import {
   Column,
   Entity,
   JoinColumn,
-  ManyToOne,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import Deck from './Deck';
 import Game from './Game';
 import User from './User';
 
@@ -29,6 +27,9 @@ export default class Lobby extends BaseEntity {
   @Column()
   capacity: number;
 
+  @Column()
+  connectedCount: number;
+
   @OneToOne((type) => User, { eager: true })
   @JoinColumn({ name: 'owner_player_id' })
   owner: User;
@@ -38,15 +39,16 @@ export default class Lobby extends BaseEntity {
   password: string;
 
   toJson = () => {
-    const { id, name, created, game, capacity, owner } = this;
+    const { id, name, created, game, capacity, owner, connectedCount } = this;
 
     return {
       id,
       name,
       created,
       capacity,
+      connectedCount,
       owner: owner.toJson(),
-      game: game.toJson(),
+      game: game && game.toJson(),
     };
   };
 }

@@ -1,6 +1,10 @@
 export interface LobbyProps {
   id: number;
-  player1: any;
-  player2: any;
+  name: string;
+  created: string;
+  capacity: number;
+  connectedCount: number;
+  owner: any;
+  game: any;
   lobbiesSocket: SocketIOClient.Socket;
 }

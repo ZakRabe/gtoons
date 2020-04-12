@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Card, Header } from 'semantic-ui-react';
+import { Button, Card, Header, Popup, Input, Divider } from 'semantic-ui-react';
 import {
   socketConnect,
   // @ts-ignore: no types for this
@@ -11,9 +11,13 @@ import { useSocketNamespace } from '../../utils/hooks';
 
 export const Lobbies = (props: LobbiesProps) => {
   const lobbiesSocket = useSocketNamespace('/lobbies');
+  const minCapacity = 2;
+  const maxCapacity = 30;
 
-  const [isOpen, setOpen] = React.useState(false);
   const [lobbies, setLobbies] = React.useState<any[]>([]);
+  const [lobbyName, setLobbyName] = React.useState('New Lobby');
+  const [capacity, setCapacity] = React.useState('2');
+  const [isOpen, setIsOpen] = React.useState(false);
 
   React.useEffect(() => {
     // connect to lobbies namespace socket
@@ -31,17 +35,66 @@ export const Lobbies = (props: LobbiesProps) => {
   }, [lobbiesSocket]);
 
   const createLobby = () => {
-    lobbiesSocket.emit('createLobby', { user: isLoggedIn(), deck: 1 });
+    lobbiesSocket.emit('createLobby', {
+      user: isLoggedIn(),
+      name: lobbyName,
+      capacity: Number(capacity),
+    });
+    setIsOpen(false);
+  };
+
+  const onNameChange = (e: React.ChangeEvent) => {
+    // @ts-ignore
+    const { value: newName } = e.target;
+    if (newName.length <= 50) {
+      setLobbyName(newName);
+    }
+  };
+
+  const onCapacityChange = (e: React.ChangeEvent) => {
+    // @ts-ignore
+    const { value: newCapacity } = e.target;
+    if (newCapacity >= minCapacity && newCapacity <= maxCapacity) {
+      setCapacity(newCapacity);
+    }
+  };
+
+  const renderPopup = () => {
+    return (
+      <Popup
+        on="click"
+        wide
+        trigger={<Button>Create a Lobby</Button>}
+        open={isOpen}
+        onOpen={() => setIsOpen(true)}
+        onClose={() => setIsOpen(false)}
+      >
+        <Popup.Header>Lobby Settings</Popup.Header>
+        <Popup.Content>
+          <Input label="Name" value={lobbyName} onChange={onNameChange}></Input>
+          <Input
+            type="number"
+            label="Room Size"
+            value={capacity}
+            onChange={onCapacityChange}
+          ></Input>
+          <Divider />
+          <Button floated="right" onClick={() => createLobby()}>
+            <i className="fas fa-play"></i>&nbsp; Go
+          </Button>
+        </Popup.Content>
+      </Popup>
+    );
   };
 
   return (
     <>
       <Header as="h1">Play gToons Revived</Header>
-      <Button onClick={createLobby}>Create a Lobby</Button>
+      {renderPopup()}
       <Header as="h2">Active Lobbies</Header>
-
       <Card.Group>
         {lobbies.map((lobby: any) => {
+          console.log(lobby);
           return (
             <Lobby
               key={lobby.id}
