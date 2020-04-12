@@ -1,9 +1,19 @@
 import React, { useEffect } from 'react';
 import { Button, Card, Image } from 'semantic-ui-react';
 import { LobbyProps } from './types';
+import moment from 'moment';
 
 const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
-  const { id, player1, player2, lobbiesSocket } = props;
+  const {
+    id,
+    name,
+    created,
+    capacity,
+    owner,
+    connectedCount,
+    game,
+    lobbiesSocket,
+  } = props;
 
   useEffect(() => {
     lobbiesSocket.on('connectToRoom', (data: any) => {
@@ -12,6 +22,8 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
   }, []);
 
   const renderLobby = () => {
+    const ago = moment.duration(moment(created).diff(moment())).humanize(true);
+    const openSeats = capacity - connectedCount;
     return (
       <Card key={id}>
         <Card.Content>
@@ -21,18 +33,17 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
             circular
             src="http://placehold.it/100x100"
           />
-          <Card.Header>{player1.username}</Card.Header>
-          <Card.Meta>created: 10 minutes ago</Card.Meta>
+          <Card.Header>{name}</Card.Header>
+          <Card.Meta>Host: {owner.username}</Card.Meta>
         </Card.Content>
         <Card.Content extra>
+          {openSeats} seat{openSeats > 1 && 's'} open
           <div className="ui two buttons">
-            <Button basic color="purple">
-              Spectate
-            </Button>
-            <Button disabled={player2} basic color="green">
-              Join
+            <Button basic disabled={capacity === connectedCount} color="green">
+              {capacity === connectedCount ? 'Lobby Full' : 'Join'}
             </Button>
           </div>
+          <Card.Meta textAlign="right">created: {ago}</Card.Meta>
         </Card.Content>
       </Card>
     );
