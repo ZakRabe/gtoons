@@ -46,7 +46,9 @@ export const Lobbies = (props: LobbiesProps) => {
   const onNameChange = (e: React.ChangeEvent) => {
     // @ts-ignore
     const { value: newName } = e.target;
-    setLobbyName(newName);
+    if (newName.length <= 50) {
+      setLobbyName(newName);
+    }
   };
 
   const onCapacityChange = (e: React.ChangeEvent) => {
