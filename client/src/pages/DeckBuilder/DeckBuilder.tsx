@@ -9,11 +9,23 @@ import { request } from '../../utils/api';
 import { Card, Deck } from '../../App/types';
 import CardComponent from '../../components/Card';
 import CSS from 'csstype';
+import ColorButton from './components/ColorButton';
 
 export const DeckBuilder = (props: DeckBuilderProps) => {
   // const { socket } = props;
 
   const [collection, setCollection] = React.useState([]);
+  const [colorFilters, setFilters] = React.useState([
+    'BLACK',
+    'BLUE',
+    'GREEN',
+    'ORANGE',
+    'PURPLE',
+    'RED',
+    'SILVER',
+    'YELLOW',
+  ]);
+  const [search, setSearch] = React.useState('');
   const [hoveredCard, setHoveredCard] = React.useState<Card | null>(null);
   const [cards, setCards] = React.useState<Card[]>([]);
   const [name, setName] = React.useState('New Deck');
@@ -137,18 +149,44 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
     setHoveredCard(card);
   };
 
+  const toggleColor = (color: string) => (e: React.MouseEvent) => {
+    const newFilters = colorFilters.includes(color)
+      ? [...colorFilters.filter((filterColor) => filterColor !== color)]
+      : [...colorFilters, color];
+    console.log(newFilters);
+    setFilters(newFilters);
+  };
+
+  const onSearchInputChange = (e: React.ChangeEvent) => {
+    const {
+      target: { value },
+    } = e as any;
+    console.log(value);
+
+    setSearch(value);
+  };
+
+  const checkForTerm = (card: Card): boolean => {
+    return card.title.includes(search);
+  };
+
   const renderCollection = () => {
     return cards.map((card: Card) => {
-      return (
-        <CardComponent
-          key={card.id}
-          model={card}
-          onClick={onCollectionCardClick(card.id)}
-          onHover={() => onHover(card)}
-          width={150}
-          height={150}
-        />
-      );
+      if (
+        card.colors.some((cardColor) => colorFilters.includes(cardColor)) &&
+        checkForTerm(card)
+      ) {
+        return (
+          <CardComponent
+            key={card.id}
+            model={card}
+            onClick={onCollectionCardClick(card.id)}
+            onHover={() => onHover(card)}
+            width={150}
+            height={150}
+          />
+        );
+      }
     });
   };
 
@@ -202,9 +240,8 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
               }}
             >
               {deck.map((cardId) => {
-                const card = cards.find(
-                  (item: Card) => item.id === cardId
-                ) as Card;
+                const card =
+                  cards.find((item: Card) => item.id === cardId) as Card;
                 return card ? (
                   <li
                     key={cardId}
@@ -226,17 +263,6 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
       </>
     );
   };
-
-  // {/* <ul>
-  //       {deckList.map((deck: Deck) => {
-  //         return (
-  //           <li key={deck.id} style={{ display: 'block', width: '100%' }}>
-  //             <p onClick={onDeckClick(deck)}>{deck.name}</p>
-  //           </li>
-  //         );
-  //       })}
-  //     </ul> */}
-  //
 
   const editorStyles = {
     display: 'flex',
@@ -267,7 +293,19 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
   return (
     <section style={styles}>
       <section style={filtersStyles}>
-        <img src="http://placehold.it/100x100" />
+        <ColorButton color="BLACK" onClick={toggleColor('BLACK')} />
+        <ColorButton color="BLUE" onClick={toggleColor('BLUE')} />
+        <ColorButton color="GREEN" onClick={toggleColor('GREEN')} />
+        <ColorButton color="ORANGE" onClick={toggleColor('ORANGE')} />
+        <ColorButton color="PURPLE" onClick={toggleColor('PURPLE')} />
+        <ColorButton color="RED" onClick={toggleColor('RED')} />
+        <ColorButton color="SILVER" onClick={toggleColor('SILVER')} />
+        <ColorButton color="YELLOW" onClick={toggleColor('YELLOW')} />
+        <Input
+          icon="search"
+          placeholder="Search"
+          onChange={onSearchInputChange}
+        ></Input>
       </section>
       <section style={editorStyles}>
         <section style={collectionContainerStyles}>
