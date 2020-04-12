@@ -17,6 +17,7 @@ export const Lobbies = (props: LobbiesProps) => {
   const [lobbies, setLobbies] = React.useState<any[]>([]);
   const [lobbyName, setLobbyName] = React.useState('New Lobby');
   const [capacity, setCapacity] = React.useState('2');
+  const [isOpen, setIsOpen] = React.useState(false);
 
   React.useEffect(() => {
     // connect to lobbies namespace socket
@@ -37,8 +38,9 @@ export const Lobbies = (props: LobbiesProps) => {
     lobbiesSocket.emit('createLobby', {
       user: isLoggedIn(),
       name: lobbyName,
-      capacity,
+      capacity: Number(capacity),
     });
+    setIsOpen(false);
   };
 
   const onNameChange = (e: React.ChangeEvent) => {
@@ -57,7 +59,14 @@ export const Lobbies = (props: LobbiesProps) => {
 
   const renderPopup = () => {
     return (
-      <Popup on="click" wide trigger={<Button>Create a Lobby</Button>}>
+      <Popup
+        on="click"
+        wide
+        trigger={<Button>Create a Lobby</Button>}
+        open={isOpen}
+        onOpen={() => setIsOpen(true)}
+        onClose={() => setIsOpen(false)}
+      >
         <Popup.Header>Lobby Settings</Popup.Header>
         <Popup.Content>
           <Input label="Name" value={lobbyName} onChange={onNameChange}></Input>
@@ -83,6 +92,7 @@ export const Lobbies = (props: LobbiesProps) => {
       <Header as="h2">Active Lobbies</Header>
       <Card.Group>
         {lobbies.map((lobby: any) => {
+          console.log(lobby);
           return (
             <Lobby
               key={lobby.id}

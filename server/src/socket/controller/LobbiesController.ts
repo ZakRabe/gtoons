@@ -42,9 +42,8 @@ export class LobbyController extends SockerController {
       capacity,
     });
 
-    const { id } = await newLobby.save();
-
-    const savedLobby = await this.lobbyRepository.findOne(id);
+    const savedLobby = await newLobby.save();
+    await savedLobby.reload();
 
     const lobbyRoom = `lobby/${savedLobby.id}`;
     this.socket.join(lobbyRoom);

@@ -21,7 +21,7 @@
     "mysql": "^2.17.1",
     "reflect-metadata": "^0.1.10",
     "socket.io": "^2.3.0",
-    "typeorm": "0.2.21"
+    "typeorm": "0.2.24"
   },
   "devDependencies": {
     "@types/helmet": "0.0.45",
