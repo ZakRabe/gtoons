@@ -3,7 +3,7 @@ import { RouteComponentProps } from 'react-router-dom';
 export interface HasSocket {
   socket: any;
 }
-export interface HasRouter extends RouteComponentProps {}
+export interface HasRouter<P = Partial<any>> extends RouteComponentProps<P> {}
 
 export interface Card {
   id: number;

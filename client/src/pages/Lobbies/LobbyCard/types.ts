@@ -1,4 +1,6 @@
-export interface LobbyProps {
+import { HasRouter } from '../../../App/types';
+
+export interface LobbyCardProps extends HasRouter {
   id: number;
   name: string;
   created: string;
@@ -6,5 +8,4 @@ export interface LobbyProps {
   connectedCount: number;
   owner: any;
   game: any;
-  lobbiesSocket: SocketIOClient.Socket;
 }

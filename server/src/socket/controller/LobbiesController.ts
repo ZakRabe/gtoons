@@ -1,5 +1,4 @@
 import { getRepository, MoreThan } from 'typeorm';
-import Deck from '../../common/entity/Deck';
 import Game from '../../common/entity/Game';
 import Lobby from '../../common/entity/Lobby';
 import User from '../../common/entity/User';
@@ -61,6 +60,13 @@ export class LobbyController extends SockerController {
       'lobbyList',
       openLobbies.map((lobby) => lobby.toJson())
     );
+  }
+
+  joinLobby({ lobbyId, token }) {
+    const lobbyRoom = `lobby/${lobbyId}`;
+    const user = verifyToken(token);
+    this.socket.join(lobbyRoom);
+    this.io.to(lobbyRoom).emit('userJoined', user.username);
   }
 }
 

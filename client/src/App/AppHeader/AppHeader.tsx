@@ -1,7 +1,8 @@
 import React from 'react';
-import { Header, Divider } from 'semantic-ui-react';
-import { AppHeaderProps } from './types';
+import { withRouter } from 'react-router-dom';
+import { Divider, Header } from 'semantic-ui-react';
 import AppMenu from '../AppMenu';
+import { AppHeaderProps } from './types';
 
 const AppHeader: React.FunctionComponent<AppHeaderProps> = (props) => {
   const goto = (path: string) => {
@@ -25,4 +26,4 @@ const AppHeader: React.FunctionComponent<AppHeaderProps> = (props) => {
   return renderAppHeader();
 };
 
-export default AppHeader;
+export default withRouter(AppHeader);

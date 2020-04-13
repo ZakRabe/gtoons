@@ -6,6 +6,7 @@ import DeckBuilder from '../pages/DeckBuilder';
 import Game from '../pages/Game';
 import Home from '../pages/Home';
 import Lobbies from '../pages/Lobbies';
+import Lobby from '../pages/Lobby';
 import Login from '../pages/Login';
 import Profile from '../pages/Profile';
 import Register from '../pages/Register';
@@ -22,6 +23,7 @@ export default class Routes extends React.Component<RoutesProps> {
             <Route path="/login" component={Login} />
             <AuthRoute path="/profile" component={Profile} />
             <AuthRoute path="/game" component={Game} />
+            <AuthRoute exact path="/lobbies/:lobbyId" component={Lobby} />
             <AuthRoute path="/lobbies" component={Lobbies} />
             <AuthRoute path="/deckBuilder" component={DeckBuilder} />
           </Switch>

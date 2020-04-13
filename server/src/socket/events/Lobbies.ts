@@ -1,4 +1,5 @@
 import LobbiesController from '../controller/LobbiesController';
+import LobbyController from '../controller/LobbyController';
 import { SocketConfig } from '../../types';
 
 const socketConfigs: SocketConfig[] = [
@@ -11,6 +12,16 @@ const socketConfigs: SocketConfig[] = [
     event: 'createLobby',
     controller: LobbiesController,
     action: 'createLobby',
+  },
+  {
+    event: 'joinLobby',
+    controller: LobbyController,
+    action: 'joinLobby',
+  },
+  {
+    event: 'messageLobby',
+    controller: LobbyController,
+    action: 'messageLobby',
   },
 ];
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { AuthRouteProps } from './types';
 import { isLoggedIn } from '../../utils/auth';

@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
-import { Button, Card, Image } from 'semantic-ui-react';
-import { LobbyProps } from './types';
 import moment from 'moment';
+import React, { useEffect, useState } from 'react';
+import { withRouter } from 'react-router-dom';
+import { Button, Card, Image } from 'semantic-ui-react';
+import { LobbyCardProps } from './types';
 
-const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
+export const LobbyCard: React.FunctionComponent<LobbyCardProps> = (props) => {
   const {
     id,
     name,
@@ -11,15 +12,27 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
     capacity,
     owner,
     connectedCount,
-    game,
-    lobbiesSocket,
+    game: _game,
   } = props;
 
+  const [, rerender] = useState(false);
+
   useEffect(() => {
-    lobbiesSocket.on('connectToRoom', (data: any) => {
-      console.log(data);
-    });
+    // auto-rerender every 1 minute, should update the "5 minutes ago"
+    const interval = setInterval(() => {
+      rerender((prev) => !prev);
+    }, 60000);
+
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
+
+  const joinLobby = () => {
+    const { history } = props;
+
+    history.push(`/lobbies/${id}`);
+  };
 
   const renderLobby = () => {
     const ago = moment.duration(moment(created).diff(moment())).humanize(true);
@@ -39,7 +52,12 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
         <Card.Content extra>
           {openSeats} seat{openSeats > 1 && 's'} open
           <div className="ui two buttons">
-            <Button basic disabled={capacity === connectedCount} color="green">
+            <Button
+              basic
+              disabled={capacity === connectedCount}
+              onClick={() => joinLobby()}
+              color="green"
+            >
               {capacity === connectedCount ? 'Lobby Full' : 'Join'}
             </Button>
           </div>
@@ -52,4 +70,4 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
   return renderLobby();
 };
 
-export default Lobby;
+export default withRouter(LobbyCard);

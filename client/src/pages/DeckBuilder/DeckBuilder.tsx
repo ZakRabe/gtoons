@@ -1,15 +1,11 @@
+import CSS from 'csstype';
 import * as React from 'react';
-import { DeckBuilderProps } from './types';
-import {
-  socketConnect,
-  // @ts-ignore: no types for this
-} from 'socket.io-react';
-import { Button, Input, Dropdown, DropdownItemProps } from 'semantic-ui-react';
-import { request } from '../../utils/api';
+import { Button, Dropdown, DropdownItemProps, Input } from 'semantic-ui-react';
 import { Card, Deck } from '../../App/types';
 import CardComponent from '../../components/Card';
-import CSS from 'csstype';
+import { request } from '../../utils/api';
 import ColorButton from './components/ColorButton';
+import { DeckBuilderProps } from './types';
 
 export const DeckBuilder = (props: DeckBuilderProps) => {
   // const { socket } = props;
@@ -25,7 +21,7 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
     'YELLOW',
   ];
 
-  const [collection, setCollection] = React.useState([]);
+  const [_collection, setCollection] = React.useState([]);
   const [colorFilters, setFilters] = React.useState(colorOptions);
   const [search, setSearch] = React.useState('');
   const [hoveredCard, setHoveredCard] = React.useState<Card | null>(null);
@@ -123,7 +119,8 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
     setDeck(newDeck);
   };
 
-  const onDeckClick = (clickedDeck: Deck) => (e: React.MouseEvent) => {
+  // REVIEW: Linter says this is unused
+  const _onDeckClick = (clickedDeck: Deck) => (e: React.MouseEvent) => {
     // console.log(clickedDeck);
     const { id, name } = clickedDeck;
     const savedDeck = JSON.parse(clickedDeck.cards);
@@ -162,7 +159,8 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
     });
   };
 
-  const updateDeck = () => {
+  // REVIEW: Linter says this is unused
+  const _updateDeck = () => {
     request({
       method: 'post',
       url: 'deckBuilder/updateDeck',
@@ -180,22 +178,20 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
 
   //TODO: Rename
   const handleChange = (deckList: Deck[]) => {
-    const listOptions: DropdownItemProps[] = [];
-    listOptions.push({
+    // console.log(deckList);
+    const listOptions: DropdownItemProps[] = deckList.map((deck) => {
+      // console.log(deck);
+      return {
+        key: deck.id.toString(),
+        text: deck.name,
+        value: deck.id,
+      };
+    });
+    listOptions.unshift({
       key: 'newDeck',
       text: 'New Deck',
       value: '-1',
     });
-    // console.log(deckList);
-    deckList.map((deck) => {
-      // console.log(deck);
-      listOptions.push({
-        key: deck.id.toString(),
-        text: deck.name,
-        value: deck.id,
-      });
-    });
-    // console.log(listOptions);
     setDeckListOptions(listOptions);
   };
 
@@ -279,7 +275,7 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
       cards
         .filter((card) => searchMatches.includes(card))
         .filter((card) => colorMatches.includes(card)),
-    [cards, colorFilters, search]
+    [cards, searchMatches, colorMatches]
   );
 
   const renderCollection = () => {
@@ -354,8 +350,9 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
               }}
             >
               {deck.map((cardId) => {
-                const card =
-                  cards.find((item: Card) => item.id === cardId) as Card;
+                const card = cards.find(
+                  (item: Card) => item.id === cardId
+                ) as Card;
                 return card ? (
                   <li
                     key={cardId}
@@ -384,6 +381,7 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
         {colorOptions.map((color) => {
           return (
             <ColorButton
+              key={color}
               color={color}
               active={colorFilters.includes(color)}
               onClick={toggleColor(color)}

@@ -5,6 +5,6 @@ export const useSocketNamespace = (namespace: string) => {
   const [socket, setSocket] = React.useState<SocketIOClient.Socket>();
   useEffect(() => {
     setSocket(io(namespace));
-  }, []);
+  }, [namespace]);
   return socket as SocketIOClient.Socket;
 };

@@ -1,15 +1,11 @@
 import * as React from 'react';
-import { Button, Card, Header, Popup, Input, Divider } from 'semantic-ui-react';
-import {
-  socketConnect,
-  // @ts-ignore: no types for this
-} from 'socket.io-react';
-import { LobbiesProps } from './types';
-import Lobby from './Lobby/Lobby';
+import { Button, Card, Divider, Header, Input, Popup } from 'semantic-ui-react';
 import { isLoggedIn } from '../../utils/auth';
 import { useSocketNamespace } from '../../utils/hooks';
+import LobbyCard from './LobbyCard';
+import { LobbiesProps } from './types';
 
-export const Lobbies = (props: LobbiesProps) => {
+export const Lobbies = (_props: LobbiesProps) => {
   const lobbiesSocket = useSocketNamespace('/lobbies');
   const minCapacity = 2;
   const maxCapacity = 30;
@@ -31,7 +27,6 @@ export const Lobbies = (props: LobbiesProps) => {
     lobbiesSocket.on('lobbyCreated', (newLobby: any) => {
       setLobbies((prevLobbies) => [...prevLobbies, newLobby]);
     });
-    lobbiesSocket.on('roomMessage', console.log);
   }, [lobbiesSocket]);
 
   const createLobby = () => {
@@ -94,14 +89,7 @@ export const Lobbies = (props: LobbiesProps) => {
       <Header as="h2">Active Lobbies</Header>
       <Card.Group>
         {lobbies.map((lobby: any) => {
-          console.log(lobby);
-          return (
-            <Lobby
-              key={lobby.id}
-              {...lobby}
-              lobbiesSocket={lobbiesSocket}
-            ></Lobby>
-          );
+          return <LobbyCard key={lobby.id} {...lobby}></LobbyCard>;
         })}
       </Card.Group>
     </>
