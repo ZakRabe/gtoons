@@ -1,11 +1,15 @@
-import CSS from 'csstype';
 import * as React from 'react';
-import { Button, Dropdown, DropdownItemProps, Input } from 'semantic-ui-react';
+import { DeckBuilderProps } from './types';
+import {
+  socketConnect,
+  // @ts-ignore: no types for this
+} from 'socket.io-react';
+import { Button, Input, Dropdown, DropdownItemProps } from 'semantic-ui-react';
+import { request } from '../../utils/api';
 import { Card, Deck } from '../../App/types';
 import CardComponent from '../../components/Card';
-import { request } from '../../utils/api';
+import CSS from 'csstype';
 import ColorButton from './components/ColorButton';
-import { DeckBuilderProps } from './types';
 
 export const DeckBuilder = (props: DeckBuilderProps) => {
   // const { socket } = props;
@@ -21,7 +25,7 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
     'YELLOW',
   ];
 
-  const [_collection, setCollection] = React.useState([]);
+  const [collection, setCollection] = React.useState([]);
   const [colorFilters, setFilters] = React.useState(colorOptions);
   const [search, setSearch] = React.useState('');
   const [hoveredCard, setHoveredCard] = React.useState<Card | null>(null);
@@ -33,7 +37,7 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
   const [deckList, setDeckList] = React.useState<Deck[]>([]);
   const [deckListOptions, setDeckListOptions] = React.useState<
     DropdownItemProps[]
-  >([{ key: 'new', text: 'New Deck', value: 'New Deck' }]);
+  >([]);
 
   // display a list of decks
   // Click a card in the collection -> adds it to the current deck
@@ -119,8 +123,7 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
     setDeck(newDeck);
   };
 
-  // REVIEW: Linter says this is unused
-  const _onDeckClick = (clickedDeck: Deck) => (e: React.MouseEvent) => {
+  const onDeckClick = (clickedDeck: Deck) => () => {
     // console.log(clickedDeck);
     const { id, name } = clickedDeck;
     const savedDeck = JSON.parse(clickedDeck.cards);
@@ -145,22 +148,39 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
       return;
     }
 
+    //Check if the decks id is in the list of deck ids (ie: check if you are updating or creating a new deck)
+
     request({
       method: 'post',
       url: 'deckBuilder/saveDeck',
       data: { name, deck },
     }).then((newDeck: Deck) => {
-      const newDeckList: Deck[] = [...deckList];
-      newDeckList.push(newDeck);
-      setDeckId(newDeck.id);
-      setName(newDeck.name);
-      setDeck(JSON.parse(newDeck.cards));
-      setDeckList(newDeckList);
+      // const newDeckList: Deck[] = [...deckList];
+      // newDeckList.push(newDeck);
+      // console.log(newDeckList);
+      // setDeckId(newDeck.id);
+      // setName(newDeck.name);
+      // setDeck(JSON.parse(newDeck.cards)); // do server side
+      // setDeckList(newDeckList);
+
+      const newDeckListOptions: DropdownItemProps[] = [
+        ...deckListOptions.filter(
+          (deckOption) => deckOption.value != newDeck.id
+        ),
+      ];
+      newDeckListOptions.push({
+        key: newDeck.id.toString(),
+        text: newDeck.name,
+        value: newDeck.id,
+        onClick: onDeckClick(newDeck),
+      });
+
+      console.log(newDeckListOptions);
+      setDeckListOptions(newDeckListOptions);
     });
   };
 
-  // REVIEW: Linter says this is unused
-  const _updateDeck = () => {
+  const updateDeck = () => {
     request({
       method: 'post',
       url: 'deckBuilder/updateDeck',
@@ -178,20 +198,18 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
 
   //TODO: Rename
   const handleChange = (deckList: Deck[]) => {
+    const listOptions: DropdownItemProps[] = [];
     // console.log(deckList);
-    const listOptions: DropdownItemProps[] = deckList.map((deck) => {
+    deckList.map((deck) => {
       // console.log(deck);
-      return {
+      listOptions.push({
         key: deck.id.toString(),
         text: deck.name,
         value: deck.id,
-      };
+        onClick: onDeckClick(deck),
+      });
     });
-    listOptions.unshift({
-      key: 'newDeck',
-      text: 'New Deck',
-      value: '-1',
-    });
+    // console.log(listOptions);
     setDeckListOptions(listOptions);
   };
 
@@ -275,8 +293,12 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
       cards
         .filter((card) => searchMatches.includes(card))
         .filter((card) => colorMatches.includes(card)),
-    [cards, searchMatches, colorMatches]
+    [cards, colorFilters, search]
   );
+
+  const DropDownClick = () => {
+    console.log("I'm here");
+  };
 
   const renderCollection = () => {
     return allMatches.map((card: Card) => {
@@ -328,14 +350,6 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
               value={name}
               onChange={onNameInputChange}
               style={{ width: '100%' }}
-              action={
-                <Dropdown
-                  button
-                  basic
-                  options={deckListOptions}
-                  style={{ display: 'flex', width: '20%' }}
-                />
-              }
             />
           </div>
           <div
@@ -350,9 +364,8 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
               }}
             >
               {deck.map((cardId) => {
-                const card = cards.find(
-                  (item: Card) => item.id === cardId
-                ) as Card;
+                const card =
+                  cards.find((item: Card) => item.id === cardId) as Card;
                 return card ? (
                   <li
                     key={cardId}
@@ -381,7 +394,6 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
         {colorOptions.map((color) => {
           return (
             <ColorButton
-              key={color}
               color={color}
               active={colorFilters.includes(color)}
               onClick={toggleColor(color)}
@@ -393,7 +405,26 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
           icon="search"
           placeholder="Search"
           onChange={onSearchInputChange}
+          style={{ flexGrow: '1', marginRight: 10 }}
         ></Input>
+        <Dropdown
+          placeholder="Select a Deck"
+          icon="none"
+          button
+          scrolling
+          clearable
+          options={deckListOptions}
+          style={{
+            justifySelf: 'flex-end',
+            marginLeft: 'auto',
+            width: '20vw',
+            height: '100%',
+            backgroundColor: 'white',
+            textAlign: 'center',
+            fontSize: '16px',
+            color: 'black',
+          }}
+        />
       </section>
       <section style={editorStyles}>
         <section style={collectionContainerStyles}>
