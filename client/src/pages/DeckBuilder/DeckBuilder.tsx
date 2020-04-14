@@ -34,7 +34,7 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
 
   const [deckId, setDeckId] = React.useState(-1);
   const [deck, setDeck] = React.useState<number[]>([]);
-  const [deckList, setDeckList] = React.useState<Deck[]>([]);
+  const [deckList, setDeckList] = React.useState<Deck[]>([]); // probably don't need this anymore?
   const [deckListOptions, setDeckListOptions] = React.useState<
     DropdownItemProps[]
   >([]);
@@ -104,10 +104,10 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
     request({ url: 'cards/all' }).then(setCards);
 
     request({ url: 'deckBuilder/myDeckList' }).then((newDeckList) => {
-      const t = [...newDeckList];
-      setDeckList(t);
+      const localDeckList = [...newDeckList];
+      setDeckList(localDeckList);
       // console.log(t);
-      handleChange(t);
+      updateOptions(localDeckList);
 
       //console.log(newDeckList[0]);
     });
@@ -155,28 +155,15 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
       url: 'deckBuilder/saveDeck',
       data: { name, deck },
     }).then((newDeck: Deck) => {
-      // const newDeckList: Deck[] = [...deckList];
-      // newDeckList.push(newDeck);
-      // console.log(newDeckList);
-      // setDeckId(newDeck.id);
-      // setName(newDeck.name);
-      // setDeck(JSON.parse(newDeck.cards)); // do server side
-      // setDeckList(newDeckList);
+      const newDeckList: Deck[] = [...deckList];
+      newDeckList.push(newDeck);
+      console.log(newDeckList);
+      setDeckId(newDeck.id);
+      setName(newDeck.name);
+      setDeck(JSON.parse(newDeck.cards)); // do server side
+      setDeckList(newDeckList);
 
-      const newDeckListOptions: DropdownItemProps[] = [
-        ...deckListOptions.filter(
-          (deckOption) => deckOption.value != newDeck.id
-        ),
-      ];
-      newDeckListOptions.push({
-        key: newDeck.id.toString(),
-        text: newDeck.name,
-        value: newDeck.id,
-        onClick: onDeckClick(newDeck),
-      });
-
-      console.log(newDeckListOptions);
-      setDeckListOptions(newDeckListOptions);
+      updateOptions(newDeckList);
     });
   };
 
@@ -193,11 +180,12 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
       ];
       // console.log(newDeckList);
       setDeckList(newDeckList);
+      updateOptions(newDeckList);
     });
   };
 
   //TODO: Rename
-  const handleChange = (deckList: Deck[]) => {
+  const updateOptions = (deckList: Deck[]) => {
     const listOptions: DropdownItemProps[] = [];
     // console.log(deckList);
     deckList.map((deck) => {
@@ -296,10 +284,6 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
     [cards, colorFilters, search]
   );
 
-  const DropDownClick = () => {
-    console.log("I'm here");
-  };
-
   const renderCollection = () => {
     return allMatches.map((card: Card) => {
       return (
@@ -361,6 +345,7 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
                 display: 'flex',
                 flexDirection: 'column',
                 flexGrow: 1,
+                padding: 0,
               }}
             >
               {deck.map((cardId) => {
@@ -371,8 +356,46 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
                     key={cardId}
                     onClick={onDeckCardClick(card.id)}
                     onMouseOver={() => onHover(card)}
+                    style={{
+                      display: 'flex',
+                      height: '8.33%',
+                      alignItems: 'center',
+                      border: `1px solid ${card.colors[0]}`,
+                      fontWeight: 'bolder',
+                    }}
                   >
-                    {card.title}
+                    <div
+                      style={{
+                        height: '100%',
+                        width: '5%',
+                        backgroundColor: `${card.colors[0]}`,
+                      }}
+                    ></div>
+                    <div
+                      style={{
+                        display: 'flex',
+                        height: '100%',
+                        maxWidth: '100%',
+                        flexGrow: 1,
+                        textAlign: 'center',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      {card.title}
+                    </div>
+                    <div
+                      style={{
+                        display: 'flex',
+                        height: '100%',
+                        width: '8%',
+                        textAlign: 'center',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      {card.points}
+                    </div>
                   </li>
                 ) : null;
               })}
