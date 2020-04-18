@@ -16,9 +16,9 @@ export class LoginController {
     });
   };
 
-  validateToken = () => {
+  validateToken = (request: Request, response: Response) => {
     // this endpoint does nothing, and is just used to see if the request's token is valid
-    return true;
+    return { user: response.locals.jwtPayload };
   };
 
   submit = async (
@@ -49,7 +49,7 @@ export class LoginController {
       { expiresIn: '1h' }
     );
 
-    return response.send(token);
+    return response.send({ token, user });
   };
 
   // TODO

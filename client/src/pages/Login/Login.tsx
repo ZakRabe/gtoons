@@ -59,7 +59,7 @@ export default class Login extends React.Component<LoginProps, LoginState> {
       url: 'login/submit',
       data: { username, password },
     })
-      .then((token) => {
+      .then(({ token, user }) => {
         localStorage.setItem('authToken', token);
         history.push('/profile');
       })

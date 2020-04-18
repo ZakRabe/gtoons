@@ -1,12 +1,35 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Menu } from 'semantic-ui-react';
-import { AppMenuProps } from './types';
+import UserContext from '../../Context/UserContext';
+import { request } from '../../utils/api';
 import { isLoggedIn, logOut } from '../../utils/auth';
+import { AppMenuProps } from './types';
 
 const AppMenu: React.FunctionComponent<AppMenuProps> = (props) => {
+  const { user, setUser } = useContext(UserContext);
+
+  useEffect(() => {
+    request({
+      url: 'login/validateToken',
+    })
+      .then(({ user: authdUser }) => {
+        // console.log(user);
+        // this means the token was still valid, so there's no need to be on this page
+
+        if (!user || user.userId !== authdUser.userId) {
+          setUser(authdUser);
+        }
+      })
+      .catch(() => {
+        setUser(null);
+        // this means the token was invalid, so we dont need to do anything.
+        // the token was already cleared in the request helper upon recieveing a 401
+      });
+  });
+
   const goto = (path: string) => {
+    const { history } = props;
     return () => {
-      const { history } = props;
       if (path[0] === '/') {
         history.push(path);
       } else {
@@ -56,7 +79,10 @@ const AppMenu: React.FunctionComponent<AppMenuProps> = (props) => {
     );
   };
 
-  const renderUserMenu = () => {
+  const renderUserMenu = (user: any) => {
+    if (!user) {
+      return null;
+    }
     const {
       location: { pathname },
     } = props;
@@ -86,7 +112,7 @@ const AppMenu: React.FunctionComponent<AppMenuProps> = (props) => {
               active={pathname.includes('/profile')}
               onClick={goto('/profile')}
             >
-              <i className="far fa-id-badge"></i> &nbsp;Profile
+              <i className="far fa-id-badge"></i> &nbsp;Profile {user.username}
             </Menu.Item>
             <Menu.Item
               onClick={() => {
@@ -106,7 +132,7 @@ const AppMenu: React.FunctionComponent<AppMenuProps> = (props) => {
   const renderAppMenu = () => {
     return (
       <Menu vertical id="App-menu">
-        {isLoggedIn() ? renderUserMenu() : renderNonAuthMenu()}
+        {isLoggedIn() ? renderUserMenu(user) : renderNonAuthMenu()}
       </Menu>
     );
   };
