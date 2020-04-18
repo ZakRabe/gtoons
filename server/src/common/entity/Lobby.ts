@@ -34,12 +34,34 @@ export default class Lobby extends BaseEntity {
   @JoinColumn({ name: 'owner_player_id' })
   owner: User;
 
+  @OneToOne((type) => User, { eager: true })
+  @JoinColumn({ name: 'seat1_player_id' })
+  seat1: User;
+
+  @OneToOne((type) => User, { eager: true })
+  @JoinColumn({ name: 'seat2_player_id' })
+  seat2: User;
+
+  @Column()
+  seatRule: number;
+
   // TODO. how much do we care about security here?
   @Column()
   password: string;
 
   toJson = () => {
-    const { id, name, created, game, capacity, owner, connectedCount } = this;
+    const {
+      id,
+      name,
+      created,
+      game,
+      capacity,
+      owner,
+      connectedCount,
+      seat1,
+      seat2,
+      seatRule,
+    } = this;
 
     return {
       id,
@@ -47,8 +69,11 @@ export default class Lobby extends BaseEntity {
       created,
       capacity,
       connectedCount,
+      seatRule,
       owner: owner.toJson(),
       game: game && game.toJson(),
+      seat1: seat1 && seat1.toJson(),
+      seat2: seat2 && seat2.toJson(),
     };
   };
 }

@@ -23,6 +23,11 @@ const socketConfigs: SocketConfig[] = [
     controller: LobbyController,
     action: 'messageLobby',
   },
+  {
+    event: 'sitDown',
+    controller: LobbyController,
+    action: 'sitDown',
+  },
 ];
 
 export default socketConfigs;

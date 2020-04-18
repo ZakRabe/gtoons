@@ -61,13 +61,6 @@ export class LobbyController extends SockerController {
       openLobbies.map((lobby) => lobby.toJson())
     );
   }
-
-  joinLobby({ lobbyId, token }) {
-    const lobbyRoom = `lobby/${lobbyId}`;
-    const user = verifyToken(token);
-    this.socket.join(lobbyRoom);
-    this.io.to(lobbyRoom).emit('userJoined', user.username);
-  }
 }
 
 export default LobbyController;

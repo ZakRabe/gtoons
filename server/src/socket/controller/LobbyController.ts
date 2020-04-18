@@ -9,13 +9,15 @@ import { SockerController } from './SocketController';
 export class LobbyController extends SockerController {
   private gameRepository = getRepository(Game);
   private lobbyRepository = getRepository(Lobby);
-  // private userRepository = getRepository(User);
+  private userRepository = getRepository(User);
 
-  joinLobby({ lobbyId, token }) {
+  async joinLobby({ lobbyId, token }) {
     const lobbyRoom = `lobby/${lobbyId}`;
     const user = verifyToken(token);
     this.socket.join(lobbyRoom);
     this.io.to(lobbyRoom).emit('userJoined', user.username);
+    const lobby = await this.lobbyRepository.findOne(lobbyId);
+    this.socket.emit('lobbyJoined', lobby.toJson());
   }
 
   messageLobby({ token, message, lobbyId }) {
@@ -24,6 +26,34 @@ export class LobbyController extends SockerController {
       username,
       message,
     });
+  }
+
+  async sitDown({ token, seatNumber, lobbyId }) {
+    const lobbyRoom = `lobby/${lobbyId}`;
+    const { userId } = verifyToken(token);
+    const lobby = await this.lobbyRepository.findOne(lobbyId);
+
+    const user = await this.userRepository.findOne(userId);
+
+    const field = seatNumber === 1 ? 'seat1' : 'seat2';
+    if (lobby[field] === null) {
+      lobby[field] = user;
+      await lobby.save();
+      this.io.to(lobbyRoom).emit(`${field}Taken`, user.toJson());
+    }
+  }
+  async standUp({ token, seatNumber, lobbyId }) {
+    const lobbyRoom = `lobby/${lobbyId}`;
+    const { userId } = verifyToken(token);
+    const lobby = await this.lobbyRepository.findOne(lobbyId);
+    const user = await this.userRepository.findOne(userId);
+
+    const field = seatNumber === 1 ? 'seat1' : 'seat2';
+    if (lobby[field] && lobby[field].id === user.id) {
+      lobby[field] = null;
+      await lobby.save();
+      this.io.to(lobbyRoom).emit(`${field}Empty`);
+    }
   }
 }
 
