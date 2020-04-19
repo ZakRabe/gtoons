@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Menu } from 'semantic-ui-react';
-import UserContext from '../../Context/UserContext';
+import UserContext from '../../contexts/UserContext';
 import { request } from '../../utils/api';
 import { isLoggedIn, logOut } from '../../utils/auth';
 import { AppMenuProps } from './types';

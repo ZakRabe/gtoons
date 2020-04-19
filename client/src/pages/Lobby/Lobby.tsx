@@ -5,6 +5,7 @@ import { LobbyProps } from './types';
 import { isLoggedIn } from '../../utils/auth';
 import LobbyChat from './LobbyChat';
 import { Button } from 'semantic-ui-react';
+import UserContext from '../../contexts/UserContext';
 
 const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
   const {
@@ -44,7 +45,7 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
     cursor: 'pointer',
   };
 
-  const username = { fontSize: '2rem' };
+  const username = { fontSize: '2rem', lineHeight: '2rem' };
 
   const [lobby, setLobby] = useState<any>(null);
   const [seat1, setSeat1] = useState<any>(null);
@@ -76,11 +77,19 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
     socket.emit('sitDown', { token: isLoggedIn(), seatNumber, lobbyId });
   };
 
-  const renderLobby = () => {
+  const leaveSeat = (seatNumber: number) => () => {
+    socket.emit('standUp', { token: isLoggedIn(), seatNumber, lobbyId });
+  };
+
+  const isCurrentUser = (currentUser: any, userInSeat: any) => {
+    return userInSeat && currentUser.userId === userInSeat.id;
+  };
+
+  const renderLobby = (user: any) => {
     return (
       <section style={lobbyWrapperStyles}>
         <div style={lobbyBodyStyles}>
-          <section style={{ flex: 1, flexDirection: 'row', display: 'flex' }}>
+          <section style={{ flexDirection: 'row', display: 'flex' }}>
             <section style={seatWrapperStyles}>
               <div style={seatCard}>
                 <Button
@@ -91,6 +100,18 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
                   <i className="fas fa-chair"></i>
                 </Button>
                 <div style={username}>{seat1 && seat1.username}</div>
+                <div>
+                  {isCurrentUser(user, seat1) && (
+                    <>
+                      <Button color="orange" onClick={leaveSeat(1)}>
+                        <i className="fas fa-times"></i>&nbsp; Leave Seat
+                      </Button>
+                      <Button color="green">
+                        <i className="fas fa-check"></i>&nbsp; Ready
+                      </Button>
+                    </>
+                  )}
+                </div>
               </div>
             </section>
             <section style={seatWrapperStyles}>
@@ -103,6 +124,18 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
                   <i className="fas fa-chair"></i>
                 </Button>
                 <div style={username}>{seat2 && seat2.username}</div>
+                <div>
+                  {isCurrentUser(user, seat2) && (
+                    <>
+                      <Button color="orange" onClick={leaveSeat(2)}>
+                        <i className="fas fa-times"></i>&nbsp; Leave Seat
+                      </Button>
+                      <Button color="green">
+                        <i className="fas fa-check"></i>&nbsp; Ready
+                      </Button>
+                    </>
+                  )}
+                </div>
               </div>
             </section>
           </section>
@@ -114,7 +147,13 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
     );
   };
 
-  return lobby ? renderLobby() : null;
+  return lobby ? (
+    <UserContext.Consumer>
+      {({ user }) => {
+        return renderLobby(user);
+      }}
+    </UserContext.Consumer>
+  ) : null;
 };
 
 export default withRouter(Lobby);

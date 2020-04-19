@@ -28,6 +28,11 @@ const socketConfigs: SocketConfig[] = [
     controller: LobbyController,
     action: 'sitDown',
   },
+  {
+    event: 'standUp',
+    controller: LobbyController,
+    action: 'standUp',
+  },
 ];
 
 export default socketConfigs;

@@ -15,6 +15,7 @@ export class LobbyController extends SockerController {
     const lobbyRoom = `lobby/${lobbyId}`;
     const user = verifyToken(token);
     this.socket.join(lobbyRoom);
+    // TODO: Increment connectedCount
     this.io.to(lobbyRoom).emit('userJoined', user.username);
     const lobby = await this.lobbyRepository.findOne(lobbyId);
     this.socket.emit('lobbyJoined', lobby.toJson());
@@ -36,7 +37,11 @@ export class LobbyController extends SockerController {
     const user = await this.userRepository.findOne(userId);
 
     const field = seatNumber === 1 ? 'seat1' : 'seat2';
-    if (lobby[field] === null) {
+    const otherField = seatNumber === 1 ? 'seat2' : 'seat1';
+    if (
+      lobby[field] === null &&
+      !(lobby[otherField] && lobby[otherField].id == user.id)
+    ) {
       lobby[field] = user;
       await lobby.save();
       this.io.to(lobbyRoom).emit(`${field}Taken`, user.toJson());
@@ -49,6 +54,7 @@ export class LobbyController extends SockerController {
     const user = await this.userRepository.findOne(userId);
 
     const field = seatNumber === 1 ? 'seat1' : 'seat2';
+
     if (lobby[field] && lobby[field].id === user.id) {
       lobby[field] = null;
       await lobby.save();
