@@ -1,7 +1,7 @@
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Button, Card, Image } from 'semantic-ui-react';
+import { Button, Card, Image, Label } from 'semantic-ui-react';
 import { LobbyCardProps } from './types';
 
 export const LobbyCard: React.FunctionComponent<LobbyCardProps> = (props) => {
@@ -14,6 +14,8 @@ export const LobbyCard: React.FunctionComponent<LobbyCardProps> = (props) => {
     connectedCount,
     game: _game,
   } = props;
+
+  const openStatus = { fontSize: '1.2rem', margin: 0 };
 
   const [, rerender] = useState(false);
 
@@ -50,19 +52,29 @@ export const LobbyCard: React.FunctionComponent<LobbyCardProps> = (props) => {
           <Card.Meta>Host: {owner.username}</Card.Meta>
         </Card.Content>
         <Card.Content extra>
-          {openSeats} seat{openSeats > 1 && 's'} open
           <div className="ui two buttons">
             <Button
               basic
-              disabled={capacity === connectedCount}
+              disabled={!openSeats}
               onClick={() => joinLobby()}
               color="green"
             >
-              {capacity === connectedCount ? 'Lobby Full' : 'Join'}
+              {!openSeats ? 'Lobby Full' : 'Join'}
             </Button>
           </div>
+
           <Card.Meta textAlign="right">created: {ago}</Card.Meta>
         </Card.Content>
+        {openSeats ? (
+          <Label color="teal" style={openStatus}>
+            <i className="fas fa-door-open"></i>&nbsp;
+            {openSeats} slot{openSeats !== 1 && 's'} available
+          </Label>
+        ) : (
+          <Label color="red" style={openStatus}>
+            <i className="fas fa-door-closed"></i>&nbsp; Lobby Full
+          </Label>
+        )}
       </Card>
     );
   };

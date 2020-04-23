@@ -33,6 +33,16 @@ const socketConfigs: SocketConfig[] = [
     controller: LobbyController,
     action: 'standUp',
   },
+  {
+    event: 'ready',
+    controller: LobbyController,
+    action: 'ready',
+  },
+  {
+    event: 'unready',
+    controller: LobbyController,
+    action: 'unready',
+  },
 ];
 
 export default socketConfigs;

@@ -22,7 +22,6 @@ const AppMenu: React.FunctionComponent<AppMenuProps> = (props) => {
       })
       .catch(() => {
         setUser(null);
-        // this means the token was invalid, so we dont need to do anything.
         // the token was already cleared in the request helper upon recieveing a 401
       });
   });
@@ -132,7 +131,7 @@ const AppMenu: React.FunctionComponent<AppMenuProps> = (props) => {
   const renderAppMenu = () => {
     return (
       <Menu vertical id="App-menu">
-        {isLoggedIn() ? renderUserMenu(user) : renderNonAuthMenu()}
+        {user ? renderUserMenu(user) : renderNonAuthMenu()}
       </Menu>
     );
   };

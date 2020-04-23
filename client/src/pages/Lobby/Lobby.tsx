@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { useSocketNamespace } from '../../utils/hooks';
-import { LobbyProps } from './types';
+import { LobbyProps, Seat } from './types';
 import { isLoggedIn } from '../../utils/auth';
 import LobbyChat from './LobbyChat';
 import { Button } from 'semantic-ui-react';
 import UserContext from '../../contexts/UserContext';
+
+const emptySeat = { user: null, ready: false };
 
 const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
   const {
@@ -48,8 +50,8 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
   const username = { fontSize: '2rem', lineHeight: '2rem' };
 
   const [lobby, setLobby] = useState<any>(null);
-  const [seat1, setSeat1] = useState<any>(null);
-  const [seat2, setSeat2] = useState<any>(null);
+  const [seat1, setSeat1] = useState<Seat>(emptySeat);
+  const [seat2, setSeat2] = useState<Seat>(emptySeat);
 
   // connect to lobbies Namespace
   const socket = useSocketNamespace('/lobbies');
@@ -59,14 +61,30 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
     if (socket) {
       socket.emit('joinLobby', { lobbyId, token: isLoggedIn() });
       socket.on('lobbyJoined', (lobbyModel: any) => {
+        console.log(lobbyModel);
         setLobby(lobbyModel);
-        setSeat1(lobbyModel.seat1);
-        setSeat2(lobbyModel.seat2);
+        setSeat1({ user: lobbyModel.seat1, ready: lobbyModel.seat1Ready });
+        setSeat2({ user: lobbyModel.seat2, ready: lobbyModel.seat2Ready });
       });
-      socket.on('seat1Taken', setSeat1);
-      socket.on('seat1Empty', () => setSeat1(null));
-      socket.on('seat2Taken', setSeat2);
-      socket.on('seat2Empty', () => setSeat2(null));
+      socket.on('seat1Taken', (user: any) => setSeat1({ user, ready: false }));
+      socket.on('seat1Empty', () => setSeat1(emptySeat));
+      socket.on('seat1Ready', () =>
+        setSeat1((prevSeat) => ({ ...prevSeat, ready: true }))
+      );
+      socket.on('seat1Unready', () =>
+        setSeat1((prevSeat) => ({ ...prevSeat, ready: false }))
+      );
+
+      socket.on('seat2Taken', (user: any) => setSeat2({ user, ready: false }));
+      socket.on('seat2Empty', () => setSeat2(emptySeat));
+      socket.on('seat2Ready', () => {
+        console.log('seat2');
+        setSeat2((prevSeat) => ({ ...prevSeat, ready: true }));
+      });
+      socket.on('seat2Unready', () =>
+        setSeat2((prevSeat) => ({ ...prevSeat, ready: false }))
+      );
+
       return () => {
         socket.disconnect();
       };
@@ -81,8 +99,55 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
     socket.emit('standUp', { token: isLoggedIn(), seatNumber, lobbyId });
   };
 
+  const ready = (seatNumber: number) => () => {
+    socket.emit('ready', { token: isLoggedIn(), seatNumber, lobbyId });
+  };
+
+  const unready = (seatNumber: number) => () => {
+    socket.emit('unready', { token: isLoggedIn(), seatNumber, lobbyId });
+  };
+
   const isCurrentUser = (currentUser: any, userInSeat: any) => {
     return userInSeat && currentUser.userId === userInSeat.id;
+  };
+
+  const renderSeat = (seatNumber: number, user: any) => {
+    const seat = seatNumber === 1 ? seat1 : seat2;
+    const otherSeat = seatNumber === 1 ? seat2 : seat1;
+    return (
+      <section style={seatWrapperStyles}>
+        <div style={seatCard}>
+          <Button
+            style={seatButton}
+            disabled={!!seat.user || isCurrentUser(user, otherSeat.user)}
+            onClick={takeSeat(seatNumber)}
+          >
+            <i className="fas fa-chair"></i>
+          </Button>
+          <div style={username}>{seat.user && seat.user.username}</div>
+          <div>
+            {isCurrentUser(user, seat.user) && (
+              <>
+                <Button color="orange" onClick={leaveSeat(seatNumber)}>
+                  <i className="fas fa-times"></i>&nbsp; Leave Seat
+                </Button>
+                <Button
+                  color={seat.ready ? 'green' : 'yellow'}
+                  onClick={seat.ready ? unready(seatNumber) : ready(seatNumber)}
+                >
+                  {seat.ready ? (
+                    <i className="far fa-check-circle"></i>
+                  ) : (
+                    <i className="far fa-circle"></i>
+                  )}
+                  &nbsp; Ready
+                </Button>
+              </>
+            )}
+          </div>
+        </div>
+      </section>
+    );
   };
 
   const renderLobby = (user: any) => {
@@ -90,54 +155,8 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
       <section style={lobbyWrapperStyles}>
         <div style={lobbyBodyStyles}>
           <section style={{ flexDirection: 'row', display: 'flex' }}>
-            <section style={seatWrapperStyles}>
-              <div style={seatCard}>
-                <Button
-                  style={seatButton}
-                  disabled={!!seat1}
-                  onClick={takeSeat(1)}
-                >
-                  <i className="fas fa-chair"></i>
-                </Button>
-                <div style={username}>{seat1 && seat1.username}</div>
-                <div>
-                  {isCurrentUser(user, seat1) && (
-                    <>
-                      <Button color="orange" onClick={leaveSeat(1)}>
-                        <i className="fas fa-times"></i>&nbsp; Leave Seat
-                      </Button>
-                      <Button color="green">
-                        <i className="fas fa-check"></i>&nbsp; Ready
-                      </Button>
-                    </>
-                  )}
-                </div>
-              </div>
-            </section>
-            <section style={seatWrapperStyles}>
-              <div style={seatCard}>
-                <Button
-                  style={seatButton}
-                  disabled={!!seat2}
-                  onClick={takeSeat(2)}
-                >
-                  <i className="fas fa-chair"></i>
-                </Button>
-                <div style={username}>{seat2 && seat2.username}</div>
-                <div>
-                  {isCurrentUser(user, seat2) && (
-                    <>
-                      <Button color="orange" onClick={leaveSeat(2)}>
-                        <i className="fas fa-times"></i>&nbsp; Leave Seat
-                      </Button>
-                      <Button color="green">
-                        <i className="fas fa-check"></i>&nbsp; Ready
-                      </Button>
-                    </>
-                  )}
-                </div>
-              </div>
-            </section>
+            {renderSeat(1, user)}
+            {renderSeat(2, user)}
           </section>
           <section>Players List</section>
         </div>

@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { AuthRouteProps } from './types';
 import { isLoggedIn } from '../../utils/auth';
 import { request } from '../../utils/api';
 
 const AuthRoute: React.FunctionComponent<AuthRouteProps> = (props) => {
+  const [checked, setChecked] = useState(false);
+
   useEffect(() => {
     request({
       url: 'login/validateToken',
-    })
-      .then(() => {})
-      .catch(() => {});
+    }).finally(() => setChecked(true));
   }, []);
 
   const renderAuthRoute = () => {
@@ -21,7 +21,7 @@ const AuthRoute: React.FunctionComponent<AuthRouteProps> = (props) => {
     );
   };
 
-  return renderAuthRoute();
+  return checked ? renderAuthRoute() : null;
 };
 
 export default AuthRoute;
