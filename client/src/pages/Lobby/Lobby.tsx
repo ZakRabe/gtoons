@@ -47,7 +47,7 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
     cursor: 'pointer',
   };
 
-  const username = { fontSize: '2rem', lineHeight: '2rem' };
+  const username = { fontSize: '2rem', lineHeight: '2rem', margin: 15 };
 
   const [lobby, setLobby] = useState<any>(null);
   const [seat1, setSeat1] = useState<Seat>(emptySeat);
