@@ -6,6 +6,7 @@ import { isLoggedIn } from '../../utils/auth';
 import LobbyChat from './LobbyChat';
 import { Button } from 'semantic-ui-react';
 import UserContext from '../../contexts/UserContext';
+import { request } from '../../utils/api';
 
 const emptySeat = { user: null, ready: false };
 
@@ -52,9 +53,16 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
   const [lobby, setLobby] = useState<any>(null);
   const [seat1, setSeat1] = useState<Seat>(emptySeat);
   const [seat2, setSeat2] = useState<Seat>(emptySeat);
+  const [decks, setDecks] = useState<any>([]);
 
   // connect to lobbies Namespace
   const socket = useSocketNamespace('/lobbies');
+
+  useEffect(() => {
+    request({ url: '/deckBuilder/myDeckList' }).then((myDecks) => {
+      setDecks(myDecks.filter((deck: number[]) => deck.length === 12));
+    });
+  }, []);
 
   useEffect(() => {
     // connect to lobby room
@@ -92,6 +100,8 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
   }, [socket, lobbyId]);
 
   const takeSeat = (seatNumber: number) => () => {
+    if (!decks.length) {
+    }
     socket.emit('sitDown', { token: isLoggedIn(), seatNumber, lobbyId });
   };
 
