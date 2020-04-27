@@ -1,0 +1,32 @@
+.appHeader {
+  border-bottom: 1px solid white;
+}
+
+.profileMenu {
+  margin-right: -1px;
+  /* margin-top: -1px; */
+  height: min-content;
+  padding-bottom: 1rem;
+  border: 1px solid;
+  border-top: 0;
+  border-right: 0;
+}
+
+.appHeaderActions button {
+  color: white;
+}
+a.bx--header__name {
+  font-size: 2rem;
+  font-family: 'Bebas Neue';
+}
+
+.bx--header__action:focus {
+  border-color: transparent;
+}
+.bx--header__action--active,
+.bx--header__action--active:focus {
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid #161616;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+}

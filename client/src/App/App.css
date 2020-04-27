@@ -1,13 +1,10 @@
+html {
+  font-size: 16px;
+}
+
 #App-wrapper {
   display: flex;
   flex-grow: 1;
-}
-
-#App-wrapper > header {
-  background-color: #7898b3;
-  background: linear-gradient(90deg, #e4e8e8 0%, #c9e0e0 100%);
-  padding: 15px;
-  border-right: 3px solid gray;
 }
 
 #App-wrapper > header h2 {
@@ -18,24 +15,9 @@
 }
 #App-wrapper > main {
   padding: 15px;
+  padding-top: 57px; /* 42 for header +15*/
   background-color: #495d71;
   flex-grow: 1;
-}
-
-h1,
-h2 {
-  font-family: 'Bebas Neue' !important;
-}
-
-h2.ui.header {
-  color: #00ffff;
-  text-shadow: -2px -2px black;
-}
-
-#App-wrapper > main h1 {
-  color: #00ffff;
-  font-size: 2.5rem;
-  text-shadow: -2px -2px black;
 }
 
 #App-menu {
