@@ -1,9 +1,9 @@
-import { Button, Header, Input } from 'semantic-ui-react';
+import { Button, TextInput, InlineNotification } from 'carbon-components-react';
 import * as React from 'react';
 import { request } from '../../utils/api';
-import { LoginProps, LoginState } from './types';
-import { Link } from 'react-router-dom';
 import { isLoggedIn } from '../../utils/auth';
+import './styles.css';
+import { LoginProps, LoginState } from './types';
 
 export default class Login extends React.Component<LoginProps, LoginState> {
   constructor(props: LoginProps) {
@@ -73,36 +73,51 @@ export default class Login extends React.Component<LoginProps, LoginState> {
 
     return (
       <>
-        <Header as="h1">Login to start playing!</Header>
-        <form action="" onSubmit={this.submit}>
-          <div>
-            <Input
-              name="username"
-              label="Username"
-              value={username}
-              onChange={this.onInputChange}
-            />
+        <div className="loginWrapper">
+          <h1>Login to start playing!</h1>
+          <form action="" onSubmit={this.submit}>
+            <p>
+              <TextInput
+                id="username"
+                name="username"
+                labelText="Username"
+                value={username}
+                onChange={this.onInputChange}
+              />
+            </p>
+            <p>
+              <TextInput
+                id="password"
+                name="password"
+                type="password"
+                labelText="Password"
+                value={password}
+                onChange={this.onInputChange}
+              />
+            </p>
+            <p>
+              {error && (
+                <InlineNotification
+                  title="Error"
+                  subtitle={error}
+                  kind="error"
+                ></InlineNotification>
+              )}
+            </p>
+          </form>
+          <div className="loginAction login--btn-set">
+            <Button
+              className="registerButton"
+              kind="secondary"
+              href="/register"
+            >
+              Sign Up!
+            </Button>
+            <Button className="loginSubmit" onClick={this.submit}>
+              Submit
+            </Button>
           </div>
-          <div>
-            <Input
-              name="password"
-              type="password"
-              label="Password"
-              value={password}
-              onChange={this.onInputChange}
-            />
-          </div>
-          <p>{error}</p>
-          <Button variant="contained" onClick={this.submit}>
-            Submit
-          </Button>
-        </form>
-        <aside>
-          <span style={{ marginRight: 10 }}>Not registered yet?</span>
-          <Link to="/register" component={Button}>
-            Sign Up!
-          </Link>
-        </aside>
+        </div>
       </>
     );
   }
