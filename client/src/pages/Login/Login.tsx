@@ -111,10 +111,10 @@ export default class Login extends React.Component<LoginProps, LoginState> {
               kind="secondary"
               href="/register"
             >
-              Sign Up!
+              Sign up
             </Button>
             <Button className="loginSubmit" onClick={this.submit}>
-              Submit
+              Log in
             </Button>
           </div>
         </div>

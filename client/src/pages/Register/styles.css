@@ -1,0 +1,21 @@
+.registerWrapper {
+  width: 33%;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 2rem;
+  margin: 0 auto;
+}
+.registerAction {
+  text-align: right;
+}
+
+.registerSubmit {
+  width: 50%;
+  max-width: 100%;
+  display: inline-block;
+}
+
+.loginButton {
+  width: 50%;
+  max-width: 100%;
+  display: inline-block;
+}
