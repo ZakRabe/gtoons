@@ -1,7 +1,6 @@
 import { Button, InlineNotification, TextInput } from 'carbon-components-react';
 import { debounce, isEqual } from 'lodash';
 import * as React from 'react';
-import { Header } from 'semantic-ui-react';
 import { queryParams, request } from '../../utils/api';
 import { isValidEmail } from '../../utils/validation';
 import './styles.css';
