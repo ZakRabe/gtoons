@@ -1,11 +1,15 @@
-import CSS from 'csstype';
 import * as React from 'react';
-import { Button, Dropdown, DropdownItemProps, Input } from 'semantic-ui-react';
+import { DeckBuilderProps } from './types';
+import {
+  socketConnect,
+  // @ts-ignore: no types for this
+} from 'socket.io-react';
+import { Button, Input, Dropdown, DropdownItemProps } from 'semantic-ui-react';
+import { request } from '../../utils/api';
 import { Card, Deck } from '../../App/types';
 import CardComponent from '../../components/Card';
-import { request } from '../../utils/api';
+import CSS from 'csstype';
 import ColorButton from './components/ColorButton';
-import { DeckBuilderProps } from './types';
 
 export const DeckBuilder = (props: DeckBuilderProps) => {
   // const { socket } = props;
@@ -21,7 +25,7 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
     'YELLOW',
   ];
 
-  const [_collection, setCollection] = React.useState([]);
+  const [collection, setCollection] = React.useState([]);
   const [colorFilters, setFilters] = React.useState(colorOptions);
   const [search, setSearch] = React.useState('');
   const [hoveredCard, setHoveredCard] = React.useState<Card | null>(null);
@@ -30,10 +34,10 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
 
   const [deckId, setDeckId] = React.useState(-1);
   const [deck, setDeck] = React.useState<number[]>([]);
-  const [deckList, setDeckList] = React.useState<Deck[]>([]);
+  const [deckList, setDeckList] = React.useState<Deck[]>([]); // probably don't need this anymore?
   const [deckListOptions, setDeckListOptions] = React.useState<
     DropdownItemProps[]
-  >([{ key: 'new', text: 'New Deck', value: 'New Deck' }]);
+  >([]);
 
   // display a list of decks
   // Click a card in the collection -> adds it to the current deck
@@ -100,10 +104,10 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
     request({ url: 'cards/all' }).then(setCards);
 
     request({ url: 'deckBuilder/myDeckList' }).then((newDeckList) => {
-      const t = [...newDeckList];
-      setDeckList(t);
+      const localDeckList = [...newDeckList];
+      setDeckList(localDeckList);
       // console.log(t);
-      handleChange(t);
+      updateOptions(localDeckList);
 
       //console.log(newDeckList[0]);
     });
@@ -119,8 +123,7 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
     setDeck(newDeck);
   };
 
-  // REVIEW: Linter says this is unused
-  const _onDeckClick = (clickedDeck: Deck) => (e: React.MouseEvent) => {
+  const onDeckClick = (clickedDeck: Deck) => () => {
     // console.log(clickedDeck);
     const { id, name } = clickedDeck;
     const savedDeck = JSON.parse(clickedDeck.cards);
@@ -145,6 +148,8 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
       return;
     }
 
+    //Check if the decks id is in the list of deck ids (ie: check if you are updating or creating a new deck)
+
     request({
       method: 'post',
       url: 'deckBuilder/saveDeck',
@@ -152,15 +157,17 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
     }).then((newDeck: Deck) => {
       const newDeckList: Deck[] = [...deckList];
       newDeckList.push(newDeck);
+      console.log(newDeckList);
       setDeckId(newDeck.id);
       setName(newDeck.name);
-      setDeck(JSON.parse(newDeck.cards));
+      setDeck(JSON.parse(newDeck.cards)); // do server side
       setDeckList(newDeckList);
+
+      updateOptions(newDeckList);
     });
   };
 
-  // REVIEW: Linter says this is unused
-  const _updateDeck = () => {
+  const updateDeck = () => {
     request({
       method: 'post',
       url: 'deckBuilder/updateDeck',
@@ -173,25 +180,24 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
       ];
       // console.log(newDeckList);
       setDeckList(newDeckList);
+      updateOptions(newDeckList);
     });
   };
 
   //TODO: Rename
-  const handleChange = (deckList: Deck[]) => {
+  const updateOptions = (deckList: Deck[]) => {
+    const listOptions: DropdownItemProps[] = [];
     // console.log(deckList);
-    const listOptions: DropdownItemProps[] = deckList.map((deck) => {
+    deckList.map((deck) => {
       // console.log(deck);
-      return {
+      listOptions.push({
         key: deck.id.toString(),
         text: deck.name,
         value: deck.id,
-      };
+        onClick: onDeckClick(deck),
+      });
     });
-    listOptions.unshift({
-      key: 'newDeck',
-      text: 'New Deck',
-      value: '-1',
-    });
+    // console.log(listOptions);
     setDeckListOptions(listOptions);
   };
 
@@ -275,7 +281,7 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
       cards
         .filter((card) => searchMatches.includes(card))
         .filter((card) => colorMatches.includes(card)),
-    [cards, searchMatches, colorMatches]
+    [cards, colorFilters, search]
   );
 
   const renderCollection = () => {
@@ -328,14 +334,6 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
               value={name}
               onChange={onNameInputChange}
               style={{ width: '100%' }}
-              action={
-                <Dropdown
-                  button
-                  basic
-                  options={deckListOptions}
-                  style={{ display: 'flex', width: '20%' }}
-                />
-              }
             />
           </div>
           <div
@@ -347,19 +345,57 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
                 display: 'flex',
                 flexDirection: 'column',
                 flexGrow: 1,
+                padding: 0,
               }}
             >
               {deck.map((cardId) => {
-                const card = cards.find(
-                  (item: Card) => item.id === cardId
-                ) as Card;
+                const card =
+                  cards.find((item: Card) => item.id === cardId) as Card;
                 return card ? (
                   <li
                     key={cardId}
                     onClick={onDeckCardClick(card.id)}
                     onMouseOver={() => onHover(card)}
+                    style={{
+                      display: 'flex',
+                      height: '8.33%',
+                      alignItems: 'center',
+                      border: `1px solid ${card.colors[0]}`,
+                      fontWeight: 'bolder',
+                    }}
                   >
-                    {card.title}
+                    <div
+                      style={{
+                        height: '100%',
+                        width: '5%',
+                        backgroundColor: `${card.colors[0]}`,
+                      }}
+                    ></div>
+                    <div
+                      style={{
+                        display: 'flex',
+                        height: '100%',
+                        maxWidth: '100%',
+                        flexGrow: 1,
+                        textAlign: 'center',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      {card.title}
+                    </div>
+                    <div
+                      style={{
+                        display: 'flex',
+                        height: '100%',
+                        width: '8%',
+                        textAlign: 'center',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      {card.points}
+                    </div>
                   </li>
                 ) : null;
               })}
@@ -381,7 +417,6 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
         {colorOptions.map((color) => {
           return (
             <ColorButton
-              key={color}
               color={color}
               active={colorFilters.includes(color)}
               onClick={toggleColor(color)}
@@ -393,7 +428,26 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
           icon="search"
           placeholder="Search"
           onChange={onSearchInputChange}
+          style={{ flexGrow: '1', marginRight: 10 }}
         ></Input>
+        <Dropdown
+          placeholder="Select a Deck"
+          icon="none"
+          button
+          scrolling
+          clearable
+          options={deckListOptions}
+          style={{
+            justifySelf: 'flex-end',
+            marginLeft: 'auto',
+            width: '20vw',
+            height: '100%',
+            backgroundColor: 'white',
+            textAlign: 'center',
+            fontSize: '16px',
+            color: 'black',
+          }}
+        />
       </section>
       <section style={editorStyles}>
         <section style={collectionContainerStyles}>
