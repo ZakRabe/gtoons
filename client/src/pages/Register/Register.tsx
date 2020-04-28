@@ -170,7 +170,6 @@ export default class Register extends React.Component<
   renderSuccess = () => {
     return (
       <div className="registerWrapper">
-        <h2></h2>
         <h1>Registration complete!</h1>
         <Button href="/login">Log in now</Button>
       </div>
