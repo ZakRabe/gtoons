@@ -1,10 +1,10 @@
+import { Button, InlineNotification, TextInput } from 'carbon-components-react';
 import { debounce, isEqual } from 'lodash';
 import * as React from 'react';
-import { Button, Header, Input } from 'semantic-ui-react';
 import { queryParams, request } from '../../utils/api';
 import { isValidEmail } from '../../utils/validation';
+import './styles.css';
 import { RegisterProps, RegisterState } from './types';
-import { Link } from 'react-router-dom';
 
 export default class Register extends React.Component<
   RegisterProps,
@@ -90,7 +90,7 @@ export default class Register extends React.Component<
     if (emailAvailable === null || !email || emailAvailable) {
       return null;
     }
-    return 'An account exists for this email. ';
+    return 'An account already exists for this address.';
   };
 
   validatePassword = (password: string) => {
@@ -168,17 +168,10 @@ export default class Register extends React.Component<
 
   renderSuccess = () => {
     return (
-      <section>
-        <h2>Registration complete!</h2>
-        <Button
-          onClick={() => {
-            const { history } = this.props;
-            history.push('/login');
-          }}
-        >
-          Go to Login
-        </Button>
-      </section>
+      <div className="registerWrapper">
+        <h1>Registration complete!</h1>
+        <Button href="/login">Log in now</Button>
+      </div>
     );
   };
 
@@ -193,79 +186,79 @@ export default class Register extends React.Component<
     } = this.state;
 
     return (
-      <>
+      <div className="registerWrapper">
+        <h1>Register to play reToons</h1>
         <form onSubmit={this.submit}>
-          {failed && (
-            <h3>
-              Sorry we were unable to proccess your registration, please try
-              again.
-            </h3>
-          )}
-          <div>
-            <Input
-              label="Username"
+          <p>
+            <TextInput
+              labelText="Username"
               name="username"
               id="username"
               value={username}
               onChange={this.onInputChange}
             />
             {this.renderUsernameAvailable()}
-          </div>
-          <div>
-            <Input
+          </p>
+          <p>
+            <TextInput
               type="email"
-              label="Email"
+              labelText="Email"
               name="email"
               id="email"
               value={email}
-              error={!!this.renderEmailAvailable()}
               onChange={this.onInputChange}
             />
             {this.renderEmailAvailable()}
-          </div>
-          <div>
-            <Input
-              label="Password"
+          </p>
+          <p>
+            <TextInput
+              labelText="Password"
               type="password"
               name="password"
               id="password"
               value={password}
-              error={!!passwordErrors.length}
               onChange={(e) => {
                 this.validatePassword(e.target.value);
                 this.onInputChange(e);
               }}
             />
             {passwordErrors.length > 0 && this.renderPasswordErrors()}
-          </div>
-          <div>
-            <Input
-              label="Confirm Password"
+          </p>
+          <p>
+            <TextInput
+              labelText="Confirm Password"
               type="password"
               name="confirmPassword"
               id="confirmPassword"
               value={confirmPassword}
-              error={!!this.renderConfirmPasswordErrors()}
               onChange={this.onInputChange}
             />
             {this.renderConfirmPasswordErrors()}
-          </div>
+          </p>
+          <p>
+            {failed && (
+              <InlineNotification
+                title="Error"
+                subtitle="Sorry we were unable to proccess your registration, please try again."
+                kind="error"
+              ></InlineNotification>
+            )}
+          </p>
+        </form>
+        <div className="registerAction register--btn-set">
+          <Button className="loginButton" kind="secondary" href="/login">
+            Log in
+          </Button>
           <Button
-            style={{ marginTop: 10 }}
+            className="registerSubmit"
             disabled={this.hasErrors()}
-            variant="contained"
+            kind="primary"
             onClick={this.submit}
           >
-            Submit
+            Register
           </Button>
-        </form>
-        <aside>
-          <span style={{ marginRight: 10 }}>Already registered?</span>
-          <Link to="/login" component={Button}>
-            Log In!
-          </Link>
-        </aside>
-      </>
+        </div>
+      </div>
     );
   };
 
@@ -294,11 +287,6 @@ export default class Register extends React.Component<
 
   render() {
     const { complete } = this.state;
-    return (
-      <div>
-        <Header as="h1">Register to play gToons</Header>
-        {!complete ? this.renderForm() : this.renderSuccess()}
-      </div>
-    );
+    return <div>{!complete ? this.renderForm() : this.renderSuccess()}</div>;
   }
 }
