@@ -32,6 +32,9 @@ const AppHeader: React.FunctionComponent<AppHeaderProps> = (props) => {
           <HeaderMenuItem href="/deckBuilder">
             <i className="fas fa-tools"></i> &nbsp;Deck Builder
           </HeaderMenuItem>
+          <HeaderMenuItem href="/sandbox">
+            <i className="fas fa-flask"></i> &nbsp;Sandbox
+          </HeaderMenuItem>
         </HeaderNavigation>
         <HeaderGlobalBar
           style={{ fontSize: '1.25rem' }}
