@@ -4,9 +4,9 @@ import {
   socketConnect,
   // @ts-ignore: no types for this
 } from 'socket.io-react';
-import { Button, Input, Dropdown, DropdownItemProps } from 'semantic-ui-react';
+import { Input } from 'semantic-ui-react';
 import { request } from '../../utils/api';
-import { Card, Deck } from '../../App/types';
+import { Card } from '../../App/types';
 import CardComponent from '../../components/Card';
 import CSS from 'csstype';
 import ColorButton from './components/ColorButton';
@@ -26,19 +26,10 @@ export const Sandbox = (props: SandboxProps) => {
     'YELLOW',
   ];
 
-  const [collection, setCollection] = React.useState([]);
   const [colorFilters, setFilters] = React.useState(colorOptions);
   const [search, setSearch] = React.useState('');
   const [hoveredCard, setHoveredCard] = React.useState<Card | null>(null);
   const [cards, setCards] = React.useState<Card[]>([]);
-  const [name, setName] = React.useState('New Deck');
-
-  const [deckId, setDeckId] = React.useState(-1);
-  const [deck, setDeck] = React.useState<number[]>([]);
-  const [deckList, setDeckList] = React.useState<Deck[]>([]); // probably don't need this anymore?
-  const [deckListOptions, setDeckListOptions] = React.useState<
-    DropdownItemProps[]
-  >([]);
 
   // display a list of decks
   // Click a card in the collection -> adds it to the current deck
@@ -76,70 +67,27 @@ export const Sandbox = (props: SandboxProps) => {
     overflow: 'hidden',
     position: 'relative' as any,
   };
+  const collectionContainerStyles = {
+    display: 'flex',
+    flexGrow: 1,
+    overflow: 'hidden',
+    position: 'relative' as any,
+  };
 
+  const collectionWrapperStyles = {
+    position: 'absolute' as any,
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    overflow: 'auto',
+  };
   React.useEffect(() => {
-    request({
-      url: 'deckBuilder/myCollection',
-    }).then((collectionModel) => {
-      const newCollection = JSON.parse(collectionModel.cards);
-      setCollection(newCollection);
-    });
-
     request({ url: 'cards/all' }).then(setCards);
-
-    request({ url: 'deckBuilder/myDeckList' }).then((newDeckList) => {
-      const localDeckList = [...newDeckList];
-      setDeckList(localDeckList);
-      // console.log(t);
-      updateOptions(localDeckList);
-
-      //console.log(newDeckList[0]);
-    });
   }, []);
 
   const onCollectionCardClick = (cardId: number) => (e: React.MouseEvent) => {
     //console.log(cardId);
-    if (deck.includes(cardId) || deck.length >= 12) {
-      return;
-    }
-    const newDeck = [...deck];
-    newDeck.push(cardId);
-    setDeck(newDeck);
-  };
-
-  const onDeckClick = (clickedDeck: Deck) => () => {
-    // console.log(clickedDeck);
-    const { id, name } = clickedDeck;
-    const savedDeck = JSON.parse(clickedDeck.cards);
-    // console.log(savedDeck);
-    setDeckId(id);
-    setDeck(savedDeck);
-    setName(name);
-  };
-
-  const onDeckCardClick = (cardId: number) => (e: React.MouseEvent) => {
-    // console.log(e);
-    // console.log(cardId);
-
-    const newDeck = [...deck].filter((id) => id !== cardId);
-    setDeck(newDeck);
-  };
-
-  //TODO: Rename
-  const updateOptions = (deckList: Deck[]) => {
-    const listOptions: DropdownItemProps[] = [];
-    // console.log(deckList);
-    deckList.map((deck) => {
-      // console.log(deck);
-      listOptions.push({
-        key: deck.id.toString(),
-        text: deck.name,
-        value: deck.id,
-        onClick: onDeckClick(deck),
-      });
-    });
-    // console.log(listOptions);
-    setDeckListOptions(listOptions);
   };
 
   const onHover = (card: Card) => {
@@ -258,70 +206,74 @@ export const Sandbox = (props: SandboxProps) => {
               {hoveredCard && hoveredCard.description}
             </p>
           </div>
-          <div
-            style={{ display: 'flex', flexGrow: 1, flexDirection: 'column' }}
-          >
-            <ul
-              style={{
-                backgroundColor: 'white',
-                display: 'flex',
-                flexDirection: 'column',
-                flexGrow: 1,
-                padding: 0,
-              }}
-            >
-              {deck.map((cardId) => {
-                const card =
-                  cards.find((item: Card) => item.id === cardId) as Card;
-                return card ? (
-                  <li
-                    key={cardId}
-                    onClick={onDeckCardClick(card.id)}
-                    onMouseOver={() => onHover(card)}
-                    style={{
-                      display: 'flex',
-                      height: '8.33%',
-                      alignItems: 'center',
-                      border: `1px solid ${card.colors[0]}`,
-                      fontWeight: 'bolder',
-                    }}
-                  >
-                    <div
-                      style={{
-                        height: '100%',
-                        width: '5%',
-                        backgroundColor: `${card.colors[0]}`,
-                      }}
-                    ></div>
-                    <div
+          {/* 
+          <section style={collectionContainerStyles}>
+            <section style={collectionWrapperStyles}>
+              {renderCollection()}
+            </section>
+          </section> */}
+          <div style={collectionContainerStyles}>
+            <div style={collectionWrapperStyles}>
+              <ul
+                style={{
+                  backgroundColor: 'white',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  flexGrow: 1,
+                  padding: 0,
+                }}
+              >
+                {allMatches.map((card) => {
+                  return (
+                    <li
+                      key={card.id}
+                      onClick={onCollectionCardClick(card.id)}
+                      onMouseOver={() => onHover(card)}
                       style={{
                         display: 'flex',
-                        height: '100%',
-                        maxWidth: '100%',
-                        flexGrow: 1,
-                        textAlign: 'center',
+                        height: '8.33%',
                         alignItems: 'center',
-                        justifyContent: 'center',
+                        border: `1px solid ${card.colors[0]}`,
+                        fontWeight: 'bolder',
                       }}
                     >
-                      {card.title}
-                    </div>
-                    <div
-                      style={{
-                        display: 'flex',
-                        height: '100%',
-                        width: '8%',
-                        textAlign: 'center',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                      }}
-                    >
-                      {card.points}
-                    </div>
-                  </li>
-                ) : null;
-              })}
-            </ul>
+                      <div
+                        style={{
+                          height: '100%',
+                          width: '5%',
+                          backgroundColor: `${card.colors[0]}`,
+                        }}
+                      ></div>
+                      <div
+                        style={{
+                          display: 'flex',
+                          height: '100%',
+                          maxWidth: '100%',
+                          flexGrow: 1,
+                          textAlign: 'center',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                        }}
+                      >
+                        {card.title}
+                      </div>
+                      <div
+                        style={{
+                          display: 'flex',
+                          height: '100%',
+                          width: '8%',
+                          textAlign: 'center',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                        }}
+                      >
+                        {card.points}
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
           </div>
         </div>
       </>
