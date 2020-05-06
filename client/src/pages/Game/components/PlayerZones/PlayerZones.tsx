@@ -8,7 +8,7 @@ const styles: CSS.Properties = {
   display: 'block',
   position: 'relative',
   width: '100%',
-  height: '100%',
+  height: '50%',
   marginTop: '5px',
   marginBottom: '5px',
   backgroundColor: 'lightgreen',

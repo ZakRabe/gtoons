@@ -10,6 +10,7 @@ import { Card, Deck } from '../../App/types';
 import CardComponent from '../../components/Card';
 import CSS from 'csstype';
 import ColorButton from './components/ColorButton';
+import Board from '../Game/components/Board';
 
 export const Sandbox = (props: SandboxProps) => {
   // const { socket } = props;
@@ -69,28 +70,11 @@ export const Sandbox = (props: SandboxProps) => {
     flexShrink: 0,
   };
 
-  const collectionContainerStyles = {
+  const boardStyle = {
     display: 'flex',
     flexGrow: 1,
     overflow: 'hidden',
     position: 'relative' as any,
-  };
-
-  const collectionWrapperStyles = {
-    position: 'absolute' as any,
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-    overflow: 'auto',
-  };
-
-  const onNameInputChange = (e: React.ChangeEvent) => {
-    const {
-      target: { value },
-    } = e as any;
-
-    setName(value);
   };
 
   React.useEffect(() => {
@@ -139,49 +123,6 @@ export const Sandbox = (props: SandboxProps) => {
 
     const newDeck = [...deck].filter((id) => id !== cardId);
     setDeck(newDeck);
-  };
-
-  const saveDeck = () => {
-    if (deck.length !== 12) {
-      // console.log('not enough cards in you deck');
-      // console.log(deck.length);
-      return;
-    }
-
-    //Check if the decks id is in the list of deck ids (ie: check if you are updating or creating a new deck)
-
-    request({
-      method: 'post',
-      url: 'deckBuilder/saveDeck',
-      data: { name, deck },
-    }).then((newDeck: Deck) => {
-      const newDeckList: Deck[] = [...deckList];
-      newDeckList.push(newDeck);
-      console.log(newDeckList);
-      setDeckId(newDeck.id);
-      setName(newDeck.name);
-      setDeck(JSON.parse(newDeck.cards)); // do server side
-      setDeckList(newDeckList);
-
-      updateOptions(newDeckList);
-    });
-  };
-
-  const updateDeck = () => {
-    request({
-      method: 'post',
-      url: 'deckBuilder/updateDeck',
-      data: { deckId, name, deck },
-    }).then((newDeck: Deck) => {
-      //update copy on the page
-      const newDeckList = [
-        ...deckList.filter((deck) => deck.id !== newDeck.id),
-        newDeck,
-      ];
-      // console.log(newDeckList);
-      setDeckList(newDeckList);
-      updateOptions(newDeckList);
-    });
   };
 
   //TODO: Rename
@@ -284,22 +225,11 @@ export const Sandbox = (props: SandboxProps) => {
     [cards, colorFilters, search]
   );
 
-  const renderCollection = () => {
-    return allMatches.map((card: Card) => {
-      return (
-        <CardComponent
-          key={card.id}
-          model={card}
-          onClick={onCollectionCardClick(card.id)}
-          onHover={() => onHover(card)}
-          width={150}
-          height={150}
-        />
-      );
-    });
+  const renderBoard = () => {
+    return <Board />;
   };
 
-  const renderDeckList = () => {
+  const renderCardList = () => {
     return (
       <>
         <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
@@ -327,14 +257,6 @@ export const Sandbox = (props: SandboxProps) => {
             <p id="cardPower" style={{ fontSize: '15px' }}>
               {hoveredCard && hoveredCard.description}
             </p>
-          </div>
-          <div style={{ display: 'flex' }}>
-            <Input
-              name="name"
-              value={name}
-              onChange={onNameInputChange}
-              style={{ width: '100%' }}
-            />
           </div>
           <div
             style={{ display: 'flex', flexGrow: 1, flexDirection: 'column' }}
@@ -401,11 +323,6 @@ export const Sandbox = (props: SandboxProps) => {
               })}
             </ul>
           </div>
-          <div>
-            <Button style={{ width: '50%' }} onClick={() => saveDeck()}>
-              SAVE DECK
-            </Button>
-          </div>
         </div>
       </>
     );
@@ -430,32 +347,10 @@ export const Sandbox = (props: SandboxProps) => {
           onChange={onSearchInputChange}
           style={{ flexGrow: '1', marginRight: 10 }}
         ></Input>
-        <Dropdown
-          placeholder="Select a Deck"
-          icon="none"
-          button
-          scrolling
-          clearable
-          options={deckListOptions}
-          style={{
-            justifySelf: 'flex-end',
-            marginLeft: 'auto',
-            width: '20vw',
-            height: '100%',
-            backgroundColor: 'white',
-            textAlign: 'center',
-            fontSize: '16px',
-            color: 'black',
-          }}
-        />
       </section>
       <section style={editorStyles}>
-        <section style={collectionContainerStyles}>
-          <section style={collectionWrapperStyles}>
-            {renderCollection()}
-          </section>
-        </section>
-        <section style={deckListStyles}>{renderDeckList()} </section>
+        <section style={boardStyle}>{renderBoard()}</section>
+        <section style={deckListStyles}>{renderCardList()} </section>
       </section>
     </section>
   );
