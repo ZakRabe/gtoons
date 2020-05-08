@@ -16,11 +16,17 @@ export default class PlayerZonesRowOne extends React.Component<
   {}
 > {
   render() {
-    const { cards, onCardClick } = this.props;
+    const { cards, onCardClick, onCardHover } = this.props;
     return (
       <div style={styles}>
         {cards?.map((card) => {
-          return <PlayerZone card={card} onCardClick={onCardClick} />;
+          return (
+            <PlayerZone
+              card={card}
+              onCardClick={onCardClick}
+              onCardHover={onCardHover}
+            />
+          );
         })}
       </div>
     );

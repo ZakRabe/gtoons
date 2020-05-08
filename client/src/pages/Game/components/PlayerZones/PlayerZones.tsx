@@ -16,7 +16,7 @@ const styles: CSS.Properties = {
 
 export default class PlayerZones extends React.Component<PlayerZonesProps, {}> {
   render() {
-    const { isOpponent, cards, onCardClick } = this.props;
+    const { isOpponent, cards, onCardClick, onCardHover } = this.props;
     const rowOne = cards?.slice(0, 4);
     const rowTwo = cards?.slice(4);
 
@@ -31,8 +31,16 @@ export default class PlayerZones extends React.Component<PlayerZonesProps, {}> {
     return (
       <div style={styles}>
         <div style={container}>
-          <PlayerZonesRowOne cards={rowOne} onCardClick={onCardClick} />
-          <PlayerZonesRowTwo cards={rowTwo} onCardClick={onCardClick} />
+          <PlayerZonesRowOne
+            cards={rowOne}
+            onCardClick={onCardClick}
+            onCardHover={onCardHover}
+          />
+          <PlayerZonesRowTwo
+            cards={rowTwo}
+            onCardClick={onCardClick}
+            onCardHover={onCardHover}
+          />
         </div>
       </div>
     );

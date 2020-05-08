@@ -17,12 +17,15 @@ const styles: CSS.Properties = {
 
 export default class PlayerZone extends React.Component<PlayerZoneProps, {}> {
   render() {
-    const { card, onCardClick } = this.props;
+    const { card, onCardClick, onCardHover } = this.props;
     return card ? (
       <CardComponent
         model={card}
         onClick={() => {
           onCardClick(card.id);
+        }}
+        onHover={() => {
+          onCardHover(card);
         }}
         width={250}
         height={250}

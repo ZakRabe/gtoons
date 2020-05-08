@@ -250,7 +250,11 @@ export const Sandbox = (props: SandboxProps) => {
 
   const renderBoard = () => {
     return (
-      <PlayerZones cards={Object.values(board)} onCardClick={removeCard} />
+      <PlayerZones
+        cards={Object.values(board)}
+        onCardClick={removeCard}
+        onCardHover={onHover}
+      />
     );
   };
 

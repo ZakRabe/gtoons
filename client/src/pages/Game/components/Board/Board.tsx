@@ -14,8 +14,12 @@ export default class Board extends React.Component<{}, {}> {
   render() {
     return (
       <section style={styles}>
-        <PlayerZones isOpponent={true} onCardClick={() => {}} />
-        <PlayerZones onCardClick={() => {}} />
+        <PlayerZones
+          isOpponent={true}
+          onCardClick={() => {}}
+          onCardHover={() => {}}
+        />
+        <PlayerZones onCardClick={() => {}} onCardHover={() => {}} />
       </section>
     );
   }
