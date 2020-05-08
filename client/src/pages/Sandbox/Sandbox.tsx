@@ -10,7 +10,8 @@ import { Card } from '../../App/types';
 import CardComponent from '../../components/Card';
 import CSS from 'csstype';
 import ColorButton from './components/ColorButton';
-import Board from '../Game/components/Board';
+import PlayerZones from '../Game/components/PlayerZones';
+import { Dictionary } from 'lodash';
 
 export const Sandbox = (props: SandboxProps) => {
   // const { socket } = props;
@@ -30,6 +31,16 @@ export const Sandbox = (props: SandboxProps) => {
   const [search, setSearch] = React.useState('');
   const [hoveredCard, setHoveredCard] = React.useState<Card | null>(null);
   const [cards, setCards] = React.useState<Card[]>([]);
+  //const [board, setBoard] = React.useState<Card[]>([]);
+  const [board, setBoard] = React.useState<Dictionary<Card | null>>({
+    1: null,
+    2: null,
+    3: null,
+    4: null,
+    5: null,
+    6: null,
+    7: null,
+  });
 
   // display a list of decks
   // Click a card in the collection -> adds it to the current deck
@@ -55,7 +66,7 @@ export const Sandbox = (props: SandboxProps) => {
     flexGrow: 1,
   };
 
-  const deckListStyles = {
+  const cardListStyles = {
     display: 'flex',
     width: '20vw',
     flexShrink: 0,
@@ -87,7 +98,71 @@ export const Sandbox = (props: SandboxProps) => {
   }, []);
 
   const onCollectionCardClick = (cardId: number) => (e: React.MouseEvent) => {
-    //console.log(cardId);
+    let found = false,
+      spacesAvailable = false,
+      cardSet = false;
+    const newBoard2 = {} as Dictionary<Card | null>;
+    const card = cards.find((item: Card) => item.id === cardId) as Card;
+
+    // if (board.includes(card) || board.length >= 7) {
+    //   return;
+    // }
+
+    Object.keys(board).map((key, index) => {
+      if (board[key] == card) {
+        found = true;
+        return;
+      }
+
+      if (!spacesAvailable && board[key] == null) {
+        console.log('I am available for a card');
+        spacesAvailable = true;
+      } else {
+        console.log('Space occupied by ' + board[key]?.character);
+      }
+    });
+
+    if (found || !spacesAvailable) {
+      console.log('found : ' + found);
+      console.log('available : ' + spacesAvailable);
+      return;
+    }
+
+    Object.keys(board).map((key, index) => {
+      if (!cardSet && board[key] == null) {
+        newBoard2[key] = card;
+        //board2[key] = card;
+        cardSet = true;
+        return;
+      }
+
+      newBoard2[key] = board[key];
+    });
+
+    //const newBoard = [...board, card];
+    //request here?
+    //setBoard(newBoard);
+    setBoard(newBoard2);
+  };
+
+  const removeCard = (cardId: number) => {
+    const newBoard2 = {} as Dictionary<Card | null>;
+    Object.keys(board).map((key, index) => {
+      if (board[key]?.id == cardId) {
+        newBoard2[key] = null;
+        return;
+      }
+
+      newBoard2[key] = board[key];
+    });
+
+    console.log(Object.entries(newBoard2));
+    // const newBoard = board.filter((card) => {
+    //   return card.id !== cardId;
+    // });
+
+    //setBoard(newBoard);
+    setBoard(newBoard2);
   };
 
   const onHover = (card: Card) => {
@@ -174,7 +249,9 @@ export const Sandbox = (props: SandboxProps) => {
   );
 
   const renderBoard = () => {
-    return <Board />;
+    return (
+      <PlayerZones cards={Object.values(board)} onCardClick={removeCard} />
+    );
   };
 
   const renderCardList = () => {
@@ -302,7 +379,7 @@ export const Sandbox = (props: SandboxProps) => {
       </section>
       <section style={editorStyles}>
         <section style={boardStyle}>{renderBoard()}</section>
-        <section style={deckListStyles}>{renderCardList()} </section>
+        <section style={cardListStyles}>{renderCardList()} </section>
       </section>
     </section>
   );

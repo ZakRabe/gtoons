@@ -1,6 +1,7 @@
 import * as React from 'react';
 import CSS from 'csstype';
 import PlayerZone from '../PlayerZone';
+import { CardRowProps } from '../PlayerZonesRowOne/types';
 
 const styles: CSS.Properties = {
   display: 'flex',
@@ -10,13 +11,17 @@ const styles: CSS.Properties = {
   backgroundColor: 'tomato',
 };
 
-export default class PlayerZonesRowTwo extends React.Component<{}, {}> {
+export default class PlayerZonesRowTwo extends React.Component<
+  CardRowProps,
+  {}
+> {
   render() {
+    const { cards, onCardClick } = this.props;
     return (
       <div style={styles}>
-        <PlayerZone />
-        <PlayerZone />
-        <PlayerZone />
+        {cards?.map((card) => {
+          return <PlayerZone card={card} onCardClick={onCardClick} />;
+        })}
       </div>
     );
   }

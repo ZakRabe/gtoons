@@ -1,7 +1,6 @@
 import { Card } from '../../../../App/types';
 
-export interface PlayerZonesProps {
-  isOpponent?: boolean;
+export interface CardRowProps {
   cards?: (Card | null)[];
   onCardClick: (cardId: number) => void;
 }

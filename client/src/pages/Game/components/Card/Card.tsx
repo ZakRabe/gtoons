@@ -29,9 +29,9 @@ export default class Card extends React.Component<CardProps, {}> {
     const { cardColor } = this.props;
 
     const container: CSS.Properties = {
-      position: 'absolute',
-      width: '88%',
-      height: '88%',
+      display: 'flex',
+      flexGrow: 1,
+      height: '100%',
       margin: '0',
       backgroundImage: `url(${this.getImageURL()})`,
       border: '11px solid ' + cardColor,

@@ -1,19 +1,36 @@
 import * as React from 'react';
 import CSS from 'csstype';
+import { PlayerZoneProps } from './types';
+import Card from '../Card';
+import CardComponent from '../../../../components/Card';
 
 const styles: CSS.Properties = {
   display: 'flex',
-  width: '15%',
+  flexDirection: 'row',
+  flexGrow: 0.2,
   height: '95%',
-  marginTop: '5px',
-  marginBottom: '5px',
-  marginLeft: '25px',
+  margin: '5px',
   borderRadius: '50%',
   backgroundColor: 'powderblue',
+  justifyContent: 'center',
 };
 
-export default class PlayerZone extends React.Component<{}, {}> {
+export default class PlayerZone extends React.Component<PlayerZoneProps, {}> {
   render() {
-    return <div style={styles}></div>;
+    const { card, onCardClick } = this.props;
+    return card ? (
+      <div style={styles}>
+        <CardComponent
+          model={card}
+          onClick={() => {
+            onCardClick(card.id);
+          }}
+          width={250}
+          height={250}
+        />
+      </div>
+    ) : (
+      <div style={styles}></div>
+    );
   }
 }

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import CSS from 'csstype';
 import PlayerZone from '../PlayerZone';
+import { CardRowProps } from './types';
 
 const styles: CSS.Properties = {
   display: 'flex',
@@ -10,15 +11,31 @@ const styles: CSS.Properties = {
   backgroundColor: 'orange',
 };
 
-export default class PlayerZonesRowOne extends React.Component<{}, {}> {
+export default class PlayerZonesRowOne extends React.Component<
+  CardRowProps,
+  {}
+> {
   render() {
+    const { cards, onCardClick } = this.props;
     return (
       <div style={styles}>
-        <PlayerZone />
-        <PlayerZone />
-        <PlayerZone />
-        <PlayerZone />
+        {cards?.map((card) => {
+          return <PlayerZone card={card} onCardClick={onCardClick} />;
+        })}
       </div>
     );
   }
 }
+
+// cards ? (
+//   <div style={styles}>
+//     {cards.map((card) => {
+//       <PlayerZone
+//         cardID={card.id.toString()}
+//         cardColor={card.colors[0]}
+//         cardScore={card.points.toString()}
+//         useAnimated={false}
+//       />;
+//     })}
+//   </div>
+// ) : null;

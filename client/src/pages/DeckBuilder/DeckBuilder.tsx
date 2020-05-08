@@ -252,14 +252,14 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
   };
 
   const filterByColor = (cards: Card[], activeColors: string[]): Card[] => {
-    console.log('filterByColor');
+    //console.log('filterByColor');
     return cards.filter((card: Card) =>
       card.colors.some((cardColor) => activeColors.includes(cardColor))
     );
   };
 
   const filterBySearchTerm = (cards: Card[], searchTerm: string): Card[] => {
-    console.log('filterBySearchTerm');
+    //console.log('filterBySearchTerm');
     if (!searchTerm.length) {
       return cards;
     }
