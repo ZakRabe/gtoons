@@ -244,20 +244,21 @@ export default class Register extends React.Component<
               ></InlineNotification>
             )}
           </p>
+          <div className="registerAction register--btn-set">
+            <Button className="loginButton" kind="secondary" href="/login">
+              Log in
+            </Button>
+            <Button
+              className="registerSubmit"
+              type="submit"
+              disabled={this.hasErrors()}
+              kind="primary"
+              onClick={this.submit}
+            >
+              Register
+            </Button>
+          </div>
         </form>
-        <div className="registerAction register--btn-set">
-          <Button className="loginButton" kind="secondary" href="/login">
-            Log in
-          </Button>
-          <Button
-            className="registerSubmit"
-            disabled={this.hasErrors()}
-            kind="primary"
-            onClick={this.submit}
-          >
-            Register
-          </Button>
-        </div>
       </div>
     );
   };

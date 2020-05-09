@@ -1,6 +1,8 @@
 const crypto = require('crypto');
 import * as jwt from 'jsonwebtoken';
 import { AuthTokenUser } from './types';
+import Card, { Color } from './common/entity/Card';
+import Deck from './common/entity/Deck';
 
 export const getSalt = (length) => {
   return crypto
@@ -26,4 +28,14 @@ export const saltHashPassword = (password: string) => {
 
 export const verifyToken = (token): AuthTokenUser => {
   return jwt.verify(token, 'GToons2019SecretToken');
+};
+
+export const roll = (min: number, max: number) => {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+};
+
+export const cardsInCollection = (cards: number[], collection: number[]) => {
+  return cards.reduce((acc, card) => {
+    return (acc = acc && collection.includes(card));
+  }, true);
 };
