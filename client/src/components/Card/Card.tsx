@@ -12,6 +12,7 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
     padding: 3,
     position: 'relative' as any,
     margin: 'auto' as any,
+    cursor: onClick ? 'pointer' : 'default',
   };
   const cardBorderStyles = {
     borderRadius: '50%',
@@ -27,7 +28,6 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    cursor: onClick ? 'pointer' : 'default',
   };
 
   const pointStyles = {
@@ -50,11 +50,10 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
   const renderCard = () => {
     return (
       <section
-        style={{ display: 'inline-flex' }}
-        onClick={onClick}
+        style={{ display: 'inline-flex', userSelect: 'none' }}
         onMouseOver={onHover}
       >
-        <div style={cardWrapperStyles}>
+        <div style={cardWrapperStyles} onClick={onClick}>
           <div style={cardBorderStyles}>
             <span style={pointStyles}>{card.points}</span>
             <div style={cardStyles}></div>

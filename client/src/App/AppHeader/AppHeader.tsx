@@ -27,10 +27,10 @@ const AppHeader: React.FunctionComponent<AppHeaderProps> = (props) => {
       <>
         <HeaderNavigation>
           <HeaderMenuItem href="/lobbies">
-            <i className="fas fa-search"></i> &nbsp;Lobbies
+            <i className="fas fa-search"></i>&nbsp; Lobbies
           </HeaderMenuItem>
           <HeaderMenuItem href="/deckBuilder">
-            <i className="fas fa-tools"></i> &nbsp;Deck Builder
+            <i className="fas fa-tools"></i>&nbsp; Deck Builder
           </HeaderMenuItem>
         </HeaderNavigation>
         <HeaderGlobalBar
@@ -62,7 +62,7 @@ const AppHeader: React.FunctionComponent<AppHeaderProps> = (props) => {
               <SwitcherItem
                 onClick={() => {
                   logOut();
-                  goto(history, '/');
+                  goto(history, '/')();
                 }}
               >
                 <i className="fas fa-sign-out-alt"></i>&nbsp; Log out

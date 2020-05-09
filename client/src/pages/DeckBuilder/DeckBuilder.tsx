@@ -1,7 +1,7 @@
+import { Button, TextInput } from 'carbon-components-react';
 import CSS from 'csstype';
 import * as React from 'react';
-import { Button, Dropdown, DropdownItemProps, Input } from 'semantic-ui-react';
-import { Card, Deck } from '../../App/types';
+import { Card } from '../../App/types';
 import CardComponent from '../../components/Card';
 import { request } from '../../utils/api';
 import ColorButton from './components/ColorButton';
@@ -25,22 +25,9 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
   const [colorFilters, setFilters] = React.useState(colorOptions);
   const [search, setSearch] = React.useState('');
   const [hoveredCard, setHoveredCard] = React.useState<Card | null>(null);
-  const [cards, setCards] = React.useState<Card[]>([]);
-  const [name, setName] = React.useState('New Deck');
-
-  const [deckId, setDeckId] = React.useState(-1);
+  const [allCards, setAllCards] = React.useState<Card[]>([]);
+  const [deckName, setDeckName] = React.useState('New Deck');
   const [deck, setDeck] = React.useState<number[]>([]);
-  const [deckList, setDeckList] = React.useState<Deck[]>([]);
-  const [deckListOptions, setDeckListOptions] = React.useState<
-    DropdownItemProps[]
-  >([{ key: 'new', text: 'New Deck', value: 'New Deck' }]);
-
-  // display a list of decks
-  // Click a card in the collection -> adds it to the current deck
-  // Click a card in the deck       -> removes it from the deck
-  // save the deck
-  // delete the deck
-  // Name a deck
 
   const styles: CSS.Properties = {
     display: 'flex',
@@ -86,7 +73,7 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
       target: { value },
     } = e as any;
 
-    setName(value);
+    setDeckName(value);
   };
 
   React.useEffect(() => {
@@ -97,20 +84,10 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
       setCollection(newCollection);
     });
 
-    request({ url: 'cards/all' }).then(setCards);
-
-    request({ url: 'deckBuilder/myDeckList' }).then((newDeckList) => {
-      const t = [...newDeckList];
-      setDeckList(t);
-      // console.log(t);
-      handleChange(t);
-
-      //console.log(newDeckList[0]);
-    });
+    request({ url: 'cards/all' }).then(setAllCards);
   }, []);
 
   const onCollectionCardClick = (cardId: number) => (e: React.MouseEvent) => {
-    //console.log(cardId);
     if (deck.includes(cardId) || deck.length >= 12) {
       return;
     }
@@ -119,80 +96,25 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
     setDeck(newDeck);
   };
 
-  // REVIEW: Linter says this is unused
-  const _onDeckClick = (clickedDeck: Deck) => (e: React.MouseEvent) => {
-    // console.log(clickedDeck);
-    const { id, name } = clickedDeck;
-    const savedDeck = JSON.parse(clickedDeck.cards);
-    // console.log(savedDeck);
-    setDeckId(id);
-    setDeck(savedDeck);
-    setName(name);
-  };
-
   const onDeckCardClick = (cardId: number) => (e: React.MouseEvent) => {
     // console.log(e);
     // console.log(cardId);
-
     const newDeck = [...deck].filter((id) => id !== cardId);
     setDeck(newDeck);
   };
 
   const saveDeck = () => {
-    if (deck.length !== 12) {
-      // console.log('not enough cards in you deck');
-      // console.log(deck.length);
-      return;
-    }
-
     request({
       method: 'post',
       url: 'deckBuilder/saveDeck',
-      data: { name, deck },
-    }).then((newDeck: Deck) => {
-      const newDeckList: Deck[] = [...deckList];
-      newDeckList.push(newDeck);
-      setDeckId(newDeck.id);
-      setName(newDeck.name);
-      setDeck(JSON.parse(newDeck.cards));
-      setDeckList(newDeckList);
-    });
-  };
-
-  // REVIEW: Linter says this is unused
-  const _updateDeck = () => {
-    request({
-      method: 'post',
-      url: 'deckBuilder/updateDeck',
-      data: { deckId, name, deck },
-    }).then((newDeck: Deck) => {
-      //update copy on the page
-      const newDeckList = [
-        ...deckList.filter((deck) => deck.id !== newDeck.id),
-        newDeck,
-      ];
-      // console.log(newDeckList);
-      setDeckList(newDeckList);
-    });
-  };
-
-  //TODO: Rename
-  const handleChange = (deckList: Deck[]) => {
-    // console.log(deckList);
-    const listOptions: DropdownItemProps[] = deckList.map((deck) => {
-      // console.log(deck);
-      return {
-        key: deck.id.toString(),
-        text: deck.name,
-        value: deck.id,
-      };
-    });
-    listOptions.unshift({
-      key: 'newDeck',
-      text: 'New Deck',
-      value: '-1',
-    });
-    setDeckListOptions(listOptions);
+      data: { name: deckName, deck },
+    })
+      .then(() => {
+        console.log('save successful');
+      })
+      .catch((error) => {
+        console.log('save failed', error);
+      });
   };
 
   const onHover = (card: Card) => {
@@ -260,22 +182,22 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
     return cards.filter((card) => checkForTerm(card, searchTerm));
   };
 
-  const colorMatches = React.useMemo(() => filterByColor(cards, colorFilters), [
-    cards,
-    colorFilters,
-  ]);
+  const colorMatches = React.useMemo(
+    () => filterByColor(allCards, colorFilters),
+    [allCards, colorFilters]
+  );
 
-  const searchMatches = React.useMemo(() => filterBySearchTerm(cards, search), [
-    cards,
-    search,
-  ]);
+  const searchMatches = React.useMemo(
+    () => filterBySearchTerm(allCards, search),
+    [allCards, search]
+  );
 
   const allMatches = React.useMemo(
     () =>
-      cards
+      allCards
         .filter((card) => searchMatches.includes(card))
         .filter((card) => colorMatches.includes(card)),
-    [cards, searchMatches, colorMatches]
+    [allCards, searchMatches, colorMatches]
   );
 
   const renderCollection = () => {
@@ -297,12 +219,23 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
     return (
       <>
         <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+          <div>
+            <TextInput
+              id="deckName"
+              labelText=""
+              name="name"
+              value={deckName}
+              onChange={onNameInputChange}
+              style={{ width: '100%' }}
+            />
+          </div>
           <div
             style={{
               display: 'flex',
               backgroundColor: 'white',
               flexDirection: 'column',
               textAlign: 'center',
+              height: 350,
             }}
           >
             {hoveredCard && (
@@ -322,22 +255,7 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
               {hoveredCard && hoveredCard.description}
             </p>
           </div>
-          <div style={{ display: 'flex' }}>
-            <Input
-              name="name"
-              value={name}
-              onChange={onNameInputChange}
-              style={{ width: '100%' }}
-              action={
-                <Dropdown
-                  button
-                  basic
-                  options={deckListOptions}
-                  style={{ display: 'flex', width: '20%' }}
-                />
-              }
-            />
-          </div>
+
           <div
             style={{ display: 'flex', flexGrow: 1, flexDirection: 'column' }}
           >
@@ -350,7 +268,7 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
               }}
             >
               {deck.map((cardId) => {
-                const card = cards.find(
+                const card = allCards.find(
                   (item: Card) => item.id === cardId
                 ) as Card;
                 return card ? (
@@ -364,11 +282,6 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
                 ) : null;
               })}
             </ul>
-          </div>
-          <div>
-            <Button style={{ width: '50%' }} onClick={() => saveDeck()}>
-              SAVE DECK
-            </Button>
           </div>
         </div>
       </>
@@ -389,11 +302,16 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
           );
         })}
 
-        <Input
-          icon="search"
+        <TextInput
+          style={{ width: '50vw' }}
+          id="card-search"
+          labelText=""
           placeholder="Search"
           onChange={onSearchInputChange}
-        ></Input>
+        />
+        <Button style={{ width: '50%' }} onClick={() => saveDeck()}>
+          Save Deck
+        </Button>
       </section>
       <section style={editorStyles}>
         <section style={collectionContainerStyles}>

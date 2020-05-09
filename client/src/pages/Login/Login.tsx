@@ -75,7 +75,7 @@ export default class Login extends React.Component<LoginProps, LoginState> {
       <>
         <div className="loginWrapper">
           <h1>Login to start playing!</h1>
-          <form action="" onSubmit={this.submit}>
+          <form onSubmit={this.submit}>
             <p>
               <TextInput
                 id="username"
@@ -104,19 +104,23 @@ export default class Login extends React.Component<LoginProps, LoginState> {
                 ></InlineNotification>
               )}
             </p>
+            <div className="loginAction login--btn-set">
+              <Button
+                className="registerButton"
+                kind="secondary"
+                href="/register"
+              >
+                Sign up
+              </Button>
+              <Button
+                className="loginSubmit"
+                type="submit"
+                onClick={this.submit}
+              >
+                Log in
+              </Button>
+            </div>
           </form>
-          <div className="loginAction login--btn-set">
-            <Button
-              className="registerButton"
-              kind="secondary"
-              href="/register"
-            >
-              Sign up
-            </Button>
-            <Button className="loginSubmit" onClick={this.submit}>
-              Log in
-            </Button>
-          </div>
         </div>
       </>
     );
