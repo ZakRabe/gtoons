@@ -31,7 +31,7 @@ export const Sandbox = (props: SandboxProps) => {
   const [search, setSearch] = React.useState('');
   const [hoveredCard, setHoveredCard] = React.useState<Card | null>(null);
   const [cards, setCards] = React.useState<Card[]>([]);
-  //const [board, setBoard] = React.useState<Card[]>([]);
+  //const [board2, setBoard2] = React.useState<(Card | null)[]>([]);
   const [board, setBoard] = React.useState<Dictionary<Card | null>>({
     1: null,
     2: null,
@@ -101,12 +101,27 @@ export const Sandbox = (props: SandboxProps) => {
     let found = false,
       spacesAvailable = false,
       cardSet = false;
-    const newBoard2 = {} as Dictionary<Card | null>;
+    const newBoard = {} as Dictionary<Card | null>;
+
     const card = cards.find((item: Card) => item.id === cardId) as Card;
 
-    // if (board.includes(card) || board.length >= 7) {
+    // const newBoard2 = [] as (Card | null)[];
+    // if (board2.includes(card)) {
+    //   console.log('rreturning');
     //   return;
     // }
+
+    // board2.forEach((currentCard) => {
+    //   console.log(currentCard);
+    //   if (!cardSet && !currentCard) {
+    //     cardSet = true;
+    //     newBoard2.push(card);
+    //   } else {
+    //     newBoard2.push(currentCard);
+    //   }
+    // });
+
+    // console.log(newBoard2);
 
     Object.keys(board).map((key, index) => {
       if (board[key] == card) {
@@ -115,54 +130,61 @@ export const Sandbox = (props: SandboxProps) => {
       }
 
       if (!spacesAvailable && board[key] == null) {
-        console.log('I am available for a card');
+        //console.log('I am available for a card');
         spacesAvailable = true;
       } else {
-        console.log('Space occupied by ' + board[key]?.character);
+        //console.log('Space occupied by ' + board[key]?.character);
       }
     });
 
     if (found || !spacesAvailable) {
-      console.log('found : ' + found);
-      console.log('available : ' + spacesAvailable);
+      //console.log('found : ' + found);
+      //console.log('available : ' + spacesAvailable);
       return;
     }
 
     Object.keys(board).map((key, index) => {
       if (!cardSet && board[key] == null) {
-        newBoard2[key] = card;
+        newBoard[key] = card;
         //board2[key] = card;
         cardSet = true;
         return;
       }
 
-      newBoard2[key] = board[key];
+      newBoard[key] = board[key];
     });
-
-    //const newBoard = [...board, card];
     //request here?
-    //setBoard(newBoard);
-    setBoard(newBoard2);
+    setBoard(newBoard);
+    //setBoard2(newBoard2);
+
+    const boardState = Object.values(newBoard); //TODO: Change to only send card id
+    request({
+      method: 'post',
+      url: 'sandbox/calculateScore',
+      data: { board: boardState },
+    });
   };
 
   const removeCard = (cardId: number) => {
-    const newBoard2 = {} as Dictionary<Card | null>;
+    const newBoard = {} as Dictionary<Card | null>;
+    //const newBoard2 = [] as (Card | null)[];
+
     Object.keys(board).map((key, index) => {
       if (board[key]?.id == cardId) {
-        newBoard2[key] = null;
+        newBoard[key] = null;
         return;
       }
 
-      newBoard2[key] = board[key];
+      newBoard[key] = board[key];
     });
 
-    console.log(Object.entries(newBoard2));
     // const newBoard = board.filter((card) => {
     //   return card.id !== cardId;
     // });
 
     //setBoard(newBoard);
-    setBoard(newBoard2);
+    setBoard(newBoard);
+    //setBoard2(newBoard2);
   };
 
   const onHover = (card: Card) => {
