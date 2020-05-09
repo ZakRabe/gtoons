@@ -1,7 +1,6 @@
 import { Button, TextInput } from 'carbon-components-react';
 import CSS from 'csstype';
 import * as React from 'react';
-import { Dropdown, Input } from 'semantic-ui-react';
 import { Card } from '../../App/types';
 import CardComponent from '../../components/Card';
 import { request } from '../../utils/api';
