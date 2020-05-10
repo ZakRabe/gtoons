@@ -19,9 +19,10 @@ export default class PlayerZonesRowOne extends React.Component<
     const { cards, onCardClick, onCardHover } = this.props;
     return (
       <div style={styles}>
-        {cards?.map((card) => {
+        {cards?.map((card, index) => {
           return (
             <PlayerZone
+              key={card ? card.id : `emptySlot_${index}`}
               card={card}
               onCardClick={onCardClick}
               onCardHover={onCardHover}

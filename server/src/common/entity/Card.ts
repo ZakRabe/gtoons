@@ -1,4 +1,5 @@
 import { Modifier, VariableModifer } from './Modifer';
+import Power from './Power';
 
 export enum Color {
   RED = 'RED',
@@ -8,7 +9,7 @@ export enum Color {
   BLUE = 'BLUE',
   PURPLE = 'PURPLE',
   SILVER = 'SILVER',
-  BLACK = 'BLACK'
+  BLACK = 'BLACK',
 }
 
 export enum Rarity {
@@ -16,7 +17,7 @@ export enum Rarity {
   UNCOMMON = 'UNCOMMON',
   RARE = 'RARE',
   EPIC = 'EPIC',
-  LEGENDARY = 'LEGENDARY'
+  LEGENDARY = 'LEGENDARY',
 }
 
 export default class Card {
@@ -28,6 +29,7 @@ export default class Card {
   rarity: Rarity;
   groups: string[];
   types: string[];
+  powers: Power[];
   modifiers: Modifier[];
   points: number;
 
@@ -35,6 +37,12 @@ export default class Card {
     let copy;
     this.modifiers.map(mod => {
       copy = mod.apply(this);
+    });
+  };
+
+  checkPower = (board: (Card | null)[]) => {
+    this.powers.map(power => {
+      power.check(board);
     });
   };
 }

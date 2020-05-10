@@ -2,14 +2,7 @@ import * as React from 'react';
 import CSS from 'csstype';
 import { CardProps } from './types';
 
-const styles: CSS.Properties = {
-  position: 'absolute',
-  top: '5px',
-  bottom: '5px',
-  left: '5px',
-  right: '5px',
-  backgroundColor: 'red',
-};
+// UNUSED ATM
 
 export default class Card extends React.Component<CardProps, {}> {
   getImageURL() {
@@ -29,9 +22,10 @@ export default class Card extends React.Component<CardProps, {}> {
     const { cardColor } = this.props;
 
     const container: CSS.Properties = {
-      display: 'flex',
-      flexGrow: 1,
-      height: '100%',
+      userSelect: 'none',
+      position: 'absolute',
+      width: '88%',
+      height: '88%',
       margin: '0',
       backgroundImage: `url(${this.getImageURL()})`,
       border: '11px solid ' + cardColor,
@@ -49,6 +43,7 @@ export default class Card extends React.Component<CardProps, {}> {
       <div style={this.getCardStyle()}>
         <div
           style={{
+            userSelect: 'none',
             margin: '7px',
             height: '50px',
             width: '50px',
@@ -58,6 +53,7 @@ export default class Card extends React.Component<CardProps, {}> {
         >
           <p
             style={{
+              userSelect: 'none',
               textAlign: 'center',
               color: 'white',
               margin: '0',

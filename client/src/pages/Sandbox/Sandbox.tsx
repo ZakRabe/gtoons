@@ -11,7 +11,7 @@ import CardComponent from '../../components/Card';
 import CSS from 'csstype';
 import ColorButton from './components/ColorButton';
 import PlayerZones from '../Game/components/PlayerZones';
-import { Dictionary } from 'lodash';
+import { Dictionary, debounce } from 'lodash';
 
 export const Sandbox = (props: SandboxProps) => {
   // const { socket } = props;
@@ -92,51 +92,46 @@ export const Sandbox = (props: SandboxProps) => {
     right: 0,
     overflow: 'auto',
   };
+
   React.useEffect(() => {
     request({ url: 'cards/all' }).then(setCards);
   }, []);
 
-  const onCollectionCardClick = (cardId: number) => (e: React.MouseEvent) => {
-    let cardSet = false;
+  const calculateScore = () => {
+    request({
+      method: 'post',
+      url: 'sandbox/calculateScore',
+      data: { board: board.map((card) => (card ? card.id : null)) },
+    }).then(console.log);
+  };
 
+  React.useEffect(() => {
+    calculateScore();
+  }, [board]);
+
+  const onCollectionCardClick = (cardId: number) => (e: React.MouseEvent) => {
+    const newBoard = [...board];
+
+    const emptySpace = newBoard.findIndex((card) => card === null);
     const card = cards.find((item: Card) => item.id === cardId) as Card;
 
-    const newBoard = [] as (Card | null)[];
-    if (board.includes(card)) {
-      console.log('rreturning');
+    if (
+      newBoard.find((card) => card && card.id === cardId) ||
+      emptySpace === -1
+    ) {
+      console.log('returning');
       return;
     }
 
-    board.forEach((currentCard) => {
-      //console.log(currentCard);
-      if (!cardSet && !currentCard) {
-        cardSet = true;
-        newBoard.push(card);
-      } else {
-        newBoard.push(currentCard);
-      }
-    });
-
+    newBoard.splice(emptySpace, 1, card);
     setBoard(newBoard);
-
-    // const boardState = Object.values(newBoard); //TODO: Change to only send card id
-    // request({
-    //   method: 'post',
-    //   url: 'sandbox/calculateScore',
-    //   data: { board: boardState },
-    // });
   };
 
   const removeCard = (cardId: number) => {
-    const newBoard = [] as (Card | null)[];
+    const newBoard = [...board];
+    const index = newBoard.findIndex((card) => card && card.id === cardId);
 
-    board.forEach((currentCard) => {
-      if (currentCard && currentCard.id == cardId) {
-        newBoard.push(null);
-      } else {
-        newBoard.push(currentCard);
-      }
-    });
+    newBoard.splice(index, 1, null);
 
     setBoard(newBoard);
   };
@@ -227,111 +222,113 @@ export const Sandbox = (props: SandboxProps) => {
   const renderBoard = () => {
     return (
       <PlayerZones
-        cards={Object.values(board)}
+        cards={board}
         onCardClick={removeCard}
         onCardHover={onHover}
       />
     );
   };
 
+  const hoveredCardUi = () => (
+    <div
+      style={{
+        display: 'flex',
+        backgroundColor: 'white',
+        flexDirection: 'column',
+        textAlign: 'center',
+      }}
+    >
+      {hoveredCard && (
+        <CardComponent model={hoveredCard} width={250} height={250} />
+      )}
+      <p
+        id="cardName"
+        style={{
+          textAlign: 'center',
+          fontSize: '20px',
+          fontWeight: 'bolder',
+        }}
+      >
+        {hoveredCard && hoveredCard.title}
+      </p>
+      <p id="cardPower" style={{ fontSize: '15px' }}>
+        {hoveredCard && hoveredCard.description}
+      </p>
+    </div>
+  );
+
+  const collectionUi = () => (
+    <div style={collectionContainerStyles}>
+      <div style={collectionWrapperStyles}>
+        <ul
+          style={{
+            backgroundColor: 'white',
+            display: 'flex',
+            flexDirection: 'column',
+            flexGrow: 1,
+            padding: 0,
+          }}
+        >
+          {allMatches.map((card) => {
+            return (
+              <li
+                key={card.id}
+                onClick={onCollectionCardClick(card.id)}
+                onMouseOver={() => onHover(card)}
+                style={{
+                  display: 'flex',
+                  height: '8.33%',
+                  alignItems: 'center',
+                  border: `1px solid ${card.colors[0]}`,
+                  fontWeight: 'bolder',
+                }}
+              >
+                <div
+                  style={{
+                    height: '100%',
+                    width: '5%',
+                    backgroundColor: `${card.colors[0]}`,
+                  }}
+                ></div>
+                <div
+                  style={{
+                    display: 'flex',
+                    height: '100%',
+                    maxWidth: '100%',
+                    flexGrow: 1,
+                    textAlign: 'center',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  {card.title}
+                </div>
+                <div
+                  style={{
+                    display: 'flex',
+                    height: '100%',
+                    width: '8%',
+                    textAlign: 'center',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  {card.points}
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </div>
+  );
+
   const renderCardList = () => {
     return (
       <>
         <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-          <div
-            style={{
-              display: 'flex',
-              backgroundColor: 'white',
-              flexDirection: 'column',
-              textAlign: 'center',
-            }}
-          >
-            {hoveredCard && (
-              <CardComponent model={hoveredCard} width={250} height={250} />
-            )}
-            <p
-              id="cardName"
-              style={{
-                textAlign: 'center',
-                fontSize: '20px',
-                fontWeight: 'bolder',
-              }}
-            >
-              {hoveredCard && hoveredCard.title}
-            </p>
-            <p id="cardPower" style={{ fontSize: '15px' }}>
-              {hoveredCard && hoveredCard.description}
-            </p>
-          </div>
-          {/* 
-          <section style={collectionContainerStyles}>
-            <section style={collectionWrapperStyles}>
-              {renderCollection()}
-            </section>
-          </section> */}
-          <div style={collectionContainerStyles}>
-            <div style={collectionWrapperStyles}>
-              <ul
-                style={{
-                  backgroundColor: 'white',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  flexGrow: 1,
-                  padding: 0,
-                }}
-              >
-                {allMatches.map((card) => {
-                  return (
-                    <li
-                      key={card.id}
-                      onClick={onCollectionCardClick(card.id)}
-                      onMouseOver={() => onHover(card)}
-                      style={{
-                        display: 'flex',
-                        height: '8.33%',
-                        alignItems: 'center',
-                        border: `1px solid ${card.colors[0]}`,
-                        fontWeight: 'bolder',
-                      }}
-                    >
-                      <div
-                        style={{
-                          height: '100%',
-                          width: '5%',
-                          backgroundColor: `${card.colors[0]}`,
-                        }}
-                      ></div>
-                      <div
-                        style={{
-                          display: 'flex',
-                          height: '100%',
-                          maxWidth: '100%',
-                          flexGrow: 1,
-                          textAlign: 'center',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                        }}
-                      >
-                        {card.title}
-                      </div>
-                      <div
-                        style={{
-                          display: 'flex',
-                          height: '100%',
-                          width: '8%',
-                          textAlign: 'center',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                        }}
-                      >
-                        {card.points}
-                      </div>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          </div>
+          {hoveredCardUi()}
+          {collectionUi()}
         </div>
       </>
     );
@@ -343,6 +340,7 @@ export const Sandbox = (props: SandboxProps) => {
         {colorOptions.map((color) => {
           return (
             <ColorButton
+              key={color}
               color={color}
               active={colorFilters.includes(color)}
               onClick={toggleColor(color)}

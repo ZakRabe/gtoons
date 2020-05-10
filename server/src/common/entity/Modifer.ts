@@ -125,7 +125,7 @@ export class ColorsModifier extends VariableModifer implements ColorsMod {
   }
 }
 
-// class that is for adding poiints to a card
+// class that is for adding points to a card
 export class PointsModifier implements PointsMod {
   attribute: 'points';
   value: number;
