@@ -9,3 +9,13 @@ export function getCard(id: number) {
 export function getCards(ids: number[]) {
   return ids.map(getCard);
 }
+
+export function getDeepCopyCard(id: number) {
+  //returns nulls when it shouldn't
+  let card = getCard(id);
+  return card ? new Card(card) : null;
+}
+
+export function getDeepCopyCards(ids: number[]) {
+  return ids.map(getDeepCopyCard);
+}

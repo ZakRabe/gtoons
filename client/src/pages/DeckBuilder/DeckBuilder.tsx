@@ -268,9 +268,8 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
               }}
             >
               {deck.map((cardId) => {
-                const card = allCards.find(
-                  (item: Card) => item.id === cardId
-                ) as Card;
+                const card =
+                  allCards.find((item: Card) => item.id === cardId) as Card;
                 return card ? (
                   <li
                     key={cardId}

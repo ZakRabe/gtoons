@@ -3,7 +3,8 @@ import { getRepository } from 'typeorm';
 import User from '../../common/entity/User';
 import { hashPassword } from '../../util';
 import * as jwt from 'jsonwebtoken';
-import { getCards } from '../../cards/utils';
+import { getCards, getDeepCopyCards } from '../../cards/utils';
+import Card from '../../common/entity/Card';
 
 export class SandboxController {
   //private userRepository = getRepository(User);
@@ -13,12 +14,12 @@ export class SandboxController {
     response: Response,
     next: NextFunction
   ) {
-    //console.log(request.body.board);
     const board = [...request.body.board] as (number | null)[];
-    const cards = getCards(board);
-    console.log(cards);
+    const cards = getDeepCopyCards(board);
     cards.map(card => {
-      card.checkPower(cards);
+      if (card) {
+        card.checkPower(cards);
+      }
     });
     return {};
   }

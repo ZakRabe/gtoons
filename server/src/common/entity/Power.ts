@@ -3,7 +3,7 @@ import { Modifier } from './Modifer';
 import Card from './Card';
 
 //Add check for different conditional combinations?
-export default class Effect {
+export default class Power {
   id: number;
   conditions: Conditional[];
   modifiers: Modifier[];
@@ -12,10 +12,12 @@ export default class Effect {
     this.modifiers = [..._modifiers];
   }
 
-  check = (board: (Card | null)[]): Boolean => {
-    this.conditions.map(condition => {
+  check(board: (Card | null)[]): Boolean {
+    var d = this.conditions.map(condition => {
       condition.check(board);
     });
+
+    console.log(d);
     return true;
-  };
+  }
 }
