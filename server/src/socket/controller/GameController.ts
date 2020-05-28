@@ -6,7 +6,7 @@ import Lobby from '../../common/entity/Lobby';
 import User from '../../common/entity/User';
 import { SockerController } from './SocketController';
 import GameState from '../../common/entity/GameState';
-import { cardsInCollection, cut } from '../../util';
+import { cardsInCollection } from '../../util';
 
 export class DeckBuilderController extends SockerController {
   private collectionRepository = getRepository(Collection);
