@@ -161,3 +161,31 @@ export class TypesModifier extends VariableModifer implements TypesMod {
     super('types', type, value, source);
   }
 }
+
+const mod = {
+  attribute: 'points',
+  type: 'add',
+  value: 5,
+  source: 98,
+};
+
+const card1Mods = [
+  {
+    attribute: 'points',
+    type: 'add',
+    value: 5,
+    source: 98,
+  },
+  {
+    attribute: 'points',
+    type: 'add',
+    value: 5,
+    source: 98,
+  },
+  {
+    attribute: 'points',
+    type: 'add',
+    value: 5,
+    source: 98,
+  },
+];
