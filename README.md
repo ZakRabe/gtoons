@@ -8,14 +8,14 @@ Did you know that we are on [Discord](https://discord.com/invite/W9Z9hSG)? Come 
 
 ---
 
-###System Requirements:
+### System Requirements:
 Resource | Minimum | Recommended
 --- | --- | ---
 OS | - | Win10, OSX, Ubuntu 18.04
 CPU | 1 core | 2 cores
 Memory | 1GB | 2GB
 
-###Software Prerequisites: 
+### Software Prerequisites: 
 NPM 13.3.0  
 Optionally use NVM to manage node versions:
 * [Windows](https://github.com/coreybutler/nvm-windows/releases)
@@ -43,7 +43,7 @@ MySQL Workbench 8.0
 
 ---
 
-###Database Setup:
+### Database Setup:
 Use a MySQL client to execute the database setup queries.
 
 The following commands will result in the creation of a database called `gtoons`.  
@@ -61,7 +61,7 @@ Make migrations for database creation and user?
 
 ---
 
-###Deploy Application:
+### Deploy Application:
 
 The reToons engine is made up of two components, an Express server for the backend and a React app for the frontend.
 
@@ -81,7 +81,7 @@ Install the frontend:
 
 ---
 
-###Start the Express Backend:  
+### Start the Express Backend:  
 ```cd gtoons/server/```  
 ```npm run start&```
 
@@ -98,13 +98,15 @@ Any changes you make to the client source should automatically reload the fronte
 
 ---
 
-###Troubleshooting:
+### Troubleshooting:
  
 ENOSPC: System limit for number of file watchers reached
 
 Solution:  
-```sysctl fs.inotify.max_user_watches=524288```  
-```fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf```  
-```sysctl -p```
+```
+sysctl fs.inotify.max_user_watches=524288
+fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
+sysctl -p
+```
 
 If you experience issues, please log an [Issue](https://github.com/ZakRabe/gtoons/issues) or ask for help in the [Discord](https://discord.com/invite/W9Z9hSG) chat server.
