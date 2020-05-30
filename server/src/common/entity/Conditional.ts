@@ -14,7 +14,7 @@ import Card, { Color } from './Card';
 
 // BASE INTERFACE
 export interface Conditional {
-  condition: 'nextTo' | 'forEach';
+  condition: 'nextTo' | 'forEach' | 'toAll';
   attribute: 'character' | 'colors' | 'groups' | 'types' | 'points';
   value: string | Color | number;
   source: number;
@@ -28,6 +28,11 @@ export interface Conditional {
  */
 export interface NextToCond extends Conditional {
   condition: 'nextTo';
+  attribute: 'character' | 'colors' | 'groups' | 'types' | 'points';
+}
+
+export interface ToAllCond extends Conditional {
+  condition: 'toAll';
   attribute: 'character' | 'colors' | 'groups' | 'types' | 'points';
 }
 
@@ -99,5 +104,26 @@ export class AdjacentToConditional extends NextToConditonal {
        */
     }
     return true;
+  }
+}
+
+export class InPlayConidtional {
+  condition: 'inPlay';
+  attribute: 'character' | 'colors' | 'groups' | 'types' | 'points';
+  value: string | Color | number;
+  source: number;
+
+  constructor(
+    attribute: 'character' | 'colors' | 'groups' | 'types' | 'points',
+    value: string | Color | number,
+    source: number
+  ) {
+    this.attribute = attribute;
+    this.value = value;
+    this.source = source;
+  }
+  check(board: (Card | null)[]): boolean {
+    // TODO
+    return false;
   }
 }

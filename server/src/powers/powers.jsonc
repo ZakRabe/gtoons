@@ -1,0 +1,423 @@
+[
+  {
+    "id": 98,
+    "powers": [
+      {
+        "conditions": [
+          {
+            "condition": "nextTo",
+            "attribute": "character",
+            "value": "dexter",
+            "source": 98
+          }
+        ],
+        "modifiers": [
+          { "attribute": "points", "type": "add", "value": 5, "source": 98 }
+        ]
+      }
+    ]
+  },
+  // TO X from @Bit's document
+  {
+    // roach coach
+    "id": 311,
+    "powers": [
+      {
+        "conditionType": "ALL",
+        "target": "match",
+        "conditions": [
+          {
+            "condition": "toAll",
+            "attribute": "character",
+            "value": "Townsville",
+            "source": 311
+          }
+        ],
+        "modifiers": [
+          { "attribute": "points", "type": "add", "value": -4, "source": 311 }
+        ]
+      }
+    ]
+  },
+  {
+    // snow beast
+    "id": 345,
+    "powers": [
+      {
+        "conditionType": "ALL",
+        "target": "match",
+        "conditions": [
+          {
+            "condition": "toAll",
+            "attribute": "character",
+            "value": "Fred Jones",
+            "source": 345
+          }
+        ],
+        "modifiers": [
+          { "attribute": "points", "type": "add", "value": 5, "source": 345 }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 392,
+    "powers": [
+      {
+        "conditionType": "ALL",
+        "target": "match",
+        "conditions": [
+          {
+            "condition": "toAll",
+            "attribute": "character",
+            "value": "Buttercup",
+            "source": 392
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "replace",
+            "value": 2,
+            "source": 392
+          }
+        ]
+      }
+    ]
+  },
+  // Coop
+  {
+    "id": 82,
+    "powers": [
+      {
+        "conditionType": "ALL",
+        "target": "match",
+        "conditions": [
+          {
+            "condition": "toAll",
+            "attribute": "character",
+            "value": "Megas",
+            "source": 82
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "replace",
+            "value": 2,
+            "source": 82
+          }
+        ]
+      }
+    ]
+  },
+  // END OF TO X
+
+  // IF X IS IN PLAY
+  // BEAST BOY
+  {
+    "id": 30,
+    "powers": [
+      {
+        "conditionType": "ALL",
+        "target": "self",
+        "conditions": [
+          {
+            "condition": "inPlay",
+            "attribute": "character",
+            "value": "Robin",
+            "source": 30
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 3,
+            "source": 30
+          }
+        ]
+      }
+    ]
+  },
+
+  // Starfire
+  {
+    "id": 348,
+    "powers": [
+      {
+        "conditionType": "ALL",
+        "target": "self",
+        "conditions": [
+          {
+            "condition": "inPlay",
+            "attribute": "character",
+            "value": "Robin",
+            "source": 348
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 3,
+            "source": 348
+          }
+        ]
+      }
+    ]
+  },
+
+  // Puddlequeen
+  {
+    "id": 299,
+    "powers": [
+      {
+        "conditionType": "ALL",
+        "target": "self",
+        "conditions": [
+          {
+            "condition": "inPlay",
+            "attribute": "character",
+            "value": "Eustace",
+            "source": 299
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 5,
+            "source": 299
+          }
+        ]
+      }
+    ]
+  },
+
+  // Joker in vegas
+  {
+    "id": 209,
+    "powers": [
+      {
+        "conditionType": "ALL",
+        "target": "self",
+        "conditions": [
+          {
+            "condition": "inPlay",
+            "attribute": "character",
+            "value": "Royal Flush Gang",
+            "source": 209
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 5,
+            "source": 209
+          }
+        ]
+      }
+    ]
+  },
+  // Dove
+  // TODO: Hawk not in game?!
+  {
+    "id": 110,
+    "powers": [
+      {
+        "conditionType": "ALL",
+        "target": "self",
+        "conditions": [
+          {
+            "condition": "inPlay",
+            "attribute": "character",
+            "value": "Hawk",
+            "source": 110
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 5,
+            "source": 110
+          }
+        ]
+      }
+    ]
+  },
+  // Ranger Smith
+  {
+    "id": 303,
+    "powers": [
+      {
+        "conditionType": "ALL",
+        "target": "self",
+        "conditions": [
+          {
+            "condition": "inPlay",
+            "attribute": "character",
+            "value": "Jellystone Park",
+            "source": 303
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 6,
+            "source": 303
+          }
+        ]
+      }
+    ]
+  },
+
+  // Krunk
+  {
+    "id": 219,
+    "powers": [
+      {
+        "conditionType": "ALL",
+        "target": "self",
+        "conditions": [
+          {
+            "condition": "inPlay",
+            "attribute": "character",
+            "value": "Major Glory",
+            "source": 219
+          },
+          {
+            "condition": "inPlay",
+            "attribute": "character",
+            "value": "Val Hallen",
+            "source": 219
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 8,
+            "source": 219
+          }
+        ]
+      }
+    ]
+  },
+  // tweety
+  {
+    "id": 370,
+    "powers": [
+      {
+        "conditionType": "ALL",
+        "target": "self",
+        "conditions": [
+          {
+            "condition": "inPlay",
+            "attribute": "character",
+            "value": "Sylvester",
+            "source": 370
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 8,
+            "source": 370
+          }
+        ]
+      }
+    ]
+  },
+
+  // Sam
+  {
+    "id": 323,
+    "powers": [
+      {
+        "conditionType": "ANY",
+        "target": "self",
+        "conditions": [
+          {
+            "condition": "inPlay",
+            "attribute": "character",
+            "value": "Alex",
+            "source": 323
+          },
+          {
+            "condition": "inPlay",
+            "attribute": "character",
+            "value": "Clover",
+            "source": 323
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "replace",
+            "value": 2,
+            "source": 323
+          }
+        ]
+      }
+    ]
+  },
+  // Val Hallen
+  {
+    "id": 373,
+    "powers": [
+      {
+        "conditionType": "ANY",
+        "target": "self",
+        "conditions": [
+          {
+            "condition": "inPlay",
+            "attribute": "character",
+            "value": "Warrior Woman",
+            "source": 373
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "replace",
+            "value": 2,
+            "source": 373
+          }
+        ]
+      }
+    ]
+  },
+  // Moodnesium
+  // TODO: This power isn't supported by the power schema
+  // x2 to Porky Pig if Duck Dodgers is in play
+  {
+    "id": 266,
+    "powers": [
+      {
+        "conditionType": "ANY",
+        "target": "other",
+        "conditions": [
+          {
+            "condition": "inPlay",
+            "attribute": "character",
+            "value": "Duck Dodgers",
+            "source": 266
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "replace",
+            "value": 2,
+            "source": 266
+          }
+        ]
+      }
+    ]
+  } // END OF IF X IS IN PLAY
+]

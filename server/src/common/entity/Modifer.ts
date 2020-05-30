@@ -126,8 +126,10 @@ export class ColorsModifier extends VariableModifer implements ColorsMod {
 }
 
 // class that is for adding points to a card
+// type:add is used to denote simple addition points mod
 export class PointsModifier implements PointsMod {
   attribute: 'points';
+  type: 'add';
   value: number;
   source: number;
 
@@ -140,6 +142,27 @@ export class PointsModifier implements PointsMod {
   apply(card: Card) {
     const copy = { ...card };
     copy[this.attribute] = copy[this.attribute] + this.value;
+    return copy;
+  }
+}
+
+// Value is the multiplier. should only apply to base value.
+// type:replace is used to denote multiplier points mod
+export class PointsMultiplierModifier implements PointsMod {
+  attribute: 'points';
+  type: 'replace';
+  value: number;
+  source: number;
+
+  constructor(value: number, source: number) {
+    this.attribute = 'points';
+    this.value = value;
+    this.source = source;
+  }
+
+  apply(card: Card) {
+    const copy = { ...card };
+    copy[this.attribute] = this.value * copy[this.attribute];
     return copy;
   }
 }
@@ -161,31 +184,3 @@ export class TypesModifier extends VariableModifer implements TypesMod {
     super('types', type, value, source);
   }
 }
-
-const mod = {
-  attribute: 'points',
-  type: 'add',
-  value: 5,
-  source: 98,
-};
-
-const card1Mods = [
-  {
-    attribute: 'points',
-    type: 'add',
-    value: 5,
-    source: 98,
-  },
-  {
-    attribute: 'points',
-    type: 'add',
-    value: 5,
-    source: 98,
-  },
-  {
-    attribute: 'points',
-    type: 'add',
-    value: 5,
-    source: 98,
-  },
-];
