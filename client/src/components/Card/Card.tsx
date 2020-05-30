@@ -1,6 +1,8 @@
-import React from 'react';
-import { CardProps } from './types';
 import { isEqual } from 'lodash';
+import React from 'react';
+
+import { CardProps } from './types';
+import CopyToClipboard from 'react-copy-to-clipboard';
 
 export const Card: React.FunctionComponent<CardProps> = (props) => {
   const { model: card, onClick, onHover, width, height } = props;
@@ -55,6 +57,13 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
         onMouseOver={onHover}
       >
         <div style={cardWrapperStyles} onClick={onClick}>
+          <div
+            style={{ position: 'absolute', top: '0', left: '0', fontSize: 50 }}
+          >
+            <CopyToClipboard text={card.id.toString()}>
+              <span>{card.id}</span>
+            </CopyToClipboard>
+          </div>
           <div style={cardBorderStyles}>
             <span style={pointStyles}>{card.points}</span>
             <div style={cardStyles}></div>
