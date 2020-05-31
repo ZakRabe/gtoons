@@ -200,7 +200,7 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
                       setSelectedDeck(newDeck || null);
                     }}
                     //@ts-ignore
-                    value={selectedDeck}
+                    value={selectedDeck && selectedDeck.id}
                     id={`seat${seatNumber}-deckSelect`}
                   >
                     <SelectItem text="Choose a deck" value={null}></SelectItem>
@@ -211,6 +211,9 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
                         <SelectItem
                           text={deck.name}
                           key={deck.id}
+                          selected={
+                            !!selectedDeck && selectedDeck.id === deck.id
+                          }
                           value={deck.id}
                         ></SelectItem>
                       ))
