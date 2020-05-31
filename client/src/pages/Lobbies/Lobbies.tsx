@@ -45,6 +45,7 @@ export const Lobbies = (_props: LobbiesProps) => {
       ]);
     });
     lobbiesSocket.on('lobbyClosed', (lobbyId: number) => {
+      console.log('lobbyClosed', lobbyId);
       setLobbies((prevLobbies) => [
         ...prevLobbies.filter((lobby) => lobby.id !== lobbyId),
       ]);

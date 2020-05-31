@@ -4,12 +4,17 @@ import Lobby from '../../common/entity/Lobby';
 import User from '../../common/entity/User';
 import { verifyToken } from '../../util';
 import { SockerController } from './SocketController';
+import { disconnect } from 'cluster';
 
 // TODO: ALL THIS LOGIC IS ACTUALLY FOR LOBBIES
 export class LobbyController extends SockerController {
   private gameRepository = getRepository(Game);
   private lobbyRepository = getRepository(Lobby);
   private userRepository = getRepository(User);
+
+  onDisconnect = async ({ lobbyId, token }) => {
+    await this.leaveLobby({ lobbyId, token });
+  };
 
   async joinLobby({ lobbyId, token }) {
     const lobbyRoom = `lobby/${lobbyId}`;
@@ -25,11 +30,19 @@ export class LobbyController extends SockerController {
     const lobby = await this.lobbyRepository.findOne(lobbyId);
     lobby.connectedCount += 1;
     await lobby.save();
+    this.socket.on(
+      'disconnect',
+      async () => await this.onDisconnect({ lobbyId, token })
+    );
     this.io.emit('lobbyUpdated', lobby.toJson());
     this.socket.emit('lobbyJoined', lobby.toJson());
   }
 
   async leaveLobby({ lobbyId, token }) {
+    this.socket.off(
+      'disconnect',
+      async () => await this.onDisconnect({ lobbyId, token })
+    );
     const lobbyRoom = `lobby/${lobbyId}`;
     let user;
     try {
@@ -37,13 +50,14 @@ export class LobbyController extends SockerController {
     } catch (error) {
       return;
     }
-    console.log('leaveLobby');
+
     this.socket.leave(lobbyRoom);
     const lobby = await this.lobbyRepository.findOne(lobbyId);
     lobby.connectedCount -= 1;
     await lobby.save();
-
     this.io.emit('lobbyUpdated', lobby.toJson());
+    this.io.to(lobbyRoom).emit('userLeft', user.username);
+    this.socket.leave(lobbyRoom);
     if (lobby.connectedCount === 0) {
       await this.closeLobby({ lobbyId });
     }
@@ -153,9 +167,10 @@ export class LobbyController extends SockerController {
 
   async closeLobby({ lobbyId }) {
     const lobby = await this.lobbyRepository.findOne(lobbyId);
+
     if (lobby.connectedCount === 0) {
       await this.lobbyRepository.delete(lobbyId);
-      this.socket.emit('lobbyClosed', lobbyId);
+      this.io.emit('lobbyClosed', lobby.toJson().id);
     }
     this.socket.emit('cannotClose_notEmpty');
   }
