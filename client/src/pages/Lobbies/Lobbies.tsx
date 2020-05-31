@@ -50,6 +50,15 @@ export const Lobbies = (_props: LobbiesProps) => {
         ...prevLobbies.filter((lobby) => lobby.id !== lobbyId),
       ]);
     });
+    return () => {
+      if (lobbiesSocket) {
+        lobbiesSocket.off('lobbyList');
+        lobbiesSocket.off('lobbyCreated');
+        lobbiesSocket.off('lobbyCreateSuccess');
+        lobbiesSocket.off('lobbyUpdated');
+        lobbiesSocket.off('lobbyClosed');
+      }
+    };
   }, [lobbiesSocket]);
 
   const createLobby = () => {

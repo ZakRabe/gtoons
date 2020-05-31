@@ -8,17 +8,37 @@ import {
   HeaderPanel,
   Switcher,
   SwitcherItem,
-  SwitcherDivider,
 } from 'carbon-components-react/lib/components/UIShell';
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { isLoggedIn, logOut } from '../../utils/auth';
 import { goto } from '../../utils/misc';
-import { AppHeaderProps } from './types';
 import './styles.css';
+import { AppHeaderProps } from './types';
+import UserContext from '../../contexts/UserContext';
+import { request } from '../../utils/api';
 
 const AppHeader: React.FunctionComponent<AppHeaderProps> = (props) => {
   const { history } = props;
+  const { user, setUser } = useContext(UserContext);
+
+  useEffect(() => {
+    request({
+      url: 'login/validateToken',
+    })
+      .then(({ user: authdUser }) => {
+        // console.log(user);
+        // this means the token was still valid, so there's no need to be on this page
+
+        if (!user || user.userId !== authdUser.userId) {
+          setUser(authdUser);
+        }
+      })
+      .catch(() => {
+        setUser(null);
+        // the token was already cleared in the request helper upon recieveing a 401
+      });
+  });
 
   const [userMenuOpen, setUserMenuOpen] = useState(false);
 

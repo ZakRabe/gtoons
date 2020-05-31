@@ -24,10 +24,16 @@ export class LobbyController extends SockerController {
     } catch (error) {
       return;
     }
+    const lobby = await this.lobbyRepository.findOne(lobbyId);
+    // trying to join a lobby that has closed
+    if (!lobby) {
+      // client looks for this, and redirects to the lobbies list
+      this.socket.emit('lobbyJoined', null);
+      return;
+    }
     this.socket.join(lobbyRoom);
 
     this.io.to(lobbyRoom).emit('userJoined', user.username);
-    const lobby = await this.lobbyRepository.findOne(lobbyId);
     lobby.connectedCount += 1;
     await lobby.save();
     this.socket.on(
@@ -83,13 +89,13 @@ export class LobbyController extends SockerController {
 
   async sitDown({ token, seatNumber, lobbyId }) {
     const lobbyRoom = `lobby/${lobbyId}`;
-    let tokeUser;
+    let tokenUser;
     try {
-      tokeUser = verifyToken(token);
+      tokenUser = verifyToken(token);
     } catch (error) {
       return;
     }
-    const { userId } = tokeUser;
+    const { userId } = tokenUser;
     const lobby = await this.lobbyRepository.findOne(lobbyId);
 
     const user = await this.userRepository.findOne(userId);
