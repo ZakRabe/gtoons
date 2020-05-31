@@ -53,6 +53,10 @@ export class LobbyController extends SockerController {
 
     this.socket.leave(lobbyRoom);
     const lobby = await this.lobbyRepository.findOne(lobbyId);
+    // shouldn't happen, but just to be safe
+    if (!lobby) {
+      return;
+    }
     lobby.connectedCount -= 1;
     await lobby.save();
     this.io.emit('lobbyUpdated', lobby.toJson());
