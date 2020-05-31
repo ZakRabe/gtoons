@@ -66,38 +66,57 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
 
   useEffect(() => {
     // connect to lobby room
-    if (socket) {
-      socket.emit('joinLobby', { lobbyId, token: isLoggedIn() });
-      socket.on('lobbyJoined', (lobbyModel: any) => {
-        console.log(lobbyModel);
-        setLobby(lobbyModel);
-        setSeat1({ user: lobbyModel.seat1, ready: lobbyModel.seat1Ready });
-        setSeat2({ user: lobbyModel.seat2, ready: lobbyModel.seat2Ready });
-      });
-      socket.on('seat1Taken', (user: any) => setSeat1({ user, ready: false }));
-      socket.on('seat1Empty', () => setSeat1(emptySeat));
-      socket.on('seat1Ready', () =>
-        setSeat1((prevSeat) => ({ ...prevSeat, ready: true }))
-      );
-      socket.on('seat1Unready', () =>
-        setSeat1((prevSeat) => ({ ...prevSeat, ready: false }))
-      );
-
-      socket.on('seat2Taken', (user: any) => setSeat2({ user, ready: false }));
-      socket.on('seat2Empty', () => setSeat2(emptySeat));
-      socket.on('seat2Ready', () => {
-        console.log('seat2');
-        setSeat2((prevSeat) => ({ ...prevSeat, ready: true }));
-      });
-      socket.on('seat2Unready', () =>
-        setSeat2((prevSeat) => ({ ...prevSeat, ready: false }))
-      );
-
-      return () => {
-        socket.disconnect();
-      };
+    if (!socket) {
+      return;
     }
+    socket.emit('joinLobby', { lobbyId, token: isLoggedIn() });
+    socket.on('lobbyJoined', (lobbyModel: any) => {
+      console.log(lobbyModel);
+      setLobby(lobbyModel);
+      setSeat1({ user: lobbyModel.seat1, ready: lobbyModel.seat1Ready });
+      setSeat2({ user: lobbyModel.seat2, ready: lobbyModel.seat2Ready });
+    });
+    socket.on('seat1Taken', (user: any) => setSeat1({ user, ready: false }));
+    socket.on('seat2Taken', (user: any) => setSeat2({ user, ready: false }));
+    socket.on('seat1Empty', () => setSeat1(emptySeat));
+    socket.on('seat2Empty', () => setSeat2(emptySeat));
+    socket.on('seat1Ready', () =>
+      setSeat1((prevSeat) => ({ ...prevSeat, ready: true }))
+    );
+    socket.on('seat2Ready', () =>
+      setSeat2((prevSeat) => ({ ...prevSeat, ready: true }))
+    );
+    socket.on('seat1Unready', () =>
+      setSeat1((prevSeat) => ({ ...prevSeat, ready: false }))
+    );
+    socket.on('seat2Unready', () =>
+      setSeat2((prevSeat) => ({ ...prevSeat, ready: false }))
+    );
+
+    return () => {
+      if (socket) {
+        socket.off('lobbyJoined');
+        socket.off('seat1Taken');
+        socket.off('seat1Empty');
+        socket.off('seat1Ready');
+        socket.off('seat1Unready');
+        socket.off('seat2Taken');
+        socket.off('seat2Empty');
+        socket.off('seat2Ready');
+        socket.off('seat2Unready');
+      }
+    };
   }, [socket, lobbyId]);
+
+  useEffect(() => {
+    console.log('mount');
+    return () => {
+      console.log('unmount');
+      if (socket) {
+        socket.emit('leaveLobby', { lobbyId, token: isLoggedIn() });
+      }
+    };
+  }, [socket]);
 
   const takeSeat = (seatNumber: number) => () => {
     if (!decks.length) {
@@ -118,7 +137,7 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
   };
 
   const isCurrentUser = (currentUser: any, userInSeat: any) => {
-    return userInSeat && currentUser.userId === userInSeat.id;
+    return userInSeat && currentUser && currentUser.userId === userInSeat.id;
   };
 
   const renderSeat = (seatNumber: number, user: any) => {

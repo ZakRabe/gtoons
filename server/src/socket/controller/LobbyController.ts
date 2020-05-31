@@ -20,10 +20,33 @@ export class LobbyController extends SockerController {
       return;
     }
     this.socket.join(lobbyRoom);
-    // TODO: Increment connectedCount
+
     this.io.to(lobbyRoom).emit('userJoined', user.username);
     const lobby = await this.lobbyRepository.findOne(lobbyId);
+    lobby.connectedCount += 1;
+    await lobby.save();
+    this.io.emit('lobbyUpdated', lobby.toJson());
     this.socket.emit('lobbyJoined', lobby.toJson());
+  }
+
+  async leaveLobby({ lobbyId, token }) {
+    const lobbyRoom = `lobby/${lobbyId}`;
+    let user;
+    try {
+      user = verifyToken(token);
+    } catch (error) {
+      return;
+    }
+    console.log('leaveLobby');
+    this.socket.leave(lobbyRoom);
+    const lobby = await this.lobbyRepository.findOne(lobbyId);
+    lobby.connectedCount -= 1;
+    await lobby.save();
+
+    this.io.emit('lobbyUpdated', lobby.toJson());
+    if (lobby.connectedCount === 0) {
+      await this.closeLobby({ lobbyId });
+    }
   }
 
   messageLobby({ token, message, lobbyId }) {
@@ -126,6 +149,15 @@ export class LobbyController extends SockerController {
       await lobby.save();
       this.io.to(lobbyRoom).emit(`${playerField}Unready`);
     }
+  }
+
+  async closeLobby({ lobbyId }) {
+    const lobby = await this.lobbyRepository.findOne(lobbyId);
+    if (lobby.connectedCount === 0) {
+      await this.lobbyRepository.delete(lobbyId);
+      this.socket.emit('lobbyClosed', lobbyId);
+    }
+    this.socket.emit('cannotClose_notEmpty');
   }
 }
 

@@ -4,9 +4,11 @@ import { isLoggedIn } from '../../utils/auth';
 import { useSocketNamespace } from '../../utils/hooks';
 import LobbyCard from './LobbyCard';
 import { LobbiesProps } from './types';
+import { useHistory } from 'react-router-dom';
 
 export const Lobbies = (_props: LobbiesProps) => {
   const lobbiesSocket = useSocketNamespace('/lobbies');
+  const { push } = useHistory();
   const minCapacity = 2;
   const maxCapacity = 30;
 
@@ -21,11 +23,31 @@ export const Lobbies = (_props: LobbiesProps) => {
       return;
     }
     lobbiesSocket.emit('getOpenLobbies');
+
     lobbiesSocket.on('lobbyList', (data: any) => {
       setLobbies(data);
     });
     lobbiesSocket.on('lobbyCreated', (newLobby: any) => {
+      console.log('created:', newLobby.id);
       setLobbies((prevLobbies) => [...prevLobbies, newLobby]);
+    });
+
+    lobbiesSocket.on('lobbyCreateSuccess', (newLobbyId: number) => {
+      setTimeout(() => {
+        push(`/lobbies/${newLobbyId}`);
+      }, 500);
+    });
+
+    lobbiesSocket.on('lobbyUpdated', (newLobby: any) => {
+      setLobbies((prevLobbies) => [
+        ...prevLobbies.filter((lobby) => lobby.id !== newLobby.id),
+        newLobby,
+      ]);
+    });
+    lobbiesSocket.on('lobbyClosed', (lobbyId: number) => {
+      setLobbies((prevLobbies) => [
+        ...prevLobbies.filter((lobby) => lobby.id !== lobbyId),
+      ]);
     });
   }, [lobbiesSocket]);
 

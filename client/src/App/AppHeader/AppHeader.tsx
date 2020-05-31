@@ -26,10 +26,10 @@ const AppHeader: React.FunctionComponent<AppHeaderProps> = (props) => {
     return (
       <>
         <HeaderNavigation>
-          <HeaderMenuItem href="/lobbies">
+          <HeaderMenuItem onClick={() => history.push('/lobbies')}>
             <i className="fas fa-search"></i>&nbsp; Lobbies
           </HeaderMenuItem>
-          <HeaderMenuItem href="/deckBuilder">
+          <HeaderMenuItem onClick={() => history.push('/deckBuilder')}>
             <i className="fas fa-tools"></i>&nbsp; Deck Builder
           </HeaderMenuItem>
         </HeaderNavigation>
@@ -78,10 +78,10 @@ const AppHeader: React.FunctionComponent<AppHeaderProps> = (props) => {
     return (
       <>
         <HeaderNavigation>
-          <HeaderMenuItem href="/login">
+          <HeaderMenuItem onClick={() => history.push('/login')}>
             <i className="fas fa-sign-in-alt"></i>&nbsp; Log In
           </HeaderMenuItem>
-          <HeaderMenuItem href="/register">
+          <HeaderMenuItem onClick={() => history.push('/register')}>
             <i className="fas fa-user-plus"></i>&nbsp; Sign Up
           </HeaderMenuItem>
         </HeaderNavigation>
@@ -100,7 +100,12 @@ const AppHeader: React.FunctionComponent<AppHeaderProps> = (props) => {
   const renderAppHeader = () => {
     return (
       <Header className="appHeader">
-        <HeaderName href="/" prefix="">
+        <HeaderName
+          // @ts-ignore
+          style={{ cursor: 'pointer' }}
+          onClick={() => history.push('/')}
+          prefix=""
+        >
           reToons
         </HeaderName>
         {isLoggedIn() ? renderLoggedInMenu() : renderLoggedOutMenu()}
