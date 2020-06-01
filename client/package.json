@@ -1,6 +1,7 @@
 {
   "name": "gtoons-client",
   "version": "0.0.1",
+  "homepage": "https://github.com/ZakRabe/gtoons",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.13.0",

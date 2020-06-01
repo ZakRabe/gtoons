@@ -1,6 +1,7 @@
 {
   "name": "gtoons-server",
   "version": "0.0.1",
+  "homepage": "https://github.com/ZakRabe/gtoons",
   "description": "gtoons remake rest and websocket server",
   "main": "build/server.js",
   "scripts": {
