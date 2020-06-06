@@ -4,12 +4,17 @@ import Lobby from '../../common/entity/Lobby';
 import User from '../../common/entity/User';
 import { verifyToken } from '../../util';
 import { SockerController } from './SocketController';
+import { disconnect } from 'cluster';
 
 // TODO: ALL THIS LOGIC IS ACTUALLY FOR LOBBIES
 export class LobbyController extends SockerController {
   private gameRepository = getRepository(Game);
   private lobbyRepository = getRepository(Lobby);
   private userRepository = getRepository(User);
+
+  onDisconnect = async ({ lobbyId, token }) => {
+    await this.leaveLobby({ lobbyId, token });
+  };
 
   async joinLobby({ lobbyId, token }) {
     const lobbyRoom = `lobby/${lobbyId}`;
@@ -19,11 +24,53 @@ export class LobbyController extends SockerController {
     } catch (error) {
       return;
     }
-    this.socket.join(lobbyRoom);
-    // TODO: Increment connectedCount
-    this.io.to(lobbyRoom).emit('userJoined', user.username);
     const lobby = await this.lobbyRepository.findOne(lobbyId);
+    // trying to join a lobby that has closed
+    if (!lobby) {
+      // client looks for this, and redirects to the lobbies list
+      this.socket.emit('lobbyJoined', null);
+      return;
+    }
+    this.socket.join(lobbyRoom);
+
+    this.io.to(lobbyRoom).emit('userJoined', user.username);
+    lobby.connectedCount += 1;
+    await lobby.save();
+    this.socket.on(
+      'disconnect',
+      async () => await this.onDisconnect({ lobbyId, token })
+    );
+    this.io.emit('lobbyUpdated', lobby.toJson());
     this.socket.emit('lobbyJoined', lobby.toJson());
+  }
+
+  async leaveLobby({ lobbyId, token }) {
+    this.socket.off(
+      'disconnect',
+      async () => await this.onDisconnect({ lobbyId, token })
+    );
+    const lobbyRoom = `lobby/${lobbyId}`;
+    let user;
+    try {
+      user = verifyToken(token);
+    } catch (error) {
+      return;
+    }
+
+    this.socket.leave(lobbyRoom);
+    const lobby = await this.lobbyRepository.findOne(lobbyId);
+    // shouldn't happen, but just to be safe
+    if (!lobby) {
+      return;
+    }
+    lobby.connectedCount -= 1;
+    await lobby.save();
+    this.io.emit('lobbyUpdated', lobby.toJson());
+    this.io.to(lobbyRoom).emit('userLeft', user.username);
+    this.socket.leave(lobbyRoom);
+    if (lobby.connectedCount === 0) {
+      await this.closeLobby({ lobbyId });
+    }
   }
 
   messageLobby({ token, message, lobbyId }) {
@@ -42,13 +89,13 @@ export class LobbyController extends SockerController {
 
   async sitDown({ token, seatNumber, lobbyId }) {
     const lobbyRoom = `lobby/${lobbyId}`;
-    let tokeUser;
+    let tokenUser;
     try {
-      tokeUser = verifyToken(token);
+      tokenUser = verifyToken(token);
     } catch (error) {
       return;
     }
-    const { userId } = tokeUser;
+    const { userId } = tokenUser;
     const lobby = await this.lobbyRepository.findOne(lobbyId);
 
     const user = await this.userRepository.findOne(userId);
@@ -126,6 +173,16 @@ export class LobbyController extends SockerController {
       await lobby.save();
       this.io.to(lobbyRoom).emit(`${playerField}Unready`);
     }
+  }
+
+  async closeLobby({ lobbyId }) {
+    const lobby = await this.lobbyRepository.findOne(lobbyId);
+
+    if (lobby.connectedCount === 0) {
+      await this.lobbyRepository.delete(lobbyId);
+      this.io.emit('lobbyClosed', lobby.toJson().id);
+    }
+    this.socket.emit('cannotClose_notEmpty');
   }
 }
 

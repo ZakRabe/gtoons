@@ -19,6 +19,11 @@ const socketConfigs: SocketConfig[] = [
     action: 'joinLobby',
   },
   {
+    event: 'leaveLobby',
+    controller: LobbyController,
+    action: 'leaveLobby',
+  },
+  {
     event: 'messageLobby',
     controller: LobbyController,
     action: 'messageLobby',

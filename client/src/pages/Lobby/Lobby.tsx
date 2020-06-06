@@ -4,9 +4,17 @@ import { useSocketNamespace } from '../../utils/hooks';
 import { LobbyProps, Seat } from './types';
 import { isLoggedIn } from '../../utils/auth';
 import LobbyChat from './LobbyChat';
-import { Button } from 'semantic-ui-react';
+
 import UserContext from '../../contexts/UserContext';
 import { request } from '../../utils/api';
+import {
+  Button,
+  Select,
+  SelectItem,
+  InlineNotification,
+} from 'carbon-components-react';
+import { Deck } from '../../App/types';
+import { ItemContent } from 'semantic-ui-react';
 
 const emptySeat = { user: null, ready: false };
 
@@ -15,6 +23,7 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
     match: {
       params: { lobbyId },
     },
+    history,
   } = props;
 
   const lobbyWrapperStyles: React.CSSProperties = {
@@ -31,6 +40,7 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
 
   const seatWrapperStyles: React.CSSProperties = {
     flexGrow: 1,
+    maxWidth: '50%',
     display: 'flex',
   };
 
@@ -46,6 +56,7 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
   const seatButton: React.CSSProperties = {
     fontSize: '5rem',
     cursor: 'pointer',
+    padding: 10,
   };
 
   const username = { fontSize: '2rem', lineHeight: '2rem', margin: 15 };
@@ -53,51 +64,82 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
   const [lobby, setLobby] = useState<any>(null);
   const [seat1, setSeat1] = useState<Seat>(emptySeat);
   const [seat2, setSeat2] = useState<Seat>(emptySeat);
-  const [decks, setDecks] = useState<any>([]);
+  const [decks, setDecks] = useState<Deck[]>([]);
+  const [selectedDeck, setSelectedDeck] = useState<Deck | null>(null);
 
   // connect to lobbies Namespace
   const socket = useSocketNamespace('/lobbies');
 
+  const loadDecks = () => {
+    request({ url: '/deckBuilder/myDeckList' }).then((myDecks) =>
+      setDecks(myDecks.filter((deck: Deck) => deck.cards.length === 12))
+    );
+  };
   useEffect(() => {
-    request({ url: '/deckBuilder/myDeckList' }).then((myDecks) => {
-      setDecks(myDecks.filter((deck: number[]) => deck.length === 12));
-    });
+    loadDecks();
   }, []);
 
   useEffect(() => {
     // connect to lobby room
-    if (socket) {
-      socket.emit('joinLobby', { lobbyId, token: isLoggedIn() });
-      socket.on('lobbyJoined', (lobbyModel: any) => {
-        console.log(lobbyModel);
-        setLobby(lobbyModel);
-        setSeat1({ user: lobbyModel.seat1, ready: lobbyModel.seat1Ready });
-        setSeat2({ user: lobbyModel.seat2, ready: lobbyModel.seat2Ready });
-      });
-      socket.on('seat1Taken', (user: any) => setSeat1({ user, ready: false }));
-      socket.on('seat1Empty', () => setSeat1(emptySeat));
-      socket.on('seat1Ready', () =>
-        setSeat1((prevSeat) => ({ ...prevSeat, ready: true }))
-      );
-      socket.on('seat1Unready', () =>
-        setSeat1((prevSeat) => ({ ...prevSeat, ready: false }))
-      );
-
-      socket.on('seat2Taken', (user: any) => setSeat2({ user, ready: false }));
-      socket.on('seat2Empty', () => setSeat2(emptySeat));
-      socket.on('seat2Ready', () => {
-        console.log('seat2');
-        setSeat2((prevSeat) => ({ ...prevSeat, ready: true }));
-      });
-      socket.on('seat2Unready', () =>
-        setSeat2((prevSeat) => ({ ...prevSeat, ready: false }))
-      );
-
-      return () => {
-        socket.disconnect();
-      };
+    if (!socket) {
+      return;
     }
+    socket.emit('joinLobby', { lobbyId, token: isLoggedIn() });
+    socket.on('lobbyJoined', (lobbyModel: any) => {
+      if (!lobbyModel) {
+        history.push('/lobbies');
+        return;
+      }
+      setLobby(lobbyModel);
+      setSeat1({ user: lobbyModel.seat1, ready: lobbyModel.seat1Ready });
+      setSeat2({ user: lobbyModel.seat2, ready: lobbyModel.seat2Ready });
+    });
+    socket.on('seat1Taken', (user: any) => setSeat1({ user, ready: false }));
+    socket.on('seat2Taken', (user: any) => setSeat2({ user, ready: false }));
+    socket.on('seat1Empty', () => setSeat1(emptySeat));
+    socket.on('seat2Empty', () => setSeat2(emptySeat));
+    socket.on('seat1Ready', () =>
+      setSeat1((prevSeat) => ({ ...prevSeat, ready: true }))
+    );
+    socket.on('seat2Ready', () =>
+      setSeat2((prevSeat) => ({ ...prevSeat, ready: true }))
+    );
+    socket.on('seat1Unready', () =>
+      setSeat1((prevSeat) => ({ ...prevSeat, ready: false }))
+    );
+    socket.on('seat2Unready', () =>
+      setSeat2((prevSeat) => ({ ...prevSeat, ready: false }))
+    );
+
+    return () => {
+      if (socket) {
+        socket.off('lobbyJoined');
+        socket.off('seat1Taken');
+        socket.off('seat1Empty');
+        socket.off('seat1Ready');
+        socket.off('seat1Unready');
+        socket.off('seat2Taken');
+        socket.off('seat2Empty');
+        socket.off('seat2Ready');
+        socket.off('seat2Unready');
+      }
+    };
   }, [socket, lobbyId]);
+
+  useEffect(() => {
+    if (!socket || !lobby) {
+      return;
+    }
+
+    return () => {
+      if (socket) {
+        socket.emit('leaveLobby', {
+          lobbyId: lobby.id,
+          token: isLoggedIn(),
+        });
+      }
+    };
+  }, [socket, lobby]);
 
   const takeSeat = (seatNumber: number) => () => {
     if (!decks.length) {
@@ -118,12 +160,21 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
   };
 
   const isCurrentUser = (currentUser: any, userInSeat: any) => {
-    return userInSeat && currentUser.userId === userInSeat.id;
+    return userInSeat && currentUser && currentUser.userId === userInSeat.id;
   };
 
   const renderSeat = (seatNumber: number, user: any) => {
     const seat = seatNumber === 1 ? seat1 : seat2;
     const otherSeat = seatNumber === 1 ? seat2 : seat1;
+
+    const hasValidDecks = !!decks.length;
+
+    const buttonIconStyles = {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: ' center',
+    };
+
     return (
       <section style={seatWrapperStyles}>
         <div style={seatCard}>
@@ -135,26 +186,117 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
             <i className="fas fa-chair"></i>
           </Button>
           <div style={username}>{seat.user && seat.user.username}</div>
-          <div>
-            {isCurrentUser(user, seat.user) && (
-              <>
-                <Button color="orange" onClick={leaveSeat(seatNumber)}>
-                  <i className="fas fa-times"></i>&nbsp; Leave Seat
-                </Button>
-                <Button
-                  color={seat.ready ? 'green' : 'yellow'}
-                  onClick={seat.ready ? unready(seatNumber) : ready(seatNumber)}
+          {isCurrentUser(user, seat.user) && (
+            <>
+              <div style={{ display: 'flex', flexDirection: 'row' }}>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  <Select
+                    labelText="Deck"
+                    disabled={seat.ready}
+                    onChange={(e) => {
+                      const newDeck = decks.find(
+                        (item) => item.id === Number(e.target.value)
+                      );
+                      setSelectedDeck(newDeck || null);
+                    }}
+                    //@ts-ignore
+                    value={selectedDeck && selectedDeck.id}
+                    id={`seat${seatNumber}-deckSelect`}
+                  >
+                    <SelectItem text="Choose a deck" value={null}></SelectItem>
+                    {!hasValidDecks ? (
+                      <SelectItem text="No legal decks!" disabled value={-1} />
+                    ) : (
+                      decks.map((deck: Deck) => (
+                        <SelectItem
+                          text={deck.name}
+                          key={deck.id}
+                          selected={
+                            !!selectedDeck && selectedDeck.id === deck.id
+                          }
+                          value={deck.id}
+                        ></SelectItem>
+                      ))
+                    )}
+                  </Select>
+                  <Button
+                    size="field"
+                    kind="secondary"
+                    iconDescription="Reload decks"
+                    onClick={loadDecks}
+                    renderIcon={() => (
+                      <i
+                        className="fas fa-sync bx--btn__icon"
+                        style={buttonIconStyles}
+                      ></i>
+                    )}
+                  >
+                    Reload Decks
+                  </Button>
+                </div>
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    flexGrow: 1,
+                    alignItems: 'flex-end',
+                    justifyContent: 'flex-end',
+                  }}
                 >
-                  {seat.ready ? (
-                    <i className="far fa-check-circle"></i>
-                  ) : (
-                    <i className="far fa-circle"></i>
-                  )}
-                  &nbsp; Ready
-                </Button>
-              </>
-            )}
-          </div>
+                  <div style={{ display: 'flex', flexDirection: 'row' }}>
+                    <div className={`lobbyActions--btn-set`}>
+                      <Button
+                        renderIcon={() => (
+                          <i
+                            className="fas fa-times bx--btn__icon"
+                            style={buttonIconStyles}
+                          ></i>
+                        )}
+                        kind="danger"
+                        size="field"
+                        onClick={leaveSeat(seatNumber)}
+                      >
+                        Leave Seat
+                      </Button>
+
+                      <Button
+                        renderIcon={
+                          seat.ready
+                            ? () => (
+                                <i
+                                  className="far fa-check-circle bx--btn__icon"
+                                  style={buttonIconStyles}
+                                ></i>
+                              )
+                            : () => (
+                                <i
+                                  className="far fa-circle bx--btn__icon"
+                                  style={buttonIconStyles}
+                                ></i>
+                              )
+                        }
+                        kind="primary"
+                        size="field"
+                        disabled={!selectedDeck}
+                        onClick={
+                          seat.ready ? unready(seatNumber) : ready(seatNumber)
+                        }
+                      >
+                        Ready
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {!hasValidDecks && (
+                <InlineNotification
+                  title="No decks"
+                  subtitle={'Check the Deck Builder to fix this'}
+                  kind="error"
+                />
+              )}
+            </>
+          )}
         </div>
       </section>
     );

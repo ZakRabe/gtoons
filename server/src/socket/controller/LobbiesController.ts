@@ -5,7 +5,6 @@ import User from '../../common/entity/User';
 import { verifyToken } from '../../util';
 import { SockerController } from './SocketController';
 
-// TODO: ALL THIS LOGIC IS ACTUALLY FOR LOBBIES, Remove GAME stuff. lobbies are different
 export class LobbyController extends SockerController {
   private gameRepository = getRepository(Game);
   private lobbyRepository = getRepository(Lobby);
@@ -44,12 +43,8 @@ export class LobbyController extends SockerController {
     const savedLobby = await newLobby.save();
     await savedLobby.reload();
 
-    const lobbyRoom = `lobby/${savedLobby.id}`;
-    this.socket.join(lobbyRoom);
-    this.io
-      .to(lobbyRoom)
-      .emit('roomMessage', `I sent this only to people in ${lobbyRoom}`);
     this.io.emit('lobbyCreated', savedLobby.toJson());
+    this.socket.emit('lobbyCreateSuccess', savedLobby.toJson().id);
   }
 
   async getOpenLobbies() {
