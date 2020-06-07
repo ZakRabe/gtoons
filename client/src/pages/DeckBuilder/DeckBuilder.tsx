@@ -168,14 +168,14 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
   };
 
   const filterByColor = (cards: Card[], activeColors: string[]): Card[] => {
-    console.log('filterByColor');
+    //console.log('filterByColor');
     return cards.filter((card: Card) =>
       card.colors.some((cardColor) => activeColors.includes(cardColor))
     );
   };
 
   const filterBySearchTerm = (cards: Card[], searchTerm: string): Card[] => {
-    console.log('filterBySearchTerm');
+    //console.log('filterBySearchTerm');
     if (!searchTerm.length) {
       return cards;
     }
@@ -268,9 +268,8 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
               }}
             >
               {deck.map((cardId) => {
-                const card = allCards.find(
-                  (item: Card) => item.id === cardId
-                ) as Card;
+                const card =
+                  allCards.find((item: Card) => item.id === cardId) as Card;
                 return card ? (
                   <li
                     key={cardId}

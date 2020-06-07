@@ -11,6 +11,7 @@ import Login from '../pages/Login';
 import Profile from '../pages/Profile';
 import Register from '../pages/Register';
 import { RoutesProps } from './types';
+import Sandbox from '../pages/Sandbox';
 
 export default class Routes extends React.Component<RoutesProps> {
   render() {
@@ -26,6 +27,7 @@ export default class Routes extends React.Component<RoutesProps> {
             <AuthRoute exact path="/lobbies/:lobbyId" component={Lobby} />
             <AuthRoute path="/lobbies" component={Lobbies} />
             <AuthRoute path="/deckBuilder" component={DeckBuilder} />
+            <AuthRoute path="/sandbox" component={Sandbox} />
           </Switch>
         </Container>
       </main>

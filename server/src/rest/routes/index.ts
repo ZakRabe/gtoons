@@ -4,6 +4,7 @@ import { LoginRoutes } from './LoginRoutes';
 import { EngineRoutes } from './EngineRoutes';
 import { DeckBuilderRoutes } from './DeckBuilderRoutes';
 import { CardRoutes } from './CardRoutes';
+import { SandboxRoutes } from './SandboxRoutes';
 
 export const Routes = [
   ...UserRoutes,
@@ -12,4 +13,5 @@ export const Routes = [
   ...EngineRoutes,
   ...DeckBuilderRoutes,
   ...CardRoutes,
+  ...SandboxRoutes,
 ];

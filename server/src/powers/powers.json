@@ -1,0 +1,18 @@
+[
+  {
+    "id": 98,
+    "powers": [
+      {
+        "conditions": [
+          {
+            "condition": "nextTo",
+            "attribute": "character",
+            "value": "dexter",
+            "source": 98
+          }
+        ],
+        "modifiers": [{ "attribute": "points", "value": 5, "source": 98 }]
+      }
+    ]
+  }
+]
