@@ -109,12 +109,7 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
 
   const onFaceClick = (cardId: number) => (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (face === cardId) {
-      setFace(null);
-    }
-    else {
-      setFace(cardId);
-    }
+    setFace(face === cardId ? null : cardId);
   };
 
   const saveDeck = () => {
