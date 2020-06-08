@@ -28,6 +28,7 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
   const [allCards, setAllCards] = React.useState<Card[]>([]);
   const [deckName, setDeckName] = React.useState('New Deck');
   const [deck, setDeck] = React.useState<number[]>([]);
+  const [face, setFace] = React.useState<number | null>(null);
 
   const styles: CSS.Properties = {
     display: 'flex',
@@ -101,13 +102,21 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
     // console.log(cardId);
     const newDeck = [...deck].filter((id) => id !== cardId);
     setDeck(newDeck);
+    if (face === cardId) {
+      setFace(null);
+    }
+  };
+
+  const onFaceClick = (cardId: number) => (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setFace(face === cardId ? null : cardId);
   };
 
   const saveDeck = () => {
     request({
       method: 'post',
       url: 'deckBuilder/saveDeck',
-      data: { name: deckName, deck },
+      data: { name: deckName, face, deck },
     })
       .then(() => {
         console.log('save successful');
@@ -290,6 +299,20 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
                         backgroundColor: `${card.colors[0]}`,
                       }}
                     ></div>
+                    <div
+                      style={{
+                        fontSize: '3vh'
+                      }}
+                    >
+                      <i 
+                        className={`${face === card.id ? 'fas'  : `far`}  fa-star`}
+                        style={{
+                          color: 'gold'
+                        }}
+                        onClick={onFaceClick(card.id)}
+                      />
+                    </div>
+                    
                     <div
                       style={{
                         display: 'flex',

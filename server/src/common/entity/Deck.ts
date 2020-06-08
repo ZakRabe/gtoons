@@ -18,13 +18,17 @@ export default class Deck extends BaseEntity {
   @Column()
   cards: string;
 
+  @Column()
+  face: number;
+
   toJson = () => {
-    const { id, player_id, name, cards } = this;
+    const { id, player_id, name, cards, face } = this;
     return {
       id,
       player_id,
       name,
       cards: JSON.parse(cards) as number[],
+      face,
     };
   };
 
