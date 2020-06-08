@@ -118,7 +118,7 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
     request({
       method: 'post',
       url: 'deckBuilder/saveDeck',
-      data: { name: deckName, face: face, deck },
+      data: { name: deckName, face, deck },
     })
       .then(() => {
         console.log('save successful');
