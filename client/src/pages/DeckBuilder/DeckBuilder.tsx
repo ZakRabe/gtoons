@@ -307,7 +307,7 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
                       }}
                     >
                       <i 
-                        className={`${face === card.id ? "fas fa-star" : "far fa-star"}`}
+                        className={`${face === card.id ? 'fas'  : `far`}  fa-star`}
                         style={{
                           color: 'gold'
                         }}
