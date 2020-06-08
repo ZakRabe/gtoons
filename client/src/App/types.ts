@@ -22,4 +22,5 @@ export interface Deck {
   player_id: number;
   name: string;
   cards: string;
+  face: number;
 }

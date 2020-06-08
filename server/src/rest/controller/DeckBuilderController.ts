@@ -22,8 +22,9 @@ export class DeckBuilderController {
 
     const deckName = request.body.name;
     const newDeck = JSON.stringify(request.body.deck);
+    const deckFace = request.body.face;
     console.log(newDeck);
-    const deck = { player_id: user.userId, name: deckName, cards: newDeck };
+    const deck = { player_id: user.userId, name: deckName, face: deckFace, cards: newDeck };
     const { id } = await this.deckRepository.save(deck);
     const savedDeck = await this.deckRepository.findOne({
       id,
