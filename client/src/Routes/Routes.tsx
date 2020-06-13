@@ -23,7 +23,7 @@ export default class Routes extends React.Component<RoutesProps> {
             <Route exact path="/" component={Home} />
             <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />
-            <Route path="/passwordReset" component={PasswordReset} />
+            <Route path="/passwordReset/:token?" component={PasswordReset} />
             <AuthRoute path="/profile" component={Profile} />
             <AuthRoute path="/game" component={Game} />
             <AuthRoute exact path="/lobbies/:lobbyId" component={Lobby} />

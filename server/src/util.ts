@@ -22,7 +22,7 @@ export const hashPassword = (password: string, salt: string) => {
 };
 
 export const saltHashPassword = (password: string) => {
-  const salt = this.getSalt(16);
+  const salt = getSalt(16);
   return hashPassword(password, salt);
 };
 

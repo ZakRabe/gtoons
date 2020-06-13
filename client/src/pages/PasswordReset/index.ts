@@ -1,3 +1,4 @@
 import PasswordReset from './PasswordReset';
+import { withRouter } from 'react-router-dom';
 
-export default PasswordReset;
+export default withRouter(PasswordReset);

@@ -3,6 +3,7 @@ import { getRepository } from 'typeorm';
 import Collection from '../../common/entity/Collection';
 import User from '../../common/entity/User';
 import * as cards from '../../cards/cards.json';
+import { saltHashPassword } from '../../util';
 const crypto = require('crypto');
 
 export class RegisterController {
@@ -20,7 +21,9 @@ export class RegisterController {
     _response: Response,
     _next: NextFunction
   ) {
-    const existingUsers = await this.getUsersByUsername(request.query.username);
+    const existingUsers = await this.getUsersByUsername(
+      request.query.username as string
+    );
     return existingUsers.length === 0;
   }
 
@@ -31,31 +34,11 @@ export class RegisterController {
   }
 
   async validEmail(request: Request, _response: Response, _next: NextFunction) {
-    const existingUsers = await this.getUsersByEmail(request.query.email);
+    const existingUsers = await this.getUsersByEmail(
+      request.query.email as string
+    );
     return existingUsers.length === 0;
   }
-
-  getSalt = (length) => {
-    return crypto
-      .randomBytes(Math.ceil(length / 2))
-      .toString('hex')
-      .slice(0, length);
-  };
-
-  hashPassword = (password: string, salt: string) => {
-    const hash = crypto.createHmac('sha512', salt);
-    hash.update(password);
-    const value = hash.digest('hex');
-    return {
-      salt: salt,
-      passwordHash: value,
-    };
-  };
-
-  saltHashPassword = (password: string) => {
-    const salt = this.getSalt(16);
-    return this.hashPassword(password, salt);
-  };
 
   async submit(request: Request, response: Response, _next: NextFunction) {
     const newUser = { ...request.body };
@@ -107,7 +90,7 @@ export class RegisterController {
     }
 
     // hash the password for secure sortage
-    const { salt, passwordHash } = this.saltHashPassword(newUser.password);
+    const { salt, passwordHash } = saltHashPassword(newUser.password);
 
     // save the user
     const userModel = {
