@@ -56,8 +56,23 @@ const LobbyChat: React.FunctionComponent<LobbyChatProps> = (props) => {
           username: 'System',
         });
       });
+      socket.on('userLeft', (newUsername: string) => {
+        addChatMessage({
+          message: `${newUsername} has left the Lobby`,
+          username: 'System',
+        });
+      });
+
       socket.on('newMessage', addChatMessage);
     }
+
+    return () => {
+      if (socket) {
+        socket.off('userJoined');
+        socket.off('userLeft');
+        socket.off('newMessage');
+      }
+    };
   }, [socket]);
 
   const onMessageChange = (e: React.ChangeEvent) => {
@@ -91,8 +106,8 @@ const LobbyChat: React.FunctionComponent<LobbyChatProps> = (props) => {
         <Header>Chat</Header>
         <div style={messagesStyles}>
           <div style={scrollStyles}>
-            {messages.map((msg) => (
-              <div key={JSON.stringify(msg)}>
+            {messages.map((msg, index) => (
+              <div key={index}>
                 <strong>{msg.username}:</strong>&nbsp;
                 {msg.message}
               </div>

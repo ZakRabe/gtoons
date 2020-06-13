@@ -1,20 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { withRouter } from 'react-router-dom';
-import { useSocketNamespace } from '../../utils/hooks';
-import { LobbyProps, Seat } from './types';
-import { isLoggedIn } from '../../utils/auth';
-import LobbyChat from './LobbyChat';
-
-import UserContext from '../../contexts/UserContext';
-import { request } from '../../utils/api';
 import {
   Button,
+  InlineNotification,
   Select,
   SelectItem,
-  InlineNotification,
 } from 'carbon-components-react';
+import React, { useEffect, useState } from 'react';
+import { withRouter } from 'react-router-dom';
 import { Deck } from '../../App/types';
-import { ItemContent } from 'semantic-ui-react';
+import UserContext from '../../contexts/UserContext';
+import { request } from '../../utils/api';
+import { isLoggedIn } from '../../utils/auth';
+import { useSocketNamespace } from '../../utils/hooks';
+import LobbyChat from './LobbyChat';
+import { LobbyProps, Seat } from './types';
 
 const emptySeat = { user: null, ready: false };
 
