@@ -1,20 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { withRouter } from 'react-router-dom';
-import { useSocketNamespace } from '../../utils/hooks';
-import { LobbyProps, Seat } from './types';
-import { isLoggedIn } from '../../utils/auth';
-import LobbyChat from './LobbyChat';
-
-import UserContext from '../../contexts/UserContext';
-import { request } from '../../utils/api';
 import {
   Button,
+  InlineNotification,
   Select,
   SelectItem,
-  InlineNotification,
 } from 'carbon-components-react';
+import React, { useEffect, useState } from 'react';
+import { withRouter } from 'react-router-dom';
 import { Deck } from '../../App/types';
-import { ItemContent } from 'semantic-ui-react';
+import UserContext from '../../contexts/UserContext';
+import { request } from '../../utils/api';
+import { isLoggedIn } from '../../utils/auth';
+import { useSocketNamespace } from '../../utils/hooks';
+import LobbyChat from './LobbyChat';
+import { LobbyProps, Seat } from './types';
 
 const emptySeat = { user: null, ready: false };
 
@@ -152,7 +150,12 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
   };
 
   const ready = (seatNumber: number) => () => {
-    socket.emit('ready', { token: isLoggedIn(), seatNumber, lobbyId });
+    socket.emit('ready', {
+      token: isLoggedIn(),
+      seatNumber,
+      lobbyId,
+      deck: selectedDeck,
+    });
   };
 
   const unready = (seatNumber: number) => () => {
@@ -301,16 +304,44 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
       </section>
     );
   };
+  const startGame = () => {
+    socket.emit('startGame', { user: isLoggedIn(), lobbyId });
+  };
+
+  const isUserInSeat = (userId: number) => {
+    const isSeat1 = seat1.user && seat1.user.id === userId;
+    const isSeat2 = seat2.user && seat2.user.id === userId;
+
+    return isSeat1 || isSeat2;
+  };
+
+  const renderStart = (user: any) => {
+    if (!isUserInSeat(user.userId)) {
+      return null;
+    }
+    return (
+      <Button
+        color="primary"
+        disabled={!seat1.ready || !seat2.ready}
+        onClick={startGame}
+      >
+        Start!
+      </Button>
+    );
+  };
 
   const renderLobby = (user: any) => {
+    if (!user) {
+      return null;
+    }
     return (
       <section style={lobbyWrapperStyles}>
         <div style={lobbyBodyStyles}>
           <section style={{ flexDirection: 'row', display: 'flex' }}>
             {renderSeat(1, user)}
+            {renderStart(user)}
             {renderSeat(2, user)}
           </section>
-          <section>Players List</section>
         </div>
 
         <LobbyChat lobbyId={lobbyId} socket={socket} />

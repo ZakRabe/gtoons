@@ -6,9 +6,10 @@ import Lobby from '../../common/entity/Lobby';
 import User from '../../common/entity/User';
 import { SockerController } from './SocketController';
 import GameState from '../../common/entity/GameState';
-import { cardsInCollection } from '../../util';
+import { cardsInCollection, verifyToken } from '../../util';
+import { AuthTokenUser } from '../../types';
 
-export class DeckBuilderController extends SockerController {
+export class GameController extends SockerController {
   private collectionRepository = getRepository(Collection);
   private userRepository = getRepository(User);
   private gameRepository = getRepository(Game);
@@ -41,16 +42,43 @@ export class DeckBuilderController extends SockerController {
     return deck;
   };
 
-  async startGame() {
-    const lobbyId = 1;
-    const p1Deck_id = 1;
-    const p2Deck_id = 2;
+  async startGame({ token, lobbyId }) {
+    console.log('hitGameStart');
+    let tokenUser: AuthTokenUser;
+    try {
+      tokenUser = verifyToken(token);
+    } catch (error) {
+      return;
+    }
 
-    const { seat1, seat2 } = await this.lobbyRepository.findOne(lobbyId);
+    const lobby = await this.lobbyRepository.findOne(lobbyId);
+    if (!lobby) {
+      return;
+    }
+
+    const { seat1, seat2, seat1Deck, seat2Deck } = lobby;
+
+    // make sure user who requested start is in a seat
+    const isSeat1 = seat1 && seat1.id === tokenUser.userId;
+    const isSeat2 = seat2 && seat2.id === tokenUser.userId;
+
+    if (!isSeat1 && !isSeat2) {
+      console.error('invalid seats');
+      return;
+    }
+
+    const p1Deck_id = seat1Deck.id;
+    const p2Deck_id = seat2Deck.id;
+
     // validate player data
     const p1Deck = await this.validateSeat(seat1, p1Deck_id);
     const p2Deck = await this.validateSeat(seat2, p2Deck_id);
     if (!(p1Deck && p2Deck)) {
+      console.log('invalidDeckData');
+      console.log(seat1);
+      console.log(seat2);
+      console.log(p1Deck_id);
+      console.log(p2Deck_id);
       return this.cheater();
     }
 
