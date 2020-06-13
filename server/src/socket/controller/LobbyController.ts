@@ -5,6 +5,7 @@ import User from '../../common/entity/User';
 import { verifyToken } from '../../util';
 import { SockerController } from './SocketController';
 import { disconnect } from 'cluster';
+import { AuthTokenUser } from '../../types';
 
 // TODO: ALL THIS LOGIC IS ACTUALLY FOR LOBBIES
 export class LobbyController extends SockerController {
@@ -50,7 +51,7 @@ export class LobbyController extends SockerController {
       async () => await this.onDisconnect({ lobbyId, token })
     );
     const lobbyRoom = `lobby/${lobbyId}`;
-    let user;
+    let user: AuthTokenUser;
     try {
       user = verifyToken(token);
     } catch (error) {
@@ -64,6 +65,20 @@ export class LobbyController extends SockerController {
       return;
     }
     lobby.connectedCount -= 1;
+
+    // if user was in a seat, stand them up
+    let seatToEmpty = 0;
+    if (lobby.seat1 && lobby.seat1.id === user.userId) {
+      seatToEmpty = 1;
+    }
+    if (lobby.seat2 && lobby.seat2.id === user.userId) {
+      seatToEmpty = 2;
+    }
+
+    if (seatToEmpty > 0) {
+      await this.standUp({ lobbyId, token, seatNumber: seatToEmpty });
+    }
+
     await lobby.save();
     this.io.emit('lobbyUpdated', lobby.toJson());
     this.io.to(lobbyRoom).emit('userLeft', user.username);
