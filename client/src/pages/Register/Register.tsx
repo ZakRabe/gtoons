@@ -2,7 +2,7 @@ import { Button, InlineNotification, TextInput } from 'carbon-components-react';
 import { debounce, isEqual } from 'lodash';
 import * as React from 'react';
 import { queryParams, request } from '../../utils/api';
-import { isValidEmail } from '../../utils/validation';
+import { isValidEmail, validatePassword } from '../../utils/validation';
 import './styles.css';
 import { RegisterProps, RegisterState } from './types';
 
@@ -94,23 +94,7 @@ export default class Register extends React.Component<
   };
 
   validatePassword = (password: string) => {
-    // 7 character min
-    // 1 uppercase
-    // 1 lowercase
-
-    const passwordErrors = [];
-
-    if (password.length < 7) {
-      passwordErrors.push('Must be at least 7 characters');
-    }
-    const hasUppercase = /[A-Z]/.test(password);
-    if (!hasUppercase) {
-      passwordErrors.push('Must contain at least 1 uppercase letter');
-    }
-    const hasLowercase = /[a-z]/.test(password);
-    if (!hasLowercase) {
-      passwordErrors.push('Must contain at least 1 lowercase charater');
-    }
+    const passwordErrors = validatePassword(password);
 
     this.setState({
       passwordErrors,

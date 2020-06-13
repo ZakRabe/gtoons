@@ -5,6 +5,24 @@ import { checkRoles } from '../middleware/checkRoles';
 export const UserRoutes = [
   {
     method: 'get',
+    route: '/users/passwordResetToken',
+    controller: UserController,
+    action: 'passwordResetToken',
+  },
+  {
+    method: 'post',
+    route: '/users/passwordChange',
+    controller: UserController,
+    action: 'passwordChange',
+  },
+  {
+    method: 'post',
+    route: '/users/passwordReset',
+    controller: UserController,
+    action: 'passwordReset',
+  },
+  {
+    method: 'get',
     route: '/users',
     middleware: [checkJwt, checkRoles(['ADMIN'])],
     controller: UserController,

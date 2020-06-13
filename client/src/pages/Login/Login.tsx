@@ -96,6 +96,9 @@ export default class Login extends React.Component<LoginProps, LoginState> {
               />
             </p>
             <p>
+              <a href="/passwordReset">Forgot your password?</a>
+            </p>
+            <p>
               {error && (
                 <InlineNotification
                   title="Error"
