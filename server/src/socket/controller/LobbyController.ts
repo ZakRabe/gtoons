@@ -147,7 +147,7 @@ export class LobbyController extends SockerController {
     }
   }
 
-  async ready({ token, seatNumber, lobbyId }) {
+  async ready({ token, seatNumber, lobbyId, deck }) {
     const lobbyRoom = `lobby/${lobbyId}`;
     let tokenUser;
     try {
@@ -155,6 +155,7 @@ export class LobbyController extends SockerController {
     } catch (error) {
       return;
     }
+
     const lobby = await this.lobbyRepository.findOne(lobbyId);
     const user = await this.userRepository.findOne(tokenUser.userId);
 
@@ -163,6 +164,12 @@ export class LobbyController extends SockerController {
 
     if (lobby[playerField] && lobby[playerField].id === user.id) {
       lobby[field] = 1;
+
+      // TODO: Validate deck selection
+      // deck belongs to user?
+      // cards in deck are in user's collection
+      // Dont allow users to modify a deck if its currently locked in a lobby, or a game
+      lobby[`${playerField}Deck`] = deck.id;
       await lobby.save();
 
       this.io.to(lobbyRoom).emit(`${playerField}Ready`);

@@ -5,9 +5,12 @@ import {
   JoinColumn,
   OneToOne,
   PrimaryGeneratedColumn,
+  ManyToMany,
+  ManyToOne,
 } from 'typeorm';
 import Game from './Game';
 import User from './User';
+import Deck from './Deck';
 
 @Entity()
 export default class Lobby extends BaseEntity {
@@ -41,12 +44,20 @@ export default class Lobby extends BaseEntity {
   @Column()
   seat1Ready: number;
 
+  @ManyToOne((type) => Deck, { eager: true })
+  @JoinColumn()
+  seat1Deck: Deck;
+
   @OneToOne((type) => User, { eager: true })
   @JoinColumn({ name: 'seat2_player_id' })
   seat2: User;
 
   @Column()
   seat2Ready: number;
+
+  @ManyToOne((type) => Deck, { eager: true })
+  @JoinColumn()
+  seat2Deck: Deck;
 
   @Column()
   seatRule: number;
@@ -69,6 +80,8 @@ export default class Lobby extends BaseEntity {
       seatRule,
       seat1Ready,
       seat2Ready,
+      seat1Deck,
+      seat2Deck,
     } = this;
 
     return {
@@ -84,6 +97,8 @@ export default class Lobby extends BaseEntity {
       seat2: seat2 && seat2.toJson(),
       seat1Ready: !!seat1Ready,
       seat2Ready: !!seat2Ready,
+      seat1Deck: seat1Deck && seat1Deck.toJson(),
+      seat2Deck: seat2Deck && seat2Deck.toJson(),
     };
   };
 }

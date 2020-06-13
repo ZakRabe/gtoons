@@ -1,6 +1,7 @@
 import LobbiesController from '../controller/LobbiesController';
 import LobbyController from '../controller/LobbyController';
 import { SocketConfig } from '../../types';
+import GameController from '../controller/GameController';
 
 const socketConfigs: SocketConfig[] = [
   {
@@ -47,6 +48,11 @@ const socketConfigs: SocketConfig[] = [
     event: 'unready',
     controller: LobbyController,
     action: 'unready',
+  },
+  {
+    event: 'startGame',
+    controller: GameController,
+    action: 'startGame',
   },
 ];
 
