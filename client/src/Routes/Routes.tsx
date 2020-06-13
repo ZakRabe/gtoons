@@ -8,10 +8,11 @@ import Home from '../pages/Home';
 import Lobbies from '../pages/Lobbies';
 import Lobby from '../pages/Lobby';
 import Login from '../pages/Login';
+import PasswordReset from '../pages/PasswordReset';
 import Profile from '../pages/Profile';
 import Register from '../pages/Register';
-import { RoutesProps } from './types';
 import Sandbox from '../pages/Sandbox';
+import { RoutesProps } from './types';
 
 export default class Routes extends React.Component<RoutesProps> {
   render() {
@@ -22,6 +23,7 @@ export default class Routes extends React.Component<RoutesProps> {
             <Route exact path="/" component={Home} />
             <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />
+            <Route path="/passwordReset" component={PasswordReset} />
             <AuthRoute path="/profile" component={Profile} />
             <AuthRoute path="/game" component={Game} />
             <AuthRoute exact path="/lobbies/:lobbyId" component={Lobby} />
