@@ -1,7 +1,6 @@
 {
   "name": "gtoons-client",
   "version": "0.0.1",
-  "homepage": "https://github.com/ZakRabe/gtoons",
   "private": true,
   "scripts": {
     "start": "react-scripts start",
