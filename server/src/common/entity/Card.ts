@@ -26,7 +26,7 @@ export default class Card {
   title: string;
   description: string;
   character: string;
-  color: Color[];
+  colors: Color[];
   rarity: Rarity;
   groups: string[];
   types: string[];
@@ -41,7 +41,7 @@ export default class Card {
       this.title = other.title;
       this.description = other.description;
       this.character = other.character;
-      this.color = other.colors;
+      this.colors = other.colors;
       this.rarity = other.rarity;
       this.groups = other.groups;
       this.types = other.types;
@@ -53,13 +53,13 @@ export default class Card {
 
   applyAttributeModifiers = () => {
     let copy;
-    this.modifiers.map(mod => {
+    this.modifiers.map((mod) => {
       copy = mod.apply(this);
     });
   };
 
   checkPower = (board: (Card | null)[]) => {
-    this.powers.map(power => {
+    this.powers.map((power) => {
       console.log(power);
       //power.check(board);
     });

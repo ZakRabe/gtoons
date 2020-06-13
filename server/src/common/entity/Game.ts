@@ -11,7 +11,7 @@ import Deck from './Deck';
 import Card from './Card';
 import { roll } from '../../util';
 
-@Entity()
+@Entity({ name: 'gamestate' })
 export default class Game extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -67,13 +67,15 @@ export default class Game extends BaseEntity {
   };
 
   static generateColors = (cards1: Card[], cards2: Card[]) => {
+    console.log(cards1);
+    console.log(cards2);
     const index1 = roll(0, 11);
     const index2 = roll(0, 11);
 
-    const colors1 = cards1[index1].color;
+    const colors1 = cards1[index1].colors;
     const color1 = colors1[roll(0, colors1.length - 1)];
 
-    const colors2 = cards2[index2].color;
+    const colors2 = cards2[index2].colors;
     const color2 = colors2[roll(0, colors2.length - 1)];
 
     if (color1 === color2) {
