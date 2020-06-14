@@ -1,6 +1,7 @@
-import { Modifier, VariableModifer } from './Modifer';
-import Power from './Power';
-import { getPower } from '../../powers/utils';
+// these causing circular dep?
+// import { getPower } from '../../powers/utils';
+// import { Modifier } from './Modifer';
+// import Power from './Power';
 
 export enum Color {
   RED = 'RED',
@@ -26,12 +27,14 @@ export default class Card {
   title: string;
   description: string;
   character: string;
-  color: Color[];
+  colors: Color[];
   rarity: Rarity;
   groups: string[];
   types: string[];
-  powers: Power[];
-  modifiers: Modifier[];
+  powers: any[];
+  modifiers: any[];
+  // powers: Power[];
+  // modifiers: Modifier[];
   points: number;
 
   constructor(other: any) {
@@ -41,11 +44,11 @@ export default class Card {
       this.title = other.title;
       this.description = other.description;
       this.character = other.character;
-      this.color = other.colors;
+      this.colors = other.colors;
       this.rarity = other.rarity;
       this.groups = other.groups;
       this.types = other.types;
-      this.powers = getPower(other.id);
+      this.powers = other.powers;
       this.modifiers = other.modifiers;
       this.points = other.points;
     }
@@ -53,13 +56,13 @@ export default class Card {
 
   applyAttributeModifiers = () => {
     let copy;
-    this.modifiers.map(mod => {
+    this.modifiers.map((mod) => {
       copy = mod.apply(this);
     });
   };
 
   checkPower = (board: (Card | null)[]) => {
-    this.powers.map(power => {
+    this.powers.map((power) => {
       console.log(power);
       //power.check(board);
     });

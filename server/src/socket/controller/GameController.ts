@@ -18,23 +18,23 @@ export class GameController extends SockerController {
   private lobbyRepository = getRepository(Lobby);
 
   validateSeat = async (player: User, deck_id: number) => {
-    const collection = await this.collectionRepository.find({
+    const collection = await this.collectionRepository.findOne({
       where: {
-        player,
+        player: { id: player.id },
       },
     });
 
     const deck = await this.deckRepository.findOne(deck_id);
 
-    if (deck.player_id !== player.id) {
+    if (deck.player.id !== player.id) {
       console.log(`player: ${player.id} is lying about their deck`);
       return false;
     }
 
     const { cards } = deck.toJson();
-    const collectionIds = collection.map((card) => card.id);
+    const { cards: collectionCards } = collection.toJson();
     // their collection has all the cards in the deck
-    if (!cardsInCollection(cards, collectionIds)) {
+    if (!cardsInCollection(cards, collectionCards)) {
       console.log(`player: ${player.id} is lying about their collection`);
       return false;
     }
@@ -43,15 +43,17 @@ export class GameController extends SockerController {
   };
 
   async startGame({ token, lobbyId }) {
-    console.log('hitGameStart');
+    // console.log('hitGameStart');
     let tokenUser: AuthTokenUser;
     try {
       tokenUser = verifyToken(token);
     } catch (error) {
+      console.error(error);
       return;
     }
 
     const lobby = await this.lobbyRepository.findOne(lobbyId);
+
     if (!lobby) {
       return;
     }
@@ -74,11 +76,11 @@ export class GameController extends SockerController {
     const p1Deck = await this.validateSeat(seat1, p1Deck_id);
     const p2Deck = await this.validateSeat(seat2, p2Deck_id);
     if (!(p1Deck && p2Deck)) {
-      console.log('invalidDeckData');
-      console.log(seat1);
-      console.log(seat2);
-      console.log(p1Deck_id);
-      console.log(p2Deck_id);
+      // console.log('invalidDeckData');
+      // console.log(seat1);
+      // console.log(seat2);
+      // console.log(p1Deck_id);
+      // console.log(p2Deck_id);
       return this.cheater();
     }
 
@@ -86,9 +88,18 @@ export class GameController extends SockerController {
     const p2CutDeck = Deck.cut(p2Deck.shuffle());
     const p1DeckCards = Deck.getCardModels(p1CutDeck);
     const p2DeckCards = Deck.getCardModels(p2CutDeck);
+    // console.log('p1 deck');
+    // console.log(p1DeckCards);
+
+    // console.log('p2 deck');
+    // console.log(p1DeckCards);
 
     // generate colors
     const [color1, color2] = Game.generateColors(p1DeckCards, p2DeckCards);
+
+    // console.log('colors');
+    // console.log(color1);
+    // console.log(color2);
 
     const newGame = {
       color1,
@@ -103,7 +114,7 @@ export class GameController extends SockerController {
     const savedGame = await this.gameRepository.findOne(id);
     const empty = JSON.stringify([]);
     const newGameState = {
-      game_id: savedGame.id,
+      game: savedGame,
       turn: 0,
       player1ShuffledDeck: JSON.stringify(p1CutDeck),
       player2ShuffledDeck: JSON.stringify(p2CutDeck),
@@ -112,7 +123,11 @@ export class GameController extends SockerController {
       player1Discard: empty,
       player2Discard: empty,
     };
-    const savedGameState = this.gameStateRepository.create(newGameState);
+    const { id: stateId } = await this.gameStateRepository.save(newGameState);
+
+    const savedGameState = await this.gameStateRepository.findOne(stateId);
+    // console.log('gameState');
+    // console.log(savedGameState);
 
     lobby.game = savedGame;
     await lobby.save();
