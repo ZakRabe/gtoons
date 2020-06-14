@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 import Game from './Game';
 
-@Entity()
+@Entity({ name: 'gamestate' })
 export default class GameState extends BaseEntity {
   /*
    */

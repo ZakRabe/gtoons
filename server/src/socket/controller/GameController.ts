@@ -44,7 +44,7 @@ export class GameController extends SockerController {
   };
 
   async startGame({ token, lobbyId }) {
-    console.log('hitGameStart');
+    // console.log('hitGameStart');
     let tokenUser: AuthTokenUser;
     try {
       tokenUser = verifyToken(token);
@@ -98,9 +98,9 @@ export class GameController extends SockerController {
     // generate colors
     const [color1, color2] = Game.generateColors(p1DeckCards, p2DeckCards);
 
-    console.log('colors');
-    console.log(color1);
-    console.log(color2);
+    // console.log('colors');
+    // console.log(color1);
+    // console.log(color2);
 
     const newGame = {
       color1,
@@ -115,7 +115,7 @@ export class GameController extends SockerController {
     const savedGame = await this.gameRepository.findOne(id);
     const empty = JSON.stringify([]);
     const newGameState = {
-      game_id: savedGame.id,
+      game: savedGame,
       turn: 0,
       player1ShuffledDeck: JSON.stringify(p1CutDeck),
       player2ShuffledDeck: JSON.stringify(p2CutDeck),
@@ -127,8 +127,8 @@ export class GameController extends SockerController {
     const { id: stateId } = await this.gameStateRepository.save(newGameState);
 
     const savedGameState = await this.gameStateRepository.findOne(stateId);
-    console.log('gameState');
-    console.log(savedGameState);
+    // console.log('gameState');
+    // console.log(savedGameState);
 
     lobby.game = savedGame;
     await lobby.save();
