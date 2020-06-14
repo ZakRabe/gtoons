@@ -2,7 +2,7 @@
   "javascript.preferences.quoteStyle": "single",
   "typescript.preferences.quoteStyle": "single",
   "prettier.jsxSingleQuote": true,
-  "prettier.configPath": "./.prettierrc",
+  "prettier.configPath": ".prettierrc",
   "macros": {
     // https://marketplace.visualstudio.com/items?itemName=jeff-hykin.macro-commander
     "gtoonsDev": [
@@ -23,5 +23,6 @@
         }
       }
     ]
-  }
+  },
+  "prettier.prettierPath": "./client/node_modules/prettier"
 }

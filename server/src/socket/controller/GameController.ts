@@ -99,7 +99,8 @@ export class GameController extends SockerController {
       player2Deck: p2Deck,
     };
 
-    const savedGame = this.gameRepository.create(newGame);
+    const { id } = await this.gameRepository.save(newGame);
+    const savedGame = await this.gameRepository.findOne(id);
     const empty = JSON.stringify([]);
     const newGameState = {
       game_id: savedGame.id,
@@ -113,10 +114,11 @@ export class GameController extends SockerController {
     };
     const savedGameState = this.gameStateRepository.create(newGameState);
 
-    this.io.emit('gameStarted', {
-      game: savedGame.toJson(),
-      gameState: savedGameState.toJson(),
-    });
+    lobby.game = savedGame;
+    await lobby.save();
+    await lobby.reload();
+
+    this.io.emit('lobbyUpdated', lobby.toJson());
   }
 
   takeTurn = (turn: number, board: number[], player: User, game: Game) => {
