@@ -1,8 +1,6 @@
 const crypto = require('crypto');
 import * as jwt from 'jsonwebtoken';
 import { AuthTokenUser } from './types';
-import Card, { Color } from './common/entity/Card';
-import Deck from './common/entity/Deck';
 
 export const getSalt = (length) => {
   return crypto

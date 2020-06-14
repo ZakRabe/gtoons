@@ -6,11 +6,9 @@ import { verifyToken } from '../../util';
 import { SockerController } from './SocketController';
 
 export class LobbyController extends SockerController {
-  private gameRepository = getRepository(Game);
   private lobbyRepository = getRepository(Lobby);
   private userRepository = getRepository(User);
 
-  // TODO. dont need deck to create a lobby
   async createLobby({ user: token, name, capacity }) {
     let userId;
     try {
@@ -28,7 +26,7 @@ export class LobbyController extends SockerController {
         owner,
       },
     });
-    // they are in an existing game, do nothing
+    // they are in an existing lobby, do nothing
     // TODO: return an error message for the client
     if (existingLobby.length) {
       return;

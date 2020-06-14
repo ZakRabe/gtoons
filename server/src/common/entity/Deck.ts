@@ -1,6 +1,14 @@
-import { Entity, Column, PrimaryGeneratedColumn, BaseEntity } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  BaseEntity,
+  OneToOne,
+  JoinColumn,
+} from 'typeorm';
 import { roll } from '../../util';
 import { getCards } from '../../cards/utils';
+import User from './User';
 
 @Entity()
 export default class Deck extends BaseEntity {
@@ -9,8 +17,9 @@ export default class Deck extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  player_id: number;
+  @OneToOne((type) => User, { eager: true })
+  @JoinColumn()
+  player: User;
 
   @Column()
   name: string;
@@ -22,10 +31,10 @@ export default class Deck extends BaseEntity {
   face: number;
 
   toJson = () => {
-    const { id, player_id, name, cards, face } = this;
+    const { id, player, name, cards, face } = this;
     return {
       id,
-      player_id,
+      player: player.toJson(),
       name,
       cards: JSON.parse(cards) as number[],
       face,

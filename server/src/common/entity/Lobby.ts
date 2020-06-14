@@ -3,14 +3,13 @@ import {
   Column,
   Entity,
   JoinColumn,
+  ManyToOne,
   OneToOne,
   PrimaryGeneratedColumn,
-  ManyToMany,
-  ManyToOne,
 } from 'typeorm';
+import Deck from './Deck';
 import Game from './Game';
 import User from './User';
-import Deck from './Deck';
 
 @Entity()
 export default class Lobby extends BaseEntity {
@@ -23,9 +22,10 @@ export default class Lobby extends BaseEntity {
   @Column()
   created: string;
 
-  @OneToOne((type) => Game, { eager: true })
-  @JoinColumn({ name: 'game_id' })
-  game: Game;
+  // for some reason eager here causes crashes in the find query?
+  @OneToOne((type) => Game, { eager: true, nullable: true })
+  @JoinColumn()
+  game: Game | null;
 
   @Column()
   capacity: number;
@@ -34,30 +34,29 @@ export default class Lobby extends BaseEntity {
   connectedCount: number;
 
   @OneToOne((type) => User, { eager: true })
-  @JoinColumn({ name: 'owner_player_id' })
+  @JoinColumn()
   owner: User;
 
   @OneToOne((type) => User, { eager: true })
-  @JoinColumn({ name: 'seat1_player_id' })
-  seat1: User;
+  @JoinColumn()
+  seat1: User | null;
+
+  @OneToOne((type) => User, { eager: true })
+  @JoinColumn()
+  seat2: User | null;
 
   @Column()
   seat1Ready: number;
 
-  @ManyToOne((type) => Deck, { eager: true })
-  @JoinColumn()
-  seat1Deck: Deck;
-
-  @OneToOne((type) => User, { eager: true })
-  @JoinColumn({ name: 'seat2_player_id' })
-  seat2: User;
-
   @Column()
   seat2Ready: number;
+  @ManyToOne((type) => Deck, { eager: true })
+  @JoinColumn()
+  seat1Deck: Deck | null;
 
   @ManyToOne((type) => Deck, { eager: true })
   @JoinColumn()
-  seat2Deck: Deck;
+  seat2Deck: Deck | null;
 
   @Column()
   seatRule: number;

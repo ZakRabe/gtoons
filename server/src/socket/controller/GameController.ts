@@ -27,7 +27,7 @@ export class GameController extends SockerController {
 
     const deck = await this.deckRepository.findOne(deck_id);
 
-    if (deck.player_id !== player.id) {
+    if (deck.player.id !== player.id) {
       console.log(`player: ${player.id} is lying about their deck`);
       return false;
     }

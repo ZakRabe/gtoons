@@ -1,4 +1,12 @@
-import { Entity, Column, PrimaryGeneratedColumn, BaseEntity } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import User from './User';
 
 @Entity()
 export default class Collection extends BaseEntity {
@@ -7,11 +15,9 @@ export default class Collection extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  // TODO: rename this column playerId. to be able to use a User model here bug with join columns
-  // @OneToOne((type) => User, { eager: true })
-  // @JoinColumn()
-  @Column({ name: 'player_id' })
-  player: number;
+  @OneToOne((type) => User, { eager: true })
+  @JoinColumn()
+  player: User;
 
   @Column()
   cards: string;
@@ -20,7 +26,7 @@ export default class Collection extends BaseEntity {
     const { id, player, cards } = this;
     return {
       id,
-      player,
+      player: player.toJson(),
       cards: JSON.parse(cards),
     };
   };

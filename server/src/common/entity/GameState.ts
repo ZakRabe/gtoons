@@ -1,4 +1,12 @@
-import { Entity, Column, PrimaryGeneratedColumn, BaseEntity } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import Game from './Game';
 
 @Entity()
 export default class GameState extends BaseEntity {
@@ -7,9 +15,9 @@ export default class GameState extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  // TODO: make model
-  @Column()
-  game_id: number;
+  @OneToOne((type) => Game, { eager: true })
+  @JoinColumn()
+  game: Game;
 
   @Column()
   turn: number;
@@ -35,7 +43,7 @@ export default class GameState extends BaseEntity {
   toJson = () => {
     const {
       id,
-      game_id,
+      game,
       turn,
       player1ShuffledDeck,
       player2ShuffledDeck,
@@ -46,8 +54,8 @@ export default class GameState extends BaseEntity {
     } = this;
     return {
       id,
-      game_id,
       turn,
+      game: game.toJson(),
       player1ShuffledDeck: JSON.parse(player1ShuffledDeck),
       player2ShuffledDeck: JSON.parse(player2ShuffledDeck),
       player1Board: JSON.parse(player1Board),
