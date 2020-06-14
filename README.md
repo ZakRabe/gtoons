@@ -24,7 +24,7 @@ Did you know that we are on [Discord](https://discord.com/invite/W9Z9hSG)? Come 
 
 ### Software Prerequisites:
 
-NPM 13.3.0  
+NPM 14.4.0
 Optionally use NVM to manage node versions:
 
 - [Windows](https://github.com/coreybutler/nvm-windows/releases)
@@ -32,7 +32,7 @@ Optionally use NVM to manage node versions:
 - Ubuntu 18.04  
   `curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -`  
   `npm install -g n`  
-  `n 13.3.0`  
+  `n 14.4.0`  
   `# Reload the shell to use the proper Node.js version.`
 
 Global NPM Packages:
