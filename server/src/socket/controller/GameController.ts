@@ -18,10 +18,9 @@ export class GameController extends SockerController {
   private lobbyRepository = getRepository(Lobby);
 
   validateSeat = async (player: User, deck_id: number) => {
-    // player is a
     const collection = await this.collectionRepository.findOne({
       where: {
-        player: player.id,
+        player: { id: player.id },
       },
     });
 
