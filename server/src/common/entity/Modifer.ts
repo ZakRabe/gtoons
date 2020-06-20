@@ -102,10 +102,10 @@ export class VariableModifer implements VariableMod {
     const copy = { ...card };
     switch (this.type) {
       case 'add':
-        copy[this.attribute] = [...card[this.attribute], this.value];
+        copy[this.attribute] = [...card[this.attribute], this.value as any];
         break;
       case 'replace':
-        copy[this.attribute] = [this.value];
+        copy[this.attribute] = [this.value as any];
         break;
     }
 

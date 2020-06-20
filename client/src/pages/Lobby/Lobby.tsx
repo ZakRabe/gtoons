@@ -108,6 +108,10 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
     socket.on('seat2Unready', () =>
       setSeat2((prevSeat) => ({ ...prevSeat, ready: false }))
     );
+    socket.on('lobbyUpdated', (newLobby: any) => {
+      console.log(newLobby);
+      setLobby(newLobby);
+    });
 
     return () => {
       if (socket) {
@@ -120,24 +124,25 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
         socket.off('seat2Empty');
         socket.off('seat2Ready');
         socket.off('seat2Unready');
+        socket.off('lobbyUpdated');
       }
     };
   }, [socket, lobbyId]);
 
   useEffect(() => {
-    if (!socket || !lobby) {
+    if (!socket) {
       return;
     }
 
     return () => {
       if (socket) {
         socket.emit('leaveLobby', {
-          lobbyId: lobby.id,
+          lobbyId,
           token: isLoggedIn(),
         });
       }
     };
-  }, [socket, lobby]);
+  }, [socket, lobbyId]);
 
   const takeSeat = (seatNumber: number) => () => {
     if (!decks.length) {
@@ -305,7 +310,7 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
     );
   };
   const startGame = () => {
-    socket.emit('startGame', { user: isLoggedIn(), lobbyId });
+    socket.emit('startGame', { token: isLoggedIn(), lobbyId });
   };
 
   const isUserInSeat = (userId: number) => {
