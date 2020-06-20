@@ -6,9 +6,14 @@ import CardComponent from '../../components/Card';
 import { request } from '../../utils/api';
 import ColorButton from './components/ColorButton';
 import { DeckBuilderProps } from './types';
+import { Deck } from '../../App/types';
 
 export const DeckBuilder = (props: DeckBuilderProps) => {
-  // const { socket } = props;
+  var {
+    match: {
+      params: { deckId },
+    },
+  } = props;
 
   const colorOptions = [
     'BLACK',
@@ -84,6 +89,19 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
       const newCollection = JSON.parse(collectionModel.cards);
       setCollection(newCollection);
     });
+    if (deckId != null) {
+      request({ url: 'deckBuilder/myDeckList' }).then((decks: Deck[]) => {
+        let result = decks.filter((deck) => {return (deck.id === Number(deckId))});
+        if(result.length === 0) {
+          deckId = null;
+        }
+        else {
+          setDeck(result[0].cards);
+          setDeckName(result[0].name);
+          setFace(result[0].face);
+        }
+      });
+    }
 
     request({ url: 'cards/all' }).then(setAllCards);
   }, []);
@@ -113,17 +131,33 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
   };
 
   const saveDeck = () => {
-    request({
-      method: 'post',
-      url: 'deckBuilder/saveDeck',
-      data: { name: deckName, face, deck },
-    })
-      .then(() => {
+    if(deckId != null) {
+      let data = { id: deckId, name: deckName, face, deck };
+      console.log(data);
+      request({
+        method: 'post',
+        url: 'deckBuilder/updateDeck',
+        data: { id: deckId, name: deckName, face, deck },
+      }).then(() => {
         console.log('save successful');
       })
       .catch((error) => {
         console.log('save failed', error);
       });
+    }
+    else {
+      request({
+        method: 'post',
+        url: 'deckBuilder/saveDeck',
+        data: { name: deckName, face, deck },
+      }).then((deck: Deck) => {
+        deckId = deck.id;
+        console.log('save successful');
+      })
+      .catch((error) => {
+        console.log('save failed', error);
+      });
+    }
   };
 
   const onHover = (card: Card) => {

@@ -58,38 +58,28 @@ export class DeckBuilderController {
 
   // TODO: Remove this. use the same save endpoint for update.
   async updateDeck(request: Request, response: Response, next: NextFunction) {
+
+    if (request.body.deck.count > 12 || (request.body.face != null && !request.body.deck.includes(request.body.face))) {
+      return response.sendStatus(400);
+    }
+
     const user = response.locals.jwtPayload;
-    const { deckId, name, deck } = request.body;
 
-    //Do validation before trying to update?
-    // if not their deck return 401
-    //Update deck
-    // const updated = await this.deckRepository.update(deckId, {
-    //   name,
-    //   cards: JSON.stringify(deck),
-    // });
+    const deckId = request.body.id;
+    const deckName = request.body.name;
+    const newDeck = JSON.stringify(request.body.deck);
+    const deckFace = request.body.face;
 
-    const old = await this.deckRepository.findOne(deckId);
-    console.log(old);
-    const updatedModel = {
-      id: deckId,
-      playerId: user.userId,
-      name,
-      cards: JSON.stringify(deck),
-    };
+    const oldDeck = await this.deckRepository.findOne(deckId);
+    if (oldDeck.player.id !== user.userId) {
+      return response.sendStatus(401);
+    }
 
-    await this.deckRepository.save(updatedModel);
+    oldDeck.name = deckName;
+    oldDeck.face = deckFace;
+    oldDeck.cards = newDeck;
+    await oldDeck.save();
 
-    const updatedDeck = await this.deckRepository.findOne(deckId);
-
-    console.log(updatedDeck);
-    // const newDeck = {
-    //   name,
-    //   id: deckId,
-    //   player_id: user.userId,
-    //   cards: deck,
-    // };
-
-    return updatedDeck.toJson();
+    return oldDeck;
   }
 }

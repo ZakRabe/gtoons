@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
 import AuthRoute from '../components/AuthRoute';
 import DeckBuilder from '../pages/DeckBuilder';
+import DeckList from '../pages/DeckList';
 import Game from '../pages/Game';
 import Home from '../pages/Home';
 import Lobbies from '../pages/Lobbies';
@@ -28,7 +29,8 @@ export default class Routes extends React.Component<RoutesProps> {
             <AuthRoute path="/game" component={Game} />
             <AuthRoute exact path="/lobbies/:lobbyId" component={Lobby} />
             <AuthRoute path="/lobbies" component={Lobbies} />
-            <AuthRoute path="/deckBuilder" component={DeckBuilder} />
+            <AuthRoute path="/deckBuilder/:deckId?" component={DeckBuilder} />
+            <AuthRoute path="/deckList" component={DeckList} />
             <AuthRoute path="/sandbox" component={Sandbox} />
           </Switch>
         </Container>
