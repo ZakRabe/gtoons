@@ -60,15 +60,17 @@ export class DeckBuilderController {
   async updateDeck(request: Request, response: Response, next: NextFunction) {
 
     if (request.body.deck.count > 12 || (request.body.face != null && !request.body.deck.includes(request.body.face))) {
-      return response.sendStatus(400);
+      return response.sendStatus(422);
     }
 
     const user = response.locals.jwtPayload;
-
-    const deckId = request.body.id;
-    const deckName = request.body.name;
-    const newDeck = JSON.stringify(request.body.deck);
-    const deckFace = request.body.face;
+    const {
+      id:deckId, 
+      name:deckName, 
+      deck:newDeck,
+      face:deckFace
+    } = request.body
+    const JSONDeck = JSON.stringify(newDeck);
 
     const oldDeck = await this.deckRepository.findOne(deckId);
     if (oldDeck.player.id !== user.userId) {
@@ -77,9 +79,9 @@ export class DeckBuilderController {
 
     oldDeck.name = deckName;
     oldDeck.face = deckFace;
-    oldDeck.cards = newDeck;
+    oldDeck.cards = JSONDeck;
     await oldDeck.save();
 
-    return oldDeck;
+    return oldDeck.toJson();
   }
 }

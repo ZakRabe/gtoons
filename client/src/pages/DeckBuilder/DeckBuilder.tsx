@@ -91,14 +91,14 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
     });
     if (deckId != null) {
       request({ url: 'deckBuilder/myDeckList' }).then((decks: Deck[]) => {
-        let result = decks.filter((deck) => {return (deck.id === Number(deckId))});
-        if(result.length === 0) {
+        let result = decks.find((deck) => {return (deck.id === Number(deckId))});
+        if(result == null) {
           deckId = null;
         }
         else {
-          setDeck(result[0].cards);
-          setDeckName(result[0].name);
-          setFace(result[0].face);
+          setDeck(result.cards);
+          setDeckName(result.name);
+          setFace(result.face);
         }
       });
     }
