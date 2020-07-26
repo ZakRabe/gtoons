@@ -91,7 +91,7 @@ export default class Lobby extends BaseEntity {
       connectedCount,
       seatRule,
       owner: owner.toJson(),
-      game: game && game.toJson(),
+      game: game && game.lobbyJson(),
       seat1: seat1 && seat1.toJson(),
       seat2: seat2 && seat2.toJson(),
       seat1Ready: !!seat1Ready,

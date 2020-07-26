@@ -10,6 +10,8 @@ import { roll } from '../../util';
 import Card from './Card';
 import Deck from './Deck';
 import User from './User';
+import GameState from './GameState';
+import { getCard } from '../../cards/utils';
 
 @Entity()
 export default class Game extends BaseEntity {
@@ -42,6 +44,9 @@ export default class Game extends BaseEntity {
   @JoinColumn()
   winner: User;
 
+  @OneToOne((type) => GameState, (state) => state.game, { eager: true })
+  gameState: GameState;
+
   toJson = () => {
     const {
       id,
@@ -66,17 +71,30 @@ export default class Game extends BaseEntity {
     };
   };
 
+  lobbyJson = () => {
+    const { player1Deck, player2Deck, ...rest } = this.toJson();
+    const p1Shuffled = JSON.parse(this.gameState.player1ShuffledDeck);
+    const p2Shuffled = JSON.parse(this.gameState.player2ShuffledDeck);
+
+    const p1CutReveal = getCard(p1Shuffled[11]);
+    const p2CutReveal = getCard(p2Shuffled[11]);
+
+    return {
+      ...rest,
+      p1CutReveal,
+      p2CutReveal,
+    };
+  };
+
   static generateColors = (cards1: Card[], cards2: Card[]) => {
-    console.log(cards1);
-    console.log(cards2);
-    const index1 = roll(0, 11);
-    const index2 = roll(0, 11);
+    const bottom1 = cards1[cards1.length - 1];
+    const bottom2 = cards2[cards2.length - 1];
 
-    const colors1 = cards1[index1].colors;
-    const color1 = colors1[roll(0, colors1.length - 1)];
+    const color1Index = roll(0, bottom1.colors.length - 1);
+    const color2Index = roll(0, bottom2.colors.length - 1);
 
-    const colors2 = cards2[index2].colors;
-    const color2 = colors2[roll(0, colors2.length - 1)];
+    const color1 = bottom1.colors[color1Index];
+    const color2 = bottom2.colors[color2Index];
 
     if (color1 === color2) {
       return [color1, null];

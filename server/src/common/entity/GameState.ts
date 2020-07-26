@@ -15,7 +15,7 @@ export default class GameState extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @OneToOne((type) => Game, { eager: true })
+  @OneToOne((type) => Game)
   @JoinColumn()
   game: Game;
 
@@ -39,6 +39,9 @@ export default class GameState extends BaseEntity {
 
   @Column()
   player2ShuffledDeck: string;
+
+  @Column()
+  connectedPlayers: number;
 
   toJson = () => {
     const {
@@ -65,19 +68,60 @@ export default class GameState extends BaseEntity {
     };
   };
 
-  static validCardCount(turnNumber: number, cardCount: number) {
-    let expected;
-
+  static validCardCount(turnNumber: number, cardCount: number): boolean {
     switch (turnNumber) {
+      // turn 1 is locking in your four first cards
       case 1:
-        expected = 4;
-        break;
+        return cardCount === 4;
+      // turn 2 is locking in your last 3 cards
       case 2:
+        return cardCount === 3;
+      // turn 3 is your chance to change your last card
+      // so either 1 or 2 cards
       case 3:
-        expected = 7;
+        return cardCount < 2;
+    }
+    return false;
+  }
+
+  static updateBoardState(
+    turnNumber: number,
+    previous: number[],
+    newCards: number[]
+  ) {
+    // this whole method is just hyper safe. assume there could be jank or null in the other slots in the board state array
+    // and only operate on data we know will come out on the other side with the correct number of cards in the board state
+    let prevEnd = 0;
+    let newEnd = 0;
+    switch (turnNumber) {
+      // turn 1 is locking in your four first cards
+      // grab the empty previous board state, and the first 4 cards from the new cards
+      case 1:
+        newEnd = 4;
         break;
+      // turn 2 is locking in your last 3 cards
+      // grab the first 4 cards from the previous board state, and add the first 3 cards from the new card
+      case 2:
+        prevEnd = 4;
+        newEnd = 3;
+        break;
+      // turn 3 is your chance to change your last card
+      // if the user didnt send a new card, we're done here
+      // if they did, grab the first 6 cards from the previous board state, and add the new one
+      case 3:
+        prevEnd = newCards.length === 0 ? 7 : 6;
+        newEnd = newCards.length === 0 ? 0 : 1;
     }
 
-    return expected !== undefined && expected === cardCount;
+    const newBoardState = previous
+      .slice(0, prevEnd)
+      .concat(newCards.slice(0, newEnd));
+  }
+
+  // send an array of cardIds and an array for a deck
+  // returns true if all the cards are in the deck
+  static validateNewCards(newCards: number[], deck: number[]) {
+    const notInDeck = newCards.some((cardId) => !deck.includes(cardId));
+    return !notInDeck;
   }
 }

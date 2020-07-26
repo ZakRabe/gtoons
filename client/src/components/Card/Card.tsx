@@ -5,7 +5,24 @@ import { CardProps } from './types';
 import CopyToClipboard from 'react-copy-to-clipboard';
 
 export const Card: React.FunctionComponent<CardProps> = (props) => {
-  const { model: card, onClick, onHover, width, height } = props;
+  const { model, onClick, onHover, width, height } = props;
+
+  if (!model) {
+    return (
+      <img
+        width={width + 25}
+        height={height + 25}
+        style={{ margin: 0 }}
+        src="/images/normal/released/default.png"
+      ></img>
+    );
+  }
+
+  const card = model || {
+    id: 'default',
+    colors: ['SILVER'],
+    points: null,
+  };
 
   const cardWrapperStyles = {
     display: 'inline-flex',
@@ -60,12 +77,12 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
           <div
             style={{ position: 'absolute', top: '0', left: '0', fontSize: 50 }}
           >
-            <CopyToClipboard text={card.id.toString()}>
+            {/* <CopyToClipboard text={card.id.toString()}>
               <span>{card.id}</span>
-            </CopyToClipboard>
+            </CopyToClipboard> */}
           </div>
           <div style={cardBorderStyles}>
-            <span style={pointStyles}>{card.points}</span>
+            {card.points && <span style={pointStyles}>{card.points}</span>}
             <div style={cardStyles}></div>
           </div>
         </div>

@@ -1,0 +1,289 @@
+:root {
+  --width: 16px;
+  --height: 40px;
+  --border: 2px;
+  --total-width: 22px;
+  --total-height: 44px;
+  --animation-duration: 1s;
+  --animation: var(--animation-duration) 2;
+}
+
+.stage .card {
+  width: var(--width);
+  height: var(--height);
+  background-color: black;
+  background-image: linear-gradient(to bottom right, black, white);
+  display: inline-block;
+  border-radius: 8px;
+  border: var(--border) solid gray;
+  position: absolute;
+  box-shadow: 3px 0px 0px rgba(0, 0, 0, 0.5);
+  box-sizing: content-box;
+}
+
+.stage .card:nth-of-type(1) {
+  left: 0;
+  animation: card1 var(--animation);
+}
+.stage .card:nth-of-type(2) {
+  left: calc(var(--total-width) * 1);
+  animation: card2 var(--animation);
+}
+.stage .card:nth-of-type(3) {
+  left: calc(var(--total-width) * 2);
+  animation: card3 var(--animation);
+}
+.stage .card:nth-of-type(4) {
+  left: calc(var(--total-width) * 3);
+  animation: card4 var(--animation);
+}
+.stage .card:nth-of-type(5) {
+  left: calc(var(--total-width) * 4);
+  animation: card5 var(--animation);
+}
+.stage .card:nth-of-type(6) {
+  left: calc(var(--total-width) * 5);
+  animation: card6 var(--animation);
+}
+.stage .card:nth-of-type(7) {
+  left: calc(var(--total-width) * 6);
+  animation: card7 var(--animation);
+}
+.stage .card:nth-of-type(8) {
+  left: calc(var(--total-width) * 7);
+  animation: card8 var(--animation);
+}
+.stage .card:nth-of-type(9) {
+  left: calc(var(--total-width) * 8);
+  animation: card9 var(--animation);
+}
+.stage .card:nth-of-type(10) {
+  left: calc(var(--total-width) * 9);
+  animation: card10 var(--animation);
+}
+.stage .card:nth-of-type(11) {
+  left: calc(var(--total-width) * 10);
+  animation: card11 var(--animation);
+}
+.stage .card:nth-of-type(12) {
+  left: calc(var(--total-width) * 11);
+  animation: card12 var(--animation);
+}
+
+.wrap {
+  position: relative;
+  width: calc(var(--total-width) * 12);
+  height: calc(var(--total-height));
+}
+
+.sleeve {
+  background-color: #5d8bb9;
+  background-image: linear-gradient(to bottom left, #5d8bb9, gray);
+  border-radius: 8px;
+  border: 4px solid rgba(0, 0, 0, 0.6);
+  box-shadow: 6px 6px 6px inset rgba(0, 0, 0, 0.4), 0px 0px 10px black;
+  box-sizing: content-box;
+  padding: 4px;
+}
+
+.stage {
+  width: 100%;
+  height: calc(var(--total-height) * 2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes card1 {
+  0% {
+    top: 0;
+    transform: rotate(0);
+  }
+  50% {
+    transform: scale(1.25);
+    top: calc(var(--total-height) / 2 * -1);
+    left: calc(var(--total-width) * 3);
+  }
+  100% {
+    top: 0;
+    transform: scale(1) rotate(360deg);
+    left: calc(var(--total-width) * 3);
+  }
+}
+
+@keyframes card2 {
+  0% {
+    top: 0;
+    transform: rotate(0);
+  }
+  50% {
+    transform: scale(1.25);
+    top: calc(var(--total-height) / 2 * -1);
+    left: calc(var(--total-width) * 11);
+  }
+  100% {
+    top: 0;
+    transform: scale(1) rotate(360deg);
+    left: calc(var(--total-width) * 11);
+  }
+}
+@keyframes card3 {
+  0% {
+    top: 0;
+    transform: rotate(0);
+  }
+  50% {
+    transform: scale(1.25);
+    top: calc(var(--total-height) / 2);
+    left: calc(var(--total-width) * 6);
+  }
+  100% {
+    top: 0;
+    transform: scale(1) rotate(360deg);
+    left: calc(var(--total-width) * 6);
+  }
+}
+@keyframes card4 {
+  0% {
+    top: 0;
+    transform: rotate(0);
+  }
+  50% {
+    transform: scale(1.25);
+    top: calc((var(--total-height) / 2));
+    left: calc(var(--total-width) * 0);
+  }
+  100% {
+    top: 0;
+    transform: scale(1) rotate(360deg);
+    left: calc(var(--total-width) * 0);
+  }
+}
+@keyframes card5 {
+  0% {
+    top: 0;
+    transform: rotate(0);
+  }
+  50% {
+    transform: scale(1.25);
+    top: calc(var(--total-height) / 2);
+    left: calc(var(--total-width) * 8);
+  }
+  100% {
+    top: 0;
+    transform: scale(1) rotate(360deg);
+    left: calc(var(--total-width) * 8);
+  }
+}
+@keyframes card6 {
+  0% {
+    top: 0;
+    transform: rotate(0);
+  }
+  50% {
+    transform: scale(1.25);
+    top: calc((var(--total-height) / 2));
+    left: calc(var(--total-width) * 2);
+  }
+  100% {
+    top: 0;
+    transform: scale(1) rotate(360deg);
+    left: calc(var(--total-width) * 2);
+  }
+}
+@keyframes card7 {
+  0% {
+    top: 0;
+    transform: rotate(0);
+  }
+  50% {
+    transform: scale(1.25);
+    top: calc(var(--total-height) / 2);
+    left: calc(var(--total-width) * 10);
+  }
+  100% {
+    top: 0;
+    transform: scale(1) rotate(360deg);
+    left: calc(var(--total-width) * 10);
+  }
+}
+@keyframes card8 {
+  0% {
+    top: 0;
+    transform: rotate(0);
+  }
+  50% {
+    transform: scale(1.25);
+    top: calc(var(--total-height) / 2);
+    left: calc(var(--total-width) * 4);
+  }
+  100% {
+    top: 0;
+    transform: scale(1) rotate(360deg);
+    left: calc(var(--total-width) * 4);
+  }
+}
+@keyframes card9 {
+  0% {
+    top: 0;
+    transform: rotate(0);
+  }
+  50% {
+    transform: scale(1.25);
+    top: calc(var(--total-height) / 2 * -1);
+    left: calc(var(--total-width) * 7);
+  }
+  100% {
+    top: 0;
+    transform: scale(1) rotate(360deg);
+    left: calc(var(--total-width) * 7);
+  }
+}
+@keyframes card10 {
+  0% {
+    top: 0;
+    transform: rotate(0);
+  }
+  50% {
+    transform: scale(1.25);
+    top: calc(var(--total-height) / 2 * -1);
+    left: calc(var(--total-width) * 9);
+  }
+  100% {
+    top: 0;
+    transform: scale(1) rotate(360deg);
+    left: calc(var(--total-width) * 9);
+  }
+}
+@keyframes card11 {
+  0% {
+    top: 0;
+    transform: rotate(0);
+  }
+  50% {
+    transform: scale(1.25);
+    top: calc(var(--total-height) / 2 * -1);
+    left: calc(var(--total-width) * 5);
+  }
+  100% {
+    top: 0;
+    transform: scale(1) rotate(360deg);
+    left: calc(var(--total-width) * 5);
+  }
+}
+@keyframes card12 {
+  0% {
+    top: 0;
+    transform: rotate(0);
+  }
+  50% {
+    transform: scale(1.25);
+    top: calc((var(--total-height) / 2) * -1);
+    left: calc(var(--total-width) * 1);
+  }
+  100% {
+    top: 0;
+    transform: scale(1) rotate(360deg);
+    left: calc(var(--total-width) * 1);
+  }
+}
