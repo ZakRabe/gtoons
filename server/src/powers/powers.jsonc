@@ -419,5 +419,622 @@
         ]
       }
     ]
-  } // END OF IF X IS IN PLAY
+  }, // END OF IF X IS IN PLAY
+
+  // OPPOSING LOSES ALL ADJACENCIES
+  // Drill Sergeant
+  {
+    "id": 116,
+    "powers": [
+      {
+        "conditionType": "ANY",
+        "target": "other",
+        "conditions": [
+          {
+            "condition": "inPlay",
+            "attribute": "character",
+            "value": "Duck Dodgers",
+            "source": 266
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "replace",
+            "value": 2,
+            "source": 266
+          }
+        ]
+      }
+    ]
+  },
+  // Fretful Larry
+  {
+    "id": 147,
+    "powers": [
+      {
+        "conditionType": "ANY",
+        "target": "other",
+        "conditions": [
+          {
+            "condition": "inPlay",
+            "attribute": "character",
+            "value": "Duck Dodgers",
+            "source": 266
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "replace",
+            "value": 2,
+            "source": 266
+          }
+        ]
+      }
+    ]
+  },
+  // Martian Queen
+  {
+    "id": 254,
+    "powers": [
+      {
+        "conditionType": "ANY",
+        "target": "other",
+        "conditions": [
+          {
+            "condition": "inPlay",
+            "attribute": "character",
+            "value": "Duck Dodgers",
+            "source": 266
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "replace",
+            "value": 2,
+            "source": 266
+          }
+        ]
+      }
+    ]
+  },
+  // FOR EACH {_____} IN PLAY
+  // Courage Sleeping
+  {
+    "id": 89,
+    "powers": [
+      {
+        "conditionType": "ANY",
+        "target": "self",
+        "conditions": [
+          {
+            "condition": "inPlay",
+            "attribute": "type",
+            "value": "MONSTER",
+            "source": 89
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -2,
+            "source": 89
+          }
+        ]
+      }
+    ]
+  },
+  // Huntor
+  {
+    "id": 180,
+    "powers": [
+      {
+        "conditionType": "ANY",
+        "target": "self",
+        "conditions": [
+          {
+            "condition": "inPlay",
+            "attribute": "type",
+            "value": "ANIMAL",
+            "source": 180
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 1,
+            "source": 180
+          }
+        ]
+      }
+    ]
+  },
+  // Chemical X
+  {
+    "id": 67,
+    "powers": [
+      {
+        "conditionType": "ANY",
+        "target": "self",
+        "conditions": [
+          {
+            "condition": "inPlay",
+            "attribute": "type",
+            "value": "FEMALE",
+            "source": 67
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 1,
+            "source": 67
+          }
+        ]
+      }
+    ]
+  },
+  // Goat
+  {
+    "id": 159,
+    "powers": [
+      {
+        "conditionType": "ANY",
+        "target": "self",
+        "conditions": [
+          {
+            "condition": "inPlay",
+            "attribute": "type",
+            "value": "MONSTER",
+            "source": 159
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 1,
+            "source": 159
+          }
+        ]
+      }
+    ]
+  },
+  // Jack Training
+  {
+    "id": 193,
+    "powers": [
+      {
+        "conditionType": "ANY",
+        "target": "self",
+        "conditions": [
+          {
+            "condition": "inPlay",
+            "attribute": "type",
+            "value": "HERO",
+            "source": 193
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 1,
+            "source": 193
+          }
+        ]
+      }
+    ]
+  },
+  // Buttercup Fighting
+  {
+    "id": 59,
+    "powers": [
+      {
+        "conditionType": "ANY",
+        "target": "self",
+        "conditions": [
+          {
+            "condition": "inPlay",
+            "attribute": "type",
+            "value": "VILLIAN",
+            "source": 59
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 1,
+            "source": 59
+          }
+        ]
+      }
+    ]
+  },
+  // Mange
+  {
+    "id": 249,
+    "powers": [
+      {
+        "conditionType": "ANY",
+        "target": "self",
+        "conditions": [
+          {
+            "condition": "inPlay",
+            "attribute": "color",
+            "value": "BLACK",
+            "source": 249
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 2,
+            "source": 249
+          }
+        ]
+      }
+    ]
+  },
+  // Amazo
+  {
+    "id": 11,
+    "powers": [
+      {
+        "conditionType": "ANY",
+        "target": "self",
+        "conditions": [
+          {
+            "condition": "inPlay",
+            "attribute": "group",
+            "value": "JUSTICE LEAGUE",
+            "source": 11
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 2,
+            "source": 11
+          }
+        ]
+      }
+    ]
+  },
+  // Scrappy-Doo
+  {
+    "id": 332,
+    "powers": [
+      {
+        "conditionType": "ANY",
+        "target": "self",
+        "conditions": [
+          {
+            "condition": "inPlay",
+            "attribute": "type",
+            "value": "MONSTER",
+            "source": 332
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 2,
+            "source": 332
+          }
+        ]
+      }
+    ]
+  },
+  // Green Ghost
+  {
+    "id": 166,
+    "powers": [
+      {
+        "conditionType": "ANY",
+        "target": "self",
+        "conditions": [
+          {
+            "condition": "inPlay",
+            "attribute": "group",
+            "value": "MYSTERY, INC.",
+            "source": 166
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 2,
+            "source": 166
+          }
+        ]
+      }
+    ]
+  },
+  // Edward
+  {
+    "id": 127,
+    "powers": [
+      {
+        "conditionType": "ANY",
+        "target": "self",
+        "conditions": [
+          {
+            "condition": "inPlay",
+            "attribute": "group",
+            "value": "BEAN SCOUTS",
+            "source": 127
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 2,
+            "source": 127
+          }
+        ]
+      }
+    ]
+  },
+  // Edd
+  {
+    "id": 123,
+    "powers": [
+      {
+        "conditionType": "ANY",
+        "target": "self",
+        "conditions": [
+          {
+            "condition": "inPlay",
+            "attribute": "type",
+            "value": "PROP",
+            "source": 123
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 2,
+            "source": 123
+          }
+        ]
+      }
+    ]
+  },
+  // Chicken from Outer Space
+  {
+    "id": 71,
+    "powers": [
+      {
+        "conditionType": "ANY",
+        "target": "self",
+        "conditions": [
+          {
+            "condition": "inPlay",
+            "attribute": "character",
+            "value": "COURAGE",
+            "source": 71
+          },
+          {
+            "condition": "inPlay",
+            "attribute": "character",
+            "value": "EUSTACE",
+            "source": 71
+          },
+          {
+            "condition": "inPlay",
+            "attribute": "character",
+            "value": "MURIEL",
+            "source": 71
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 3,
+            "source": 71
+          }
+        ]
+      }
+    ]
+  },
+  // Wonder Woman
+  {
+    "id": 385,
+    "powers": [
+      {
+        "conditionType": "ALL",
+        "target": "self",
+        "conditions": [
+          {
+            "condition": "inPlay",
+            "attribute": "type",
+            "value": "FEMALE",
+            "source": 385
+          },
+          {
+            "condition": "inPlay",
+            "attribute": "type",
+            "value": "VILLIAN",
+            "source": 385
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 3,
+            "source": 385
+          }
+        ]
+      }
+    ]
+  },
+  // Rolf
+  {
+    "id": 318,
+    "powers": [
+      {
+        "conditionType": "ANY",
+        "target": "self",
+        "conditions": [
+          {
+            "condition": "inPlay",
+            "attribute": "character",
+            "value": "ED",
+            "source": 318
+          },
+          {
+            "condition": "inPlay",
+            "attribute": "character",
+            "value": "EDD",
+            "source": 318
+          },
+          {
+            "condition": "inPlay",
+            "attribute": "character",
+            "value": "EDDY",
+            "source": 318
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 3,
+            "source": 318
+          }
+        ]
+      }
+    ]
+  },
+  // Steve
+  {
+    "id": 352,
+    "powers": [
+      {
+        "conditionType": "ANY",
+        "target": "self",
+        "conditions": [
+          {
+            "condition": "inPlay",
+            "attribute": "group",
+            "value": "POWERPUFF GIRLS",
+            "source": 352
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 3,
+            "source": 352
+          }
+        ]
+      }
+    ]
+  },
+  // Smiling Gizmo
+  {
+    "id": 343,
+    "powers": [
+      {
+        "conditionType": "ANY",
+        "target": "self",
+        "conditions": [
+          {
+            "condition": "inPlay",
+            "attribute": "type",
+            "value": "PROP",
+            "source": 343
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 3,
+            "source": 343
+          }
+        ]
+      }
+    ]
+  },
+  // Mee Mee
+  {
+    "id": 257,
+    "powers": [
+      {
+        "conditionType": "ANY",
+        "target": "self",
+        "conditions": [
+          {
+            "condition": "inPlay",
+            "attribute": "character",
+            "value": "DEE DEE",
+            "source": 257
+          },
+          {
+            "condition": "inPlay",
+            "attribute": "character",
+            "value": "LEE LEE",
+            "source": 257
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 4,
+            "source": 257
+          }
+        ]
+      }
+    ]
+  },
+  // Ed Running
+  {
+    "id": 121,
+    "powers": [
+      {
+        "conditionType": "ANY",
+        "target": "self",
+        "conditions": [
+          {
+            "condition": "inPlay",
+            "attribute": "character",
+            "value": "EDD",
+            "source": 121
+          },
+          {
+            "condition": "inPlay",
+            "attribute": "character",
+            "value": "EDDY",
+            "source": 121
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 4,
+            "source": 121
+          }
+        ]
+      }
+    ]
+  }
 ]
