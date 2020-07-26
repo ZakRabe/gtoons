@@ -1,3 +1,3 @@
-import { HasSocket } from '../../App/types';
+import { HasRouter } from '../../App/types';
 
-export interface DeckBuilderProps extends HasSocket {}
+export interface DeckBuilderProps extends HasRouter {}

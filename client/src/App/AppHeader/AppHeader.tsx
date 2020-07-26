@@ -49,8 +49,8 @@ const AppHeader: React.FunctionComponent<AppHeaderProps> = (props) => {
           <HeaderMenuItem onClick={() => history.push('/lobbies')}>
             <i className="fas fa-search"></i>&nbsp; Lobbies
           </HeaderMenuItem>
-          <HeaderMenuItem onClick={() => history.push('/deckBuilder')}>
-            <i className="fas fa-tools"></i>&nbsp; Deck Builder
+          <HeaderMenuItem onClick={() => history.push('/deckList')}>
+            <i className="fas fa-tools"></i>&nbsp; Decks
           </HeaderMenuItem>
           <HeaderMenuItem href="/sandbox">
             <i className="fas fa-flask"></i> &nbsp;Sandbox
