@@ -8,7 +8,7 @@
   --animation: var(--animation-duration) 2;
 }
 
-.card {
+.stage .card {
   width: var(--width);
   height: var(--height);
   background-color: black;
@@ -21,51 +21,51 @@
   box-sizing: content-box;
 }
 
-.card:nth-of-type(1) {
+.stage .card:nth-of-type(1) {
   left: 0;
   animation: card1 var(--animation);
 }
-.card:nth-of-type(2) {
+.stage .card:nth-of-type(2) {
   left: calc(var(--total-width) * 1);
   animation: card2 var(--animation);
 }
-.card:nth-of-type(3) {
+.stage .card:nth-of-type(3) {
   left: calc(var(--total-width) * 2);
   animation: card3 var(--animation);
 }
-.card:nth-of-type(4) {
+.stage .card:nth-of-type(4) {
   left: calc(var(--total-width) * 3);
   animation: card4 var(--animation);
 }
-.card:nth-of-type(5) {
+.stage .card:nth-of-type(5) {
   left: calc(var(--total-width) * 4);
   animation: card5 var(--animation);
 }
-.card:nth-of-type(6) {
+.stage .card:nth-of-type(6) {
   left: calc(var(--total-width) * 5);
   animation: card6 var(--animation);
 }
-.card:nth-of-type(7) {
+.stage .card:nth-of-type(7) {
   left: calc(var(--total-width) * 6);
   animation: card7 var(--animation);
 }
-.card:nth-of-type(8) {
+.stage .card:nth-of-type(8) {
   left: calc(var(--total-width) * 7);
   animation: card8 var(--animation);
 }
-.card:nth-of-type(9) {
+.stage .card:nth-of-type(9) {
   left: calc(var(--total-width) * 8);
   animation: card9 var(--animation);
 }
-.card:nth-of-type(10) {
+.stage .card:nth-of-type(10) {
   left: calc(var(--total-width) * 9);
   animation: card10 var(--animation);
 }
-.card:nth-of-type(11) {
+.stage .card:nth-of-type(11) {
   left: calc(var(--total-width) * 10);
   animation: card11 var(--animation);
 }
-.card:nth-of-type(12) {
+.stage .card:nth-of-type(12) {
   left: calc(var(--total-width) * 11);
   animation: card12 var(--animation);
 }
@@ -80,7 +80,7 @@
   background-color: #5d8bb9;
   background-image: linear-gradient(to bottom left, #5d8bb9, gray);
   border-radius: 8px;
-  border: 4px solid rgba(0, 0, 0, 0.9);
+  border: 4px solid rgba(0, 0, 0, 0.6);
   box-shadow: 6px 6px 6px inset rgba(0, 0, 0, 0.4), 0px 0px 10px black;
   box-sizing: content-box;
   padding: 4px;

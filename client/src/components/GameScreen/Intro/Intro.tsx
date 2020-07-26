@@ -42,16 +42,59 @@ const Intro: React.FunctionComponent<IntroProps> = (props) => {
 
   const renderHalf = (playerNumber: number) => {
     const cardKey = `p${playerNumber}CutReveal`;
+    const revealedCard = game[cardKey];
+    const playerKey = `player${playerNumber}`;
+    const player = game[playerKey];
+    const colorKey = `color${playerNumber}`;
+    const otherColorKey = `color${playerNumber === 1 ? 2 : 1}`;
+    // p2 color could be null
+    const color = game[colorKey] || game[otherColorKey];
     return (
-      <div style={{ flex: 1, padding: 20 }}>
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <Card
-            model={!shuffling ? game[cardKey] : null}
-            height={200}
-            width={200}
-          />
+      <div style={{ flex: 1 }}>
+        <div
+          style={{
+            padding: 20,
+            backgroundColor: `rgba(0,198,250,.2)`,
+          }}
+        >
+          <h3>{player.username}</h3>
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <Card
+              model={!shuffling ? revealedCard : null}
+              height={200}
+              width={200}
+            />
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <h4>
+              {!shuffling && (
+                <div
+                  style={{
+                    margin: 4,
+                    padding: '8px 12px',
+                    borderRadius: 8,
+                    backgroundColor: `rgba(0,198,250,.2)`,
+                  }}
+                >
+                  <span
+                    style={{
+                      backgroundColor: color,
+                      marginRight: '8px',
+                      borderRadius: '50%',
+                      width: 36,
+                      height: 36,
+                      float: 'left',
+                    }}
+                  ></span>
+                  <span style={{ lineHeight: '36px', fontSize: 24 }}>
+                    {color}
+                  </span>
+                </div>
+              )}
+            </h4>
+          </div>
+          {renderCut()}
         </div>
-        {renderCut()}
       </div>
     );
   };
@@ -84,11 +127,11 @@ const Intro: React.FunctionComponent<IntroProps> = (props) => {
 
   const render = () => {
     return (
-      <>
+      <div style={{ display: 'flex', flex: 1, alignItems: 'center' }}>
         {renderHalf(1)}
         {renderInfo()}
         {renderHalf(2)}
-      </>
+      </div>
     );
   };
   return render();
