@@ -371,7 +371,7 @@
     "id": 373,
     "powers": [
       {
-        "conditionType": "ANY",
+        "conditionType": "ALL",
         "target": "self",
         "conditions": [
           {
@@ -399,7 +399,7 @@
     "id": 266,
     "powers": [
       {
-        "conditionType": "ANY",
+        "conditionType": "ALL",
         "target": "other",
         "conditions": [
           {

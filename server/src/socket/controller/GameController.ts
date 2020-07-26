@@ -161,5 +161,40 @@ export class GameController extends SockerController {
   cheater() {
     this.io.emit('cheater');
   }
+
+  async playerConnected(token, gameId: number) {
+    const gameRoom = `game/${gameId}`;
+    let user;
+    try {
+      user = verifyToken(token);
+    } catch (error) {
+      return;
+    }
+
+    const game = await this.gameRepository.findOne(gameId);
+    const gameState = await this.gameStateRepository.findOne({
+      where: { game },
+    });
+    if (!game || !gameState) {
+      // WTF
+      console.error(
+        `user ${user.userId} attempted to connect to game ${game.id}, but it doesn't exist`
+      );
+      return;
+    }
+    this.socket.join(gameRoom);
+    const isPlayer1 = game.player1.id === user.userId;
+    const isPlayer2 = game.player2.id === user.userId;
+    if (isPlayer1 || isPlayer2) {
+      gameState.connectedPlayers += 1;
+      await gameState.save();
+      await gameState.reload();
+      if (gameState.connectedPlayers === 2) {
+        // Both players have connected.
+        // show the shuffle/cut/color in the client
+        this.io.to(gameRoom).emit('allPlayersConnected');
+      }
+    }
+  }
 }
 export default GameController;

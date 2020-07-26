@@ -15,7 +15,7 @@ export default class GameState extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @OneToOne((type) => Game, { eager: true })
+  @OneToOne((type) => Game)
   @JoinColumn()
   game: Game;
 
@@ -39,6 +39,9 @@ export default class GameState extends BaseEntity {
 
   @Column()
   player2ShuffledDeck: string;
+
+  @Column()
+  connectedPlayers: number;
 
   toJson = () => {
     const {
@@ -88,8 +91,6 @@ export default class GameState extends BaseEntity {
   ) {
     // this whole method is just hyper safe. assume there could be jank or null in the other slots in the board state array
     // and only operate on data we know will come out on the other side with the correct number of cards in the board state
-    // this method also assumes a board state is just one user's half of the board.
-    // will likely have to combine the two players board state into a new one to save to the db
     let prevEnd = 0;
     let newEnd = 0;
     switch (turnNumber) {
@@ -115,5 +116,12 @@ export default class GameState extends BaseEntity {
     const newBoardState = previous
       .slice(0, prevEnd)
       .concat(newCards.slice(0, newEnd));
+  }
+
+  // send an array of cardIds and an array for a deck
+  // returns true if all the cards are in the deck
+  static validateNewCards(newCards: number[], deck: number[]) {
+    const notInDeck = newCards.some((cardId) => !deck.includes(cardId));
+    return !notInDeck;
   }
 }
