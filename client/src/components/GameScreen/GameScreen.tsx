@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { GameScreenProps } from './types';
 import { useSocketNamespace } from '../../utils/hooks';
 import { isLoggedIn } from '../../utils/auth';
 import { Loading } from 'carbon-components-react';
 import Intro from './Intro/Intro';
+import Board from '../../pages/Game/components/Board';
+import UserContext from '../../contexts/UserContext';
 
 /*
 Starting animations: 
@@ -20,6 +22,8 @@ const GameScreen: React.FunctionComponent<GameScreenProps> = (props) => {
   const { game } = props;
   const socket = useSocketNamespace('/games');
 
+  const userContext = useContext(UserContext);
+
   console.log(game);
 
   const [playersConnected, setPlayersConnected] = useState(false);
@@ -28,7 +32,8 @@ const GameScreen: React.FunctionComponent<GameScreenProps> = (props) => {
   useEffect(() => {
     setTimeout(() => {
       setIntoPlayed(true);
-    }, 10000);
+      // }, 12000);
+    }, 2000);
   }, [playersConnected]);
 
   useEffect(() => {
@@ -53,8 +58,17 @@ const GameScreen: React.FunctionComponent<GameScreenProps> = (props) => {
     if (!introPlayed) {
       return <Intro game={game} />;
     }
+    const { user } = userContext;
 
-    return <div>GAME</div>;
+    let playerNumber = -1;
+    if (game.player1.id === user.userId) {
+      playerNumber = 1;
+    }
+    if (game.player2.id === user.userId) {
+      playerNumber = 2;
+    }
+
+    return <Board playerNumber={playerNumber} gameState={game.gameState} />;
   };
 
   return render();

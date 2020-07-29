@@ -58,9 +58,9 @@ export default class GameState extends BaseEntity {
     return {
       id,
       turn,
-      game: game.toJson(),
-      player1ShuffledDeck: JSON.parse(player1ShuffledDeck),
-      player2ShuffledDeck: JSON.parse(player2ShuffledDeck),
+      game: game && game.toJson(),
+      // player1ShuffledDeck: JSON.parse(player1ShuffledDeck),
+      // player2ShuffledDeck: JSON.parse(player2ShuffledDeck),
       player1Board: JSON.parse(player1Board),
       player2Board: JSON.parse(player2Board),
       player1Discard: JSON.parse(player1Discard),

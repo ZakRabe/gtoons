@@ -191,6 +191,7 @@ export class GameController extends SockerController {
       gameState.connectedPlayers += 1;
       await gameState.save();
       await gameState.reload();
+      // >= 2 means we let reconnects through
       if (gameState.connectedPlayers >= 2) {
         // Both players have connected.
         // show the shuffle/cut/color in the client

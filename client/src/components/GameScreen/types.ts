@@ -10,6 +10,16 @@ interface Deck {
   face: number;
 }
 
+export interface GameState {
+  id: number;
+  turn: number;
+
+  player1Board: number[];
+  player2Board: number[];
+  player1Discard: number[];
+  player2Discard: number[];
+}
+
 interface Game {
   color1: string | null;
   color2: string | null;
@@ -19,6 +29,7 @@ interface Game {
   player2: Player;
   player2Deck: Deck;
   winner: Player;
+  gameState: GameState;
 }
 
 export interface GameScreenProps {

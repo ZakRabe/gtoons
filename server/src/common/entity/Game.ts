@@ -57,6 +57,7 @@ export default class Game extends BaseEntity {
       winner,
       color1,
       color2,
+      gameState,
     } = this;
 
     return {
@@ -68,6 +69,7 @@ export default class Game extends BaseEntity {
       player1Deck: player1 && player1Deck.toJson(),
       player2Deck: player2Deck && player1Deck.toJson(),
       winner: winner && winner.toJson(),
+      gameState: gameState && gameState.toJson(),
     };
   };
 
