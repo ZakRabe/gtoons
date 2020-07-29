@@ -24,16 +24,13 @@ const GameScreen: React.FunctionComponent<GameScreenProps> = (props) => {
 
   const userContext = useContext(UserContext);
 
-  console.log(game);
-
   const [playersConnected, setPlayersConnected] = useState(false);
   const [introPlayed, setIntoPlayed] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
       setIntoPlayed(true);
-      // }, 12000);
-    }, 2000);
+    }, 12000);
   }, [playersConnected]);
 
   useEffect(() => {
