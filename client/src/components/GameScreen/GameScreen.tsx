@@ -22,10 +22,14 @@ const GameScreen: React.FunctionComponent<GameScreenProps> = (props) => {
 
   console.log(game);
 
-  const [playerConnected, setPlayersConnected] = useState(false);
+  const [playersConnected, setPlayersConnected] = useState(false);
   const [introPlayed, setIntoPlayed] = useState(false);
 
-  useEffect(() => {}, [playerConnected]);
+  useEffect(() => {
+    setTimeout(() => {
+      setIntoPlayed(true);
+    }, 10000);
+  }, [playersConnected]);
 
   useEffect(() => {
     if (socket) {
@@ -43,14 +47,14 @@ const GameScreen: React.FunctionComponent<GameScreenProps> = (props) => {
   };
 
   const render = () => {
-    // if (!playerConnected) {
-    //   return renderLoading();
-    // }
-    return (
-      <>
-        <Intro game={game} />
-      </>
-    );
+    if (!playersConnected) {
+      return renderLoading();
+    }
+    if (!introPlayed) {
+      return <Intro game={game} />;
+    }
+
+    return <div>GAME</div>;
   };
 
   return render();

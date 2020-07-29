@@ -162,12 +162,13 @@ export class GameController extends SockerController {
     this.io.emit('cheater');
   }
 
-  async playerConnected(token, gameId: number) {
+  async playerConnected({ token, gameId }) {
     const gameRoom = `game/${gameId}`;
     let user;
     try {
       user = verifyToken(token);
     } catch (error) {
+      console.error(error);
       return;
     }
 
@@ -183,13 +184,14 @@ export class GameController extends SockerController {
       return;
     }
     this.socket.join(gameRoom);
+
     const isPlayer1 = game.player1.id === user.userId;
     const isPlayer2 = game.player2.id === user.userId;
     if (isPlayer1 || isPlayer2) {
       gameState.connectedPlayers += 1;
       await gameState.save();
       await gameState.reload();
-      if (gameState.connectedPlayers === 2) {
+      if (gameState.connectedPlayers >= 2) {
         // Both players have connected.
         // show the shuffle/cut/color in the client
         this.io.to(gameRoom).emit('allPlayersConnected');
