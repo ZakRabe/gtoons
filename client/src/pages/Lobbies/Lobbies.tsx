@@ -1,10 +1,12 @@
 import * as React from 'react';
-import { Button, Card, Divider, Header, Input, Popup } from 'semantic-ui-react';
 import { isLoggedIn } from '../../utils/auth';
 import { useSocketNamespace } from '../../utils/hooks';
 import LobbyCard from './LobbyCard';
+import './styles.css';
 import { LobbiesProps } from './types';
 import { useHistory } from 'react-router-dom';
+import { Button, TextInput, Tooltip } from 'carbon-components-react';
+import { Add16, PlayFilledAlt32 } from '@carbon/icons-react';
 
 export const Lobbies = (_props: LobbiesProps) => {
   const lobbiesSocket = useSocketNamespace('/lobbies');
@@ -70,60 +72,81 @@ export const Lobbies = (_props: LobbiesProps) => {
     setIsOpen(false);
   };
 
-  const onNameChange = (e: React.ChangeEvent) => {
-    // @ts-ignore
+  const onNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value: newName } = e.target;
     if (newName.length <= 50) {
       setLobbyName(newName);
     }
   };
 
-  const onCapacityChange = (e: React.ChangeEvent) => {
-    // @ts-ignore
+  const onCapacityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value: newCapacity } = e.target;
+    // @ts-ignore
     if (newCapacity >= minCapacity && newCapacity <= maxCapacity) {
       setCapacity(newCapacity);
     }
   };
 
+  const onLobbyOpen = () => setIsOpen(!isOpen);
+
   const renderPopup = () => {
     return (
-      <Popup
-        on="click"
-        wide
-        trigger={<Button>Create a Lobby</Button>}
-        open={isOpen}
-        onOpen={() => setIsOpen(true)}
-        onClose={() => setIsOpen(false)}
-      >
-        <Popup.Header>Lobby Settings</Popup.Header>
-        <Popup.Content>
-          <Input label="Name" value={lobbyName} onChange={onNameChange}></Input>
-          <Input
+      <div style={{ display: 'flex' }}>
+        <Button id={'createLobby'} renderIcon={Add16} onClick={onLobbyOpen}>
+          Create a lobby
+        </Button>
+        <Tooltip
+          direction="bottom"
+          open={isOpen}
+          showIcon={false}
+          triggerId={'createLobby'}
+        >
+          <h3>Lobby Settings</h3>
+          <TextInput
+            id="lobbyName"
+            labelText="Name"
+            value={lobbyName}
+            onChange={onNameChange}
+          />
+          <TextInput
+            id="roomSize"
             type="number"
-            label="Room Size"
+            labelText="Room Size"
             value={capacity}
             onChange={onCapacityChange}
-          ></Input>
-          <Divider />
-          <Button floated="right" onClick={() => createLobby()}>
-            <i className="fas fa-play"></i>&nbsp; Go
-          </Button>
-        </Popup.Content>
-      </Popup>
+          />
+          <Button
+            hasIconOnly
+            renderIcon={PlayFilledAlt32}
+            tooltipAlignment={'center'}
+            tooltipPosition="bottom"
+            iconDescription="Go"
+            style={{ float: 'right' }}
+            onClick={() => createLobby()}
+          />
+        </Tooltip>
+      </div>
     );
   };
 
   return (
     <>
-      <Header as="h1">Play gToons Revived</Header>
-      {renderPopup()}
-      <Header as="h2">Active Lobbies</Header>
-      <Card.Group>
-        {lobbies.map((lobby: any) => {
-          return <LobbyCard key={lobby.id} {...lobby}></LobbyCard>;
-        })}
-      </Card.Group>
+      <div className={'new-game'}>
+        <div className={'new-game-content'}>
+          <h2>Play reToons Revived</h2>
+          {renderPopup()}
+        </div>
+      </div>
+      <div>
+        <div className={'lobbie-content'}>
+          <h3>Active Lobbies</h3>
+          {/* <Card.Group>
+            {lobbies.map((lobby: any) => {
+              return <LobbyCard key={lobby.id} {...lobby}></LobbyCard>;
+            })}
+          </Card.Group> */}
+        </div>
+      </div>
     </>
   );
 };

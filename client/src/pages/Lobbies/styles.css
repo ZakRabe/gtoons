@@ -1,0 +1,23 @@
+.new-game {
+  background: transparent
+    linear-gradient(
+      85deg,
+      rgba(105, 157, 230, 0.25) 0%,
+      rgba(92, 137, 201, 0.25) 100%
+    )
+    0% 0% no-repeat padding-box;
+}
+
+.new-game-content {
+  padding: 2rem 1.5rem;
+  color: white;
+}
+
+.lobbie-content {
+  padding: 2rem 1.5rem;
+  color: white;
+}
+
+#createLobby {
+  background: var(--lobbies-background);
+}

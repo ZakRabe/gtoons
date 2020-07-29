@@ -23,6 +23,7 @@
     ]
   },
   "dependencies": {
+    "@carbon/icons-react": "^10.14.0",
     "@fortawesome/fontawesome-free": "^5.13.0",
     "axios": "^0.19.2",
     "carbon-components": "^10.13.0",
@@ -48,6 +49,7 @@
     "@testing-library/react": "^10.2.1",
     "@testing-library/user-event": "^11.4.2",
     "@types/carbon-components-react": "^7.10.5",
+    "@types/carbon__icons-react": "^10.11.0",
     "@types/jest": "^26.0.0",
     "@types/lodash": "^4.14.155",
     "@types/node": "^14.0.13",
