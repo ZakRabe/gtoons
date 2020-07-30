@@ -3,6 +3,7 @@
     "id": 98,
     "powers": [
       {
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "nextTo",
@@ -24,7 +25,8 @@
     "powers": [
       {
         "conditionType": "ALL",
-        "target": "match",
+        "targetType": "match",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "toAll",
@@ -45,7 +47,8 @@
     "powers": [
       {
         "conditionType": "ALL",
-        "target": "match",
+        "targetType": "match",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "toAll",
@@ -65,7 +68,8 @@
     "powers": [
       {
         "conditionType": "ALL",
-        "target": "match",
+        "targetType": "match",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "toAll",
@@ -91,7 +95,8 @@
     "powers": [
       {
         "conditionType": "ALL",
-        "target": "match",
+        "targetType": "match",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "toAll",
@@ -120,7 +125,8 @@
     "powers": [
       {
         "conditionType": "ALL",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "inPlay",
@@ -147,7 +153,8 @@
     "powers": [
       {
         "conditionType": "ALL",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "inPlay",
@@ -174,7 +181,8 @@
     "powers": [
       {
         "conditionType": "ALL",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "inPlay",
@@ -201,7 +209,8 @@
     "powers": [
       {
         "conditionType": "ALL",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "inPlay",
@@ -228,7 +237,8 @@
     "powers": [
       {
         "conditionType": "ALL",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "inPlay",
@@ -254,7 +264,8 @@
     "powers": [
       {
         "conditionType": "ALL",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "inPlay",
@@ -281,7 +292,8 @@
     "powers": [
       {
         "conditionType": "ALL",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "inPlay",
@@ -313,7 +325,8 @@
     "powers": [
       {
         "conditionType": "ALL",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "inPlay",
@@ -340,7 +353,8 @@
     "powers": [
       {
         "conditionType": "ANY",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "inPlay",
@@ -372,7 +386,8 @@
     "powers": [
       {
         "conditionType": "ANY",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "inPlay",
@@ -400,7 +415,8 @@
     "powers": [
       {
         "conditionType": "ANY",
-        "target": "other",
+        "targetType": "other",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "inPlay",
@@ -428,7 +444,8 @@
     "powers": [
       {
         "conditionType": "ANY",
-        "target": "other",
+        "targetType": "other",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "inPlay",
@@ -454,7 +471,8 @@
     "powers": [
       {
         "conditionType": "ANY",
-        "target": "other",
+        "targetType": "other",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "inPlay",
@@ -480,7 +498,8 @@
     "powers": [
       {
         "conditionType": "ANY",
-        "target": "other",
+        "targetType": "other",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "inPlay",
@@ -508,7 +527,8 @@
     "powers": [
       {
         "conditionType": "ANY",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "forEach",
@@ -534,7 +554,8 @@
     "powers": [
       {
         "conditionType": "ANY",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "forEach",
@@ -560,7 +581,8 @@
     "powers": [
       {
         "conditionType": "ANY",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "forEach",
@@ -586,7 +608,8 @@
     "powers": [
       {
         "conditionType": "ANY",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "forEach",
@@ -612,7 +635,8 @@
     "powers": [
       {
         "conditionType": "ANY",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "forEach",
@@ -638,7 +662,8 @@
     "powers": [
       {
         "conditionType": "ANY",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "forEach",
@@ -664,7 +689,8 @@
     "powers": [
       {
         "conditionType": "ANY",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "forEach",
@@ -690,7 +716,8 @@
     "powers": [
       {
         "conditionType": "ANY",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "forEach",
@@ -716,7 +743,8 @@
     "powers": [
       {
         "conditionType": "ANY",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "forEach",
@@ -742,7 +770,8 @@
     "powers": [
       {
         "conditionType": "ANY",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "forEach",
@@ -768,7 +797,8 @@
     "powers": [
       {
         "conditionType": "ANY",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "forEach",
@@ -794,7 +824,8 @@
     "powers": [
       {
         "conditionType": "ANY",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "forEach",
@@ -820,7 +851,8 @@
     "powers": [
       {
         "conditionType": "ANY",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "forEach",
@@ -858,7 +890,8 @@
     "powers": [
       {
         "conditionType": "ALL",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "forEach",
@@ -890,7 +923,8 @@
     "powers": [
       {
         "conditionType": "ANY",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "forEach",
@@ -928,7 +962,8 @@
     "powers": [
       {
         "conditionType": "ANY",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "forEach",
@@ -954,7 +989,8 @@
     "powers": [
       {
         "conditionType": "ANY",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "forEach",
@@ -980,7 +1016,8 @@
     "powers": [
       {
         "conditionType": "ANY",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "forEach",
@@ -1012,7 +1049,8 @@
     "powers": [
       {
         "conditionType": "ANY",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "forEach",
@@ -1047,7 +1085,8 @@
     "powers": [
       {
         "conditionType": "ANY",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "ifAny",
@@ -1073,7 +1112,8 @@
     "powers": [
       {
         "conditionType": "ANY",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "ifAny",
@@ -1099,7 +1139,8 @@
     "powers": [
       {
         "conditionType": "ANY",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "ifAny",
@@ -1125,7 +1166,8 @@
     "powers": [
       {
         "conditionType": "ANY",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "ifAny",
@@ -1151,7 +1193,8 @@
     "powers": [
       {
         "conditionType": "ANY",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "ifAny",
@@ -1177,7 +1220,8 @@
     "powers": [
       {
         "conditionType": "ANY",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "ifAny",
@@ -1203,7 +1247,8 @@
     "powers": [
       {
         "conditionType": "ANY",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "ifAny",
@@ -1229,7 +1274,8 @@
     "powers": [
       {
         "conditionType": "ANY",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "ifAny",
@@ -1255,7 +1301,8 @@
     "powers": [
       {
         "conditionType": "ANY",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "ifAny",
@@ -1281,7 +1328,8 @@
     "powers": [
       {
         "conditionType": "ANY",
-        "target": "self",
+        "targetType": "self",
+        "targetConditions": [],
         "conditions": [
           {
             "condition": "ifAny",
@@ -1300,5 +1348,53 @@
         ]
       }
     ]
+  },
+  // END OF IF ANY X IN PLAY
+  // TO ANY X IN PLAY
+  // Ratman
+  {
+    "id": 304,
+    "powers": [
+      {
+        "conditionType": "ANY",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditions": [
+          {
+            "condition": "toAny",
+            "attribute": "character",
+            "value": "Batman",
+            "source": 304
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -3,
+            "source": 304
+          }
+        ]
+      }
+    ]
   }
+  // Eustace Masked
+  // Manhunter Android
+  // Simion
+  // Jack the Samurai
+  // Major Glory
+  // Bubbles with Flowers
+  // Copperhead
+  // Townsville
+  // Dexter Dimwit
+  // Watchtower
+  // Hawkgirl
+  // Bubbles Laughing
+  // Gizmo
+  // Monkey
+  // Lisa the Babysitter
+  // Super Monkey
+  // Velma Nearsighted
+  // Scooby-Dee
+  // Legion
 ]
