@@ -21,6 +21,9 @@ export default class User extends BaseEntity {
   role?: string;
 
   @Column()
+  profilePic?: string;
+
+  @Column()
   created: string;
 
   toJson = () => {
@@ -30,7 +33,7 @@ export default class User extends BaseEntity {
       id,
       username,
       role,
-      created
+      created,
     };
   };
 }

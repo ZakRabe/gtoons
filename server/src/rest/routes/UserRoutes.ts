@@ -22,6 +22,12 @@ export const UserRoutes = [
     action: 'passwordReset',
   },
   {
+    method: 'post',
+    route: '/users/updateProfilePic',
+    controller: UserController,
+    action: 'updateProfilePic',
+  },
+  {
     method: 'get',
     route: '/users',
     middleware: [checkJwt, checkRoles(['ADMIN'])],

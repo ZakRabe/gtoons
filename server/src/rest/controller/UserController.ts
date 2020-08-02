@@ -1,9 +1,10 @@
-import { NextFunction, Request, Response } from 'express';
+import { NextFunction, Request, response, Response } from 'express';
 import { getRepository } from 'typeorm';
 import PasswordReset from '../../common/entity/PasswordReset';
 import User from '../../common/entity/User';
 import { v4 as uuidv4 } from 'uuid';
 import { saltHashPassword } from '../../util';
+import { request } from 'http';
 
 export class UserController {
   private userRepository = getRepository(User);
@@ -123,6 +124,16 @@ export class UserController {
     // delete the update token
     await model.remove();
 
+    return true;
+  }
+
+  async updateProfilePic(
+    request: Request,
+    response: Response,
+    next: NextFunction
+  ) {
+    const { user } = request.query;
+    console.log(user);
     return true;
   }
 }
