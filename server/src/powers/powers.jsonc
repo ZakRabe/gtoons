@@ -461,7 +461,7 @@
         "type": "SINGLE",
         "conditionRestrictrion": "NONE",
         "target": "OTHER",
-        "targetType": "ANY",
+        "targetType": "ALL",
         "targetConditions": [
           {
             "condition": "IS",
@@ -498,7 +498,7 @@
         "type": "SINGLE",
         "conditionRestrictrion": "NONE",
         "target": "OTHER",
-        "targetType": "ANY",
+        "targetType": "ALL",
         "targetConditions": [
           {
             "condition": "IS",
@@ -535,7 +535,7 @@
         "type": "SINGLE",
         "conditionRestrictrion": "NONE",
         "target": "OTHER",
-        "targetType": "ANY",
+        "targetType": "ALL",
         "targetConditions": [
           {
             "condition": "IS",
@@ -572,7 +572,7 @@
         "type": "SINGLE",
         "conditionRestrictrion": "NONE",
         "target": "SELF",
-        "targetType": "ANY",
+        "targetType": "ALL",
         "targetConditions": [],
         "conditionType": "ANY",
         "conditions": [
@@ -602,7 +602,7 @@
         "type": "SINGLE",
         "conditionRestrictrion": "NONE",
         "target": "SELF",
-        "targetType": "ANY",
+        "targetType": "ALL",
         "targetConditions": [],
         "conditionType": "ANY",
         "conditions": [
@@ -623,7 +623,65 @@
         ]
       }
     ]
+  },
+  // IF X IN PLAY END
+
+  // TODO: Create modifier for losing effects
+  // OPPOSING LOSES ADJANCEY EFFECTS
+  // Drill Sergeant
+  {
+    "id": 116,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "OPPOSING",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [],
+        "modifiers": [
+          { "attribute": "points", "type": "add", "value": 8, "source": 116 }
+        ]
+      }
+    ]
+  },
+  // Fretful Larry 3000
+  {
+    "id": 147,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "OPPOSING",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [],
+        "modifiers": [
+          { "attribute": "points", "type": "add", "value": 8, "source": 147 }
+        ]
+      }
+    ]
+  },
+  // Martian Queen
+  {
+    "id": 254,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "OPPOSING",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [],
+        "modifiers": [
+          { "attribute": "points", "type": "add", "value": 8, "source": 254 }
+        ]
+      }
+    ]
   }
 
-  // IF X IN PLAY END
+  // OPPOSING LOSES ADJACENCY EFFECTS END
 ]
