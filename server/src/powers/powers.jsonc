@@ -177,6 +177,453 @@
         ]
       }
     ]
-  }
+  },
   // TO X END
+
+  // IF X IS IN PLAY
+  // Beast Boy
+  {
+    "id": 30,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "SELF",
+        "targetType": "ALL",
+        "targetConditions": [],
+        "conditionType": "ALL",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Robin",
+            "source": 30
+          }
+        ],
+        "modifiers": [
+          { "attribute": "points", "type": "add", "value": 3, "source": 30 }
+        ]
+      }
+    ]
+  },
+  // Starfire
+  {
+    "id": 348,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "SELF",
+        "targetType": "ALL",
+        "targetConditions": [],
+        "conditionType": "ALL",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Robin",
+            "source": 348
+          }
+        ],
+        "modifiers": [
+          { "attribute": "points", "type": "add", "value": 3, "source": 348 }
+        ]
+      }
+    ]
+  },
+  // Puddle Queen
+  {
+    "id": 299,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "SELF",
+        "targetType": "ALL",
+        "targetConditions": [],
+        "conditionType": "ALL",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Eustace",
+            "source": 299
+          }
+        ],
+        "modifiers": [
+          { "attribute": "points", "type": "add", "value": 5, "source": 299 }
+        ]
+      }
+    ]
+  },
+  // Joker in Vegas
+  {
+    "id": 209,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "SELF",
+        "targetType": "ALL",
+        "targetConditions": [],
+        "conditionType": "ALL",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Royal Flush Gang",
+            "source": 209
+          }
+        ],
+        "modifiers": [
+          { "attribute": "points", "type": "add", "value": 5, "source": 209 }
+        ]
+      }
+    ]
+  },
+  // Dove
+  {
+    "id": 110,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "SELF",
+        "targetType": "ALL",
+        "targetConditions": [],
+        "conditionType": "ALL",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Hawk",
+            "source": 110
+          }
+        ],
+        "modifiers": [
+          { "attribute": "points", "type": "add", "value": 6, "source": 110 }
+        ]
+      }
+    ]
+  },
+  // Ranger Smith
+  {
+    "id": 303,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "SELF",
+        "targetType": "ALL",
+        "targetConditions": [],
+        "conditionType": "ALL",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Jellystone Park",
+            "source": 303
+          }
+        ],
+        "modifiers": [
+          { "attribute": "points", "type": "add", "value": 6, "source": 303 }
+        ]
+      }
+    ]
+  },
+  // Krunk
+  {
+    "id": 219,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "SELF",
+        "targetType": "ALL",
+        "targetConditions": [],
+        "conditionType": "ALL",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Major Glory",
+            "source": 219
+          },
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Val Hallen",
+            "source": 219
+          }
+        ],
+        "modifiers": [
+          { "attribute": "points", "type": "add", "value": 8, "source": 219 }
+        ]
+      }
+    ]
+  },
+  // Tweety
+  {
+    "id": 370,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "SELF",
+        "targetType": "ALL",
+        "targetConditions": [],
+        "conditionType": "ALL",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Sylvester",
+            "source": 370
+          }
+        ],
+        "modifiers": [
+          { "attribute": "points", "type": "add", "value": 8, "source": 370 }
+        ]
+      }
+    ]
+  },
+  // Sam
+  {
+    "id": 323,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "SELF",
+        "targetType": "ALL",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Alex",
+            "source": 323
+          },
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Clover",
+            "source": 323
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "replace",
+            "value": 2,
+            "source": 323
+          }
+        ]
+      }
+    ]
+  },
+  // Val Hallen
+  {
+    "id": 373,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "SELF",
+        "targetType": "ALL",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Warrior Woman",
+            "source": 373
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "replace",
+            "value": 2,
+            "source": 373
+          }
+        ]
+      }
+    ]
+  },
+  // Moodnesium
+  {
+    "id": 266,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Porky Pig",
+            "source": 266
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Duck Dodgers",
+            "source": 266
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "replace",
+            "value": 2,
+            "source": 266
+          }
+        ]
+      }
+    ]
+  },
+  // Clam
+  {
+    "id": 75,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Raj",
+            "source": 75
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Lazlo",
+            "source": 75
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "replace",
+            "value": 2,
+            "source": 75
+          }
+        ]
+      }
+    ]
+  },
+  // Buena Girl
+  {
+    "id": 52,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Rikochet",
+            "source": 52
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Flea",
+            "source": 52
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "replace",
+            "value": 2,
+            "source": 52
+          }
+        ]
+      }
+    ]
+  },
+  // Simone Lenoir
+  {
+    "id": 339,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Catwoman",
+            "source": 339
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "replace",
+            "value": 3,
+            "source": 339
+          }
+        ]
+      }
+    ]
+  },
+  // Lava Monster
+  {
+    "id": 222,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Magmanamus",
+            "source": 222
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "replace",
+            "value": 3,
+            "source": 222
+          }
+        ]
+      }
+    ]
+  }
+
+  // IF X IN PLAY END
 ]
