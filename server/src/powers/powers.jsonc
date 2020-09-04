@@ -2664,6 +2664,165 @@
         ]
       }
     ]
-  }
+  },
   // IF NEXT TO END
+
+  // FOR EACH NEIGHBORING X
+  // Ghost of Redbeard
+  {
+    "id": 155,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "RED",
+            "source": 155
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 2,
+            "source": 155
+          }
+        ]
+      }
+    ]
+  },
+  // Shade
+  {
+    "id": 335,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "BLACK",
+            "source": 335
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 3,
+            "source": 335
+          }
+        ]
+      }
+    ]
+  },
+  // Frankenstein's Monster
+  {
+    "id": 141,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "GREEN",
+            "source": 141
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 4,
+            "source": 141
+          }
+        ]
+      }
+    ]
+  },
+  // Harmony Bunny
+  {
+    "id": 171,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ALL",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "FEMALE",
+            "source": 171
+          },
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "ANIMAL",
+            "source": 171
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 5,
+            "source": 171
+          }
+        ]
+      }
+    ]
+  },
+  // Mongul
+  {
+    "id": 262,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "HERO",
+            "source": 262
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 5,
+            "source": 262
+          }
+        ]
+      }
+    ]
+  }
+  // FOR EACH NEIGHBORING X END
 ]
