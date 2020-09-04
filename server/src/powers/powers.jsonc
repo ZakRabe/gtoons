@@ -2823,6 +2823,609 @@
         ]
       }
     ]
-  }
+  },
   // FOR EACH NEIGHBORING X END
+
+  // IF NEXT TO ANY X
+  // Lenny Yogman
+  {
+    "id": 226,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Denny Yogman",
+            "source": 226
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 10,
+            "source": 226
+          }
+        ]
+      }
+    ]
+  },
+  // Dexter's Mom
+  {
+    "id": 107,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Dexter's Dad",
+            "source": 107
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 10,
+            "source": 107
+          }
+        ]
+      }
+    ]
+  },
+  // Mom Droid
+  {
+    "id": 261,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Dexter's Dad",
+            "source": 261
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 10,
+            "source": 261
+          }
+        ]
+      }
+    ]
+  },
+  // Barney Rubble
+  {
+    "id": 25,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Fred Flintstone",
+            "source": 25
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 10,
+            "source": 25
+          }
+        ]
+      }
+    ]
+  },
+  // Ghost Clown
+  {
+    "id": 154,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Funland Robot",
+            "source": 154
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 10,
+            "source": 154
+          }
+        ]
+      }
+    ]
+  },
+  // Major Dr. Ghastly
+  {
+    "id": 241,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "General Skarr",
+            "source": 241
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 10,
+            "source": 241
+          }
+        ]
+      }
+    ]
+  },
+  // Judy Jetson
+  {
+    "id": 210,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Jet Screamer",
+            "source": 210
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 10,
+            "source": 210
+          }
+        ]
+      }
+    ]
+  },
+  // Suzy
+  {
+    "id": 358,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Johnny Bravo",
+            "source": 358
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 10,
+            "source": 358
+          }
+        ]
+      }
+    ]
+  },
+  // Woolie
+  {
+    "id": 387,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Mitchellites",
+            "source": 387
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 10,
+            "source": 387
+          }
+        ]
+      }
+    ]
+  },
+  // Morgan Moonscar
+  {
+    "id": 268,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Simone",
+            "source": 268
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 10,
+            "source": 268
+          }
+        ]
+      }
+    ]
+  },
+  // Clyde 50
+  {
+    "id": 78,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "TOM",
+            "source": 78
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 10,
+            "source": 78
+          }
+        ]
+      }
+    ]
+  },
+  // Witch Doctor
+  {
+    "id": 383,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Velma Dinkley",
+            "source": 383
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 10,
+            "source": 383
+          }
+        ]
+      }
+    ]
+  },
+  // Cindy Bear
+  {
+    "id": 74,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Yogi Bear",
+            "source": 74
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 10,
+            "source": 74
+          }
+        ]
+      }
+    ]
+  },
+  // Bugs Singin'
+  {
+    "id": 55,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Daffy Duck",
+            "source": 55
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 5,
+            "source": 55
+          }
+        ]
+      }
+    ]
+  },
+  // Bunny Bravo
+  {
+    "id": 58,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Johnny Bravo",
+            "source": 58
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 5,
+            "source": 58
+          }
+        ]
+      }
+    ]
+  },
+  // Professor Utonium
+  {
+    "id": 298,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Ms. Keane",
+            "source": 298
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 5,
+            "source": 298
+          }
+        ]
+      }
+    ]
+  },
+  // Wright Brothers
+  {
+    "id": 388,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "VEHICLE",
+            "source": 388
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 5,
+            "source": 388
+          }
+        ]
+      }
+    ]
+  },
+  // Fred Jones
+  {
+    "id": 146,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Daphne Blake",
+            "source": 146
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "replace",
+            "value": 2,
+            "source": 146
+          }
+        ]
+      }
+    ]
+  },
+  // Aku Bat
+  {
+    "id": 7,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Denny Yogman",
+            "source": 7
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "replace",
+            "value": 2,
+            "source": 7
+          }
+        ]
+      }
+    ]
+  },
+  // Mandy
+  {
+    "id": 247,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Billy",
+            "source": 247
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "replace",
+            "value": 3,
+            "source": 247
+          }
+        ]
+      }
+    ]
+  }
+  // IF NEXT TO ANY X END
 ]
