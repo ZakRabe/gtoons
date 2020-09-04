@@ -2050,7 +2050,7 @@
           {
             "condition": "IS",
             "attribute": "character",
-            "value": "Numbah Two",
+            "value": "Numbuh Two",
             "source": 156
           }
         ],
@@ -2059,7 +2059,7 @@
           {
             "condition": "IS",
             "attribute": "character",
-            "value": "Numbah Two",
+            "value": "Numbuh Two",
             "source": 156
           }
         ],
@@ -4241,6 +4241,1352 @@
         ]
       }
     ]
-  }
+  },
   // TO ALL OTHER X END
+
+  // TO ALL X
+  // Ponypuff Princess
+  {
+    "id": 295,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "MALE",
+            "source": 295
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "MALE",
+            "source": 295
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -1,
+            "source": 295
+          }
+        ]
+      }
+    ]
+  },
+  // Courage Mecha
+  {
+    "id": 87,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "ANIMAL",
+            "source": 87
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "ANIMAL",
+            "source": 87
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -2,
+            "source": 87
+          }
+        ]
+      }
+    ]
+  },
+  // Jack Bruised
+  {
+    "id": 187,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "BLACK",
+            "source": 187
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "BLACK",
+            "source": 187
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -2,
+            "source": 187
+          }
+        ]
+      }
+    ]
+  },
+  // Cootie Bug
+  {
+    "id": 83,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "MALE",
+            "source": 83
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "MALE",
+            "source": 83
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -2,
+            "source": 83
+          }
+        ]
+      }
+    ]
+  },
+  // Shaggy Running
+  {
+    "id": 336,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "MONSTER",
+            "source": 336
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "MONSTER",
+            "source": 336
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -2,
+            "source": 336
+          }
+        ]
+      }
+    ]
+  },
+  // Clayface
+  {
+    "id": 76,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "ORANGE",
+            "source": 76
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "ORANGE",
+            "source": 76
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -2,
+            "source": 76
+          }
+        ]
+      }
+    ]
+  },
+  // Cinderblock
+  {
+    "id": 73,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "PURPLE",
+            "source": 73
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "PURPLE",
+            "source": 73
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -2,
+            "source": 73
+          }
+        ]
+      }
+    ]
+  },
+  // Robot Spider
+  {
+    "id": 315,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "RED",
+            "source": 315
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "RED",
+            "source": 315
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -2,
+            "source": 315
+          }
+        ]
+      }
+    ]
+  },
+  // Muriel Toddler
+  {
+    "id": 275,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "YELLOW",
+            "source": 275
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "YELLOW",
+            "source": 275
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -2,
+            "source": 275
+          }
+        ]
+      }
+    ]
+  },
+  // Baby Taz
+  {
+    "id": 21,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "PROP",
+            "source": 21
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "PROP",
+            "source": 21
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -3,
+            "source": 21
+          }
+        ]
+      }
+    ]
+  },
+  // Gooey
+  {
+    "id": 160,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "VEHICLE",
+            "source": 160
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "VEHICLE",
+            "source": 160
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -3,
+            "source": 160
+          }
+        ]
+      }
+    ]
+  },
+  // Monroe
+  {
+    "id": 264,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ALL",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "YELLOW",
+            "source": 264
+          },
+          {
+            "condition": "IS",
+            "attribute": "points",
+            "value": 10,
+            "source": 264
+          }
+        ],
+        "conditionType": "ALL",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "YELLOW",
+            "source": 264
+          },
+          {
+            "condition": "IS",
+            "attribute": "points",
+            "value": 10,
+            "source": 264
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -4,
+            "source": 264
+          }
+        ]
+      }
+    ]
+  },
+  // Grim
+  {
+    "id": 170,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "BLACK",
+            "source": 170
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "BLACK",
+            "source": 170
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 1,
+            "source": 170
+          }
+        ]
+      }
+    ]
+  },
+  // Pepe Le Pew
+  {
+    "id": 291,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "BLUE",
+            "source": 291
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "BLUE",
+            "source": 291
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 2,
+            "source": 291
+          }
+        ]
+      }
+    ]
+  },
+  // Stella Spacely
+  {
+    "id": 351,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "FEMALE",
+            "source": 351
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "FEMALE",
+            "source": 351
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 2,
+            "source": 351
+          }
+        ]
+      }
+    ]
+  },
+  // Steel
+  {
+    "id": 350,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "GREEN",
+            "source": 350
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "GREEN",
+            "source": 350
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 2,
+            "source": 350
+          }
+        ]
+      }
+    ]
+  },
+  // Jim Gordon
+  {
+    "id": 202,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "HERO",
+            "source": 202
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "HERO",
+            "source": 202
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 2,
+            "source": 202
+          }
+        ]
+      }
+    ]
+  },
+  // Sedusa (Ima Goodlady)
+  {
+    "id": 333,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "ORANGE",
+            "source": 333
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "ORANGE",
+            "source": 333
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 2,
+            "source": 333
+          }
+        ]
+      }
+    ]
+  },
+  // Rosey
+  {
+    "id": 319,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "PLACE",
+            "source": 319
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "PLACE",
+            "source": 319
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 2,
+            "source": 319
+          }
+        ]
+      }
+    ]
+  },
+  // Coco
+  {
+    "id": 79,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "PROP",
+            "source": 79
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "PROP",
+            "source": 79
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 2,
+            "source": 79
+          }
+        ]
+      }
+    ]
+  },
+  // Denny Yogman
+  {
+    "id": 102,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "RED",
+            "source": 102
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "RED",
+            "source": 102
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 2,
+            "source": 102
+          }
+        ]
+      }
+    ]
+  },
+  // Numbuh One
+  {
+    "id": 281,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "RED",
+            "source": 281
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "RED",
+            "source": 281
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 2,
+            "source": 281
+          }
+        ]
+      }
+    ]
+  },
+  // Katz
+  {
+    "id": 215,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "SILVER",
+            "source": 215
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "SILVER",
+            "source": 215
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 2,
+            "source": 215
+          }
+        ]
+      }
+    ]
+  },
+  // Scotsman
+  {
+    "id": 331,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "YELLOW",
+            "source": 331
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "YELLOW",
+            "source": 331
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 2,
+            "source": 331
+          }
+        ]
+      }
+    ]
+  },
+  // Superman Unchained
+  {
+    "id": 357,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "BLUE",
+            "source": 357
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "BLUE",
+            "source": 357
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 3,
+            "source": 357
+          }
+        ]
+      }
+    ]
+  },
+  // Aquaman
+  {
+    "id": 14,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "GREEN",
+            "source": 14
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "GREEN",
+            "source": 14
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 3,
+            "source": 14
+          }
+        ]
+      }
+    ]
+  },
+  // Billy's Dad
+  {
+    "id": 36,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "ORANGE",
+            "source": 36
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "ORANGE",
+            "source": 36
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 3,
+            "source": 36
+          }
+        ]
+      }
+    ]
+  },
+  // Ms. Keane
+  {
+    "id": 273,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "PURPLE",
+            "source": 273
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "PURPLE",
+            "source": 273
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 3,
+            "source": 273
+          }
+        ]
+      }
+    ]
+  },
+  // T.H.U.M.P.E.R.
+  {
+    "id": 361,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "RED",
+            "source": 361
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "RED",
+            "source": 361
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 3,
+            "source": 361
+          }
+        ]
+      }
+    ]
+  },
+  // Yogi Bear
+  {
+    "id": 390,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "YELLOW",
+            "source": 390
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "YELLOW",
+            "source": 390
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 3,
+            "source": 390
+          }
+        ]
+      }
+    ]
+  },
+  // Lumpus
+  {
+    "id": 235,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ALL",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "GREEN",
+            "source": 235
+          },
+          {
+            "condition": "IS",
+            "attribute": "points",
+            "value": 7,
+            "source": 235
+          }
+        ],
+        "conditionType": "ALL",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "GREEN",
+            "source": 235
+          },
+          {
+            "condition": "IS",
+            "attribute": "points",
+            "value": 7,
+            "source": 235
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 5,
+            "source": 235
+          }
+        ]
+      }
+    ]
+  },
+  // Booster Gold
+  {
+    "id": 45,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "points",
+            "value": 8,
+            "source": 45
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "points",
+            "value": 8,
+            "source": 45
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 6,
+            "source": 45
+          }
+        ]
+      }
+    ]
+  },
+  // Jerry
+  {
+    "id": 200,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ALL",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "BLUE",
+            "source": 200
+          },
+          {
+            "condition": "IS",
+            "attribute": "points",
+            "value": 7,
+            "source": 200
+          }
+        ],
+        "conditionType": "ALL",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "BLUE",
+            "source": 200
+          },
+          {
+            "condition": "IS",
+            "attribute": "points",
+            "value": 7,
+            "source": 200
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 7,
+            "source": 200
+          }
+        ]
+      }
+    ]
+  },
+  // Numbuh Two
+  {
+    "id": 283,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "VEHICLE",
+            "source": 283
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "VEHICLE",
+            "source": 283
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 7,
+            "source": 283
+          }
+        ]
+      }
+    ]
+  },
+  // Lazlo
+  {
+    "id": 223,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ALL",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "YELLOW",
+            "source": 223
+          },
+          {
+            "condition": "IS",
+            "attribute": "points",
+            "value": 7,
+            "source": 223
+          }
+        ],
+        "conditionType": "ALL",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "YELLOW",
+            "source": 223
+          },
+          {
+            "condition": "IS",
+            "attribute": "points",
+            "value": 7,
+            "source": 223
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 7,
+            "source": 223
+          }
+        ]
+      }
+    ]
+  }
+  // TO ALL X END
 ]
