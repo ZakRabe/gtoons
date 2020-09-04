@@ -1194,7 +1194,280 @@
         ]
       }
     ]
-  }
-
+  },
   // FOR EACH X IN PLAY END
+
+  // IF ANY X IN PLAY
+  // Pebbles Teen
+  {
+    "id": 289,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Dee Dee",
+            "source": 289
+          }
+        ],
+        "modifiers": [
+          { "attribute": "points", "type": "add", "value": 4, "source": 289 }
+        ]
+      }
+    ]
+  },
+  // Blossom with Bunny
+  {
+    "id": 43,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Bugs Bunny",
+            "source": 43
+          }
+        ],
+        "modifiers": [
+          { "attribute": "points", "type": "add", "value": 5, "source": 43 }
+        ]
+      }
+    ]
+  },
+  // Robin (Might be weird because he has to exclude himself)
+  {
+    "id": 312,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ALL",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "HERO",
+            "source": 312
+          },
+          {
+            "condition": "IS_NOT",
+            "attribute": "character",
+            "value": "Robin",
+            "source": 312
+          }
+        ],
+        "modifiers": [
+          { "attribute": "points", "type": "add", "value": 5, "source": 312 }
+        ]
+      }
+    ]
+  },
+  // Absolution
+  {
+    "id": 1,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "TOM",
+            "source": 1
+          }
+        ],
+        "modifiers": [
+          { "attribute": "points", "type": "add", "value": 5, "source": 1 }
+        ]
+      }
+    ]
+  },
+  // Betty Rubble
+  {
+    "id": 33,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Barney Rubble",
+            "source": 33
+          }
+        ],
+        "modifiers": [
+          { "attribute": "points", "type": "add", "value": 6, "source": 33 }
+        ]
+      }
+    ]
+  },
+  // Jack the Astronaut
+  {
+    "id": 189,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Chicken from Outer Space",
+            "source": 189
+          }
+        ],
+        "modifiers": [
+          { "attribute": "points", "type": "add", "value": 6, "source": 189 }
+        ]
+      }
+    ]
+  },
+  // Elroy Jetson
+  {
+    "id": 129,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Dexter",
+            "source": 129
+          }
+        ],
+        "modifiers": [
+          { "attribute": "points", "type": "add", "value": 7, "source": 129 }
+        ]
+      }
+    ]
+  },
+  // Elmer Fudd
+  {
+    "id": 128,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Huntor",
+            "source": 128
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "replace",
+            "value": 2,
+            "source": 128
+          }
+        ]
+      }
+    ]
+  },
+  // Marvin the Martian
+  {
+    "id": 255,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Martian Manhunter",
+            "source": 255
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "replace",
+            "value": 2,
+            "source": 255
+          }
+        ]
+      }
+    ]
+  },
+  // Jet Screamer
+  {
+    "id": 201,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Val Hallen",
+            "source": 201
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "replace",
+            "value": 2,
+            "source": 201
+          }
+        ]
+      }
+    ]
+  }
+  // IF ANY X IN PLAY END
 ]
