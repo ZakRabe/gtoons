@@ -3426,6 +3426,189 @@
         ]
       }
     ]
-  }
+  },
   // IF NEXT TO ANY X END
+
+  // FOR EACH OPPONENT X
+  // Sinestro
+  {
+    "id": 340,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "OPPONENT",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "color",
+            "value": "BLACK",
+            "source": 340
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 4,
+            "source": 340
+          }
+        ]
+      }
+    ]
+  },
+  // Duck Codgers
+  {
+    "id": 117,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "OPPONENT",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "color",
+            "value": "BLUE",
+            "source": 117
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 4,
+            "source": 117
+          }
+        ]
+      }
+    ]
+  },
+  // Weremole Muriel
+  {
+    "id": 379,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "OPPONENT",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "color",
+            "value": "GREEN",
+            "source": 379
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 4,
+            "source": 379
+          }
+        ]
+      }
+    ]
+  },
+  // Toilenator
+  {
+    "id": 365,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "OPPONENT",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "color",
+            "value": "ORANGE",
+            "source": 365
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 4,
+            "source": 365
+          }
+        ]
+      }
+    ]
+  },
+  // Baby Lola
+  {
+    "id": 19,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "OPPONENT",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "color",
+            "value": "RED",
+            "source": 19
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 4,
+            "source": 19
+          }
+        ]
+      }
+    ]
+  },
+  // Jinx
+  {
+    "id": 205,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "OPPONENT",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "color",
+            "value": "YELLOW",
+            "source": 205
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 4,
+            "source": 205
+          }
+        ]
+      }
+    ]
+  }
+  // FOR EACH OPPONENT X END
 ]
