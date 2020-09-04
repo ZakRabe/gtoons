@@ -5587,6 +5587,519 @@
         ]
       }
     ]
-  }
+  },
   // TO ALL X END
+
+  // UNIQUE
+  // Eager Young Space Cadet
+  {
+    "id": 119,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "OPPONENT",
+        "target": "OPPONENT",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "PROP",
+            "source": 119
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "type",
+            "value": "PROP",
+            "source": 119
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -5,
+            "source": 119
+          }
+        ]
+      }
+    ]
+  },
+  // Amoeba Boys
+  {
+    "id": 12,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "NEIGHBOR",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "VILLIAN",
+            "source": 12
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "type",
+            "value": "VILLIAN",
+            "source": 12
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -5,
+            "source": 12
+          }
+        ]
+      },
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "OPPOSING",
+        "target": "OPPOSING",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "VILLIAN",
+            "source": 12
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "type",
+            "value": "VILLIAN",
+            "source": 12
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -5,
+            "source": 12
+          }
+        ]
+      }
+    ]
+  },
+  // Batman
+  {
+    "id": 27,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "OPPOSING",
+        "target": "OPPOSING",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS_NOT",
+            "attribute": "types",
+            "value": "HERO",
+            "source": 27
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS_NOT",
+            "attribute": "type",
+            "value": "HERO",
+            "source": 27
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -5,
+            "source": 27
+          }
+        ]
+      }
+    ]
+  },
+  // Porky Pig // I DO NOT KNOW HOW TO GO ABOUT THIS
+  {
+    "id": 297,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "type",
+            "value": "PROP",
+            "source": 297
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 10,
+            "source": 297
+          }
+        ]
+      }
+    ]
+  },
+  // Taz
+  {
+    "id": 363,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "NEIGHBOR",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "ANIMAL",
+            "source": 363
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "type",
+            "value": "ANIMAL",
+            "source": 363
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 5,
+            "source": 363
+          }
+        ]
+      }
+    ]
+  },
+  // Flea // I DO NOT KNOW HOW TO GO ABOUT THIS
+  {
+    "id": 138,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "OPPONENT",
+        "target": "OPPONENT",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "PROP",
+            "source": 138
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "type",
+            "value": "PROP",
+            "source": 138
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -5,
+            "source": 138
+          }
+        ]
+      }
+    ]
+  },
+  // Frankie // I DO NOT KNOW HOW TO GO ABOUT THIS
+  {
+    "id": 142,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "OPPONENT",
+        "target": "OPPONENT",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "PROP",
+            "source": 142
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "type",
+            "value": "PROP",
+            "source": 142
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -5,
+            "source": 142
+          }
+        ]
+      }
+    ]
+  },
+  // Planet Killer // I DO NOT KNOW HOW TO GO ABOUT THIS
+  {
+    "id": 293,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "OPPONENT",
+        "target": "OPPONENT",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "PROP",
+            "source": 293
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "type",
+            "value": "PROP",
+            "source": 293
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -5,
+            "source": 293
+          }
+        ]
+      }
+    ]
+  },
+  // TOM
+  {
+    "id": 366,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "OPPOSING",
+        "target": "OPPOSING",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [],
+        "modifiers": [
+          {
+            "attribute": "colors",
+            "type": "replace",
+            "value": "BLACK",
+            "source": 366
+          }
+        ]
+      }
+    ]
+  },
+  // Green Lantern
+  {
+    "id": 167,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "NEIGHBOR",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [],
+        "modifiers": [
+          {
+            "attribute": "colors",
+            "type": "replace",
+            "value": "GREEN",
+            "source": 167
+          }
+        ]
+      }
+    ]
+  },
+  // Dr. Fate
+  {
+    "id": 111,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "OPPOSING",
+        "target": "OPPOSING",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [],
+        "modifiers": [
+          {
+            "attribute": "colors",
+            "type": "replace",
+            "value": "BLACK",
+            "source": 111
+          }
+        ]
+      }
+    ]
+  },
+  // Jawbreakers
+  {
+    "id": 198,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "ADJACENT",
+        "target": "ADJACENT",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Ed",
+            "source": 198
+          },
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Edd",
+            "source": 198
+          },
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Eddy",
+            "source": 198
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Ed",
+            "source": 198
+          },
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Edd",
+            "source": 198
+          },
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Eddy",
+            "source": 198
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "replace",
+            "value": 3,
+            "source": 198
+          }
+        ]
+      }
+    ]
+  },
+  // Glorft
+  {
+    "id": 158,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "OPPOSING",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "BLUE",
+            "source": 158
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "replace",
+            "value": 4,
+            "source": 158
+          }
+        ]
+      }
+    ]
+  },
+  // Eduardo
+  {
+    "id": 126,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "OPPOSING",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "color",
+            "value": "PURPLE",
+            "source": 126
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "replace",
+            "value": 4,
+            "source": 126
+          }
+        ]
+      }
+    ]
+  }
+  // UNIQUE END
 ]
