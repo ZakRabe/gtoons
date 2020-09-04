@@ -3834,6 +3834,413 @@
         ]
       }
     ]
-  }
+  },
   // TO OPPOSING IF NOT X END
+
+  // TO ALL OTHER X
+  // Hoss Delgado
+  {
+    "id": 179,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ALL",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "BLUE",
+            "source": 179
+          },
+          {
+            "condition": "IS_NOT",
+            "attribute": "character",
+            "value": "Hoss Delgado",
+            "source": 179
+          }
+        ],
+        "conditionType": "ALL",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "BLUE",
+            "source": 179
+          },
+          {
+            "condition": "IS_NOT",
+            "attribute": "character",
+            "value": "Hoss Delgado",
+            "source": 179
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -3,
+            "source": 179
+          }
+        ]
+      }
+    ]
+  },
+  // Wintergreen
+  {
+    "id": 381,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ALL",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "GREEN",
+            "source": 381
+          },
+          {
+            "condition": "IS_NOT",
+            "attribute": "character",
+            "value": "Wintergreen",
+            "source": 381
+          }
+        ],
+        "conditionType": "ALL",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "GREEN",
+            "source": 381
+          },
+          {
+            "condition": "IS_NOT",
+            "attribute": "character",
+            "value": "Wintergreen",
+            "source": 381
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -3,
+            "source": 381
+          }
+        ]
+      }
+    ]
+  },
+  // Common Cold
+  {
+    "id": 81,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ALL",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "ORANGE",
+            "source": 81
+          },
+          {
+            "condition": "IS_NOT",
+            "attribute": "character",
+            "value": "Common Cold",
+            "source": 81
+          }
+        ],
+        "conditionType": "ALL",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "ORANGE",
+            "source": 81
+          },
+          {
+            "condition": "IS_NOT",
+            "attribute": "character",
+            "value": "Common Cold",
+            "source": 81
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -3,
+            "source": 81
+          }
+        ]
+      }
+    ]
+  },
+  // Knight Brace
+  {
+    "id": 218,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ALL",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "RED",
+            "source": 218
+          },
+          {
+            "condition": "IS_NOT",
+            "attribute": "character",
+            "value": "Knight Brace",
+            "source": 218
+          }
+        ],
+        "conditionType": "ALL",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "RED",
+            "source": 218
+          },
+          {
+            "condition": "IS_NOT",
+            "attribute": "character",
+            "value": "Knight Brace",
+            "source": 218
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -3,
+            "source": 218
+          }
+        ]
+      }
+    ]
+  },
+  // Stickybeard
+  {
+    "id": 353,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ALL",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "YELLOW",
+            "source": 353
+          },
+          {
+            "condition": "IS_NOT",
+            "attribute": "character",
+            "value": "Stickybeard",
+            "source": 353
+          }
+        ],
+        "conditionType": "ALL",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "YELLOW",
+            "source": 353
+          },
+          {
+            "condition": "IS_NOT",
+            "attribute": "character",
+            "value": "Stickybeard",
+            "source": 353
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -3,
+            "source": 353
+          }
+        ]
+      }
+    ]
+  },
+  // Green Loontern Dodgers
+  {
+    "id": 169,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ALL",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "HERO",
+            "source": 169
+          },
+          {
+            "condition": "IS_NOT",
+            "attribute": "character",
+            "value": "Green Loontern Dodgers",
+            "source": 169
+          }
+        ],
+        "conditionType": "ALL",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "HERO",
+            "source": 169
+          },
+          {
+            "condition": "IS_NOT",
+            "attribute": "character",
+            "value": "Green Loontern Dodgers",
+            "source": 169
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -2,
+            "source": 169
+          }
+        ]
+      }
+    ]
+  },
+  // Baby Sylvester
+  {
+    "id": 20,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ALL",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "PURPLE",
+            "source": 20
+          },
+          {
+            "condition": "IS_NOT",
+            "attribute": "character",
+            "value": "Baby Sylvester",
+            "source": 20
+          }
+        ],
+        "conditionType": "ALL",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "PURPLE",
+            "source": 20
+          },
+          {
+            "condition": "IS_NOT",
+            "attribute": "character",
+            "value": "Baby Sylvester",
+            "source": 20
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 3,
+            "source": 20
+          }
+        ]
+      }
+    ]
+  },
+  // Liberty Belle
+  {
+    "id": 229,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ALL",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "FEMALE",
+            "source": 229
+          },
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "HERO",
+            "source": 229
+          },
+          {
+            "condition": "IS_NOT",
+            "attribute": "character",
+            "value": "Liberty Belle",
+            "source": 229
+          }
+        ],
+        "conditionType": "ALL",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "FEMALE",
+            "source": 229
+          },
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "HERO",
+            "source": 229
+          },
+          {
+            "condition": "IS_NOT",
+            "attribute": "character",
+            "value": "Liberty Belle",
+            "source": 229
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 4,
+            "source": 229
+          }
+        ]
+      }
+    ]
+  }
+  // TO ALL OTHER X END
 ]
