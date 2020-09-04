@@ -3609,6 +3609,231 @@
         ]
       }
     ]
-  }
+  },
   // FOR EACH OPPONENT X END
+
+  // TO OPPOSING IF NOT X
+  // Yosemite Sam
+  {
+    "id": 391,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "OPPOSING",
+        "target": "OPPOSING",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS_NOT",
+            "attribute": "types",
+            "value": "FEMALE",
+            "source": 391
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS_NOT",
+            "attribute": "types",
+            "value": "FEMALE",
+            "source": 391
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -5,
+            "source": 391
+          }
+        ]
+      }
+    ]
+  },
+  // I.M. Weasel
+  {
+    "id": 181,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "OPPOSING",
+        "target": "OPPOSING",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS_NOT",
+            "attribute": "types",
+            "value": "PROP",
+            "source": 181
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS_NOT",
+            "attribute": "types",
+            "value": "PROP",
+            "source": 181
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -5,
+            "source": 181
+          }
+        ]
+      }
+    ]
+  },
+  // Klub Katz
+  {
+    "id": 217,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "OPPOSING",
+        "target": "OPPOSING",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS_NOT",
+            "attribute": "types",
+            "value": "VILLIAN",
+            "source": 217
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS_NOT",
+            "attribute": "types",
+            "value": "VILLIAN",
+            "source": 217
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -5,
+            "source": 217
+          }
+        ]
+      }
+    ]
+  },
+  // Baby Daffy
+  {
+    "id": 18,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "OPPOSING",
+        "target": "OPPOSING",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS_NOT",
+            "attribute": "types",
+            "value": "ANIMAL",
+            "source": 18
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS_NOT",
+            "attribute": "types",
+            "value": "ANIMAL",
+            "source": 18
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -5,
+            "source": 18
+          }
+        ]
+      }
+    ]
+  },
+  // Freaky Fred
+  {
+    "id": 143,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "OPPOSING",
+        "target": "OPPOSING",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS_NOT",
+            "attribute": "types",
+            "value": "MALE",
+            "source": 143
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS_NOT",
+            "attribute": "types",
+            "value": "MALE",
+            "source": 143
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -5,
+            "source": 143
+          }
+        ]
+      }
+    ]
+  },
+  // Bigfoot
+  {
+    "id": 34,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "OPPOSING",
+        "target": "OPPOSING",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS_NOT",
+            "attribute": "types",
+            "value": "MONSTER",
+            "source": 34
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS_NOT",
+            "attribute": "types",
+            "value": "MONSTER",
+            "source": 34
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -5,
+            "source": 34
+          }
+        ]
+      }
+    ]
+  }
+  // TO OPPOSING IF NOT X END
 ]
