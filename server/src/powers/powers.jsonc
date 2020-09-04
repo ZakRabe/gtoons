@@ -2331,6 +2331,339 @@
         ]
       }
     ]
-  }
+  },
   // TO ANY X END
+
+  // IF NEXT TO X
+  // Starfire Flying
+  {
+    "id": 349,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Bubbles",
+            "source": 349
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 10,
+            "source": 349
+          }
+        ]
+      }
+    ]
+  },
+  // Red Guy
+  {
+    "id": 308,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Him",
+            "source": 308
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 10,
+            "source": 308
+          }
+        ]
+      }
+    ]
+  },
+  // Patsy Smiles
+  {
+    "id": 287,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Lazlo",
+            "source": 287
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 10,
+            "source": 287
+          }
+        ]
+      }
+    ]
+  },
+  // Gramma Stuffum
+  {
+    "id": 164,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Liver & Onions",
+            "source": 164
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 10,
+            "source": 164
+          }
+        ]
+      }
+    ]
+  },
+  // K-9
+  {
+    "id": 214,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Marvin the Martian",
+            "source": 214
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 10,
+            "source": 214
+          }
+        ]
+      }
+    ]
+  },
+  // Scooby Hiding
+  {
+    "id": 327,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Mystery Machine",
+            "source": 327
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 10,
+            "source": 327
+          }
+        ]
+      }
+    ]
+  },
+  // Lobo
+  {
+    "id": 232,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Wolfman",
+            "source": 232
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 10,
+            "source": 232
+          }
+        ]
+      }
+    ]
+  },
+  // Dee Dee
+  {
+    "id": 98,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Dexter",
+            "source": 98
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 5,
+            "source": 98
+          }
+        ]
+      }
+    ]
+  },
+  // Dracula
+  {
+    "id": 114,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Vampire Bat",
+            "source": 114
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 5,
+            "source": 114
+          }
+        ]
+      }
+    ]
+  },
+  // Red X
+  {
+    "id": 309,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Slade",
+            "source": 309
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 6,
+            "source": 309
+          }
+        ]
+      }
+    ]
+  },
+  // Martian Manhunter
+  {
+    "id": 252,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "groups",
+            "value": "JUSTICE LEAGUE",
+            "source": 252
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "replace",
+            "value": 3,
+            "source": 252
+          }
+        ]
+      }
+    ]
+  }
+  // IF NEXT TO END
 ]
