@@ -5747,8 +5747,8 @@
         "conditions": [
           {
             "condition": "IS",
-            "attribute": "type",
-            "value": "PROP",
+            "attribute": "position",
+            "value": 7,
             "source": 297
           }
         ],
@@ -5800,29 +5800,22 @@
       }
     ]
   },
-  // Flea // I DO NOT KNOW HOW TO GO ABOUT THIS
+  // Flea
   {
     "id": 138,
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "OPPONENT",
-        "target": "OPPONENT",
+        "conditionRestrictrion": "NONE",
+        "target": "ADJACENT",
         "targetType": "ANY",
-        "targetConditions": [
-          {
-            "condition": "IS",
-            "attribute": "types",
-            "value": "PROP",
-            "source": 138
-          }
-        ],
+        "targetConditions": [],
         "conditionType": "ANY",
         "conditions": [
           {
             "condition": "IS",
-            "attribute": "type",
-            "value": "PROP",
+            "attribute": "colors",
+            "value": "YELLOW",
             "source": 138
           }
         ],
@@ -5830,27 +5823,27 @@
           {
             "attribute": "points",
             "type": "add",
-            "value": -5,
+            "value": -1,
             "source": 138
           }
         ]
       }
     ]
   },
-  // Frankie // I DO NOT KNOW HOW TO GO ABOUT THIS
+  // Frankie
   {
     "id": 142,
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "OPPONENT",
-        "target": "OPPONENT",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
           {
             "condition": "IS",
-            "attribute": "types",
-            "value": "PROP",
+            "attribute": "groups",
+            "value": "IMAGINARY FRIEND",
             "source": 142
           }
         ],
@@ -5858,8 +5851,8 @@
         "conditions": [
           {
             "condition": "IS",
-            "attribute": "type",
-            "value": "PROP",
+            "attribute": "colors",
+            "value": "BLUE",
             "source": 142
           }
         ],
@@ -5867,27 +5860,58 @@
           {
             "attribute": "points",
             "type": "add",
-            "value": -5,
+            "value": -1,
+            "source": 142
+          }
+        ]
+      },
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "groups",
+            "value": "IMAGINARY FRIEND",
+            "source": 142
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "RED",
+            "source": 142
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 1,
             "source": 142
           }
         ]
       }
     ]
   },
-  // Planet Killer // I DO NOT KNOW HOW TO GO ABOUT THIS
+  // Planet Killer
   {
     "id": 293,
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "OPPONENT",
-        "target": "OPPONENT",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
           {
             "condition": "IS",
             "attribute": "types",
-            "value": "PROP",
+            "value": "VILLIAN",
             "source": 293
           }
         ],
@@ -5904,7 +5928,7 @@
           {
             "attribute": "points",
             "type": "add",
-            "value": -5,
+            "value": 2,
             "source": 293
           }
         ]
