@@ -6124,6 +6124,1679 @@
         ]
       }
     ]
-  }
+  },
   // UNIQUE END
+
+  // DUAL
+  // Raj
+  {
+    "id": 302,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Johnny Bravo",
+            "source": 302
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Johnny Bravo",
+            "source": 302
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "replace",
+            "value": 2,
+            "source": 302
+          }
+        ]
+      },
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "ADJACENT",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 1,
+            "source": 302
+          }
+        ]
+      }
+    ]
+  },
+  // Ah-Ma
+  {
+    "id": 5,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Juniper Lee",
+            "source": 5
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Juniper Lee",
+            "source": 5
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 3,
+            "source": 5
+          }
+        ]
+      },
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Granny",
+            "source": 5
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "replace",
+            "value": 2,
+            "source": 5
+          }
+        ]
+      }
+    ]
+  },
+  // Mr. Herriman
+  {
+    "id": 270,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Foster's Home",
+            "source": 270
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Foster's Home",
+            "source": 270
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 6,
+            "source": 270
+          }
+        ]
+      },
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Bugs Bunny",
+            "source": 270
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Bugs Bunny",
+            "source": 270
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -6,
+            "source": 270
+          }
+        ]
+      }
+    ]
+  },
+  // R.E.G.I.S.
+  {
+    "id": 301,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Megas",
+            "source": 301
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Megas",
+            "source": 301
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -3,
+            "source": 301
+          }
+        ]
+      },
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "ADJACENT",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Dexter",
+            "source": 301
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Dexter",
+            "source": 301
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 3,
+            "source": 301
+          }
+        ]
+      }
+    ]
+  },
+  // Headmistress
+  {
+    "id": 175,
+    "powers": [
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "groups",
+            "value": "MUCHA LUCHA",
+            "source": 175
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 1,
+            "source": 175
+          }
+        ]
+      },
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "OPPONENT",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ALL",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "FEMALE",
+            "source": 175
+          },
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "HERO",
+            "source": 175
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 5,
+            "source": 175
+          }
+        ]
+      }
+    ]
+  },
+  // Cosmo Spacely
+  {
+    "id": 85,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "George Jetson",
+            "source": 85
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "George Jetson",
+            "source": 85
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -4,
+            "source": 85
+          }
+        ]
+      },
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Stella Spacely",
+            "source": 85
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -1,
+            "source": 85
+          }
+        ]
+      }
+    ]
+  },
+  // Mandark
+  {
+    "id": 245,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Dee Dee",
+            "source": 245
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 2,
+            "source": 245
+          }
+        ]
+      },
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Dexter",
+            "source": 245
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Dexter",
+            "source": 245
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -1,
+            "source": 245
+          }
+        ]
+      }
+    ]
+  },
+  // Mad Mod
+  {
+    "id": 238,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Shaggy",
+            "source": 238
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Shaggy",
+            "source": 238
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 4,
+            "source": 238
+          }
+        ]
+      },
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "groups",
+            "value": "TEEN TITAN",
+            "source": 238
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "groups",
+            "value": "TEEN TITAN",
+            "source": 238
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -2,
+            "source": 238
+          }
+        ]
+      }
+    ]
+  },
+  // Harry Vermin
+  {
+    "id": 172,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Ratman",
+            "source": 172
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Ratman",
+            "source": 172
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "replace",
+            "value": 3,
+            "source": 172
+          }
+        ]
+      },
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "NEIGHBOR",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "ANIMAL",
+            "source": 172
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "ANIMAL",
+            "source": 172
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 1,
+            "source": 172
+          }
+        ]
+      }
+    ]
+  },
+  // Mojo Snadcastle
+  {
+    "id": 260,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Simion",
+            "source": 260
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Simion",
+            "source": 260
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "replace",
+            "value": 3,
+            "source": 260
+          }
+        ]
+      },
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "NEIGHBOR",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "groups",
+            "value": "POWERPUFF GIRLS",
+            "source": 260
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "groups",
+            "value": "POWERPUFF GIRLS",
+            "source": 260
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 3,
+            "source": 260
+          }
+        ]
+      }
+    ]
+  },
+  // Flem
+  {
+    "id": 139,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Chicken",
+            "source": 139
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 5,
+            "source": 139
+          }
+        ]
+      },
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Earl",
+            "source": 139
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Earl",
+            "source": 139
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 5,
+            "source": 139
+          }
+        ]
+      }
+    ]
+  },
+  // Juniper Lee
+  {
+    "id": 212,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Monroe",
+            "source": 212
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "replace",
+            "value": 2,
+            "source": 212
+          }
+        ]
+      },
+      {
+        "type": "FOR_EACH",
+        "conditionRestrictrion": "NONE",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "VILLIAN",
+            "source": 212
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 1,
+            "source": 212
+          }
+        ]
+      }
+    ]
+  },
+  // Alfred Pennyworth
+  {
+    "id": 10,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "HERO",
+            "source": 10
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 4,
+            "source": 10
+          }
+        ]
+      },
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Batman",
+            "source": 10
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Batman",
+            "source": 10
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 3,
+            "source": 10
+          }
+        ]
+      }
+    ]
+  },
+  // Brainiac
+  {
+    "id": 47,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Lex Luthor",
+            "source": 47
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 4,
+            "source": 47
+          }
+        ]
+      },
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Superman",
+            "source": 47
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 4,
+            "source": 47
+          }
+        ]
+      }
+    ]
+  },
+  // Octi
+  {
+    "id": 284,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Bubbles",
+            "source": 284
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Bubbles",
+            "source": 284
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 5,
+            "source": 284
+          }
+        ]
+      },
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Him",
+            "source": 284
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 7,
+            "source": 284
+          }
+        ]
+      }
+    ]
+  },
+  // Gangreen Gang
+  {
+    "id": 151,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Buttercup",
+            "source": 151
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 8,
+            "source": 151
+          }
+        ]
+      },
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Blossom",
+            "source": 151
+          },
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Bubbles",
+            "source": 151
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Blossom",
+            "source": 151
+          },
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Bubbles",
+            "source": 151
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 1,
+            "source": 151
+          }
+        ]
+      }
+    ]
+  },
+  // Fusilli
+  {
+    "id": 149,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Courage",
+            "source": 149
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 5,
+            "source": 149
+          }
+        ]
+      },
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ALL",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "BLUE",
+            "source": 149
+          },
+          {
+            "condition": "IS_NOT",
+            "attribute": "character",
+            "value": "Fusilli",
+            "source": 149
+          }
+        ],
+        "conditionType": "ALL",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "BLUE",
+            "source": 149
+          },
+          {
+            "condition": "IS_NOT",
+            "attribute": "character",
+            "value": "Fusilli",
+            "source": 149
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -3,
+            "source": 149
+          }
+        ]
+      }
+    ]
+  },
+  // Slinkman
+  {
+    "id": 342,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ALL",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "BLACK",
+            "source": 342
+          },
+          {
+            "condition": "IS",
+            "attribute": "points",
+            "value": 10,
+            "source": 342
+          }
+        ],
+        "conditionType": "ALL",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "BLACK",
+            "source": 342
+          },
+          {
+            "condition": "IS",
+            "attribute": "points",
+            "value": 10,
+            "source": 342
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -5,
+            "source": 342
+          }
+        ]
+      },
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Lumpus",
+            "source": 342
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 5,
+            "source": 342
+          }
+        ]
+      }
+    ]
+  },
+  // Penguin
+  {
+    "id": 290,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Batman",
+            "source": 290
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Batman",
+            "source": 290
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 10,
+            "source": 290
+          }
+        ]
+      },
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "PURPLE",
+            "source": 290
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "PURPLE",
+            "source": 290
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 2,
+            "source": 290
+          }
+        ]
+      }
+    ]
+  },
+  // Boo Boo Bear
+  {
+    "id": 44,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "ANIMAL",
+            "source": 44
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "ANIMAL",
+            "source": 44
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 3,
+            "source": 44
+          }
+        ]
+      },
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Yogi Bear",
+            "source": 44
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 5,
+            "source": 44
+          }
+        ]
+      }
+    ]
+  },
+  // Pebbles Baby
+  {
+    "id": 288,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Bamm-Bamm",
+            "source": 288
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 5,
+            "source": 288
+          }
+        ]
+      },
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "FEMALE",
+            "source": 288
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "FEMALE",
+            "source": 288
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 1,
+            "source": 288
+          }
+        ]
+      }
+    ]
+  },
+  // Beast Boy Kitten
+  {
+    "id": 32,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NEIGHBOR",
+        "target": "SELF",
+        "targetType": "ANY",
+        "targetConditions": [],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Thunder",
+            "source": 32
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 8,
+            "source": 32
+          }
+        ]
+      },
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "FEMALE",
+            "source": 32
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "FEMALE",
+            "source": 32
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -1,
+            "source": 32
+          }
+        ]
+      }
+    ]
+  },
+  // Flying Ark
+  {
+    "id": 140,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "VILLIAN",
+            "source": 140
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "VILLIAN",
+            "source": 140
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -1,
+            "source": 140
+          }
+        ]
+      },
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "ANIMAL",
+            "source": 140
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "ANIMAL",
+            "source": 140
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 1,
+            "source": 140
+          }
+        ]
+      }
+    ]
+  },
+  // Raven
+  {
+    "id": 305,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "SILVER",
+            "source": 305
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "SILVER",
+            "source": 305
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -2,
+            "source": 305
+          }
+        ]
+      },
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "BLACK",
+            "source": 305
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "colors",
+            "value": "BLACK",
+            "source": 305
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": 1,
+            "source": 305
+          }
+        ]
+      }
+    ]
+  },
+  // Sarah
+  {
+    "id": 326,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Ed",
+            "source": 326
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Ed",
+            "source": 326
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -3,
+            "source": 326
+          }
+        ]
+      },
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "MALE",
+            "source": 326
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "types",
+            "value": "MALE",
+            "source": 326
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -1,
+            "source": 326
+          }
+        ]
+      }
+    ]
+  },
+  // Granny
+  {
+    "id": 165,
+    "powers": [
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Tweety",
+            "source": 165
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Tweety",
+            "source": 165
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "replace",
+            "value": 2,
+            "source": 165
+          }
+        ]
+      },
+      {
+        "type": "SINGLE",
+        "conditionRestrictrion": "NONE",
+        "target": "OTHER",
+        "targetType": "ANY",
+        "targetConditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Sylvester",
+            "source": 165
+          }
+        ],
+        "conditionType": "ANY",
+        "conditions": [
+          {
+            "condition": "IS",
+            "attribute": "character",
+            "value": "Sylvester",
+            "source": 165
+          }
+        ],
+        "modifiers": [
+          {
+            "attribute": "points",
+            "type": "add",
+            "value": -3,
+            "source": 165
+          }
+        ]
+      }
+    ]
+  }
+  // DUAL END
 ]
