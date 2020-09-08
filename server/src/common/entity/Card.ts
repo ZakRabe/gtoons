@@ -62,9 +62,10 @@ export default class Card {
   };
 
   checkPower = (board: (Card | null)[]) => {
-    this.powers.map((power) => {
-      console.log(power);
-      //power.check(board);
-    });
+    //console.log(this);
+    // this.powers.map((power) => {
+    //   console.log(power);
+    //   //power.check(board);
+    // });
   };
 }

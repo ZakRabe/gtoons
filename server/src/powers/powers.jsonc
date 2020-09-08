@@ -1,7 +1,7 @@
 [
   {
     //TEMPLATE! DELETE AT END
-    // ID of tha card
+    // ID of the card
     "id": -1,
     //Array of Powers applied by the card
     "powers": [
@@ -10,7 +10,7 @@
         "type": "SINGLE",
         // Conditions should be checking these special cards ONLY.
         // "NONE" | "ADJACENT" | "OPPOSING" | "NEIGHBOR" | "OPPONENT"
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         // Which Card on board the power should apply to. itself, another card, neighbors, or adjacent cards
         //"SELF" | "OTHER" | "NEIGHBOR" | "ADJACENT" | "OPPOSING" | "OPPONENT"
         "target": "SELF",
@@ -46,12 +46,11 @@
   // TO X from @Bit's document
   // Roach Coach
   {
-    // ID of tha card
     "id": 311,
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ALL",
         "targetConditions": [
@@ -83,7 +82,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ALL",
         "targetConditions": [
@@ -115,7 +114,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ALL",
         "targetConditions": [
@@ -152,7 +151,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ALL",
         "targetConditions": [
@@ -187,7 +186,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ALL",
         "targetConditions": [],
@@ -212,7 +211,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ALL",
         "targetConditions": [],
@@ -237,7 +236,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ALL",
         "targetConditions": [],
@@ -262,7 +261,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ALL",
         "targetConditions": [],
@@ -287,7 +286,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ALL",
         "targetConditions": [],
@@ -312,7 +311,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ALL",
         "targetConditions": [],
@@ -337,7 +336,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ALL",
         "targetConditions": [],
@@ -368,7 +367,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ALL",
         "targetConditions": [],
@@ -393,7 +392,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ALL",
         "targetConditions": [],
@@ -429,7 +428,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ALL",
         "targetConditions": [],
@@ -459,7 +458,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ALL",
         "targetConditions": [
@@ -496,7 +495,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ALL",
         "targetConditions": [
@@ -533,7 +532,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ALL",
         "targetConditions": [
@@ -570,7 +569,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ALL",
         "targetConditions": [],
@@ -600,7 +599,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ALL",
         "targetConditions": [],
@@ -634,7 +633,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OPPOSING",
         "targetType": "ANY",
         "targetConditions": [],
@@ -652,7 +651,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OPPOSING",
         "targetType": "ANY",
         "targetConditions": [],
@@ -670,7 +669,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OPPOSING",
         "targetType": "ANY",
         "targetConditions": [],
@@ -691,7 +690,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -716,7 +715,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -741,7 +740,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -766,7 +765,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -791,7 +790,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -816,7 +815,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -841,7 +840,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -866,7 +865,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -891,7 +890,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -916,7 +915,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -940,7 +939,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -964,7 +963,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -988,7 +987,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -1024,7 +1023,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -1054,7 +1053,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -1090,7 +1089,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -1114,7 +1113,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -1139,7 +1138,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -1170,7 +1169,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -1204,7 +1203,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -1229,7 +1228,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -1254,7 +1253,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -1285,7 +1284,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -1310,7 +1309,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -1335,7 +1334,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -1360,7 +1359,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -1385,7 +1384,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -1415,7 +1414,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -1445,7 +1444,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -1478,7 +1477,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -1515,7 +1514,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -1552,7 +1551,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -1589,7 +1588,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -1626,7 +1625,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -1663,7 +1662,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -1700,7 +1699,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -1773,7 +1772,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -1810,7 +1809,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -1859,7 +1858,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -1920,7 +1919,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -1957,7 +1956,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -1994,7 +1993,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ALL",
         "targetConditions": [
@@ -2043,7 +2042,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -2080,7 +2079,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -2117,7 +2116,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -2154,7 +2153,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -2227,7 +2226,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -2264,7 +2263,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -2301,7 +2300,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -2341,7 +2340,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -2371,7 +2370,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -2401,7 +2400,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -2431,7 +2430,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -2461,7 +2460,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -2491,7 +2490,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -2521,7 +2520,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -2551,7 +2550,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -2581,7 +2580,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -2611,7 +2610,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -2641,7 +2640,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -2674,7 +2673,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -2704,7 +2703,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -2734,7 +2733,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -2764,7 +2763,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -2800,7 +2799,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -2833,7 +2832,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -2863,7 +2862,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -2893,7 +2892,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -2923,7 +2922,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -2953,7 +2952,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -2983,7 +2982,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -3013,7 +3012,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -3043,7 +3042,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -3073,7 +3072,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -3103,7 +3102,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -3133,7 +3132,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -3163,7 +3162,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -3193,7 +3192,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -3223,7 +3222,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -3253,7 +3252,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -3283,7 +3282,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -3313,7 +3312,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -3343,7 +3342,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -3373,7 +3372,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -3382,7 +3381,7 @@
           {
             "condition": "IS",
             "attribute": "character",
-            "value": "Denny Yogman",
+            "value": "Samurai Jack",
             "source": 7
           }
         ],
@@ -3403,7 +3402,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -3436,7 +3435,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "OPPONENT",
+        "conditionRestriction": "OPPONENT",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -3466,7 +3465,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "OPPONENT",
+        "conditionRestriction": "OPPONENT",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -3496,7 +3495,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "OPPONENT",
+        "conditionRestriction": "OPPONENT",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -3526,7 +3525,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "OPPONENT",
+        "conditionRestriction": "OPPONENT",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -3556,7 +3555,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "OPPONENT",
+        "conditionRestriction": "OPPONENT",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -3586,7 +3585,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "OPPONENT",
+        "conditionRestriction": "OPPONENT",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -3619,7 +3618,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "OPPOSING",
+        "conditionRestriction": "OPPOSING",
         "target": "OPPOSING",
         "targetType": "ANY",
         "targetConditions": [
@@ -3656,7 +3655,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "OPPOSING",
+        "conditionRestriction": "OPPOSING",
         "target": "OPPOSING",
         "targetType": "ANY",
         "targetConditions": [
@@ -3693,7 +3692,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "OPPOSING",
+        "conditionRestriction": "OPPOSING",
         "target": "OPPOSING",
         "targetType": "ANY",
         "targetConditions": [
@@ -3730,7 +3729,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "OPPOSING",
+        "conditionRestriction": "OPPOSING",
         "target": "OPPOSING",
         "targetType": "ANY",
         "targetConditions": [
@@ -3767,7 +3766,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "OPPOSING",
+        "conditionRestriction": "OPPOSING",
         "target": "OPPOSING",
         "targetType": "ANY",
         "targetConditions": [
@@ -3804,7 +3803,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "OPPOSING",
+        "conditionRestriction": "OPPOSING",
         "target": "OPPOSING",
         "targetType": "ANY",
         "targetConditions": [
@@ -3844,7 +3843,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ALL",
         "targetConditions": [
@@ -3893,7 +3892,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ALL",
         "targetConditions": [
@@ -3942,7 +3941,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ALL",
         "targetConditions": [
@@ -3991,7 +3990,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ALL",
         "targetConditions": [
@@ -4040,7 +4039,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ALL",
         "targetConditions": [
@@ -4089,7 +4088,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ALL",
         "targetConditions": [
@@ -4138,7 +4137,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ALL",
         "targetConditions": [
@@ -4187,7 +4186,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ALL",
         "targetConditions": [
@@ -4251,7 +4250,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -4288,7 +4287,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -4325,7 +4324,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -4362,7 +4361,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -4399,7 +4398,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -4436,7 +4435,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -4473,7 +4472,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -4510,7 +4509,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -4547,7 +4546,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -4584,7 +4583,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -4621,7 +4620,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -4658,7 +4657,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ALL",
         "targetConditions": [
@@ -4707,7 +4706,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -4744,7 +4743,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -4781,7 +4780,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -4818,7 +4817,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -4855,7 +4854,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -4892,7 +4891,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -4929,7 +4928,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -4966,7 +4965,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -5003,7 +5002,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -5040,7 +5039,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -5077,7 +5076,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -5114,7 +5113,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -5151,7 +5150,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -5188,7 +5187,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -5225,7 +5224,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -5262,7 +5261,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -5299,7 +5298,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -5336,7 +5335,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -5373,7 +5372,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ALL",
         "targetConditions": [
@@ -5422,7 +5421,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -5459,7 +5458,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ALL",
         "targetConditions": [
@@ -5508,7 +5507,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -5545,7 +5544,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ALL",
         "targetConditions": [
@@ -5597,7 +5596,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "OPPONENT",
+        "conditionRestriction": "OPPONENT",
         "target": "OPPONENT",
         "targetType": "ANY",
         "targetConditions": [
@@ -5634,7 +5633,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "NEIGHBOR",
         "targetType": "ANY",
         "targetConditions": [
@@ -5665,7 +5664,7 @@
       },
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "OPPOSING",
+        "conditionRestriction": "OPPOSING",
         "target": "OPPOSING",
         "targetType": "ANY",
         "targetConditions": [
@@ -5702,7 +5701,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "OPPOSING",
+        "conditionRestriction": "OPPOSING",
         "target": "OPPOSING",
         "targetType": "ANY",
         "targetConditions": [
@@ -5739,7 +5738,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -5769,7 +5768,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "NEIGHBOR",
         "targetType": "ANY",
         "targetConditions": [
@@ -5806,7 +5805,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "ADJACENT",
         "targetType": "ANY",
         "targetConditions": [],
@@ -5836,7 +5835,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -5867,7 +5866,7 @@
       },
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -5904,7 +5903,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -5941,7 +5940,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "OPPOSING",
+        "conditionRestriction": "OPPOSING",
         "target": "OPPOSING",
         "targetType": "ANY",
         "targetConditions": [],
@@ -5964,7 +5963,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "NEIGHBOR",
         "targetType": "ANY",
         "targetConditions": [],
@@ -5987,7 +5986,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "OPPOSING",
+        "conditionRestriction": "OPPOSING",
         "target": "OPPOSING",
         "targetType": "ANY",
         "targetConditions": [],
@@ -6010,7 +6009,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "ADJACENT",
+        "conditionRestriction": "ADJACENT",
         "target": "ADJACENT",
         "targetType": "ANY",
         "targetConditions": [
@@ -6071,7 +6070,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "OPPOSING",
+        "conditionRestriction": "OPPOSING",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -6101,7 +6100,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "OPPOSING",
+        "conditionRestriction": "OPPOSING",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -6134,7 +6133,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -6165,7 +6164,7 @@
       },
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "ADJACENT",
         "targetType": "ANY",
         "targetConditions": [],
@@ -6188,7 +6187,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -6219,7 +6218,7 @@
       },
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -6249,7 +6248,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [
@@ -6280,7 +6279,7 @@
       },
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -6317,7 +6316,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -6348,7 +6347,7 @@
       },
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "ADJACENT",
         "targetType": "ANY",
         "targetConditions": [
@@ -6385,7 +6384,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -6409,7 +6408,7 @@
       },
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "OPPONENT",
+        "conditionRestriction": "OPPONENT",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -6445,7 +6444,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -6476,7 +6475,7 @@
       },
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -6506,7 +6505,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -6530,7 +6529,7 @@
       },
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -6567,7 +6566,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -6598,7 +6597,7 @@
       },
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -6635,7 +6634,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -6666,7 +6665,7 @@
       },
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "NEIGHBOR",
         "targetType": "ANY",
         "targetConditions": [
@@ -6703,7 +6702,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -6734,7 +6733,7 @@
       },
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "NEIGHBOR",
         "targetType": "ANY",
         "targetConditions": [
@@ -6771,7 +6770,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -6795,7 +6794,7 @@
       },
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -6832,7 +6831,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -6856,7 +6855,7 @@
       },
       {
         "type": "FOR_EACH",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -6886,7 +6885,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -6910,7 +6909,7 @@
       },
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -6947,7 +6946,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -6971,7 +6970,7 @@
       },
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -7001,7 +7000,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -7032,7 +7031,7 @@
       },
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -7062,7 +7061,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -7086,7 +7085,7 @@
       },
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -7135,7 +7134,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -7159,7 +7158,7 @@
       },
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ALL",
         "targetConditions": [
@@ -7208,7 +7207,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ALL",
         "targetConditions": [
@@ -7251,7 +7250,7 @@
       },
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -7281,7 +7280,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [
@@ -7312,7 +7311,7 @@
       },
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -7349,7 +7348,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -7380,7 +7379,7 @@
       },
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -7410,7 +7409,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -7434,7 +7433,7 @@
       },
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -7471,7 +7470,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NEIGHBOR",
+        "conditionRestriction": "NEIGHBOR",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -7495,7 +7494,7 @@
       },
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -7532,7 +7531,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -7563,7 +7562,7 @@
       },
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -7600,7 +7599,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -7631,7 +7630,7 @@
       },
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -7668,7 +7667,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -7699,7 +7698,7 @@
       },
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -7736,7 +7735,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [
@@ -7767,7 +7766,7 @@
       },
       {
         "type": "SINGLE",
-        "conditionRestrictrion": "NONE",
+        "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
         "targetConditions": [

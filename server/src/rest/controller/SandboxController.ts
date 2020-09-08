@@ -5,6 +5,7 @@ import { hashPassword } from '../../util';
 import * as jwt from 'jsonwebtoken';
 import { getCards, getDeepCopyCards } from '../../cards/utils';
 import Card from '../../common/entity/Card';
+import { getPowers, evaluateBoardPowers } from '../../powers/utils';
 
 export class SandboxController {
   //private userRepository = getRepository(User);
@@ -15,12 +16,7 @@ export class SandboxController {
     next: NextFunction
   ) {
     const board = [...request.body.board] as (number | null)[];
-    const cards = getDeepCopyCards(board);
-    cards.map(card => {
-      if (card) {
-        card.checkPower(cards);
-      }
-    });
+    evaluateBoardPowers(board, null);
     return {};
   }
 }
