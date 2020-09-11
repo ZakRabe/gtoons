@@ -144,10 +144,12 @@ function check(p1Cards: (Card | null)[], p2Cards: (Card | null)[], power: any) {
                   matchingAll = false;
                 }
               }
-            } else {
+            }
+            // IS NOT
+            else {
               // Check if ARRAY based (colors, groups, types) or SINGLE (character)
               if (Array.isArray(card[condition.attribute])) {
-                if (card[condition.attribute].indexOf(condition.value) == -1) {
+                if (card[condition.attribute].indexOf(condition.value) === -1) {
                   if (isP1Power) {
                     checkConditionRestriction(
                       card,
@@ -385,4 +387,227 @@ function checkConditionRestriction(
   }
 
   // going to need to return multiple values?
+}
+
+function triggerOnTarget(
+  card: Card,
+  power: any,
+  powerPosition: number,
+  powerBoard: (Card | null)[],
+  opposingBoard: (Card | null)[]
+) {
+  let cardPosition = powerBoard.findIndex((_card) => {
+    card.id == _card.id;
+  });
+  switch (power.target) {
+    case 'SELF':
+      // Add modifer to self
+      powerBoard[powerPosition].modifiers.push(power.modifiers);
+      break;
+    case 'OTHER':
+      /* 
+      Check target type and  target conditions to make sure 
+      that the targeted card meets the criteria.
+      */
+      powerBoard.map((card) => {
+        cardPosition = powerBoard.findIndex((_card) => {
+          card.id == _card.id;
+        });
+        if (card) {
+          checkTargetConditions(card, cardPosition, power, powerPosition);
+        }
+      });
+
+      opposingBoard.map((card) => {
+        cardPosition = opposingBoard.findIndex((_card) => {
+          card.id == _card.id;
+        });
+        if (card) {
+          checkTargetConditions(card, cardPosition, power, powerPosition);
+        }
+      });
+      break;
+    case 'ADJACENT':
+      switch (powerPosition) {
+        case 0:
+          if (powerBoard[powerPosition + 4]) {
+            checkTargetConditions(
+              powerBoard[powerPosition + 4],
+              powerPosition + 4,
+              power,
+              powerPosition
+            );
+          }
+          break;
+        case 1:
+        case 2:
+          if (powerBoard[powerPosition + 3]) {
+            checkTargetConditions(
+              powerBoard[powerPosition + 3],
+              powerPosition + 3,
+              power,
+              powerPosition
+            );
+          }
+          if (powerBoard[powerPosition + 4]) {
+            checkTargetConditions(
+              powerBoard[powerPosition + 4],
+              powerPosition + 4,
+              power,
+              powerPosition
+            );
+          }
+          break;
+        case 3:
+          if (powerBoard[powerPosition + 3]) {
+            checkTargetConditions(
+              powerBoard[powerPosition + 3],
+              powerPosition + 3,
+              power,
+              powerPosition
+            );
+          }
+          break;
+        case 4:
+        case 5:
+        case 6:
+          if (powerBoard[powerPosition - 3]) {
+            checkTargetConditions(
+              powerBoard[powerPosition - 3],
+              powerPosition - 3,
+              power,
+              powerPosition
+            );
+          }
+          if (powerBoard[powerPosition - 4]) {
+            checkTargetConditions(
+              powerBoard[powerPosition - 4],
+              powerPosition - 4,
+              power,
+              powerPosition
+            );
+          }
+          break;
+      }
+    case 'NEIGHBOR':
+      /*
+      Check +1,-1
+      Clamps: Can't be less than 0 or more than 6
+      Power position 1 [0]: includes +1
+      Power position 4 [3]: includes -1
+      Power position 5 [4]: includes +1
+      Power position 7 [6]: includes -1
+       */
+      switch (powerPosition) {
+        case 0:
+        case 4:
+          if (powerBoard[powerPosition + 1]) {
+            checkTargetConditions(
+              powerBoard[powerPosition + 1],
+              powerPosition + 1,
+              power,
+              powerPosition
+            );
+          }
+          break;
+        case 3:
+        case 6:
+          if (powerBoard[powerPosition - 1]) {
+            checkTargetConditions(
+              powerBoard[powerPosition - 1],
+              powerPosition - 1,
+              power,
+              powerPosition
+            );
+          }
+          break;
+        default:
+          if (powerBoard[powerPosition + 1]) {
+            checkTargetConditions(
+              powerBoard[powerPosition + 1],
+              powerPosition + 1,
+              power,
+              powerPosition
+            );
+          }
+
+          if (powerBoard[powerPosition - 1]) {
+            checkTargetConditions(
+              powerBoard[powerPosition - 1],
+              powerPosition - 1,
+              power,
+              powerPosition
+            );
+          }
+          break;
+      }
+      break;
+    case 'OPPOSING':
+      if (opposingBoard[powerPosition]) {
+        checkTargetConditions(
+          opposingBoard[powerPosition],
+          powerPosition,
+          power,
+          powerPosition
+        );
+      }
+      break;
+    case 'OPPONENT':
+      opposingBoard.map((card) => {
+        if (card) {
+          cardPosition = opposingBoard.findIndex((_card) => {
+            card.id == _card.id;
+          });
+          checkTargetConditions(card, cardPosition, power, powerPosition);
+        }
+      });
+      break;
+  }
+}
+
+function checkTargetConditions(
+  card: Card,
+  cardPosition: number,
+  power: any,
+  powerPosition: number
+) {
+  let mustMatchAll = power.targetType === 'ALL';
+  let matching = false;
+  let matchingAll = true;
+  power.targetConditions.map((condition) => {
+    if ((mustMatchAll && matchingAll) || !mustMatchAll) {
+      if (condition.attribute !== 'position') {
+        // Checking IS or IS_NOT
+        if (condition.condition === 'IS') {
+        } else {
+        }
+      } else {
+        if (condition.condition === 'IS') {
+          if (Array.isArray(card[condition.attribute])) {
+            if (card[condition.attribute].indexOf(condition.value) > -1) {
+            } else {
+              matchingAll = false;
+            }
+          } else {
+            if (card[condition.attribute] === condition.value) {
+            } else {
+              matchingAll = false;
+            }
+          }
+        } else {
+          if (Array.isArray(card[condition.attribute])) {
+            if (card[condition.attribute].indexOf(condition.value) === -1) {
+            } else {
+              matchingAll = false;
+            }
+          } else {
+            if (card[condition.attribute] !== condition.value) {
+            } else {
+              matchingAll = false;
+            }
+          }
+        }
+      }
+    }
+  });
 }
