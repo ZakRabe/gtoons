@@ -804,7 +804,7 @@
           {
             "condition": "IS",
             "attribute": "types",
-            "value": "VILLIAN",
+            "value": "VILLAIN",
             "source": 59
           }
         ],
@@ -1018,7 +1018,7 @@
           {
             "condition": "IS",
             "attribute": "types",
-            "value": "VILLIAN",
+            "value": "VILLAIN",
             "source": 385
           }
         ],
@@ -3658,7 +3658,7 @@
           {
             "condition": "IS_NOT",
             "attribute": "types",
-            "value": "VILLIAN",
+            "value": "VILLAIN",
             "source": 217
           }
         ],
@@ -3667,7 +3667,7 @@
           {
             "condition": "IS_NOT",
             "attribute": "types",
-            "value": "VILLIAN",
+            "value": "VILLAIN",
             "source": 217
           }
         ],
@@ -5590,7 +5590,7 @@
           {
             "condition": "IS",
             "attribute": "types",
-            "value": "VILLIAN",
+            "value": "VILLAIN",
             "source": 12
           }
         ],
@@ -5599,7 +5599,7 @@
           {
             "condition": "IS",
             "attribute": "type",
-            "value": "VILLIAN",
+            "value": "VILLAIN",
             "source": 12
           }
         ],
@@ -5621,7 +5621,7 @@
           {
             "condition": "IS",
             "attribute": "types",
-            "value": "VILLIAN",
+            "value": "VILLAIN",
             "source": 12
           }
         ],
@@ -5630,7 +5630,7 @@
           {
             "condition": "IS",
             "attribute": "type",
-            "value": "VILLIAN",
+            "value": "VILLAIN",
             "source": 12
           }
         ],
@@ -5860,7 +5860,7 @@
           {
             "condition": "IS",
             "attribute": "types",
-            "value": "VILLIAN",
+            "value": "VILLAIN",
             "source": 293
           }
         ],
@@ -6811,7 +6811,7 @@
           {
             "condition": "IS",
             "attribute": "types",
-            "value": "VILLIAN",
+            "value": "VILLAIN",
             "source": 212
           }
         ],
@@ -7485,7 +7485,7 @@
           {
             "condition": "IS",
             "attribute": "types",
-            "value": "VILLIAN",
+            "value": "VILLAIN",
             "source": 140
           }
         ],
@@ -7494,7 +7494,7 @@
           {
             "condition": "IS",
             "attribute": "types",
-            "value": "VILLIAN",
+            "value": "VILLAIN",
             "source": 140
           }
         ],
