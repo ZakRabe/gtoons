@@ -81,6 +81,7 @@ function check(p1Cards: (Card | null)[], p2Cards: (Card | null)[], power: any) {
 
       let result = [];
       // Need to check array position for nextTo, adjacent, opposing, etc..
+      console.log(mustMatchAll);
       power.conditions.map((condition) => {
         /*
         Check if you must match all and if you are still matching. If you must match all but
@@ -149,6 +150,7 @@ function check(p1Cards: (Card | null)[], p2Cards: (Card | null)[], power: any) {
             // IS NOT
             else {
               // Check if ARRAY based (colors, groups, types) or SINGLE (character)
+              console.log('is not effect');
               if (Array.isArray(card[condition.attribute])) {
                 if (card[condition.attribute].indexOf(condition.value) === -1) {
                   if (isP1Power) {
@@ -172,6 +174,9 @@ function check(p1Cards: (Card | null)[], p2Cards: (Card | null)[], power: any) {
                   matchingAll = false;
                 }
               } else {
+                console.log(
+                  card[condition.attribute] + '| |' + condition.value
+                );
                 if (card[condition.attribute] !== condition.value) {
                   if (isP1Power) {
                     result = checkConditionRestriction(
@@ -191,6 +196,7 @@ function check(p1Cards: (Card | null)[], p2Cards: (Card | null)[], power: any) {
                     );
                   }
                 } else {
+                  console.log('matching all is false');
                   matchingAll = false;
                 }
               }
@@ -201,13 +207,21 @@ function check(p1Cards: (Card | null)[], p2Cards: (Card | null)[], power: any) {
 
       if (result.length > 0) {
         matching = result[0];
-        matchingAll = result[1];
+        if (matchingAll) {
+          matchingAll = result[1];
+        }
       }
 
       if ((mustMatchAll && matchingAll) || (!mustMatchAll && matching)) {
         // Check if single or multiple triggers (SINGLE or FOR_EACH)
         if (isSingleUse && !alreadyUsed) {
           console.log('Single use triggered');
+          console.log(
+            'The power for ' +
+              power.conditions[0].source +
+              ' has been triggered on ' +
+              card.title
+          );
           if (isP1Power) {
             //triggerOnTarget(card, power, powerPosition, p1Cards, p2Cards);
           } else {
@@ -216,6 +230,12 @@ function check(p1Cards: (Card | null)[], p2Cards: (Card | null)[], power: any) {
           alreadyUsed = true;
         } else if (!isSingleUse) {
           console.log('Multiuse triggered');
+          console.log(
+            'The power for ' +
+              power.conditions[0].source +
+              ' has been triggered on ' +
+              card.title
+          );
         }
       } else {
       }
