@@ -1858,7 +1858,7 @@
     "id": 104,
     "powers": [
       {
-        "type": "FOR_EACH",
+        "type": "SINGLE",
         "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
@@ -6009,7 +6009,7 @@
     "id": 198,
     "powers": [
       {
-        "type": "FOR_EACH",
+        "type": "SINGLE",
         "conditionRestriction": "ADJACENT",
         "target": "ADJACENT",
         "targetType": "ANY",
