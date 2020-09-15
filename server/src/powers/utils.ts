@@ -78,185 +78,211 @@ function check(p1Cards: (Card | null)[], p2Cards: (Card | null)[], power: any) {
   }
 
   // Check Player one cards for conditional matches
+  // p1Cards.map((card) => {
+  //   if (card) {
+  //     let mustMatchAll = power.conditionType === 'ALL';
+  //     let matching = false;
+  //     let matchingAll = true;
+
+  //     let result = [];
+  //     // Need to check array position for nextTo, adjacent, opposing, etc..
+  //     power.conditions.map((condition) => {
+  //       /*
+  //       Check if you must match all and if you are still matching. If you must match all but
+  //       aren't matching after the first check, skip checking additional powers. Otherwise, if
+  //       you don't need to match all, continue to check.
+  //        */
+
+  //       if (!alreadyUsed && ((mustMatchAll && matchingAll) || !mustMatchAll)) {
+  //         // Check if attribute is position or card attribute
+  //         if (condition.attribute === 'position') {
+  //           // Checking IS or IS_NOT
+  //           if (condition.condition === 'IS') {
+  //           } else {
+  //           }
+  //         } else {
+  //           if (condition.condition === 'IS') {
+  //             // Checking IS or IS_NOT
+  //             // Check if ARRAY based (colors, groups, types) or SINGLE (character)
+  //             if (Array.isArray(card[condition.attribute])) {
+  //               if (card[condition.attribute].indexOf(condition.value) > -1) {
+  //                 if (isP1Power) {
+  //                   result = checkConditionRestriction(
+  //                     card,
+  //                     power,
+  //                     powerPosition,
+  //                     p1Cards,
+  //                     p2Cards
+  //                   );
+  //                 } else {
+  //                   result = checkConditionRestriction(
+  //                     card,
+  //                     power,
+  //                     powerPosition,
+  //                     p2Cards,
+  //                     p1Cards
+  //                   );
+  //                 }
+  //               } else {
+  //                 matchingAll = false;
+  //               }
+  //             } else {
+  //               //console.log(condition.value);
+  //               if (card[condition.attribute] === condition.value) {
+  //                 if (isP1Power) {
+  //                   result = checkConditionRestriction(
+  //                     card,
+  //                     power,
+  //                     powerPosition,
+  //                     p1Cards,
+  //                     p2Cards
+  //                   );
+  //                 } else {
+  //                   result = checkConditionRestriction(
+  //                     card,
+  //                     power,
+  //                     powerPosition,
+  //                     p2Cards,
+  //                     p1Cards
+  //                   );
+  //                 }
+  //               } else {
+  //                 matchingAll = false;
+  //               }
+  //             }
+  //           }
+  //           // IS NOT
+  //           else {
+  //             // Check if ARRAY based (colors, groups, types) or SINGLE (character)
+  //             console.log('is not effect');
+  //             if (Array.isArray(card[condition.attribute])) {
+  //               if (card[condition.attribute].indexOf(condition.value) === -1) {
+  //                 if (isP1Power) {
+  //                   result = checkConditionRestriction(
+  //                     card,
+  //                     power,
+  //                     powerPosition,
+  //                     p1Cards,
+  //                     p2Cards
+  //                   );
+  //                 } else {
+  //                   result = checkConditionRestriction(
+  //                     card,
+  //                     power,
+  //                     powerPosition,
+  //                     p2Cards,
+  //                     p1Cards
+  //                   );
+  //                 }
+  //               } else {
+  //                 matchingAll = false;
+  //               }
+  //             } else {
+  //               if (card[condition.attribute] !== condition.value) {
+  //                 if (isP1Power) {
+  //                   result = checkConditionRestriction(
+  //                     card,
+  //                     power,
+  //                     powerPosition,
+  //                     p1Cards,
+  //                     p2Cards
+  //                   );
+  //                 } else {
+  //                   result = checkConditionRestriction(
+  //                     card,
+  //                     power,
+  //                     powerPosition,
+  //                     p2Cards,
+  //                     p1Cards
+  //                   );
+  //                 }
+  //               } else {
+  //                 matchingAll = false;
+  //               }
+  //             }
+  //           }
+  //         }
+  //       }
+  //     });
+
+  //     if (result.length > 0) {
+  //       matching = result[0];
+  //       if (matchingAll) {
+  //         matchingAll = result[1];
+  //       }
+  //     }
+
+  //     if ((mustMatchAll && matchingAll) || (!mustMatchAll && matching)) {
+  //       // Check if single or multiple triggers (SINGLE or FOR_EACH)
+  //       if (isSingleUse && !alreadyUsed) {
+  //         // console.log('Single use triggered');
+  //         // console.log(
+  //         //   'The power for ' +
+  //         //     power.conditions[0].source +
+  //         //     ' has been triggered because of  ' +
+  //         //     card.title
+  //         // );
+  //         if (isP1Power) {
+  //           //checkRestrictions(card, power, powerPosition, p1Cards, p2Cards);
+  //           modifiers = [...modifiers, power.modifiers];
+  //         } else {
+  //           //checkRestrictions(card, power, powerPosition, p2Cards, p1Cards);
+  //         }
+  //         alreadyUsed = true;
+  //       } else if (!isSingleUse) {
+  //         // console.log('Multiuse triggered');
+  //         // console.log(
+  //         //   'The power for ' +
+  //         //     power.conditions[0].source +
+  //         //     ' has been triggered because of ' +
+  //         //     card.title
+  //         // );
+  //         modifiers = [...modifiers, power.modifiers];
+  //       }
+  //     } else {
+  //     }
+  //   }
+  // });
+  //console.log(modifiers);
+  //check regular conditions
+  //let pMods = [];
   p1Cards.map((card) => {
     if (card) {
-      let mustMatchAll = power.conditionType === 'ALL';
-      let matching = false;
-      let matchingAll = true;
-
-      let result = [];
-      // Need to check array position for nextTo, adjacent, opposing, etc..
-      power.conditions.map((condition) => {
-        /*
-        Check if you must match all and if you are still matching. If you must match all but
-        aren't matching after the first check, skip checking additional powers. Otherwise, if
-        you don't need to match all, continue to check.
-         */
-
-        if (!alreadyUsed && ((mustMatchAll && matchingAll) || !mustMatchAll)) {
-          // Check if attribute is position or card attribute
-          if (condition.attribute === 'position') {
-            // Checking IS or IS_NOT
-            if (condition.condition === 'IS') {
-            } else {
-            }
-          } else {
-            if (condition.condition === 'IS') {
-              // Checking IS or IS_NOT
-              // Check if ARRAY based (colors, groups, types) or SINGLE (character)
-              if (Array.isArray(card[condition.attribute])) {
-                if (card[condition.attribute].indexOf(condition.value) > -1) {
-                  if (isP1Power) {
-                    result = checkConditionRestriction(
-                      card,
-                      power,
-                      powerPosition,
-                      p1Cards,
-                      p2Cards
-                    );
-                  } else {
-                    result = checkConditionRestriction(
-                      card,
-                      power,
-                      powerPosition,
-                      p2Cards,
-                      p1Cards
-                    );
-                  }
-                } else {
-                  matchingAll = false;
-                }
-              } else {
-                //console.log(condition.value);
-                if (card[condition.attribute] === condition.value) {
-                  if (isP1Power) {
-                    result = checkConditionRestriction(
-                      card,
-                      power,
-                      powerPosition,
-                      p1Cards,
-                      p2Cards
-                    );
-                  } else {
-                    result = checkConditionRestriction(
-                      card,
-                      power,
-                      powerPosition,
-                      p2Cards,
-                      p1Cards
-                    );
-                  }
-                } else {
-                  matchingAll = false;
-                }
-              }
-            }
-            // IS NOT
-            else {
-              // Check if ARRAY based (colors, groups, types) or SINGLE (character)
-              console.log('is not effect');
-              if (Array.isArray(card[condition.attribute])) {
-                if (card[condition.attribute].indexOf(condition.value) === -1) {
-                  if (isP1Power) {
-                    result = checkConditionRestriction(
-                      card,
-                      power,
-                      powerPosition,
-                      p1Cards,
-                      p2Cards
-                    );
-                  } else {
-                    result = checkConditionRestriction(
-                      card,
-                      power,
-                      powerPosition,
-                      p2Cards,
-                      p1Cards
-                    );
-                  }
-                } else {
-                  matchingAll = false;
-                }
-              } else {
-                if (card[condition.attribute] !== condition.value) {
-                  if (isP1Power) {
-                    result = checkConditionRestriction(
-                      card,
-                      power,
-                      powerPosition,
-                      p1Cards,
-                      p2Cards
-                    );
-                  } else {
-                    result = checkConditionRestriction(
-                      card,
-                      power,
-                      powerPosition,
-                      p2Cards,
-                      p1Cards
-                    );
-                  }
-                } else {
-                  matchingAll = false;
-                }
-              }
-            }
-          }
-        }
-      });
-
-      if (result.length > 0) {
-        matching = result[0];
-        if (matchingAll) {
-          matchingAll = result[1];
-        }
-      }
-
-      if ((mustMatchAll && matchingAll) || (!mustMatchAll && matching)) {
-        // Check if single or multiple triggers (SINGLE or FOR_EACH)
-        if (isSingleUse && !alreadyUsed) {
-          // console.log('Single use triggered');
-          // console.log(
-          //   'The power for ' +
-          //     power.conditions[0].source +
-          //     ' has been triggered because of  ' +
-          //     card.title
-          // );
-          if (isP1Power) {
-            //checkRestrictions(card, power, powerPosition, p1Cards, p2Cards);
-            modifiers = [...modifiers, power.modifiers];
-          } else {
-            //checkRestrictions(card, power, powerPosition, p2Cards, p1Cards);
-          }
-          alreadyUsed = true;
-        } else if (!isSingleUse) {
-          // console.log('Multiuse triggered');
-          // console.log(
-          //   'The power for ' +
-          //     power.conditions[0].source +
-          //     ' has been triggered because of ' +
-          //     card.title
-          // );
-          modifiers = [...modifiers, power.modifiers];
-        }
-      } else {
-      }
+      modifiers = checkRestrictions(
+        card,
+        power,
+        powerPosition,
+        power.conditionRestriction,
+        power.conditionType,
+        power.conditions,
+        modifiers,
+        p1Cards,
+        p2Cards,
+        false
+      );
     }
   });
-  //console.log(modifiers);
 
+  console.log(modifiers);
   // dish out modifiers to targets
   //console.log(powerID === 104 ? modifiers : '');
+  //console.log('here');
+  //Checking target condition
   p1Cards.map((card) => {
-    checkRestrictions(
-      card,
-      power,
-      powerPosition,
-      modifiers,
-      p1Cards,
-      p2Cards,
-      true
-    );
+    if (card) {
+      checkRestrictions(
+        card,
+        power,
+        powerPosition,
+        power.target, // Restriction for either condition or target condition
+        power.targetType,
+        power.targetConditions,
+        modifiers,
+        p1Cards,
+        p2Cards,
+        true // If it is a target condition or regular condition
+      );
+    }
   });
 }
 
@@ -413,29 +439,45 @@ function checkConditionRestriction(
   return [matching, matchingAll];
 }
 
-// TODO: Make into general checkRestrictions function
+/* TODO: Make into general checkRestrictions function
+Problem is that there doesn't seem to be a way to check how 
+many times a condition is being triggered
+*/
 function checkRestrictions(
   card: Card,
   power: any,
   powerPosition: number,
+  restriction: any,
+  conditionType: any,
+  conditions: any[],
   modifiers: any[],
   powerBoard: (Card | null)[],
   opposingBoard: (Card | null)[],
   isTargetCondition: boolean
 ) {
+  // Non-target condition specific
+  let isSingleUse = power.type === 'SINGLE';
+
+  // GENERAL
   let cardPosition = powerBoard.findIndex((_card) => _card?.id === card.id);
   let matching = false;
   let mustMatchAll = power.targetType === 'ALL';
   let matchingAll = true;
   let results = [];
   // generalize this to include all condition restrictions
-  switch (power.target) {
+  switch (restriction) {
     case 'NONE':
-      matching = true;
+      results = checkConditions(
+        card,
+        cardPosition,
+        power,
+        powerPosition,
+        conditionType,
+        conditions
+      );
       break;
     case 'SELF':
       // Add modifer to self
-      // TODO: Fix. not working properly. Not being triggered later on in modifier addition
       if (card.id === powerBoard[powerPosition].id) {
         matching = true;
       }
@@ -450,8 +492,8 @@ function checkRestrictions(
         cardPosition,
         power,
         powerPosition,
-        power.targetType,
-        power.targetConditions
+        conditionType,
+        conditions
       );
       break;
     case 'ADJACENT':
@@ -463,8 +505,8 @@ function checkRestrictions(
               cardPosition,
               power,
               powerPosition,
-              power.targetType,
-              power.targetConditions
+              conditionType,
+              conditions
             );
           }
           break;
@@ -479,8 +521,8 @@ function checkRestrictions(
               cardPosition,
               power,
               powerPosition,
-              power.targetType,
-              power.targetConditions
+              conditionType,
+              conditions
             );
           }
           break;
@@ -491,8 +533,8 @@ function checkRestrictions(
               cardPosition,
               power,
               powerPosition,
-              power.targetType,
-              power.targetConditions
+              conditionType,
+              conditions
             );
           }
           break;
@@ -508,8 +550,8 @@ function checkRestrictions(
               cardPosition,
               power,
               powerPosition,
-              power.targetType,
-              power.targetConditions
+              conditionType,
+              conditions
             );
           }
           break;
@@ -524,8 +566,8 @@ function checkRestrictions(
               cardPosition,
               power,
               powerPosition,
-              power.targetType,
-              power.targetConditions
+              conditionType,
+              conditions
             );
           }
           break;
@@ -537,8 +579,8 @@ function checkRestrictions(
               cardPosition,
               power,
               powerPosition,
-              power.targetType,
-              power.targetConditions
+              conditionType,
+              conditions
             );
           }
           break;
@@ -552,8 +594,8 @@ function checkRestrictions(
               cardPosition,
               power,
               powerPosition,
-              power.targetType,
-              power.targetConditions
+              conditionType,
+              conditions
             );
           }
           break;
@@ -566,8 +608,8 @@ function checkRestrictions(
           powerPosition,
           power,
           powerPosition,
-          power.targetType,
-          power.targetConditions
+          conditionType,
+          conditions
         );
       }
       break;
@@ -578,8 +620,8 @@ function checkRestrictions(
           cardPosition,
           power,
           powerPosition,
-          power.targetType,
-          power.targetConditions
+          conditionType,
+          conditions
         );
       }
       break;
@@ -592,19 +634,36 @@ function checkRestrictions(
     }
   }
 
-  if ((mustMatchAll && matchingAll) || (!matchingAll && matching)) {
+  if ((mustMatchAll && matchingAll) || (!mustMatchAll && matching)) {
     //Add modifiers
     if (isTargetCondition) {
-      card.modifiers = [...modifiers];
-      console.log('The card ' + card.title + ' was given the modifier:');
-      console.log(card.modifiers);
-      console.log('from ' + powerBoard[powerPosition].title);
+      card.modifiers = modifiers;
+      // console.log('The card ' + card.title + ' was given the modifier:');
+      // console.log(card.modifiers);
+      // console.log('from ' + powerBoard[powerPosition].title + '.\n');
+
+      // Return the modified card
+      return modifiers;
     } else {
       // TODO: Move condition check to this area.
+      // Check if single or multiple triggers (SINGLE or FOR_EACH)
+      if (isSingleUse) {
+        modifiers = [power.modifiers];
+      } else {
+        modifiers = [...modifiers, power.modifiers];
+      }
+      // Return the modifiers array
+      //return modifiers;
     }
   }
+
+  return modifiers;
 }
 
+/*
+Checks if the card meets the condition given. 
+Returns matching and matchingAll as results
+ */
 function checkConditions(
   card: Card,
   cardPosition: number,
