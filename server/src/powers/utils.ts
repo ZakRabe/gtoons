@@ -35,7 +35,7 @@ export function evaluateBoardPowers(
       });
     }
   });
-
+  console.log(p1Cards.map((card) => card?.modifiers));
   p2Powers.map((card) => {
     if (card) {
       card.powers.map((power) => {
@@ -49,6 +49,7 @@ export function evaluateBoardPowers(
   p1Cards.map(applyModifiers);
   p2Cards.map(applyModifiers);
 
+  console.log(p1Cards.map((card) => card?.modifiers));
   return { p1Cards, p2Cards };
 }
 
@@ -358,12 +359,6 @@ function checkRestrictions(
   if ((mustMatchAll && matchingAll) || (!mustMatchAll && matching)) {
     //Add modifiers
     if (isTargetCondition) {
-      //card.modifiers = modifiers;
-      // console.log('The card ' + card.title + ' was given the modifier:');
-      // console.log(card.modifiers);
-      // console.log('from ' + playerBoard[powerPosition].title + '.\n');
-
-      // Return the modified card
       return card.modifiers ? [...card.modifiers, ...modifiers] : modifiers;
     } else {
       // TODO: Move condition check to this area.
@@ -460,7 +455,6 @@ function checkConditions(
 /*
 Apply modifiers to called */
 function applyModifiers(card: Card) {
-  console.log(card?.title);
   card?.modifiers?.map((modifier) => {
     switch (modifier.attribute) {
       case 'colors':
@@ -498,7 +492,10 @@ function modifyPoints(card: Card, modifier: any) {
   }
 }
 
-function disableCard(card: Card) {}
+function disableCard(card: Card) {
+  console.log('The card ' + card.title + ' is disabled');
+  card.points = 0;
+}
 
 /*
 Check board to see if any cards should be negated and add the negation
@@ -513,7 +510,7 @@ function checkForDisables(playerBoard: any[], opposingBoard: any[]) {
       ) {
         if (playerCard?.basePoints === card?.basePoints) {
           card.disabled = true;
-          card.modfiers = [
+          card.modifiers = [
             {
               attribute: 'disabled',
               type: 'disabled',
@@ -523,7 +520,7 @@ function checkForDisables(playerBoard: any[], opposingBoard: any[]) {
           ];
 
           playerCard.disabled = true;
-          playerCard.modfiers = [
+          playerCard.modifiers = [
             {
               attribute: 'disabled',
               type: 'disabled',
@@ -533,7 +530,7 @@ function checkForDisables(playerBoard: any[], opposingBoard: any[]) {
           ];
         } else if (playerCard?.basePoints > card?.basePoints) {
           playerCard.disabled = true;
-          playerCard.modfiers = [
+          playerCard.modifiers = [
             {
               attribute: 'disabled',
               type: 'disabled',
@@ -543,7 +540,7 @@ function checkForDisables(playerBoard: any[], opposingBoard: any[]) {
           ];
         } else {
           card.disabled = true;
-          card.modfiers = [
+          card.modifiers = [
             {
               attribute: 'disabled',
               type: 'disabled',
@@ -560,7 +557,7 @@ function checkForDisables(playerBoard: any[], opposingBoard: any[]) {
       if (opponentCard?.character === card?.character) {
         if (opponentCard?.basePoints === card?.basePoints) {
           card.disabled = true;
-          card.modfiers = [
+          card.modifiers = [
             {
               attribute: 'disabled',
               type: 'disabled',
@@ -570,7 +567,7 @@ function checkForDisables(playerBoard: any[], opposingBoard: any[]) {
           ];
 
           opponentCard.disabled = true;
-          opponentCard.modfiers = [
+          opponentCard.modifiers = [
             {
               attribute: 'disabled',
               type: 'disabled',
@@ -580,7 +577,7 @@ function checkForDisables(playerBoard: any[], opposingBoard: any[]) {
           ];
         } else if (opponentCard?.basePoints > card?.basePoints) {
           opponentCard.disabled = true;
-          opponentCard.modfiers = [
+          opponentCard.modifiers = [
             {
               attribute: 'disabled',
               type: 'disabled',
@@ -590,7 +587,7 @@ function checkForDisables(playerBoard: any[], opposingBoard: any[]) {
           ];
         } else {
           card.disabled = true;
-          card.modfiers = [
+          card.modifiers = [
             {
               attribute: 'disabled',
               type: 'disabled',
