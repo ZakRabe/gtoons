@@ -102,7 +102,9 @@ export const Sandbox = (props: SandboxProps) => {
       method: 'post',
       url: 'sandbox/calculateScore',
       data: { board: board.map((card) => (card ? card.id : null)) },
-    }).then(console.log);
+    }).then((results) => {
+      console.log(results);
+    });
   };
 
   React.useEffect(() => {

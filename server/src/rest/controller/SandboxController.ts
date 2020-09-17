@@ -16,7 +16,6 @@ export class SandboxController {
     next: NextFunction
   ) {
     const board = [...request.body.board] as (number | null)[];
-    evaluateBoardPowers(board, null);
-    return {};
+    return evaluateBoardPowers(board, []);
   }
 }

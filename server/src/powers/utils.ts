@@ -1,12 +1,13 @@
 import Power from '../common/entity/Power';
 import Card from '../common/entity/Card';
 import { getCards } from '../cards/utils';
+import { cardsInCollection } from '../util';
 
 const powers: (Power | any)[] = require('./powers.json');
 
 export function getPower(id: number) {
-  return powers.find((power) => power.id === id);
-  // return power ? power : null;
+  const foundPower = powers.find((power) => power.id === id);
+  return foundPower ? { ...foundPower } : null;
 }
 
 export function getPowers(ids: number[]) {
@@ -39,214 +40,46 @@ export function evaluateBoardPowers(
   let p1Cards = getCards(p1Board);
   let p1Powers = getPowers(p1Board);
 
-  //let p2Cards = getCards(p2Board);
-  //let p2Powers = getPowers(p2Board);
+  let p2Cards = getCards(p2Board);
+  let p2Powers = getPowers(p2Board);
 
   p1Powers.map((card) => {
     if (card) {
       card.powers.map((power) => {
         //Switch Case for each power type? SINGLE or FOR_EACH
         //console.log(power);
-        check(p1Cards, p1Cards, power);
+        check(p1Cards, p2Cards, power);
       });
     }
   });
+
+  p2Powers.map((card) => {
+    if (card) {
+      card.powers.map((power) => {
+        //Switch Case for each power type? SINGLE or FOR_EACH
+        //console.log(power);
+        check(p2Cards, p1Cards, power);
+      });
+    }
+  });
+
+  return { p1Cards, p2Cards };
 }
 
-function check(p1Cards: (Card | null)[], p2Cards: (Card | null)[], power: any) {
-  let isSingleUse = power.type === 'SINGLE';
-  let alreadyUsed = false;
-
+function check(
+  powerBoard: (Card | null)[],
+  opposingBoard: (Card | null)[],
+  power: any
+) {
   let modifiers = [];
 
   //console.log(power);
   //Check if condition is position based
   let powerID = power.conditions[0].source;
-  let powerPosition = -1;
-  let isP1Power = false;
+  const powerPosition = powerBoard.findIndex((card) => card?.id === powerID);
 
-  powerPosition = p1Cards.findIndex((card) => card?.id === powerID);
-  isP1Power = powerPosition > -1;
-
-  // Check if it is p1 or p2 power
-  /* This is redundant because I'm already separating the powers above
-   before running the check function
-  */
-  if (!isP1Power) {
-    // If not a p1 power, get position of power in p2 cards
-    powerPosition = p2Cards.findIndex((card) => card?.id === powerID);
-  }
-
-  // Check Player one cards for conditional matches
-  // p1Cards.map((card) => {
-  //   if (card) {
-  //     let mustMatchAll = power.conditionType === 'ALL';
-  //     let matching = false;
-  //     let matchingAll = true;
-
-  //     let result = [];
-  //     // Need to check array position for nextTo, adjacent, opposing, etc..
-  //     power.conditions.map((condition) => {
-  //       /*
-  //       Check if you must match all and if you are still matching. If you must match all but
-  //       aren't matching after the first check, skip checking additional powers. Otherwise, if
-  //       you don't need to match all, continue to check.
-  //        */
-
-  //       if (!alreadyUsed && ((mustMatchAll && matchingAll) || !mustMatchAll)) {
-  //         // Check if attribute is position or card attribute
-  //         if (condition.attribute === 'position') {
-  //           // Checking IS or IS_NOT
-  //           if (condition.condition === 'IS') {
-  //           } else {
-  //           }
-  //         } else {
-  //           if (condition.condition === 'IS') {
-  //             // Checking IS or IS_NOT
-  //             // Check if ARRAY based (colors, groups, types) or SINGLE (character)
-  //             if (Array.isArray(card[condition.attribute])) {
-  //               if (card[condition.attribute].indexOf(condition.value) > -1) {
-  //                 if (isP1Power) {
-  //                   result = checkConditionRestriction(
-  //                     card,
-  //                     power,
-  //                     powerPosition,
-  //                     p1Cards,
-  //                     p2Cards
-  //                   );
-  //                 } else {
-  //                   result = checkConditionRestriction(
-  //                     card,
-  //                     power,
-  //                     powerPosition,
-  //                     p2Cards,
-  //                     p1Cards
-  //                   );
-  //                 }
-  //               } else {
-  //                 matchingAll = false;
-  //               }
-  //             } else {
-  //               //console.log(condition.value);
-  //               if (card[condition.attribute] === condition.value) {
-  //                 if (isP1Power) {
-  //                   result = checkConditionRestriction(
-  //                     card,
-  //                     power,
-  //                     powerPosition,
-  //                     p1Cards,
-  //                     p2Cards
-  //                   );
-  //                 } else {
-  //                   result = checkConditionRestriction(
-  //                     card,
-  //                     power,
-  //                     powerPosition,
-  //                     p2Cards,
-  //                     p1Cards
-  //                   );
-  //                 }
-  //               } else {
-  //                 matchingAll = false;
-  //               }
-  //             }
-  //           }
-  //           // IS NOT
-  //           else {
-  //             // Check if ARRAY based (colors, groups, types) or SINGLE (character)
-  //             console.log('is not effect');
-  //             if (Array.isArray(card[condition.attribute])) {
-  //               if (card[condition.attribute].indexOf(condition.value) === -1) {
-  //                 if (isP1Power) {
-  //                   result = checkConditionRestriction(
-  //                     card,
-  //                     power,
-  //                     powerPosition,
-  //                     p1Cards,
-  //                     p2Cards
-  //                   );
-  //                 } else {
-  //                   result = checkConditionRestriction(
-  //                     card,
-  //                     power,
-  //                     powerPosition,
-  //                     p2Cards,
-  //                     p1Cards
-  //                   );
-  //                 }
-  //               } else {
-  //                 matchingAll = false;
-  //               }
-  //             } else {
-  //               if (card[condition.attribute] !== condition.value) {
-  //                 if (isP1Power) {
-  //                   result = checkConditionRestriction(
-  //                     card,
-  //                     power,
-  //                     powerPosition,
-  //                     p1Cards,
-  //                     p2Cards
-  //                   );
-  //                 } else {
-  //                   result = checkConditionRestriction(
-  //                     card,
-  //                     power,
-  //                     powerPosition,
-  //                     p2Cards,
-  //                     p1Cards
-  //                   );
-  //                 }
-  //               } else {
-  //                 matchingAll = false;
-  //               }
-  //             }
-  //           }
-  //         }
-  //       }
-  //     });
-
-  //     if (result.length > 0) {
-  //       matching = result[0];
-  //       if (matchingAll) {
-  //         matchingAll = result[1];
-  //       }
-  //     }
-
-  //     if ((mustMatchAll && matchingAll) || (!mustMatchAll && matching)) {
-  //       // Check if single or multiple triggers (SINGLE or FOR_EACH)
-  //       if (isSingleUse && !alreadyUsed) {
-  //         // console.log('Single use triggered');
-  //         // console.log(
-  //         //   'The power for ' +
-  //         //     power.conditions[0].source +
-  //         //     ' has been triggered because of  ' +
-  //         //     card.title
-  //         // );
-  //         if (isP1Power) {
-  //           //checkRestrictions(card, power, powerPosition, p1Cards, p2Cards);
-  //           modifiers = [...modifiers, power.modifiers];
-  //         } else {
-  //           //checkRestrictions(card, power, powerPosition, p2Cards, p1Cards);
-  //         }
-  //         alreadyUsed = true;
-  //       } else if (!isSingleUse) {
-  //         // console.log('Multiuse triggered');
-  //         // console.log(
-  //         //   'The power for ' +
-  //         //     power.conditions[0].source +
-  //         //     ' has been triggered because of ' +
-  //         //     card.title
-  //         // );
-  //         modifiers = [...modifiers, power.modifiers];
-  //       }
-  //     } else {
-  //     }
-  //   }
-  // });
-  //console.log(modifiers);
-  //check regular conditions
-  //let pMods = [];
-  p1Cards.map((card) => {
+  // CHECKING INITIAL CONDITIONS
+  powerBoard.map((card) => {
     if (card) {
       modifiers = checkRestrictions(
         card,
@@ -256,21 +89,34 @@ function check(p1Cards: (Card | null)[], p2Cards: (Card | null)[], power: any) {
         power.conditionType,
         power.conditions,
         modifiers,
-        p1Cards,
-        p2Cards,
+        powerBoard,
+        opposingBoard,
         false
       );
     }
   });
 
-  console.log(modifiers);
-  // dish out modifiers to targets
-  //console.log(powerID === 104 ? modifiers : '');
-  //console.log('here');
-  //Checking target condition
-  p1Cards.map((card) => {
+  // opposingBoard.map((card) => {
+  //   if (card) {
+  //     modifiers = checkRestrictions(
+  //       card,
+  //       power,
+  //       powerPosition,
+  //       power.conditionRestriction,
+  //       power.conditionType,
+  //       power.conditions,
+  //       modifiers,
+  //       opposingBoard,
+  //       powerBoard,
+  //       false
+  //     );
+  //   }
+  // });
+
+  // TARGETTING
+  powerBoard.map((card) => {
     if (card) {
-      checkRestrictions(
+      card.modifiers = checkRestrictions(
         card,
         power,
         powerPosition,
@@ -278,171 +124,35 @@ function check(p1Cards: (Card | null)[], p2Cards: (Card | null)[], power: any) {
         power.targetType,
         power.targetConditions,
         modifiers,
-        p1Cards,
-        p2Cards,
+        powerBoard,
+        opposingBoard,
         true // If it is a target condition or regular condition
       );
     }
   });
+
+  // opposingBoard.map((card) => {
+  //   if (card) {
+  //     card.modifiers = checkRestrictions(
+  //       card,
+  //       power,
+  //       powerPosition,
+  //       power.target, // Restriction for either condition or target condition
+  //       power.targetType,
+  //       power.targetConditions,
+  //       modifiers,
+  //       opposingBoard,
+  //       powerBoard,
+  //       true // If it is a target condition or regular condition
+  //     );
+  //   }
+  // });
 }
 
 function positionCondition() {}
 
-function checkConditionRestriction(
-  card: Card,
-  power: any,
-  powerPosition: number,
-  powerBoard: (Card | null)[],
-  opposingBoard: (Card | null)[]
-) {
-  let matching = false;
-  let matchingAll = true;
-  switch (power.conditionRestriction) {
-    case 'NONE':
-      // Nothing needs to be done.
-      matching = true;
-      break;
-    case 'ADJACENT':
-      // Check cards positions adjacent to this powers card
-      // Also checks neighbors?
-
-      /*
-      Check +3,+4,-3,-4
-      Clamps: Can't be less than 0 or more than 6
-      Power position 1 [0]: includes +4
-      Power position 2 [1]: includes +3,+4
-      Power position 3 [2]: includes +3,+4
-      Power position 4 [3]: includes +3
-      Power position 5 [4]: includes -3,-4
-      Power position 6 [5]: includes -3,-4
-      Power position 7 [6]: includes -3,-4
-       */
-      switch (powerPosition) {
-        case 0:
-          if (
-            powerPosition + 4 ===
-            powerBoard.findIndex((_card) => _card?.id === card.id)
-          ) {
-            matching = true;
-          } else {
-            matchingAll = false;
-          }
-          break;
-        case 1:
-        case 2:
-          if (
-            powerPosition + 3 ===
-              powerBoard.findIndex((_card) => _card?.id === card.id) ||
-            powerPosition + 4 ===
-              powerBoard.findIndex((_card) => _card?.id === card.id)
-          ) {
-            matching = true;
-          } else {
-            matchingAll = false;
-          }
-          break;
-        case 3:
-          if (
-            powerPosition + 3 ===
-            powerBoard.findIndex((_card) => _card?.id === card.id)
-          ) {
-            matching = true;
-          } else {
-            matchingAll = false;
-          }
-          break;
-        case 4:
-        case 5:
-        case 6:
-          if (
-            powerPosition - 3 ===
-              powerBoard.findIndex((_card) => _card?.id === card.id) ||
-            powerPosition - 4 ===
-              powerBoard.findIndex((_card) => _card?.id === card.id)
-          ) {
-            matching = true;
-          } else {
-            matchingAll = false;
-          }
-          break;
-      }
-
-    case 'NEIGHBOR':
-      /*
-      Check +1,-1
-      Clamps: Can't be less than 0 or more than 6
-      Power position 1 [0]: includes +1
-      Power position 4 [3]: includes -1
-      Power position 5 [4]: includes +1
-      Power position 7 [6]: includes -1
-       */
-      if (!matching) {
-        switch (powerPosition) {
-          case 0:
-          case 4:
-            if (
-              powerPosition + 1 ===
-              powerBoard.findIndex((_card) => _card?.id === card.id)
-            ) {
-              matching = true;
-            } else {
-              matchingAll = false;
-            }
-            break;
-          case 3:
-          case 6:
-            if (
-              powerPosition - 1 ===
-              powerBoard.findIndex((_card) => _card?.id === card.id)
-            ) {
-              matching = true;
-            } else {
-              matchingAll = false;
-            }
-            break;
-          default:
-            if (
-              powerPosition + 1 ===
-                powerBoard.findIndex((_card) => _card?.id === card.id) ||
-              powerPosition - 1 ===
-                powerBoard.findIndex((_card) => _card?.id === card.id)
-            ) {
-              matching = true;
-            } else {
-              matchingAll = false;
-            }
-            break;
-        }
-      }
-      break;
-    case 'OPPOSING':
-      if (
-        powerPosition ===
-        opposingBoard.findIndex((_card) => _card?.id === card.id)
-      ) {
-        matching = true;
-      } else {
-        matchingAll = false;
-      }
-
-      break;
-    case 'OPPONENT':
-      if (opposingBoard.findIndex((_card) => _card?.id === card.id) > -1) {
-        matching = true;
-      } else {
-        matchingAll = false;
-      }
-      break;
-  }
-
-  // going to need to return multiple values?
-  return [matching, matchingAll];
-}
-
-/* TODO: Make into general checkRestrictions function
-Problem is that there doesn't seem to be a way to check how 
-many times a condition is being triggered
-*/
+/*
+ */
 function checkRestrictions(
   card: Card,
   power: any,
@@ -464,7 +174,7 @@ function checkRestrictions(
   let mustMatchAll = power.targetType === 'ALL';
   let matchingAll = true;
   let results = [];
-  // generalize this to include all condition restrictions
+
   switch (restriction) {
     case 'NONE':
       results = checkConditions(
@@ -497,6 +207,20 @@ function checkRestrictions(
       );
       break;
     case 'ADJACENT':
+      /* 
+      Check cards positions adjacent to this powers card
+      Also checks neighbors?
+
+      Check +3,+4,-3,-4
+      Clamps: Can't be less than 0 or more than 6
+      Power position 1 [0]: includes +4
+      Power position 2 [1]: includes +3,+4
+      Power position 3 [2]: includes +3,+4
+      Power position 4 [3]: includes +3
+      Power position 5 [4]: includes -3,-4
+      Power position 6 [5]: includes -3,-4
+      Power position 7 [6]: includes -3,-4
+      */
       switch (powerPosition) {
         case 0:
           if (powerBoard[powerPosition + 4] === card) {
@@ -557,6 +281,14 @@ function checkRestrictions(
           break;
       }
     case 'NEIGHBOR':
+      /*
+      Check +1,-1
+      Clamps: Can't be less than 0 or more than 6
+      Power position 1 [0]: includes +1
+      Power position 4 [3]: includes -1
+      Power position 5 [4]: includes +1
+      Power position 7 [6]: includes -1
+       */
       switch (powerPosition) {
         case 0:
         case 4:
@@ -637,26 +369,30 @@ function checkRestrictions(
   if ((mustMatchAll && matchingAll) || (!mustMatchAll && matching)) {
     //Add modifiers
     if (isTargetCondition) {
-      card.modifiers = modifiers;
+      //card.modifiers = modifiers;
       // console.log('The card ' + card.title + ' was given the modifier:');
       // console.log(card.modifiers);
       // console.log('from ' + powerBoard[powerPosition].title + '.\n');
 
       // Return the modified card
-      return modifiers;
+      return card.modifiers ? [...card.modifiers, ...modifiers] : modifiers;
     } else {
       // TODO: Move condition check to this area.
       // Check if single or multiple triggers (SINGLE or FOR_EACH)
       if (isSingleUse) {
-        modifiers = [power.modifiers];
+        modifiers = [...power.modifiers];
       } else {
-        modifiers = [...modifiers, power.modifiers];
+        modifiers = [...modifiers, ...power.modifiers];
       }
       // Return the modifiers array
       //return modifiers;
     }
   }
 
+  if (isTargetCondition) {
+    //console.log(card.modifiers);
+    return card.modifiers;
+  }
   return modifiers;
 }
 
