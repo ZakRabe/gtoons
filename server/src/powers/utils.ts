@@ -14,25 +14,6 @@ export function getPowers(ids: number[]) {
   return ids.map(getPower);
 }
 
-// export function getDeepPower(id: number) {
-//   let power = getPower(id);
-//   let powers: Power[] = [];
-
-//   if (power) {
-//     power.powers.map((pow) => {
-//       powers.push(new Power(pow));
-//     });
-//   }
-//   return [...powers];
-//   //return power ? new Power(power) : null;
-// }
-
-// export function getDeepPowers(ids: number[]) {
-//   let powers = ids.map(getDeepPower);
-//   console.log(powers);
-//   return ids.map(getDeepPower);
-// }
-
 export function evaluateBoardPowers(
   p1Board: (number | null)[],
   p2Board: (number | null)[]
@@ -43,12 +24,14 @@ export function evaluateBoardPowers(
   let p2Cards = getCards(p2Board);
   let p2Powers = getPowers(p2Board);
 
+  checkForDisables(p1Cards, p2Cards);
+
   p1Powers.map((card) => {
     if (card) {
       card.powers.map((power) => {
         //Switch Case for each power type? SINGLE or FOR_EACH
         //console.log(power);
-        check(p1Cards, p2Cards, power);
+        check(p1Cards, p2Cards, power, card.id);
       });
     }
   });
@@ -58,28 +41,36 @@ export function evaluateBoardPowers(
       card.powers.map((power) => {
         //Switch Case for each power type? SINGLE or FOR_EACH
         //console.log(power);
-        check(p2Cards, p1Cards, power);
+        check(p2Cards, p1Cards, power, card.id);
       });
     }
   });
+
+  p1Cards.map(applyModifiers);
+  p2Cards.map(applyModifiers);
 
   return { p1Cards, p2Cards };
 }
 
 function check(
-  powerBoard: (Card | null)[],
+  playerBoard: (Card | null)[],
   opposingBoard: (Card | null)[],
-  power: any
+  power: any,
+  powerId: number
 ) {
   let modifiers = [];
 
   //console.log(power);
   //Check if condition is position based
-  let powerID = power.conditions[0].source;
-  const powerPosition = powerBoard.findIndex((card) => card?.id === powerID);
+
+  const powerPosition = playerBoard.findIndex((card) => card?.id === powerId);
+
+  if (playerBoard[powerPosition].disabled) {
+    return;
+  }
 
   // CHECKING INITIAL CONDITIONS
-  powerBoard.map((card) => {
+  playerBoard.map((card) => {
     if (card) {
       modifiers = checkRestrictions(
         card,
@@ -89,32 +80,32 @@ function check(
         power.conditionType,
         power.conditions,
         modifiers,
-        powerBoard,
+        playerBoard,
         opposingBoard,
         false
       );
     }
   });
 
-  // opposingBoard.map((card) => {
-  //   if (card) {
-  //     modifiers = checkRestrictions(
-  //       card,
-  //       power,
-  //       powerPosition,
-  //       power.conditionRestriction,
-  //       power.conditionType,
-  //       power.conditions,
-  //       modifiers,
-  //       opposingBoard,
-  //       powerBoard,
-  //       false
-  //     );
-  //   }
-  // });
+  opposingBoard.map((card) => {
+    if (card) {
+      modifiers = checkRestrictions(
+        card,
+        power,
+        powerPosition,
+        power.conditionRestriction,
+        power.conditionType,
+        power.conditions,
+        modifiers,
+        opposingBoard,
+        playerBoard,
+        false
+      );
+    }
+  });
 
   // TARGETTING
-  powerBoard.map((card) => {
+  playerBoard.map((card) => {
     if (card) {
       card.modifiers = checkRestrictions(
         card,
@@ -124,32 +115,30 @@ function check(
         power.targetType,
         power.targetConditions,
         modifiers,
-        powerBoard,
+        playerBoard,
         opposingBoard,
         true // If it is a target condition or regular condition
       );
     }
   });
 
-  // opposingBoard.map((card) => {
-  //   if (card) {
-  //     card.modifiers = checkRestrictions(
-  //       card,
-  //       power,
-  //       powerPosition,
-  //       power.target, // Restriction for either condition or target condition
-  //       power.targetType,
-  //       power.targetConditions,
-  //       modifiers,
-  //       opposingBoard,
-  //       powerBoard,
-  //       true // If it is a target condition or regular condition
-  //     );
-  //   }
-  // });
+  opposingBoard.map((card) => {
+    if (card) {
+      card.modifiers = checkRestrictions(
+        card,
+        power,
+        powerPosition,
+        power.target, // Restriction for either condition or target condition
+        power.targetType,
+        power.targetConditions,
+        modifiers,
+        opposingBoard,
+        playerBoard,
+        true // If it is a target condition or regular condition
+      );
+    }
+  });
 }
-
-function positionCondition() {}
 
 /*
  */
@@ -161,7 +150,7 @@ function checkRestrictions(
   conditionType: any,
   conditions: any[],
   modifiers: any[],
-  powerBoard: (Card | null)[],
+  playerBoard: (Card | null)[],
   opposingBoard: (Card | null)[],
   isTargetCondition: boolean
 ) {
@@ -169,7 +158,7 @@ function checkRestrictions(
   let isSingleUse = power.type === 'SINGLE';
 
   // GENERAL
-  let cardPosition = powerBoard.findIndex((_card) => _card?.id === card.id);
+  let cardPosition = playerBoard.findIndex((_card) => _card?.id === card.id);
   let matching = false;
   let mustMatchAll = power.targetType === 'ALL';
   let matchingAll = true;
@@ -188,7 +177,7 @@ function checkRestrictions(
       break;
     case 'SELF':
       // Add modifer to self
-      if (card.id === powerBoard[powerPosition].id) {
+      if (card.id === playerBoard[powerPosition].id) {
         matching = true;
       }
       break;
@@ -223,7 +212,7 @@ function checkRestrictions(
       */
       switch (powerPosition) {
         case 0:
-          if (powerBoard[powerPosition + 4] === card) {
+          if (playerBoard[powerPosition + 4] === card) {
             results = checkConditions(
               card,
               cardPosition,
@@ -237,8 +226,8 @@ function checkRestrictions(
         case 1:
         case 2:
           if (
-            powerBoard[powerPosition + 3] === card ||
-            powerBoard[powerPosition + 4] === card
+            playerBoard[powerPosition + 3] === card ||
+            playerBoard[powerPosition + 4] === card
           ) {
             results = checkConditions(
               card,
@@ -251,7 +240,7 @@ function checkRestrictions(
           }
           break;
         case 3:
-          if (powerBoard[powerPosition + 3] === card) {
+          if (playerBoard[powerPosition + 3] === card) {
             results = checkConditions(
               card,
               cardPosition,
@@ -266,8 +255,8 @@ function checkRestrictions(
         case 5:
         case 6:
           if (
-            powerBoard[powerPosition - 3] === card ||
-            powerBoard[powerPosition - 4] === card
+            playerBoard[powerPosition - 3] === card ||
+            playerBoard[powerPosition - 4] === card
           ) {
             results = checkConditions(
               card,
@@ -292,7 +281,7 @@ function checkRestrictions(
       switch (powerPosition) {
         case 0:
         case 4:
-          if (powerBoard[powerPosition + 1] === card) {
+          if (playerBoard[powerPosition + 1] === card) {
             results = checkConditions(
               card,
               cardPosition,
@@ -305,7 +294,7 @@ function checkRestrictions(
           break;
         case 3:
         case 6:
-          if (powerBoard[powerPosition - 1] === card) {
+          if (playerBoard[powerPosition - 1] === card) {
             results = checkConditions(
               card,
               cardPosition,
@@ -318,8 +307,8 @@ function checkRestrictions(
           break;
         default:
           if (
-            powerBoard[powerPosition + 1] === card ||
-            powerBoard[powerPosition - 1] === card
+            playerBoard[powerPosition + 1] === card ||
+            playerBoard[powerPosition - 1] === card
           ) {
             results = checkConditions(
               card,
@@ -372,7 +361,7 @@ function checkRestrictions(
       //card.modifiers = modifiers;
       // console.log('The card ' + card.title + ' was given the modifier:');
       // console.log(card.modifiers);
-      // console.log('from ' + powerBoard[powerPosition].title + '.\n');
+      // console.log('from ' + playerBoard[powerPosition].title + '.\n');
 
       // Return the modified card
       return card.modifiers ? [...card.modifiers, ...modifiers] : modifiers;
@@ -411,6 +400,10 @@ function checkConditions(
   let mustMatchAll = conditionType === 'ALL';
   let matching = false;
   let matchingAll = true;
+  if (card.disabled) {
+    return [false, false];
+  }
+
   conditions.map((condition) => {
     if ((mustMatchAll && matchingAll) || !mustMatchAll) {
       if (condition.attribute === 'position') {
@@ -462,4 +455,151 @@ function checkConditions(
   });
 
   return [matching, matchingAll];
+}
+
+/*
+Apply modifiers to called */
+function applyModifiers(card: Card) {
+  console.log(card?.title);
+  card?.modifiers?.map((modifier) => {
+    switch (modifier.attribute) {
+      case 'colors':
+        modifyColor(card, modifier);
+        break;
+      case 'points':
+        modifyPoints(card, modifier);
+        break;
+      case 'disabled':
+        disableCard(card);
+        break;
+    }
+  });
+}
+
+function modifyColor(card: Card, modifier: any) {
+  switch (modifier.type) {
+    case 'add':
+      // No cards currently support this
+      break;
+    case 'replace':
+      card.colors = [...modifier.value];
+      break;
+  }
+}
+
+function modifyPoints(card: Card, modifier: any) {
+  switch (modifier.type) {
+    case 'add':
+      card.points += modifier.value;
+      break;
+    case 'replace':
+      card.points += card.basePoints * modifier.value - card.basePoints;
+      break;
+  }
+}
+
+function disableCard(card: Card) {}
+
+/*
+Check board to see if any cards should be negated and add the negation
+modifier to it. */
+function checkForDisables(playerBoard: any[], opposingBoard: any[]) {
+  playerBoard.map((card) => {
+    // If you find a matching character that is not this card in the player board
+    playerBoard.map((playerCard) => {
+      if (
+        playerCard?.character === card?.character &&
+        playerCard?.title !== card?.title
+      ) {
+        if (playerCard?.basePoints === card?.basePoints) {
+          card.disabled = true;
+          card.modfiers = [
+            {
+              attribute: 'disabled',
+              type: 'disabled',
+              value: 'disabled',
+              source: -1,
+            },
+          ];
+
+          playerCard.disabled = true;
+          playerCard.modfiers = [
+            {
+              attribute: 'disabled',
+              type: 'disabled',
+              value: 'disabled',
+              source: -1,
+            },
+          ];
+        } else if (playerCard?.basePoints > card?.basePoints) {
+          playerCard.disabled = true;
+          playerCard.modfiers = [
+            {
+              attribute: 'disabled',
+              type: 'disabled',
+              value: 'disabled',
+              source: -1,
+            },
+          ];
+        } else {
+          card.disabled = true;
+          card.modfiers = [
+            {
+              attribute: 'disabled',
+              type: 'disabled',
+              value: 'disabled',
+              source: -1,
+            },
+          ];
+        }
+      }
+    });
+
+    // If you find a matching character in the opposing board
+    opposingBoard.map((opponentCard) => {
+      if (opponentCard?.character === card?.character) {
+        if (opponentCard?.basePoints === card?.basePoints) {
+          card.disabled = true;
+          card.modfiers = [
+            {
+              attribute: 'disabled',
+              type: 'disabled',
+              value: 'disabled',
+              source: -1,
+            },
+          ];
+
+          opponentCard.disabled = true;
+          opponentCard.modfiers = [
+            {
+              attribute: 'disabled',
+              type: 'disabled',
+              value: 'disabled',
+              source: -1,
+            },
+          ];
+        } else if (opponentCard?.basePoints > card?.basePoints) {
+          opponentCard.disabled = true;
+          opponentCard.modfiers = [
+            {
+              attribute: 'disabled',
+              type: 'disabled',
+              value: 'disabled',
+              source: -1,
+            },
+          ];
+        } else {
+          card.disabled = true;
+          card.modfiers = [
+            {
+              attribute: 'disabled',
+              type: 'disabled',
+              value: 'disabled',
+              source: -1,
+            },
+          ];
+        }
+      }
+    });
+  });
 }

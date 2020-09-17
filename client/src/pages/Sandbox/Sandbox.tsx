@@ -121,7 +121,6 @@ export const Sandbox = (props: SandboxProps) => {
       newBoard.find((card) => card && card.id === cardId) ||
       emptySpace === -1
     ) {
-      console.log('returning');
       return;
     }
 

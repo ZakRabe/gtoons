@@ -4806,7 +4806,7 @@
     "id": 202,
     "powers": [
       {
-        "type": "FOR_EACH",
+        "type": "SINGLE",
         "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",

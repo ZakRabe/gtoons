@@ -4854,7 +4854,7 @@
     "id": 202,
     "powers": [
       {
-        "type": "FOR_EACH",
+        "type": "SINGLE",
         "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
@@ -5935,6 +5935,9 @@
       }
     ]
   },
+
+  // TREAT OPPOSING AS
+  // Need to figure out what their condition should be
   // TOM
   {
     "id": 366,
@@ -6004,6 +6007,7 @@
       }
     ]
   },
+  // TREAT OPPOSING AS
   // Jawbreakers
   {
     "id": 198,
