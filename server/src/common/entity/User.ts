@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, BaseEntity } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, BaseEntity, CreateDateColumn } from 'typeorm';
 
 @Entity()
 export default class User extends BaseEntity {
@@ -18,22 +18,21 @@ export default class User extends BaseEntity {
   salt: string;
 
   @Column()
-  role?: string;
+  role: string;
 
-  @Column()
+  @Column({ nullable: true })
   profilePic?: string;
 
-  @Column()
-  created: string;
+  @CreateDateColumn()
+  created_at: Date;
 
   toJson = () => {
     // we don't want to expose user's email address or password via JSON
-    const { id, username, created, role } = this;
+    const { id, username, role } = this;
     return {
       id,
       username,
-      role,
-      created,
+      role
     };
   };
 }

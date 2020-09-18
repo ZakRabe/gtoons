@@ -41,7 +41,7 @@ export class RegisterController {
   }
 
   async submit(request: Request, response: Response, _next: NextFunction) {
-    const newUser = { ...request.body };
+    const newUser = { role: 'PLAYER', profilePic: '', ...request.body };
     const errors = [];
 
     if (!newUser.username.trim()) {
