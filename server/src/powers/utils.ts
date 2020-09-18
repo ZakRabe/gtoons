@@ -35,7 +35,6 @@ export function evaluateBoardPowers(
       });
     }
   });
-  console.log(p1Cards.map((card) => card?.modifiers));
   p2Powers.map((card) => {
     if (card) {
       card.powers.map((power) => {
@@ -49,7 +48,6 @@ export function evaluateBoardPowers(
   p1Cards.map(applyModifiers);
   p2Cards.map(applyModifiers);
 
-  console.log(p1Cards.map((card) => card?.modifiers));
   return { p1Cards, p2Cards };
 }
 
@@ -61,7 +59,6 @@ function check(
 ) {
   let modifiers = [];
 
-  //console.log(power);
   //Check if condition is position based
 
   const powerPosition = playerBoard.findIndex((card) => card?.id === powerId);
@@ -476,7 +473,7 @@ function modifyColor(card: Card, modifier: any) {
       // No cards currently support this
       break;
     case 'replace':
-      card.colors = [...modifier.value];
+      card.colors = [modifier.value];
       break;
   }
 }
@@ -493,7 +490,6 @@ function modifyPoints(card: Card, modifier: any) {
 }
 
 function disableCard(card: Card) {
-  console.log('The card ' + card.title + ' is disabled');
   card.points = 0;
 }
 

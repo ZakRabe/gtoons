@@ -4472,7 +4472,7 @@
     "id": 73,
     "powers": [
       {
-        "type": "FOR_EACH",
+        "type": "SINGLE",
         "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
@@ -5947,9 +5947,23 @@
         "conditionRestriction": "OPPOSING",
         "target": "OPPOSING",
         "targetType": "ANY",
-        "targetConditions": [],
+        "targetConditions": [
+          {
+            "condition": "IS_NOT",
+            "attribute": "colors",
+            "value": "BLACK",
+            "source": 366
+          }
+        ],
         "conditionType": "ANY",
-        "conditions": [],
+        "conditions": [
+          {
+            "condition": "IS_NOT",
+            "attribute": "colors",
+            "value": "BLACK",
+            "source": 366
+          }
+        ],
         "modifiers": [
           {
             "attribute": "colors",
@@ -5966,13 +5980,27 @@
     "id": 167,
     "powers": [
       {
-        "type": "FOR_EACH",
+        "type": "SINGLE",
         "conditionRestriction": "NEIGHBOR",
         "target": "NEIGHBOR",
         "targetType": "ANY",
-        "targetConditions": [],
+        "targetConditions": [
+          {
+            "condition": "IS_NOT",
+            "attribute": "colors",
+            "value": "GREEN",
+            "source": 167
+          }
+        ],
         "conditionType": "ANY",
-        "conditions": [],
+        "conditions": [
+          {
+            "condition": "IS_NOT",
+            "attribute": "colors",
+            "value": "GREEN",
+            "source": 167
+          }
+        ],
         "modifiers": [
           {
             "attribute": "colors",
@@ -5993,9 +6021,23 @@
         "conditionRestriction": "OPPOSING",
         "target": "OPPOSING",
         "targetType": "ANY",
-        "targetConditions": [],
+        "targetConditions": [
+          {
+            "condition": "IS_NOT",
+            "attribute": "colors",
+            "value": "BLACK",
+            "source": 111
+          }
+        ],
         "conditionType": "ANY",
-        "conditions": [],
+        "conditions": [
+          {
+            "condition": "IS_NOT",
+            "attribute": "colors",
+            "value": "BLACK",
+            "source": 111
+          }
+        ],
         "modifiers": [
           {
             "attribute": "colors",
