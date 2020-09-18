@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from '../../contexts/UserContext';
 import { isLoggedIn } from '../../utils/auth';
 import { useSocketNamespace } from '../../utils/hooks';
 import LobbyCard from './LobbyCard';
@@ -7,6 +8,16 @@ import { LobbiesProps } from './types';
 import { useHistory } from 'react-router-dom';
 import { Button, TextInput, Tooltip } from 'carbon-components-react';
 import { Add16, PlayFilledAlt32 } from '@carbon/icons-react';
+
+const ProfileDisplay = () => {
+  const { user } = useContext(UserContext);
+
+  return (
+    <>
+      
+    </>
+  );
+}
 
 export const Lobbies = (_props: LobbiesProps) => {
   const lobbiesSocket = useSocketNamespace('/lobbies');

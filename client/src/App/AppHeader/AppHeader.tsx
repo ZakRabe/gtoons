@@ -84,7 +84,7 @@ const AppHeader: React.FunctionComponent<AppHeaderProps> = (props) => {
           </HeaderGlobalAction>
           <HeaderPanel expanded={userMenuOpen} className="profileMenu">
             <Switcher>
-              <SwitcherItem onClick={() => {}}>
+              <SwitcherItem onClick={() => history.push('/profile')}>
                 <i className="fas fa-user"></i>&nbsp; My Profile
               </SwitcherItem>
 
