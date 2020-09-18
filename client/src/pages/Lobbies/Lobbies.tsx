@@ -1,6 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { UserContext } from '../../contexts/UserContext';
 import { isLoggedIn } from '../../utils/auth';
+import { request } from '../../utils/api';
 import { useSocketNamespace } from '../../utils/hooks';
 import LobbyCard from './LobbyCard';
 import './styles.css';
@@ -10,12 +11,34 @@ import { Button, TextInput, Tooltip } from 'carbon-components-react';
 import { Add16, PlayFilledAlt32 } from '@carbon/icons-react';
 
 const ProfileDisplay = () => {
+  const [profilePic, setProfilePic] = useState<HTMLElement>();
   const { user } = useContext(UserContext);
 
+  // Should I being using suspense here instead?
+  useEffect(() => {
+    request({
+      url: `users/${user.userId}`
+    })
+    .then(currentUser => {
+      const { profilePic } = currentUser;
+
+      const dom = new DOMParser();
+      const svg = dom.parseFromString(atob(profilePic), "image/svg+xml");
+      setProfilePic(svg.documentElement);
+    })
+    .catch(console.error);
+  }, []);
+
   return (
-    <>
-      
-    </>
+    <div style={{display: 'flex'}}>
+      <div>
+        <h4>Hola</h4>
+        <h3>{user.username}</h3>
+      </div>
+      <div>
+        {profilePic || <i className="far fa-user-circle" style={{ objectFit: 'fill' }}/>}
+      </div>
+    </div>
   );
 }
 
@@ -147,6 +170,7 @@ export const Lobbies = (_props: LobbiesProps) => {
           <h2>Play reToons Revived</h2>
           {renderPopup()}
         </div>
+        <ProfileDisplay />
       </div>
       <div>
         <div className={'lobbie-content'}>
