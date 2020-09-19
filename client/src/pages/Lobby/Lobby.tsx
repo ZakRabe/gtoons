@@ -13,6 +13,7 @@ import { isLoggedIn } from '../../utils/auth';
 import { useSocketNamespace } from '../../utils/hooks';
 import LobbyChat from './LobbyChat';
 import { LobbyProps, Seat } from './types';
+import GameScreen from '../../components/GameScreen/GameScreen';
 
 const emptySeat = { user: null, ready: false };
 
@@ -342,10 +343,18 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
     return (
       <section style={lobbyWrapperStyles}>
         <div style={lobbyBodyStyles}>
-          <section style={{ flexDirection: 'row', display: 'flex' }}>
-            {renderSeat(1, user)}
-            {renderStart(user)}
-            {renderSeat(2, user)}
+          <section
+            style={{ flexDirection: 'row', display: 'flex', flex: '1 0 auto' }}
+          >
+            {lobby.game ? (
+              <GameScreen game={lobby.game} />
+            ) : (
+              <>
+                {renderSeat(1, user)}
+                {renderStart(user)}
+                {renderSeat(2, user)}
+              </>
+            )}
           </section>
         </div>
 

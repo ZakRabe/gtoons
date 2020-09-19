@@ -22,6 +22,6 @@ export interface Deck {
   id: number;
   player_id: number;
   name: string;
-  cards: string;
+  cards: number[];
   face: number;
 }
