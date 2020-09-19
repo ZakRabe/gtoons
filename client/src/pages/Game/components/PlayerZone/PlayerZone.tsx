@@ -1,7 +1,7 @@
 import * as React from 'react';
 import CSS from 'csstype';
 import { PlayerZoneProps } from './types';
-import Card from '../Card';
+
 import CardComponent from '../../../../components/Card';
 
 const styles: CSS.Properties = {

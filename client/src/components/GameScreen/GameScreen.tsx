@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { GameScreenProps } from './types';
 import { useSocketNamespace } from '../../utils/hooks';
 import { isLoggedIn } from '../../utils/auth';
 import { Loading } from 'carbon-components-react';
 import Intro from './Intro/Intro';
+import Board from '../../pages/Game/components/Board';
+import UserContext from '../../contexts/UserContext';
+import { Card } from '../../App/types';
 
 /*
 Starting animations: 
@@ -20,12 +23,17 @@ const GameScreen: React.FunctionComponent<GameScreenProps> = (props) => {
   const { game } = props;
   const socket = useSocketNamespace('/games');
 
-  console.log(game);
+  const userContext = useContext(UserContext);
 
-  const [playerConnected, setPlayersConnected] = useState(false);
+  const [playersConnected, setPlayersConnected] = useState(false);
   const [introPlayed, setIntoPlayed] = useState(false);
+  const [hand, setHand] = useState<Card[]>([]);
 
-  useEffect(() => {}, [playerConnected]);
+  useEffect(() => {
+    setTimeout(() => {
+      setIntoPlayed(true);
+    }, 12000);
+  }, [playersConnected]);
 
   useEffect(() => {
     if (socket) {
@@ -35,6 +43,12 @@ const GameScreen: React.FunctionComponent<GameScreenProps> = (props) => {
       socket.on('allPlayersConnected', () => {
         setPlayersConnected(true);
       });
+      socket.on('handUpdated', (newCards: Card[]) => {
+        // this requires the client keep track of what the non-discarded cards was
+        // be sure to validate server side
+        const newHand = [...hand, ...newCards];
+        setHand(newHand);
+      });
     }
   }, [socket]);
 
@@ -43,13 +57,28 @@ const GameScreen: React.FunctionComponent<GameScreenProps> = (props) => {
   };
 
   const render = () => {
-    // if (!playerConnected) {
-    //   return renderLoading();
-    // }
+    if (!playersConnected) {
+      return renderLoading();
+    }
+    if (!introPlayed) {
+      return <Intro game={game} />;
+    }
+    const { user } = userContext;
+
+    let playerNumber = -1;
+    if (game.player1.id === user.userId) {
+      playerNumber = 1;
+    }
+    if (game.player2.id === user.userId) {
+      playerNumber = 2;
+    }
+
     return (
-      <>
-        <Intro game={game} />
-      </>
+      <Board
+        playerNumber={playerNumber}
+        gameState={game.gameState}
+        hand={hand}
+      />
     );
   };
 

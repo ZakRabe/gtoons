@@ -130,21 +130,6 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
     };
   }, [socket, lobbyId]);
 
-  useEffect(() => {
-    if (!socket) {
-      return;
-    }
-
-    return () => {
-      if (socket) {
-        socket.emit('leaveLobby', {
-          lobbyId,
-          token: isLoggedIn(),
-        });
-      }
-    };
-  }, [socket, lobbyId]);
-
   const takeSeat = (seatNumber: number) => () => {
     if (!decks.length) {
     }

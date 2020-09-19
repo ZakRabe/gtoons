@@ -1,7 +1,6 @@
 import * as React from 'react';
 import CSS from 'csstype';
 import Score from '../Score';
-import Hand from '../Hand';
 import { InfoProps, InfoState } from './types';
 
 const styles: CSS.Properties = {
@@ -12,6 +11,7 @@ const styles: CSS.Properties = {
   backgroundColor: 'green',
 };
 
+// this component is unused?!
 export default class Info extends React.Component<InfoProps, InfoState> {
   // mount
   // update
@@ -23,7 +23,7 @@ export default class Info extends React.Component<InfoProps, InfoState> {
     return (
       <div style={styles}>
         <Score player1Name={player1Name} player2Name={player2Name} />
-        <Hand />
+        {/* <Hand /> */}
       </div>
     );
   }
