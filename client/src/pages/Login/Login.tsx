@@ -4,8 +4,11 @@ import { request } from '../../utils/api';
 import { isLoggedIn } from '../../utils/auth';
 import './styles.css';
 import { LoginProps, LoginState } from './types';
+import { withGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
-export default class Login extends React.Component<LoginProps, LoginState> {
+class Login extends React.Component<LoginProps, LoginState> {
+  recaptchaToken = null;
+
   constructor(props: LoginProps) {
     super(props);
 
@@ -15,8 +18,11 @@ export default class Login extends React.Component<LoginProps, LoginState> {
     };
   }
 
-  componentDidMount() {
-    const { history } = this.props;
+  async componentDidMount() {
+    const { history, googleReCaptchaProps } = this.props;
+
+    this.recaptchaToken = await googleReCaptchaProps.executeRecaptcha('login');
+
     const authToken = isLoggedIn();
     if (authToken) {
       request({
@@ -51,19 +57,23 @@ export default class Login extends React.Component<LoginProps, LoginState> {
       e.preventDefault();
     }
     const { username, password } = this.state;
-    const { history } = this.props;
+    const { history, googleReCaptchaProps } = this.props;
     this.setState({ error: '' });
 
     request({
       method: 'post',
       url: 'login/submit',
-      data: { username, password },
+      data: { username, password, recaptchaToken: this.recaptchaToken },
     })
       .then(({ token, user }) => {
         localStorage.setItem('authToken', token);
         history.push('/profile');
       })
-      .catch((error) => {
+      .catch(async (error) => {
+        // refresh the token
+        this.recaptchaToken = await googleReCaptchaProps.executeRecaptcha(
+          'login'
+        );
         this.setState({ error: error.data.message });
       });
   };
@@ -129,3 +139,5 @@ export default class Login extends React.Component<LoginProps, LoginState> {
     );
   }
 }
+
+export default withGoogleReCaptcha(Login);

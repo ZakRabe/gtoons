@@ -1,4 +1,5 @@
 import { RegisterController } from '../controller/RegisterController';
+import { checkCaptcha } from '../middleware/checkCaptcha';
 
 export const RegisterRoutes = [
   {
@@ -18,5 +19,6 @@ export const RegisterRoutes = [
     route: '/register/submit',
     controller: RegisterController,
     action: 'submit',
+    middleware: [checkCaptcha],
   },
 ];

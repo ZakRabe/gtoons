@@ -1,6 +1,6 @@
 {
   "name": "gtoons-server",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "homepage": "https://github.com/ZakRabe/gtoons",
   "description": "gtoons remake rest and websocket server",
   "main": "build/server.js",
@@ -9,19 +9,22 @@
     "watch": "ts-node-dev src/server.ts",
     "start": "ts-node src/server.ts",
     "typeorm": "ts-node ./node_modules/typeorm/cli.js",
+    "migrate:gen": "npm run typeorm migration:generate --",
     "migrate": "npm run typeorm migration:run",
-    "migrate:new": "npm run typeorm migration:create"
+    "migrate:new": "npm run typeorm migration:create --"
   },
   "author": "zak rabe",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "helmet": "^3.23.0",
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
     "reflect-metadata": "^0.1.13",
     "socket.io": "^2.3.0",
+    "tiny-json-http": "^7.2.2",
     "typeorm": "^0.2.25",
     "uuid": "^8.1.0"
   },

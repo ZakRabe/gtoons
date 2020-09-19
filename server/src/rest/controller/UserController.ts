@@ -3,7 +3,7 @@ import { getRepository } from 'typeorm';
 import PasswordReset from '../../common/entity/PasswordReset';
 import User from '../../common/entity/User';
 import { v4 as uuidv4 } from 'uuid';
-import { saltHashPassword } from '../../util';
+import { saltHashPassword, verifyToken } from '../../util';
 
 export class UserController {
   private userRepository = getRepository(User);
