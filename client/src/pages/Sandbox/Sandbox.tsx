@@ -104,7 +104,6 @@ export const Sandbox = (props: SandboxProps) => {
       url: 'sandbox/calculateScore',
       data: { board: board.map((card) => (card ? card.id : null)) },
     }).then((results) => {
-      console.log(results['p1Cards']);
       setBoard(results['p1Cards']);
     });
   };

@@ -60,9 +60,9 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
           <div
             style={{ position: 'absolute', top: '0', left: '0', fontSize: 50 }}
           >
-            <CopyToClipboard text={card.id.toString()}>
+            {/* <CopyToClipboard text={card.id.toString()}>
               <span>{card.id}</span>
-            </CopyToClipboard>
+            </CopyToClipboard> */}
           </div>
           <div style={cardBorderStyles}>
             <span style={pointStyles}>{card.points}</span>
