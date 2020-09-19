@@ -1,4 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, BaseEntity } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  BaseEntity,
+  CreateDateColumn,
+} from 'typeorm';
 
 @Entity()
 export default class User extends BaseEntity {
@@ -17,10 +23,10 @@ export default class User extends BaseEntity {
   @Column()
   salt: string;
 
-  @Column()
-  role?: string;
+  @Column({ default: 'PLAYER' })
+  role?: 'PLAYER' | 'ADMIN';
 
-  @Column()
+  @CreateDateColumn()
   created: string;
 
   toJson = () => {
@@ -30,7 +36,7 @@ export default class User extends BaseEntity {
       id,
       username,
       role,
-      created
+      created,
     };
   };
 }

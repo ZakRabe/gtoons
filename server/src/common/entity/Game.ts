@@ -37,14 +37,16 @@ export default class Game extends BaseEntity {
   @Column()
   color1: string;
 
-  @Column()
+  @Column({ nullable: true })
   color2: string;
 
-  @OneToOne((type) => User, { eager: true })
+  @OneToOne((type) => User, { eager: true, nullable: true })
   @JoinColumn()
   winner: User;
 
-  @OneToOne((type) => GameState, (state) => state.game, { eager: true })
+  @OneToOne((type) => GameState, (state) => state.game, {
+    eager: true,
+  })
   gameState: GameState;
 
   toJson = () => {

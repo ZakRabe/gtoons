@@ -6,6 +6,7 @@ import { Loading } from 'carbon-components-react';
 import Intro from './Intro/Intro';
 import Board from '../../pages/Game/components/Board';
 import UserContext from '../../contexts/UserContext';
+import { Card } from '../../App/types';
 
 /*
 Starting animations: 
@@ -26,6 +27,7 @@ const GameScreen: React.FunctionComponent<GameScreenProps> = (props) => {
 
   const [playersConnected, setPlayersConnected] = useState(false);
   const [introPlayed, setIntoPlayed] = useState(false);
+  const [hand, setHand] = useState<Card[]>([]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -40,6 +42,12 @@ const GameScreen: React.FunctionComponent<GameScreenProps> = (props) => {
 
       socket.on('allPlayersConnected', () => {
         setPlayersConnected(true);
+      });
+      socket.on('handUpdated', (newCards: Card[]) => {
+        // this requires the client keep track of what the non-discarded cards was
+        // be sure to validate server side
+        const newHand = [...hand, ...newCards];
+        setHand(newHand);
       });
     }
   }, [socket]);
@@ -65,7 +73,13 @@ const GameScreen: React.FunctionComponent<GameScreenProps> = (props) => {
       playerNumber = 2;
     }
 
-    return <Board playerNumber={playerNumber} gameState={game.gameState} />;
+    return (
+      <Board
+        playerNumber={playerNumber}
+        gameState={game.gameState}
+        hand={hand}
+      />
+    );
   };
 
   return render();

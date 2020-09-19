@@ -1,6 +1,7 @@
 import {
   BaseEntity,
   Column,
+  CreateDateColumn,
   Entity,
   JoinColumn,
   ManyToOne,
@@ -19,50 +20,56 @@ export default class Lobby extends BaseEntity {
   @Column()
   name: string;
 
-  @Column()
+  @CreateDateColumn()
   created: string;
 
   // for some reason eager here causes crashes in the find query?
-  @OneToOne((type) => Game, { eager: true, nullable: true })
+  @OneToOne((type) => Game, {
+    eager: true,
+    nullable: true,
+    onDelete: 'CASCADE',
+  })
   @JoinColumn()
   game: Game | null;
 
   @Column()
   capacity: number;
 
-  @Column()
+  @Column({ default: 0 })
   connectedCount: number;
 
   @OneToOne((type) => User, { eager: true })
   @JoinColumn()
   owner: User;
 
-  @OneToOne((type) => User, { eager: true })
+  @OneToOne((type) => User, { eager: true, nullable: true })
   @JoinColumn()
   seat1: User | null;
 
-  @OneToOne((type) => User, { eager: true })
+  @OneToOne((type) => User, { eager: true, nullable: true })
   @JoinColumn()
   seat2: User | null;
 
-  @Column()
-  seat1Ready: number;
+  @Column({ default: false })
+  seat1Ready: boolean;
 
-  @Column()
-  seat2Ready: number;
-  @ManyToOne((type) => Deck, { eager: true })
+  @Column({ default: false })
+  seat2Ready: boolean;
+
+  @ManyToOne((type) => Deck, { eager: true, nullable: true })
   @JoinColumn()
   seat1Deck: Deck | null;
 
-  @ManyToOne((type) => Deck, { eager: true })
+  @ManyToOne((type) => Deck, { eager: true, nullable: true })
   @JoinColumn()
   seat2Deck: Deck | null;
 
-  @Column()
+  // currently unused. TODO: support winner stays, etc
+  @Column({ default: 0 })
   seatRule: number;
 
   // TODO. how much do we care about security here?
-  @Column()
+  @Column({ nullable: true })
   password: string;
 
   toJson = () => {

@@ -18,6 +18,7 @@ export interface GameState {
   player2Board: number[];
   player1Discard: number[];
   player2Discard: number[];
+  myHand: number[];
 }
 
 interface Game {

@@ -8,6 +8,7 @@ import { SockerController } from './SocketController';
 import GameState from '../../common/entity/GameState';
 import { cardsInCollection, verifyToken } from '../../util';
 import { AuthTokenUser } from '../../types';
+import { getCards } from '../../cards/utils';
 
 export class GameController extends SockerController {
   private collectionRepository = getRepository(Collection);
@@ -151,9 +152,7 @@ export class GameController extends SockerController {
     if (!GameState.validCardCount(turn, board.length)) {
       return this.cheater();
     }
-
     // do they own the cards
-
     // are the cards in the deck
     const deck = game.player1Deck;
   };
@@ -191,6 +190,20 @@ export class GameController extends SockerController {
       gameState.connectedPlayers += 1;
       await gameState.save();
       await gameState.reload();
+      let playerRoom = ``;
+      if (isPlayer1) {
+        playerRoom = `${gameRoom}_player1`;
+        this.socket.join(playerRoom);
+        this.io
+          .to(playerRoom)
+          .emit('handUpdated', getCards(gameState.handJson(1, 1)));
+      } else {
+        playerRoom = `${gameRoom}_player2`;
+        this.socket.join(playerRoom);
+        this.io
+          .to(playerRoom)
+          .emit('handUpdated', getCards(gameState.handJson(2, 1)));
+      }
       // >= 2 means we let reconnects through
       if (gameState.connectedPlayers >= 2) {
         // Both players have connected.

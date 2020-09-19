@@ -1,4 +1,3 @@
-import { getRepository } from 'typeorm';
 import { NextFunction, Request, Response } from 'express';
 import * as cards from '../../cards/cards.json';
 import { getCards } from '../../cards/utils';

@@ -3,6 +3,8 @@ import CSS from 'csstype';
 import PlayerZones from '../PlayerZones';
 import { BoardProps } from './types';
 import { request } from '../../../../utils/api';
+import HandZone from '../HandZone';
+import Hand from '../Hand';
 
 const styles: CSS.Properties = {
   display: 'flex',
@@ -13,7 +15,7 @@ const styles: CSS.Properties = {
 };
 
 const Board: React.FunctionComponent<BoardProps> = (props) => {
-  const { gameState, playerNumber } = props;
+  const { gameState, playerNumber, hand } = props;
   const isSpectator = playerNumber === -1;
 
   const [p1Board, setP1Board] = React.useState([]);
@@ -40,6 +42,7 @@ const Board: React.FunctionComponent<BoardProps> = (props) => {
   const render = () => {
     return (
       <section style={styles}>
+        {isSpectator && <Hand cards={[]} />}
         <PlayerZones
           cards={opponentBoard}
           isOpponent={true}
@@ -51,6 +54,7 @@ const Board: React.FunctionComponent<BoardProps> = (props) => {
           onCardClick={() => {}}
           onCardHover={() => {}}
         />
+        <Hand cards={hand} />
       </section>
     );
   };

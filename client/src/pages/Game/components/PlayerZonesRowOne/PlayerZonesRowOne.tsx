@@ -22,7 +22,7 @@ export default class PlayerZonesRowOne extends React.Component<
         {cards?.map((card, index) => {
           return (
             <PlayerZone
-              key={card ? card.id : `emptySlot_${index}`}
+              key={`boardSlot_${index}`}
               card={card}
               onCardClick={onCardClick}
               onCardHover={onCardHover}
@@ -33,16 +33,3 @@ export default class PlayerZonesRowOne extends React.Component<
     );
   }
 }
-
-// cards ? (
-//   <div style={styles}>
-//     {cards.map((card) => {
-//       <PlayerZone
-//         cardID={card.id.toString()}
-//         cardColor={card.colors[0]}
-//         cardScore={card.points.toString()}
-//         useAnimated={false}
-//       />;
-//     })}
-//   </div>
-// ) : null;

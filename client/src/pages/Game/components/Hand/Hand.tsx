@@ -1,6 +1,7 @@
 import * as React from 'react';
 import CSS from 'csstype';
 import HandZone from '../HandZone';
+import { HandProps } from './types';
 
 const styles: CSS.Properties = {
   display: 'block',
@@ -10,16 +11,14 @@ const styles: CSS.Properties = {
   overflow: 'hidden',
 };
 
-export default class Hand extends React.Component<{}, {}> {
+export default class Hand extends React.Component<HandProps, {}> {
   render() {
+    const { cards } = this.props;
     return (
       <div style={styles}>
-        <HandZone />
-        <HandZone />
-        <HandZone />
-        <HandZone />
-        <HandZone />
-        <HandZone />
+        {cards.map((card) => {
+          return <HandZone card={card} />;
+        })}
       </div>
     );
   }
