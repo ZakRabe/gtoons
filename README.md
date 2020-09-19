@@ -68,12 +68,9 @@ GRANT ALL PRIVILEGES ON `gtoons` . * TO 'gtoons'@'localhost';
 FLUSH PRIVILEGES;
 ```
 
-#### NOTE: Added 6-13-2020
+#### NOTE: Added 19/9/2020
 
-If you have an existing database from before the date above, you need to drop all the tables. The migrations to update column names weren't working, so instead we updated the migrations. We needed to rename a lot of foriegn key columns to avoid bugs in TypeORM
-
-To-Do:  
-Make migrations for database creation and user?
+If you have a database from before 19/9/2020. You need to drop all your tables and run migrations from an empty database.
 
 ---
 
@@ -101,7 +98,7 @@ Install the frontend:
 ### Start the Express Backend:
 
 `cd gtoons/server/`  
-`npm run start&`
+`npm run start`
 
 If you are working on the backend code, you can run:  
 `npm run watch`  
@@ -130,3 +127,20 @@ sysctl -p
 ```
 
 If you experience issues, please log an [Issue](https://github.com/ZakRabe/gtoons/issues) or ask for help in the [Discord](https://discord.com/invite/W9Z9hSG) chat server.
+
+### Updating the database using migrations
+
+[TypeORM Docs](https://typeorm.io/)
+
+We use TypeORM to interact with the database. all data changes should be made in an entity file found in `server\src\common\entity`
+
+Once you've made a change in the entities, run the command to create a migration for the change. Please describe the change you're making in the name.
+`npm run migrate:gen -- -n=NameOfMyMigration`
+
+If successful, you should see a message that the migration has been generated successfully, and there should be a new file in `server\src\common\migration`
+
+To execute the changes from the migration to the database, run the migrate command
+`npm run migrate`
+
+If you need to write your own SQL for a migration (NOT RECCOMENDED), use the new command
+`npm run typeorm migration:create -- -n=NameOfMyCustomMigration`
