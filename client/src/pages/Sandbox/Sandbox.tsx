@@ -41,6 +41,7 @@ export const Sandbox = (props: SandboxProps) => {
     null,
   ]);
 
+  const boardIDs = board.map((card) => card?.id).join(', ');
   // display a list of decks
   // Click a card in the collection -> adds it to the current deck
   // Click a card in the deck       -> removes it from the deck
@@ -102,12 +103,14 @@ export const Sandbox = (props: SandboxProps) => {
       method: 'post',
       url: 'sandbox/calculateScore',
       data: { board: board.map((card) => (card ? card.id : null)) },
-    }).then(console.log);
+    }).then((results) => {
+      setBoard(results['p1Cards']);
+    });
   };
 
   React.useEffect(() => {
     calculateScore();
-  }, [board]);
+  }, [boardIDs]);
 
   const onCollectionCardClick = (cardId: number) => (e: React.MouseEvent) => {
     const newBoard = [...board];
@@ -119,11 +122,14 @@ export const Sandbox = (props: SandboxProps) => {
       newBoard.find((card) => card && card.id === cardId) ||
       emptySpace === -1
     ) {
-      console.log('returning');
       return;
     }
 
     newBoard.splice(emptySpace, 1, card);
+
+    //const newBoardIDs = newBoard.map((card) => card?.id).join(', ');
+
+    //setBoardIDs(newBoardIDs);
     setBoard(newBoard);
   };
 
@@ -133,6 +139,9 @@ export const Sandbox = (props: SandboxProps) => {
 
     newBoard.splice(index, 1, null);
 
+    //const newBoardIDs = newBoard.map((card) => card?.id).join(', ');
+
+    //setBoardIDs(newBoardIDs);
     setBoard(newBoard);
   };
 

@@ -15,6 +15,7 @@ export interface Card {
   groups: string[];
   types: string[];
   points: number;
+  basePoints: number;
 }
 
 export interface Deck {
