@@ -22,7 +22,7 @@ export const checkJwt = (req: Request, res: Response, next: NextFunction) => {
   //We want to send a new token on every request
   const { userId, username } = jwtPayload;
   // TODO: load from environment variable
-  const newToken = jwt.sign({ userId, username }, 'GToons2019SecretToken', {
+  const newToken = jwt.sign({ userId, username }, process.env.JWT_SECRET, {
     expiresIn: '1h',
   });
   res.setHeader('token', newToken);

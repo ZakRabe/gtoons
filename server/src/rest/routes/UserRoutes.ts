@@ -49,4 +49,11 @@ export const UserRoutes = [
     controller: UserController,
     action: 'remove',
   },
+  {
+    method: 'post',
+    route: '/users/recaptcha',
+    middleware: [],
+    controller: UserController,
+    action: 'recaptcha',
+  },
 ];

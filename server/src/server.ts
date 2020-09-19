@@ -8,6 +8,8 @@ import { Routes } from './rest/routes';
 import socket from './socket';
 import { RouteConfig } from './types';
 
+require('dotenv').config();
+
 const app = express();
 app.use(helmet());
 

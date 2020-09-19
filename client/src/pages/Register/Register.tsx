@@ -1,15 +1,15 @@
 import { Button, InlineNotification, TextInput } from 'carbon-components-react';
 import { debounce, isEqual } from 'lodash';
 import * as React from 'react';
+import { withGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { queryParams, request } from '../../utils/api';
 import { isValidEmail, validatePassword } from '../../utils/validation';
 import './styles.css';
 import { RegisterProps, RegisterState } from './types';
 
-export default class Register extends React.Component<
-  RegisterProps,
-  RegisterState
-> {
+export class Register extends React.Component<RegisterProps, RegisterState> {
+  recaptchaToken = null;
+
   constructor(props: RegisterProps) {
     super(props);
     this.state = {
@@ -27,6 +27,14 @@ export default class Register extends React.Component<
     // wait a second after the user has stopped typing to fire the API calls
     this.getUsernameIsValid = debounce(this.getUsernameIsValid, 1000);
     this.getEmailIsValid = debounce(this.getEmailIsValid, 1000);
+  }
+
+  async componentDidMount() {
+    const { googleReCaptchaProps } = this.props;
+
+    this.recaptchaToken = await googleReCaptchaProps.executeRecaptcha(
+      'register'
+    );
   }
 
   componentDidUpdate(_prevProps: RegisterProps, prevState: RegisterState) {
@@ -142,12 +150,19 @@ export default class Register extends React.Component<
         email,
         password,
         confirmPassword,
+        recaptchaToken: this.recaptchaToken,
       },
     })
       .then((response) => {
         this.setState({ complete: true });
       })
-      .catch((error) => this.setState({ failed: true }));
+      .catch(async (error) => {
+        const { googleReCaptchaProps } = this.props;
+        this.recaptchaToken = await googleReCaptchaProps.executeRecaptcha(
+          'register'
+        );
+        this.setState({ failed: true });
+      });
   };
 
   renderSuccess = () => {
@@ -158,6 +173,8 @@ export default class Register extends React.Component<
       </div>
     );
   };
+
+  verifyCallback = console.log;
 
   renderForm = () => {
     const {
@@ -173,7 +190,7 @@ export default class Register extends React.Component<
       <div className="registerWrapper">
         <h1>Register to play reToons</h1>
         <form onSubmit={this.submit}>
-          <p>
+          <section style={{ marginBottom: '1em' }}>
             <TextInput
               labelText="Username"
               name="username"
@@ -182,8 +199,8 @@ export default class Register extends React.Component<
               onChange={this.onInputChange}
             />
             {this.renderUsernameAvailable()}
-          </p>
-          <p>
+          </section>
+          <section style={{ marginBottom: '1em' }}>
             <TextInput
               type="email"
               labelText="Email"
@@ -193,8 +210,8 @@ export default class Register extends React.Component<
               onChange={this.onInputChange}
             />
             {this.renderEmailAvailable()}
-          </p>
-          <p>
+          </section>
+          <section style={{ marginBottom: '1em' }}>
             <TextInput
               labelText="Password"
               type="password"
@@ -207,8 +224,8 @@ export default class Register extends React.Component<
               }}
             />
             {passwordErrors.length > 0 && this.renderPasswordErrors()}
-          </p>
-          <p>
+          </section>
+          <section style={{ marginBottom: '1em' }}>
             <TextInput
               labelText="Confirm Password"
               type="password"
@@ -218,8 +235,9 @@ export default class Register extends React.Component<
               onChange={this.onInputChange}
             />
             {this.renderConfirmPasswordErrors()}
-          </p>
-          <p>
+          </section>
+
+          <section style={{ marginBottom: '1em' }}>
             {failed && (
               <InlineNotification
                 title="Error"
@@ -227,7 +245,7 @@ export default class Register extends React.Component<
                 kind="error"
               ></InlineNotification>
             )}
-          </p>
+          </section>
           <div className="registerAction register--btn-set">
             <Button className="loginButton" kind="secondary" href="/login">
               Log in
@@ -275,3 +293,5 @@ export default class Register extends React.Component<
     return <div>{!complete ? this.renderForm() : this.renderSuccess()}</div>;
   }
 }
+
+export default withGoogleReCaptcha(Register);

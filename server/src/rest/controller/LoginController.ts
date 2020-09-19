@@ -44,8 +44,7 @@ export class LoginController {
 
     const token = jwt.sign(
       { userId: user.id, username: user.username },
-      //TODO load for env var
-      'GToons2019SecretToken',
+      process.env.JWT_SECRET,
       { expiresIn: '1h' }
     );
 

@@ -1,10 +1,9 @@
 import { NextFunction, Request, Response } from 'express';
 import { getRepository } from 'typeorm';
+import * as cards from '../../cards/cards.json';
 import Collection from '../../common/entity/Collection';
 import User from '../../common/entity/User';
-import * as cards from '../../cards/cards.json';
 import { saltHashPassword } from '../../util';
-const crypto = require('crypto');
 
 export class RegisterController {
   private userRepository = getRepository(User);
