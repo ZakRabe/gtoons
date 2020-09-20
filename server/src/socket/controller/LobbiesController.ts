@@ -10,10 +10,12 @@ export class LobbyController extends SockerController {
   private userRepository = getRepository(User);
 
   async createLobby({ user: token, name, capacity }) {
+    console.log(token);
     let userId;
     try {
       userId = verifyToken(token).userId;
     } catch (error) {
+      console.log(error);
       console.error('Invalid Auth Token');
       return;
     }

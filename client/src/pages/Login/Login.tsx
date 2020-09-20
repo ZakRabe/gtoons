@@ -66,6 +66,7 @@ class Login extends React.Component<LoginProps, LoginState> {
       data: { username, password, recaptchaToken: this.recaptchaToken },
     })
       .then(({ token, user }) => {
+        console.log('--> ', token, user);
         localStorage.setItem('authToken', token);
         history.push('/profile');
       })

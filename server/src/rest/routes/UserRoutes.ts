@@ -37,7 +37,7 @@ export const UserRoutes = [
   {
     method: 'get',
     route: '/users/:id',
-    middleware: [checkJwt, checkRoles(['ADMIN'])],
+    middleware: [checkJwt, checkRoles(['ADMIN'], true)],
     controller: UserController,
     action: 'one',
   },
