@@ -3,6 +3,7 @@ import {
   InlineNotification,
   Select,
   SelectItem,
+  Tooltip,
 } from 'carbon-components-react';
 import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
@@ -126,21 +127,6 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
         socket.off('seat2Ready');
         socket.off('seat2Unready');
         socket.off('lobbyUpdated');
-      }
-    };
-  }, [socket, lobbyId]);
-
-  useEffect(() => {
-    if (!socket) {
-      return;
-    }
-
-    return () => {
-      if (socket) {
-        socket.emit('leaveLobby', {
-          lobbyId,
-          token: isLoggedIn(),
-        });
       }
     };
   }, [socket, lobbyId]);
@@ -328,7 +314,8 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
     return (
       <Button
         color="primary"
-        disabled={!seat1.ready || !seat2.ready}
+        // disabled={!seat1.ready || !seat2.ready}
+        disabled
         onClick={startGame}
       >
         Start!
@@ -342,7 +329,13 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
     }
     return (
       <section style={lobbyWrapperStyles}>
+        {/* hide captcha logo on this page. */}
+        {/* TODO: make this resuable */}
+        <style>.grecaptcha-badge {`{display:none !important;}`}</style>
         <div style={lobbyBodyStyles}>
+          <div>
+            <h2>GAME STARTS ARE DISABLED - UNDER DEVELOPMENT</h2>
+          </div>
           <section
             style={{ flexDirection: 'row', display: 'flex', flex: '1 0 auto' }}
           >

@@ -1,4 +1,4 @@
-import { HasRouter } from '../../App/types';
+import { HasCaptcha, HasRouter } from '../../App/types';
 
 export interface RegisterState {
   username: string;
@@ -12,4 +12,4 @@ export interface RegisterState {
   failed: boolean;
 }
 
-export interface RegisterProps extends HasRouter {}
+export interface RegisterProps extends HasRouter, HasCaptcha {}

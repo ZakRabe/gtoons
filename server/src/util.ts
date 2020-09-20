@@ -1,4 +1,5 @@
 const crypto = require('crypto');
+
 import * as jwt from 'jsonwebtoken';
 import { AuthTokenUser } from './types';
 
@@ -25,7 +26,7 @@ export const saltHashPassword = (password: string) => {
 };
 
 export const verifyToken = (token): AuthTokenUser => {
-  return jwt.verify(token, 'GToons2019SecretToken');
+  return jwt.verify(token, process.env.JWT_SECRET);
 };
 
 export const roll = (min: number, max: number) => {

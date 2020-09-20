@@ -3,8 +3,12 @@ import { getRepository } from 'typeorm';
 import PasswordReset from '../../common/entity/PasswordReset';
 import User from '../../common/entity/User';
 import { v4 as uuidv4 } from 'uuid';
+<<<<<<< HEAD
 import { saltHashPassword } from '../../util';
 import { request } from 'http';
+=======
+import { saltHashPassword, verifyToken } from '../../util';
+>>>>>>> 8c8403397fbc75c7a00d30101c86311a7d89b962
 
 export class UserController {
   private userRepository = getRepository(User);

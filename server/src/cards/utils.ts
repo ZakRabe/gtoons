@@ -1,9 +1,10 @@
 import Card from '../common/entity/Card';
 
-const cards: Card[] = require('./cards.json');
+import cards from './cards.json';
 
 export function getCard(id: number) {
-  return cards.find(card => card.id === id);
+  const foundCard = cards.find((card) => card.id === id);
+  return foundCard ? { ...foundCard } : null;
 }
 
 export function getCards(ids: number[]) {

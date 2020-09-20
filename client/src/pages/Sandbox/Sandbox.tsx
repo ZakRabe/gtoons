@@ -1,17 +1,12 @@
+import CSS from 'csstype';
 import * as React from 'react';
-import { SandboxProps } from './types';
-import {
-  socketConnect,
-  // @ts-ignore: no types for this
-} from 'socket.io-react';
 import { Input } from 'semantic-ui-react';
-import { request } from '../../utils/api';
 import { Card } from '../../App/types';
 import CardComponent from '../../components/Card';
-import CSS from 'csstype';
-import ColorButton from './components/ColorButton';
+import { request } from '../../utils/api';
 import PlayerZones from '../Game/components/PlayerZones';
-import { Dictionary, debounce } from 'lodash';
+import ColorButton from './components/ColorButton';
+import { SandboxProps } from './types';
 
 export const Sandbox = (props: SandboxProps) => {
   // const { socket } = props;
@@ -41,6 +36,7 @@ export const Sandbox = (props: SandboxProps) => {
     null,
   ]);
 
+  const boardIDs = board.map((card) => card?.id).join(', ');
   // display a list of decks
   // Click a card in the collection -> adds it to the current deck
   // Click a card in the deck       -> removes it from the deck
@@ -102,12 +98,14 @@ export const Sandbox = (props: SandboxProps) => {
       method: 'post',
       url: 'sandbox/calculateScore',
       data: { board: board.map((card) => (card ? card.id : null)) },
-    }).then(console.log);
+    }).then((results) => {
+      setBoard(results['p1Cards']);
+    });
   };
 
   React.useEffect(() => {
     calculateScore();
-  }, [board]);
+  }, [boardIDs]);
 
   const onCollectionCardClick = (cardId: number) => (e: React.MouseEvent) => {
     const newBoard = [...board];
@@ -119,11 +117,14 @@ export const Sandbox = (props: SandboxProps) => {
       newBoard.find((card) => card && card.id === cardId) ||
       emptySpace === -1
     ) {
-      console.log('returning');
       return;
     }
 
     newBoard.splice(emptySpace, 1, card);
+
+    //const newBoardIDs = newBoard.map((card) => card?.id).join(', ');
+
+    //setBoardIDs(newBoardIDs);
     setBoard(newBoard);
   };
 
@@ -133,6 +134,9 @@ export const Sandbox = (props: SandboxProps) => {
 
     newBoard.splice(index, 1, null);
 
+    //const newBoardIDs = newBoard.map((card) => card?.id).join(', ');
+
+    //setBoardIDs(newBoardIDs);
     setBoard(newBoard);
   };
 
@@ -188,28 +192,29 @@ export const Sandbox = (props: SandboxProps) => {
 
   const filterByColor = (cards: Card[], activeColors: string[]): Card[] => {
     console.log('filterByColor');
+    console.log(cards);
     return cards.filter((card: Card) =>
       card.colors.some((cardColor) => activeColors.includes(cardColor))
     );
   };
 
   const filterBySearchTerm = (cards: Card[], searchTerm: string): Card[] => {
-    console.log('filterBySearchTerm');
+    // console.log('filterBySearchTerm');
     if (!searchTerm.length) {
       return cards;
     }
     return cards.filter((card) => checkForTerm(card, searchTerm));
   };
 
-  const colorMatches = React.useMemo(() => filterByColor(cards, colorFilters), [
-    cards,
-    colorFilters,
-  ]);
+  const colorMatches = React.useMemo(
+    () => (cards ? filterByColor(cards, colorFilters) : []),
+    [cards, colorFilters]
+  );
 
-  const searchMatches = React.useMemo(() => filterBySearchTerm(cards, search), [
-    cards,
-    search,
-  ]);
+  const searchMatches = React.useMemo(
+    () => (cards ? filterBySearchTerm(cards, search) : []),
+    [cards, search]
+  );
 
   const allMatches = React.useMemo(
     () =>

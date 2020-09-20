@@ -7,4 +7,10 @@ export const CardRoutes = [
     controller: CardController,
     action: 'all',
   },
+  {
+    method: 'post',
+    route: '/cards/some',
+    controller: CardController,
+    action: 'some',
+  },
 ];

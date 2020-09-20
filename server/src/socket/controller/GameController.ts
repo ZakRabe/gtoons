@@ -8,6 +8,7 @@ import { SockerController } from './SocketController';
 import GameState from '../../common/entity/GameState';
 import { cardsInCollection, verifyToken } from '../../util';
 import { AuthTokenUser } from '../../types';
+import { getCards } from '../../cards/utils';
 
 export class GameController extends SockerController {
   private collectionRepository = getRepository(Collection);
@@ -95,6 +96,7 @@ export class GameController extends SockerController {
     // console.log(p1DeckCards);
 
     // generate colors
+    // @ts-ignore TODO: this erroring on p1DeckCards but not p2DeckCards??
     const [color1, color2] = Game.generateColors(p1DeckCards, p2DeckCards);
 
     // console.log('colors');
@@ -151,9 +153,7 @@ export class GameController extends SockerController {
     if (!GameState.validCardCount(turn, board.length)) {
       return this.cheater();
     }
-
     // do they own the cards
-
     // are the cards in the deck
     const deck = game.player1Deck;
   };
@@ -162,12 +162,13 @@ export class GameController extends SockerController {
     this.io.emit('cheater');
   }
 
-  async playerConnected(token, gameId: number) {
+  async playerConnected({ token, gameId }) {
     const gameRoom = `game/${gameId}`;
     let user;
     try {
       user = verifyToken(token);
     } catch (error) {
+      console.error(error);
       return;
     }
 
@@ -183,13 +184,29 @@ export class GameController extends SockerController {
       return;
     }
     this.socket.join(gameRoom);
+
     const isPlayer1 = game.player1.id === user.userId;
     const isPlayer2 = game.player2.id === user.userId;
     if (isPlayer1 || isPlayer2) {
       gameState.connectedPlayers += 1;
       await gameState.save();
       await gameState.reload();
-      if (gameState.connectedPlayers === 2) {
+      let playerRoom = ``;
+      if (isPlayer1) {
+        playerRoom = `${gameRoom}_player1`;
+        this.socket.join(playerRoom);
+        this.io
+          .to(playerRoom)
+          .emit('handUpdated', getCards(gameState.handJson(1, 1)));
+      } else {
+        playerRoom = `${gameRoom}_player2`;
+        this.socket.join(playerRoom);
+        this.io
+          .to(playerRoom)
+          .emit('handUpdated', getCards(gameState.handJson(2, 1)));
+      }
+      // >= 2 means we let reconnects through
+      if (gameState.connectedPlayers >= 2) {
         // Both players have connected.
         // show the shuffle/cut/color in the client
         this.io.to(gameRoom).emit('allPlayersConnected');

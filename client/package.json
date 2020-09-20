@@ -1,6 +1,6 @@
 {
   "name": "gtoons-client",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "start": "react-scripts start",
@@ -25,6 +25,7 @@
   "dependencies": {
     "@carbon/icons-react": "^10.18.0",
     "@fortawesome/fontawesome-free": "^5.14.0",
+    "@types/react-recaptcha-v3": "^1.1.1",
     "axios": "^0.19.2",
     "carbon-components": "^10.20.0",
     "carbon-components-react": "^7.20.0",
@@ -35,6 +36,7 @@
     "react": "^16.13.1",
     "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.13.1",
+    "react-google-recaptcha-v3": "^1.5.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.3",
     "semantic-ui-css": "^2.4.1",

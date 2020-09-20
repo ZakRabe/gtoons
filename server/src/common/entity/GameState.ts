@@ -19,28 +19,28 @@ export default class GameState extends BaseEntity {
   @JoinColumn()
   game: Game;
 
-  @Column()
+  @Column({ default: 0 })
   turn: number;
 
-  @Column()
+  @Column({ default: '[]' })
   player1Board: string;
 
-  @Column()
+  @Column({ default: '[]' })
   player2Board: string;
 
-  @Column()
+  @Column({ default: '[]' })
   player1Discard: string;
 
-  @Column()
+  @Column({ default: '[]' })
   player2Discard: string;
 
-  @Column()
+  @Column({ default: '[]' })
   player1ShuffledDeck: string;
 
-  @Column()
+  @Column({ default: '[]' })
   player2ShuffledDeck: string;
 
-  @Column()
+  @Column({ default: 0 })
   connectedPlayers: number;
 
   toJson = () => {
@@ -48,8 +48,7 @@ export default class GameState extends BaseEntity {
       id,
       game,
       turn,
-      player1ShuffledDeck,
-      player2ShuffledDeck,
+
       player1Board,
       player2Board,
       player1Discard,
@@ -58,14 +57,35 @@ export default class GameState extends BaseEntity {
     return {
       id,
       turn,
-      game: game.toJson(),
-      player1ShuffledDeck: JSON.parse(player1ShuffledDeck),
-      player2ShuffledDeck: JSON.parse(player2ShuffledDeck),
+      game: game && game.toJson(),
+      // player1ShuffledDeck: JSON.parse(player1ShuffledDeck),
+      // player2ShuffledDeck: JSON.parse(player2ShuffledDeck),
       player1Board: JSON.parse(player1Board),
       player2Board: JSON.parse(player2Board),
       player1Discard: JSON.parse(player1Discard),
       player2Discard: JSON.parse(player2Discard),
     };
+  };
+
+  handJson = (playerNumber: number, turnNumber: number) => {
+    const base = this.toJson();
+    const player = `player${playerNumber}`;
+    const discard = base[`${player}Discard`];
+    const deck: number[] = JSON.parse(this[`${player}ShuffledDeck`]);
+    let handSize = 0;
+    let offset = 0;
+    switch (turnNumber) {
+      case 1:
+        handSize = 6;
+
+        break;
+      case 2:
+        handSize = 4 + discard.length;
+        offset = 5;
+        break;
+    }
+
+    return deck.slice(offset, handSize);
   };
 
   static validCardCount(turnNumber: number, cardCount: number): boolean {

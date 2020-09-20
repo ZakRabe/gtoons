@@ -35,7 +35,9 @@ export default class Card {
   modifiers: any[];
   // powers: Power[];
   // modifiers: Modifier[];
+  basePoints: number;
   points: number;
+  disabled: boolean;
 
   constructor(other: any) {
     //console.log(other);
@@ -50,7 +52,9 @@ export default class Card {
       this.types = other.types;
       this.powers = other.powers;
       this.modifiers = other.modifiers;
+      this.basePoints = other.basePoints;
       this.points = other.points;
+      this.disabled = false;
     }
   }
 
@@ -62,9 +66,10 @@ export default class Card {
   };
 
   checkPower = (board: (Card | null)[]) => {
-    this.powers.map((power) => {
-      console.log(power);
-      //power.check(board);
-    });
+    //console.log(this);
+    // this.powers.map((power) => {
+    //   console.log(power);
+    //   //power.check(board);
+    // });
   };
 }

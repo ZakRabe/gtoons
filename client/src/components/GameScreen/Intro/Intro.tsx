@@ -70,7 +70,7 @@ const Intro: React.FunctionComponent<IntroProps> = (props) => {
               {!shuffling && (
                 <div
                   style={{
-                    margin: 4,
+                    margin: 8,
                     padding: '8px 12px',
                     borderRadius: 8,
                     backgroundColor: `rgba(0,198,250,.2)`,
@@ -99,6 +99,49 @@ const Intro: React.FunctionComponent<IntroProps> = (props) => {
     );
   };
 
+  const getWinConditionText = (color1: string, color2: string) => {
+    const pointColors = ['BLACK', 'SILVER'];
+    const colors = [color1, color2];
+    if (pointColors.includes(color1) || pointColors.includes(color2)) {
+      if (pointColors.includes(color1) && pointColors.includes(color2)) {
+        return (
+          <>
+            <p>
+              Both cards revealed from the cut are BLACK or SILVER! This game
+              will be decided purely by points!
+            </p>
+          </>
+        );
+      }
+      const basicColor =
+        color1 === 'BLACK' || color1 === 'SILVER' ? color2 : color1;
+      return (
+        <>
+          <p>
+            One of the cards revealed from the cut is BLACK or SILVER. This
+            winner of this game will be determined by points.
+          </p>
+          <p>
+            However, having more {basicColor} cards is worth a bonus of 15
+            points at the end of the game.
+          </p>
+        </>
+      );
+    }
+    return (
+      <>
+        <p>
+          If a player has more cards of both colors, he or she wins
+          automatically.
+        </p>
+        <p>
+          If neither player has more of both colors, the game will be decided by
+          points.
+        </p>
+      </>
+    );
+  };
+
   const renderInfo = () => {
     return (
       <div style={{ flex: 1 }}>
@@ -109,16 +152,7 @@ const Intro: React.FunctionComponent<IntroProps> = (props) => {
           {shuffling ? (
             <p>Selecting cut cards</p>
           ) : (
-            <>
-              <p>
-                If a player has more cards of both colors, he or she wins
-                automatically.
-              </p>
-              <p>
-                If neither player has more of both colors, the game will be
-                decided by points.
-              </p>
-            </>
+            getWinConditionText(game.color1, game.color2)
           )}
         </div>
       </div>

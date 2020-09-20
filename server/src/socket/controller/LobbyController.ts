@@ -58,7 +58,6 @@ export class LobbyController extends SockerController {
       return;
     }
 
-    this.socket.leave(lobbyRoom);
     const lobby = await this.lobbyRepository.findOne(lobbyId);
     // shouldn't happen, but just to be safe
     if (!lobby) {
@@ -83,7 +82,8 @@ export class LobbyController extends SockerController {
     this.io.emit('lobbyUpdated', lobby.toJson());
     this.io.to(lobbyRoom).emit('userLeft', user.username);
     this.socket.leave(lobbyRoom);
-    if (lobby.connectedCount === 0) {
+
+    if (lobby.connectedCount < 1) {
       await this.closeLobby({ lobbyId });
     }
   }
@@ -163,7 +163,7 @@ export class LobbyController extends SockerController {
     const field = seatNumber === 1 ? 'seat1Ready' : 'seat2Ready';
 
     if (lobby[playerField] && lobby[playerField].id === user.id) {
-      lobby[field] = 1;
+      lobby[field] = true;
 
       // TODO: Validate deck selection
       // deck belongs to user?
@@ -191,7 +191,7 @@ export class LobbyController extends SockerController {
     const field = seatNumber === 1 ? 'seat1Ready' : 'seat2Ready';
 
     if (lobby[playerField] && lobby[playerField].id === user.id) {
-      lobby[field] = 0;
+      lobby[field] = false;
       await lobby.save();
       this.io.to(lobbyRoom).emit(`${playerField}Unready`);
     }
@@ -200,7 +200,7 @@ export class LobbyController extends SockerController {
   async closeLobby({ lobbyId }) {
     const lobby = await this.lobbyRepository.findOne(lobbyId);
 
-    if (lobby.connectedCount === 0) {
+    if (lobby.connectedCount < 1) {
       await this.lobbyRepository.delete(lobbyId);
       this.io.emit('lobbyClosed', lobby.toJson().id);
     }

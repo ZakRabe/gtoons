@@ -1,12 +1,14 @@
-import * as bodyParser from 'body-parser';
-import * as express from 'express';
+import bodyParser from 'body-parser';
+import express from 'express';
 import { Request, Response } from 'express';
-import * as helmet from 'helmet';
+import helmet from 'helmet';
 import 'reflect-metadata';
 import { createConnection } from 'typeorm';
 import { Routes } from './rest/routes';
 import socket from './socket';
 import { RouteConfig } from './types';
+
+require('dotenv').config();
 
 const app = express();
 app.use(helmet());

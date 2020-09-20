@@ -5,6 +5,10 @@ export interface HasSocket {
 }
 export interface HasRouter<P = Partial<any>> extends RouteComponentProps<P> {}
 
+export interface HasCaptcha {
+  googleReCaptchaProps: any;
+}
+
 export interface Card {
   id: number;
   title: string;
@@ -15,6 +19,7 @@ export interface Card {
   groups: string[];
   types: string[];
   points: number;
+  basePoints: number;
 }
 
 export interface Deck {
