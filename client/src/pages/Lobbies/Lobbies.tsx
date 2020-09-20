@@ -15,7 +15,7 @@ import {
   profileContainer,
 } from './styles';
 import { useHistory } from 'react-router-dom';
-import { Button, TextInput, Tooltip } from 'carbon-components-react';
+import { Button, TextInput, TileGroup, Tooltip } from 'carbon-components-react';
 import { Add16, PlayFilledAlt32 } from '@carbon/icons-react';
 import { UserProfile } from '@carbon/pictograms-react';
 
@@ -189,11 +189,11 @@ export const Lobbies = (_props: LobbiesProps) => {
       <div>
         <div style={lobbieContent}>
           <h3>Active Lobbies</h3>
-          {/* <Card.Group>
+          <TileGroup name="Lobbies">
             {lobbies.map((lobby: any) => {
               return <LobbyCard key={lobby.id} {...lobby}></LobbyCard>;
             })}
-          </Card.Group> */}
+          </TileGroup>
         </div>
       </div>
     </>
