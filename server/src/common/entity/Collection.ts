@@ -19,11 +19,7 @@ export default class Collection extends BaseEntity {
   @JoinColumn()
   player: User;
 
-<<<<<<< HEAD
-  @Column({ type: "mediumtext"})
-=======
   @Column({ type: 'longtext' })
->>>>>>> 8c8403397fbc75c7a00d30101c86311a7d89b962
   cards: string;
 
   toJson = () => {

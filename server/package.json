@@ -24,14 +24,9 @@
     "mysql": "^2.18.1",
     "reflect-metadata": "^0.1.13",
     "socket.io": "^2.3.0",
-<<<<<<< HEAD
     "typeorm": "^0.2.26",
-    "uuid": "^8.3.0"
-=======
-    "tiny-json-http": "^7.2.2",
-    "typeorm": "^0.2.25",
-    "uuid": "^8.1.0"
->>>>>>> 8c8403397fbc75c7a00d30101c86311a7d89b962
+    "uuid": "^8.3.0",
+    "tiny-json-http": "^7.2.2"
   },
   "devDependencies": {
     "@types/express": "^4.17.8",
