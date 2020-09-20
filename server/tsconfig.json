@@ -12,6 +12,8 @@
     "experimentalDecorators": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "pretty": true,
     "jsx": "preserve",
     "resolveJsonModule": true

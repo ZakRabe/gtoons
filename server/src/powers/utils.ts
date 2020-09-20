@@ -1,9 +1,8 @@
 import Power from '../common/entity/Power';
 import Card from '../common/entity/Card';
 import { getCards } from '../cards/utils';
-import { cardsInCollection } from '../util';
 
-const powers: (Power | any)[] = require('./powers.json');
+import powers from './powers.json';
 
 export function getPower(id: number) {
   const foundPower = powers.find((power) => power.id === id);
