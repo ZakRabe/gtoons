@@ -1,3 +1,4 @@
+require('dotenv').config({ path: __dirname + '/.env' });
 import bodyParser from 'body-parser';
 import express from 'express';
 import { Request, Response } from 'express';
@@ -8,7 +9,11 @@ import { Routes } from './rest/routes';
 import socket from './socket';
 import { RouteConfig } from './types';
 
-require('dotenv').config();
+console.log('environment vars');
+console.log('recaptcha');
+console.log(process.env.RECAPTCHA_SECRET);
+console.log('jwt');
+console.log(process.env.JWT_SECRET);
 
 const app = express();
 app.use(helmet());
