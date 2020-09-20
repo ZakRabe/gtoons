@@ -70,17 +70,31 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
   const renderCard = () => {
     return (
       <section
-        style={{ display: 'inline-flex', userSelect: 'none' }}
+        style={{
+          display: 'flex',
+          userSelect: 'none',
+          position: 'relative',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+        }}
         onMouseOver={onHover}
       >
-        <div style={cardWrapperStyles} onClick={onClick}>
+        <CopyToClipboard text={card.id.toString()}>
           <div
-            style={{ position: 'absolute', top: '0', left: '0', fontSize: 50 }}
+            style={{
+              cursor: 'pointer',
+              position: 'absolute',
+              bottom: '20%',
+              left: '8%',
+              fontSize: 16,
+              padding: 3,
+              background: 'white',
+            }}
           >
-            {/* <CopyToClipboard text={card.id.toString()}>
-              <span>{card.id}</span>
-            </CopyToClipboard> */}
+            <span>{card.id}</span>
           </div>
+        </CopyToClipboard>
+        <div style={cardWrapperStyles} onClick={onClick}>
           <div style={cardBorderStyles}>
             {card.points && <span style={pointStyles}>{card.points}</span>}
             <div style={cardStyles}></div>
