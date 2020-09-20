@@ -267,6 +267,7 @@ function checkRestrictions(
           }
           break;
       }
+      break;
     case 'NEIGHBOR':
       /*
       Check +1,-1

@@ -163,7 +163,7 @@ export class LobbyController extends SockerController {
     const field = seatNumber === 1 ? 'seat1Ready' : 'seat2Ready';
 
     if (lobby[playerField] && lobby[playerField].id === user.id) {
-      lobby[field] = 1;
+      lobby[field] = true;
 
       // TODO: Validate deck selection
       // deck belongs to user?
@@ -191,7 +191,7 @@ export class LobbyController extends SockerController {
     const field = seatNumber === 1 ? 'seat1Ready' : 'seat2Ready';
 
     if (lobby[playerField] && lobby[playerField].id === user.id) {
-      lobby[field] = 0;
+      lobby[field] = false;
       await lobby.save();
       this.io.to(lobbyRoom).emit(`${playerField}Unready`);
     }
