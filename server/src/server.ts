@@ -14,6 +14,8 @@ console.log('recaptcha');
 console.log(process.env.RECAPTCHA_SECRET);
 console.log('jwt');
 console.log(process.env.JWT_SECRET);
+console.log('env');
+console.log(process.env.NODE_ENV);
 
 const app = express();
 app.use(helmet());
