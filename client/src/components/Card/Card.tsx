@@ -71,7 +71,7 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
     return (
       <section
         style={{
-          display: 'flex',
+          display: 'inline-flex',
           userSelect: 'none',
           position: 'relative',
           marginLeft: 'auto',
