@@ -1,11 +1,9 @@
-import Power from '../common/entity/Power';
-import Card from '../common/entity/Card';
 import { getCards } from '../cards/utils';
-
+import Card from '../common/entity/Card';
 import powers from './powers.json';
 
 export function getPower(id: number) {
-  const foundPower = powers.find((power) => power.id === id);
+  const foundPower = (powers as any[]).find((power) => power.id === id);
   return foundPower ? { ...foundPower } : null;
 }
 
@@ -30,6 +28,7 @@ export function evaluateBoardPowers(
       card.powers.map((power) => {
         //Switch Case for each power type? SINGLE or FOR_EACH
         //console.log(power);
+        // @ts-ignore TODO: need better types for these
         check(p1Cards, p2Cards, power, card.id);
       });
     }
@@ -39,6 +38,7 @@ export function evaluateBoardPowers(
       card.powers.map((power) => {
         //Switch Case for each power type? SINGLE or FOR_EACH
         //console.log(power);
+        // @ts-ignore TODO: need better types for these
         check(p2Cards, p1Cards, power, card.id);
       });
     }

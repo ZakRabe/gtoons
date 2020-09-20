@@ -96,6 +96,7 @@ export class GameController extends SockerController {
     // console.log(p1DeckCards);
 
     // generate colors
+    // @ts-ignore TODO: this erroring on p1DeckCards but not p2DeckCards??
     const [color1, color2] = Game.generateColors(p1DeckCards, p2DeckCards);
 
     // console.log('colors');
