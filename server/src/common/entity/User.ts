@@ -26,8 +26,9 @@ export default class User extends BaseEntity {
   @Column({ nullable: true })
   profilePic?: string;
 
-  @CreateDateColumn()
-  created_at: Date;
+  @Column({ nullable: true })
+  profilePicType?: 'SVG' | 'PNG';
+
   @Column({ default: 'PLAYER' })
   role?: 'PLAYER' | 'ADMIN';
 

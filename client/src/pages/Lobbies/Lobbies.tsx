@@ -4,11 +4,20 @@ import { isLoggedIn } from '../../utils/auth';
 import { request } from '../../utils/api';
 import { useSocketNamespace } from '../../utils/hooks';
 import LobbyCard from './LobbyCard';
-import './styles.css';
+import './styles.ts';
 import { LobbiesProps } from './types';
+import {
+  createLobby as createLobbyStyle,
+  lobbieContent,
+  newGame,
+  newGameContent,
+  newGameContentAction,
+  profileContainer,
+} from './styles';
 import { useHistory } from 'react-router-dom';
 import { Button, TextInput, Tooltip } from 'carbon-components-react';
 import { Add16, PlayFilledAlt32 } from '@carbon/icons-react';
+import { UserProfile } from '@carbon/pictograms-react';
 
 const ProfileDisplay = () => {
   const [profilePic, setProfilePic] = useState<HTMLElement>();
@@ -17,30 +26,28 @@ const ProfileDisplay = () => {
   // Should I being using suspense here instead?
   useEffect(() => {
     request({
-      url: `users/${user.userId}`
+      url: `users/${user.userId}`,
     })
-    .then(currentUser => {
-      const { profilePic } = currentUser;
+      .then((currentUser) => {
+        const { profilePic } = currentUser;
 
-      const dom = new DOMParser();
-      const svg = dom.parseFromString(atob(profilePic), "image/svg+xml");
-      setProfilePic(svg.documentElement);
-    })
-    .catch(console.error);
+        const dom = new DOMParser();
+        const svg = dom.parseFromString(atob(profilePic), 'image/svg+xml');
+        setProfilePic(svg.documentElement);
+      })
+      .catch(console.error);
   }, []);
 
   return (
-    <div style={{display: 'flex'}}>
+    <div style={profileContainer}>
       <div>
         <h4>Hola</h4>
-        <h3>{user.username}</h3>
+        <h2>{user.username}</h2>
       </div>
-      <div>
-        {profilePic || <i className="far fa-user-circle" style={{ objectFit: 'fill' }}/>}
-      </div>
+      <div>{profilePic || <UserProfile />}</div>
     </div>
   );
-}
+};
 
 export const Lobbies = (_props: LobbiesProps) => {
   const lobbiesSocket = useSocketNamespace('/lobbies');
@@ -126,7 +133,12 @@ export const Lobbies = (_props: LobbiesProps) => {
   const renderPopup = () => {
     return (
       <div style={{ display: 'flex' }}>
-        <Button id={'createLobby'} renderIcon={Add16} onClick={onLobbyOpen}>
+        <Button
+          id={'createLobby'}
+          style={createLobbyStyle}
+          renderIcon={Add16}
+          onClick={onLobbyOpen}
+        >
           Create a lobby
         </Button>
         <Tooltip
@@ -165,15 +177,17 @@ export const Lobbies = (_props: LobbiesProps) => {
 
   return (
     <>
-      <div className={'new-game'}>
-        <div className={'new-game-content'}>
-          <h2>Play reToons Revived</h2>
-          {renderPopup()}
+      <div style={newGame}>
+        <div style={newGameContent}>
+          <div style={newGameContentAction}>
+            <h2>Play reToons Revived</h2>
+            {renderPopup()}
+          </div>
+          <ProfileDisplay />
         </div>
-        <ProfileDisplay />
       </div>
       <div>
-        <div className={'lobbie-content'}>
+        <div style={lobbieContent}>
           <h3>Active Lobbies</h3>
           {/* <Card.Group>
             {lobbies.map((lobby: any) => {

@@ -1,7 +1,7 @@
 import {MigrationInterface, QueryRunner} from "typeorm";
 
-export class User1600406302478 implements MigrationInterface {
-    name = 'User1600406302478'
+export class User1600585984126 implements MigrationInterface {
+    name = 'User1600585984126'
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query("DROP INDEX `IDX_a9a00111ab551cb105465fce25` ON `collection`");
@@ -17,15 +17,11 @@ export class User1600406302478 implements MigrationInterface {
         await queryRunner.query("DROP INDEX `IDX_679afaf055e3e5d2b2f3ac14de` ON `lobby`");
         await queryRunner.query("DROP INDEX `IDX_427b7cf6b08e26308e2c815526` ON `lobby`");
         await queryRunner.query("DROP INDEX `IDX_9c989fbbc6b7314dbca24cf49a` ON `pw_reset`");
-        await queryRunner.query("ALTER TABLE `user` DROP COLUMN `created`");
-        await queryRunner.query("ALTER TABLE `user` ADD `created_at` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6)");
-        await queryRunner.query("ALTER TABLE `user` CHANGE `profilePic` `profilePic` varchar(255) NULL");
+        await queryRunner.query("ALTER TABLE `user` ADD `profilePicType` varchar(255) NULL");
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.query("ALTER TABLE `user` CHANGE `profilePic` `profilePic` varchar(255) NOT NULL");
-        await queryRunner.query("ALTER TABLE `user` DROP COLUMN `created_at`");
-        await queryRunner.query("ALTER TABLE `user` ADD `created` varchar(255) NOT NULL");
+        await queryRunner.query("ALTER TABLE `user` DROP COLUMN `profilePicType`");
         await queryRunner.query("CREATE UNIQUE INDEX `IDX_9c989fbbc6b7314dbca24cf49a` ON `pw_reset` (`userId`)");
         await queryRunner.query("CREATE UNIQUE INDEX `IDX_427b7cf6b08e26308e2c815526` ON `lobby` (`seat2Id`)");
         await queryRunner.query("CREATE UNIQUE INDEX `IDX_679afaf055e3e5d2b2f3ac14de` ON `lobby` (`seat1Id`)");

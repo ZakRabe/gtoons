@@ -24,7 +24,9 @@
   },
   "dependencies": {
     "@carbon/icons-react": "^10.18.0",
+    "@carbon/pictograms-react": "^10.18.0",
     "@fortawesome/fontawesome-free": "^5.14.0",
+    "@types/carbon__pictograms-react": "^10.17.0",
     "@types/react-recaptcha-v3": "^1.1.1",
     "axios": "^0.19.2",
     "carbon-components": "^10.20.0",

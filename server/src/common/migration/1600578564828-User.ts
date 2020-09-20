@@ -1,7 +1,7 @@
 import {MigrationInterface, QueryRunner} from "typeorm";
 
-export class User1600404953452 implements MigrationInterface {
-    name = 'User1600404953452'
+export class User1600578564828 implements MigrationInterface {
+    name = 'User1600578564828'
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query("ALTER TABLE `collection` DROP FOREIGN KEY `collectionPlayerId_fk`");
@@ -27,15 +27,14 @@ export class User1600404953452 implements MigrationInterface {
         await queryRunner.query("DROP INDEX `lobby_game_fk_idx` ON `lobby`");
         await queryRunner.query("DROP INDEX `userId_UNIQUE` ON `pw_reset`");
         await queryRunner.query("DROP INDEX `token_UNIQUE` ON `pw_reset`");
-        await queryRunner.query("ALTER TABLE `user` ADD `profilePic` varchar(255) NOT NULL");
+        await queryRunner.query("ALTER TABLE `user` ADD `profilePic` varchar(255) NULL");
         await queryRunner.query("ALTER TABLE `user` DROP COLUMN `salt`");
         await queryRunner.query("ALTER TABLE `user` ADD `salt` varchar(255) NOT NULL");
         await queryRunner.query("ALTER TABLE `user` DROP COLUMN `role`");
-        await queryRunner.query("ALTER TABLE `user` ADD `role` varchar(255) NOT NULL");
-        await queryRunner.query("ALTER TABLE `user` DROP COLUMN `created`");
-        await queryRunner.query("ALTER TABLE `user` ADD `created` varchar(255) NOT NULL");
+        await queryRunner.query("ALTER TABLE `user` ADD `role` varchar(255) NOT NULL DEFAULT 'PLAYER'");
+        await queryRunner.query("ALTER TABLE `user` CHANGE `created` `created` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6)");
         await queryRunner.query("ALTER TABLE `collection` DROP COLUMN `cards`");
-        await queryRunner.query("ALTER TABLE `collection` ADD `cards` varchar(255) NOT NULL");
+        await queryRunner.query("ALTER TABLE `collection` ADD `cards` longtext NOT NULL");
         await queryRunner.query("ALTER TABLE `collection` CHANGE `playerId` `playerId` int NULL");
         await queryRunner.query("ALTER TABLE `collection` ADD UNIQUE INDEX `IDX_a9a00111ab551cb105465fce25` (`playerId`)");
         await queryRunner.query("ALTER TABLE `deck` DROP COLUMN `name`");
@@ -44,17 +43,22 @@ export class User1600404953452 implements MigrationInterface {
         await queryRunner.query("ALTER TABLE `deck` CHANGE `face` `face` int NOT NULL");
         await queryRunner.query("ALTER TABLE `deck` CHANGE `playerId` `playerId` int NULL");
         await queryRunner.query("ALTER TABLE `deck` ADD UNIQUE INDEX `IDX_fcd3a7bc021f6846ffe6e6fbfb` (`playerId`)");
+        await queryRunner.query("ALTER TABLE `gamestate` CHANGE `turn` `turn` int NOT NULL DEFAULT 0");
+        await queryRunner.query("ALTER TABLE `gamestate` CHANGE `player1Board` `player1Board` varchar(255) NOT NULL DEFAULT '[]'");
+        await queryRunner.query("ALTER TABLE `gamestate` CHANGE `player2Board` `player2Board` varchar(255) NOT NULL DEFAULT '[]'");
         await queryRunner.query("ALTER TABLE `gamestate` DROP COLUMN `player1Discard`");
-        await queryRunner.query("ALTER TABLE `gamestate` ADD `player1Discard` varchar(255) NOT NULL");
+        await queryRunner.query("ALTER TABLE `gamestate` ADD `player1Discard` varchar(255) NOT NULL DEFAULT '[]'");
         await queryRunner.query("ALTER TABLE `gamestate` DROP COLUMN `player2Discard`");
-        await queryRunner.query("ALTER TABLE `gamestate` ADD `player2Discard` varchar(255) NOT NULL");
-        await queryRunner.query("ALTER TABLE `gamestate` CHANGE `connectedPlayers` `connectedPlayers` int NOT NULL");
+        await queryRunner.query("ALTER TABLE `gamestate` ADD `player2Discard` varchar(255) NOT NULL DEFAULT '[]'");
+        await queryRunner.query("ALTER TABLE `gamestate` CHANGE `player1ShuffledDeck` `player1ShuffledDeck` varchar(255) NOT NULL DEFAULT '[]'");
+        await queryRunner.query("ALTER TABLE `gamestate` CHANGE `player2ShuffledDeck` `player2ShuffledDeck` varchar(255) NOT NULL DEFAULT '[]'");
+        await queryRunner.query("ALTER TABLE `gamestate` CHANGE `connectedPlayers` `connectedPlayers` int NOT NULL DEFAULT 0");
         await queryRunner.query("ALTER TABLE `gamestate` CHANGE `gameId` `gameId` int NULL");
         await queryRunner.query("ALTER TABLE `gamestate` ADD UNIQUE INDEX `IDX_ff1f3ba7eb0bdd65c150a8ea1d` (`gameId`)");
         await queryRunner.query("ALTER TABLE `game` DROP COLUMN `color1`");
         await queryRunner.query("ALTER TABLE `game` ADD `color1` varchar(255) NOT NULL");
         await queryRunner.query("ALTER TABLE `game` DROP COLUMN `color2`");
-        await queryRunner.query("ALTER TABLE `game` ADD `color2` varchar(255) NOT NULL");
+        await queryRunner.query("ALTER TABLE `game` ADD `color2` varchar(255) NULL");
         await queryRunner.query("ALTER TABLE `game` CHANGE `player1Id` `player1Id` int NULL");
         await queryRunner.query("ALTER TABLE `game` ADD UNIQUE INDEX `IDX_7b7f91302f66ab534423c96aa3` (`player1Id`)");
         await queryRunner.query("ALTER TABLE `game` ADD UNIQUE INDEX `IDX_3b85329cbe5b9f9002f05018fa` (`player2Id`)");
@@ -64,14 +68,14 @@ export class User1600404953452 implements MigrationInterface {
         await queryRunner.query("ALTER TABLE `game` ADD UNIQUE INDEX `IDX_cd57acb58d1147c23da5cd09ca` (`winnerId`)");
         await queryRunner.query("ALTER TABLE `lobby` DROP COLUMN `name`");
         await queryRunner.query("ALTER TABLE `lobby` ADD `name` varchar(255) NOT NULL");
-        await queryRunner.query("ALTER TABLE `lobby` DROP COLUMN `created`");
-        await queryRunner.query("ALTER TABLE `lobby` ADD `created` varchar(255) NOT NULL");
+        await queryRunner.query("ALTER TABLE `lobby` CHANGE `created` `created` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6)");
         await queryRunner.query("ALTER TABLE `lobby` CHANGE `capacity` `capacity` int NOT NULL");
-        await queryRunner.query("ALTER TABLE `lobby` CHANGE `connectedCount` `connectedCount` int NOT NULL");
-        await queryRunner.query("ALTER TABLE `lobby` CHANGE `seat1Ready` `seat1Ready` int NOT NULL");
-        await queryRunner.query("ALTER TABLE `lobby` CHANGE `seat2Ready` `seat2Ready` int NOT NULL");
-        await queryRunner.query("ALTER TABLE `lobby` CHANGE `seatRule` `seatRule` int NOT NULL");
-        await queryRunner.query("ALTER TABLE `lobby` CHANGE `password` `password` varchar(255) NOT NULL");
+        await queryRunner.query("ALTER TABLE `lobby` CHANGE `connectedCount` `connectedCount` int NOT NULL DEFAULT 0");
+        await queryRunner.query("ALTER TABLE `lobby` DROP COLUMN `seat1Ready`");
+        await queryRunner.query("ALTER TABLE `lobby` ADD `seat1Ready` tinyint NOT NULL DEFAULT 0");
+        await queryRunner.query("ALTER TABLE `lobby` DROP COLUMN `seat2Ready`");
+        await queryRunner.query("ALTER TABLE `lobby` ADD `seat2Ready` tinyint NOT NULL DEFAULT 0");
+        await queryRunner.query("ALTER TABLE `lobby` CHANGE `seatRule` `seatRule` int NOT NULL DEFAULT 0");
         await queryRunner.query("ALTER TABLE `lobby` ADD UNIQUE INDEX `IDX_9248271fd0074cad6e0dfd83f9` (`gameId`)");
         await queryRunner.query("ALTER TABLE `lobby` CHANGE `ownerId` `ownerId` int NULL");
         await queryRunner.query("ALTER TABLE `lobby` ADD UNIQUE INDEX `IDX_62cf2a65f7f4d65d65015e56d1` (`ownerId`)");
@@ -106,7 +110,7 @@ export class User1600404953452 implements MigrationInterface {
         await queryRunner.query("ALTER TABLE `game` ADD CONSTRAINT `FK_7ffaab31f30d682b4e22a4a055b` FOREIGN KEY (`player1DeckId`) REFERENCES `deck`(`id`) ON DELETE NO ACTION ON UPDATE NO ACTION");
         await queryRunner.query("ALTER TABLE `game` ADD CONSTRAINT `FK_08a696fb851dfa3f579e621c609` FOREIGN KEY (`player2DeckId`) REFERENCES `deck`(`id`) ON DELETE NO ACTION ON UPDATE NO ACTION");
         await queryRunner.query("ALTER TABLE `game` ADD CONSTRAINT `FK_cd57acb58d1147c23da5cd09cae` FOREIGN KEY (`winnerId`) REFERENCES `user`(`id`) ON DELETE NO ACTION ON UPDATE NO ACTION");
-        await queryRunner.query("ALTER TABLE `lobby` ADD CONSTRAINT `FK_9248271fd0074cad6e0dfd83f9d` FOREIGN KEY (`gameId`) REFERENCES `game`(`id`) ON DELETE NO ACTION ON UPDATE NO ACTION");
+        await queryRunner.query("ALTER TABLE `lobby` ADD CONSTRAINT `FK_9248271fd0074cad6e0dfd83f9d` FOREIGN KEY (`gameId`) REFERENCES `game`(`id`) ON DELETE CASCADE ON UPDATE NO ACTION");
         await queryRunner.query("ALTER TABLE `lobby` ADD CONSTRAINT `FK_62cf2a65f7f4d65d65015e56d15` FOREIGN KEY (`ownerId`) REFERENCES `user`(`id`) ON DELETE NO ACTION ON UPDATE NO ACTION");
         await queryRunner.query("ALTER TABLE `lobby` ADD CONSTRAINT `FK_679afaf055e3e5d2b2f3ac14dec` FOREIGN KEY (`seat1Id`) REFERENCES `user`(`id`) ON DELETE NO ACTION ON UPDATE NO ACTION");
         await queryRunner.query("ALTER TABLE `lobby` ADD CONSTRAINT `FK_427b7cf6b08e26308e2c8155261` FOREIGN KEY (`seat2Id`) REFERENCES `user`(`id`) ON DELETE NO ACTION ON UPDATE NO ACTION");
@@ -157,14 +161,14 @@ export class User1600404953452 implements MigrationInterface {
         await queryRunner.query("ALTER TABLE `lobby` DROP INDEX `IDX_62cf2a65f7f4d65d65015e56d1`");
         await queryRunner.query("ALTER TABLE `lobby` CHANGE `ownerId` `ownerId` int NOT NULL");
         await queryRunner.query("ALTER TABLE `lobby` DROP INDEX `IDX_9248271fd0074cad6e0dfd83f9`");
-        await queryRunner.query("ALTER TABLE `lobby` CHANGE `password` `password` varchar(255) NULL");
         await queryRunner.query("ALTER TABLE `lobby` CHANGE `seatRule` `seatRule` int NULL DEFAULT '1'");
-        await queryRunner.query("ALTER TABLE `lobby` CHANGE `seat2Ready` `seat2Ready` int NULL DEFAULT '0'");
-        await queryRunner.query("ALTER TABLE `lobby` CHANGE `seat1Ready` `seat1Ready` int NULL DEFAULT '0'");
+        await queryRunner.query("ALTER TABLE `lobby` DROP COLUMN `seat2Ready`");
+        await queryRunner.query("ALTER TABLE `lobby` ADD `seat2Ready` int NULL DEFAULT '0'");
+        await queryRunner.query("ALTER TABLE `lobby` DROP COLUMN `seat1Ready`");
+        await queryRunner.query("ALTER TABLE `lobby` ADD `seat1Ready` int NULL DEFAULT '0'");
         await queryRunner.query("ALTER TABLE `lobby` CHANGE `connectedCount` `connectedCount` int NULL DEFAULT '0'");
         await queryRunner.query("ALTER TABLE `lobby` CHANGE `capacity` `capacity` int NULL DEFAULT '2'");
-        await queryRunner.query("ALTER TABLE `lobby` DROP COLUMN `created`");
-        await queryRunner.query("ALTER TABLE `lobby` ADD `created` datetime NULL DEFAULT CURRENT_TIMESTAMP");
+        await queryRunner.query("ALTER TABLE `lobby` CHANGE `created` `created` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP");
         await queryRunner.query("ALTER TABLE `lobby` DROP COLUMN `name`");
         await queryRunner.query("ALTER TABLE `lobby` ADD `name` varchar(50) NOT NULL");
         await queryRunner.query("ALTER TABLE `game` DROP INDEX `IDX_cd57acb58d1147c23da5cd09ca`");
@@ -181,10 +185,15 @@ export class User1600404953452 implements MigrationInterface {
         await queryRunner.query("ALTER TABLE `gamestate` DROP INDEX `IDX_ff1f3ba7eb0bdd65c150a8ea1d`");
         await queryRunner.query("ALTER TABLE `gamestate` CHANGE `gameId` `gameId` int NOT NULL");
         await queryRunner.query("ALTER TABLE `gamestate` CHANGE `connectedPlayers` `connectedPlayers` int NULL DEFAULT '0'");
+        await queryRunner.query("ALTER TABLE `gamestate` CHANGE `player2ShuffledDeck` `player2ShuffledDeck` varchar(255) NOT NULL");
+        await queryRunner.query("ALTER TABLE `gamestate` CHANGE `player1ShuffledDeck` `player1ShuffledDeck` varchar(255) NOT NULL");
         await queryRunner.query("ALTER TABLE `gamestate` DROP COLUMN `player2Discard`");
         await queryRunner.query("ALTER TABLE `gamestate` ADD `player2Discard` varchar(45) NULL");
         await queryRunner.query("ALTER TABLE `gamestate` DROP COLUMN `player1Discard`");
         await queryRunner.query("ALTER TABLE `gamestate` ADD `player1Discard` varchar(45) NULL");
+        await queryRunner.query("ALTER TABLE `gamestate` CHANGE `player2Board` `player2Board` varchar(255) NOT NULL");
+        await queryRunner.query("ALTER TABLE `gamestate` CHANGE `player1Board` `player1Board` varchar(255) NOT NULL");
+        await queryRunner.query("ALTER TABLE `gamestate` CHANGE `turn` `turn` int NOT NULL");
         await queryRunner.query("ALTER TABLE `deck` DROP INDEX `IDX_fcd3a7bc021f6846ffe6e6fbfb`");
         await queryRunner.query("ALTER TABLE `deck` CHANGE `playerId` `playerId` int NOT NULL");
         await queryRunner.query("ALTER TABLE `deck` CHANGE `face` `face` int NULL");
@@ -195,8 +204,7 @@ export class User1600404953452 implements MigrationInterface {
         await queryRunner.query("ALTER TABLE `collection` CHANGE `playerId` `playerId` int NOT NULL");
         await queryRunner.query("ALTER TABLE `collection` DROP COLUMN `cards`");
         await queryRunner.query("ALTER TABLE `collection` ADD `cards` mediumtext NOT NULL");
-        await queryRunner.query("ALTER TABLE `user` DROP COLUMN `created`");
-        await queryRunner.query("ALTER TABLE `user` ADD `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP");
+        await queryRunner.query("ALTER TABLE `user` CHANGE `created` `created` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP");
         await queryRunner.query("ALTER TABLE `user` DROP COLUMN `role`");
         await queryRunner.query("ALTER TABLE `user` ADD `role` varchar(45) NULL");
         await queryRunner.query("ALTER TABLE `user` DROP COLUMN `salt`");
