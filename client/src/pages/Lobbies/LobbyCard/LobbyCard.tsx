@@ -46,7 +46,7 @@ export const LobbyCard: React.FunctionComponent<LobbyCardProps> = (props) => {
             floated="left"
             size="mini"
             circular
-            src="http://placehold.it/100x100"
+            src="https://placehold.it/100x100"
           />
           <Card.Header>{name}</Card.Header>
           <Card.Meta>Host: {owner.username}</Card.Meta>

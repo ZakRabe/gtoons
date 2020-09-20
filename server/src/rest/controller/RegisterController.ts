@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { getRepository } from 'typeorm';
-import * as cards from '../../cards/cards.json';
+import cards from '../../cards/cards.json';
 import Collection from '../../common/entity/Collection';
 import User from '../../common/entity/User';
 import { saltHashPassword } from '../../util';
