@@ -1,12 +1,12 @@
 import '@fortawesome/fontawesome-free/css/all.css';
 import React, { useState } from 'react';
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import 'semantic-ui-css/semantic.min.css';
+import GoogleAnalytics from '../components/GoogleAnalytics';
 import UserContext from '../contexts/UserContext';
 import Routes from '../Routes';
 import './App.css';
 import AppHeader from './AppHeader';
-import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
-import GoogleAnalytics from '../components/GoogleAnalytics/GoogleAnalytics';
 
 const App: React.FC = () => {
   const [user, setUser] = useState(null);
