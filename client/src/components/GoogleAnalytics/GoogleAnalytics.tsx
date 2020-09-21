@@ -17,7 +17,7 @@ const GoogleAnalytics: React.FunctionComponent<GoogleAnalyticsProps> = (
   useEffect(() => {
     if (!dev && !init) {
       localStorage.setItem('userSet', 'false');
-      ReactGA.initialize('UA-178406181-1', { debug: true });
+      ReactGA.initialize('UA-178406181-1');
       init = true;
     }
   }, []);
