@@ -48,12 +48,9 @@ export class LoginController {
       { expiresIn: '1h' }
     );
 
-    // generate non-identifying
+    // generate non-identifying userId for analytics
     const { passwordHash: gaUserId } = hashPassword(user.username, salt);
 
     return response.send({ token, user, gaUserId: gaUserId.substr(0, 10) });
   };
-
-  // TODO
-  // async forgotPassword() {}
 }
