@@ -48,7 +48,10 @@ export class LoginController {
       { expiresIn: '1h' }
     );
 
-    return response.send({ token, user });
+    // generate non-identifying
+    const { passwordHash: gaUserId } = hashPassword(user.username, salt);
+
+    return response.send({ token, user, gaUserId: gaUserId.substr(0, 10) });
   };
 
   // TODO

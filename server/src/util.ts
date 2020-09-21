@@ -13,7 +13,7 @@ export const getSalt = (length) => {
 export const hashPassword = (password: string, salt: string) => {
   const hash = crypto.createHmac('sha512', salt);
   hash.update(password);
-  const value = hash.digest('hex');
+  const value: string = hash.digest('hex');
   return {
     salt: salt,
     passwordHash: value,
