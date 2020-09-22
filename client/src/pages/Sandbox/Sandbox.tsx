@@ -1,5 +1,7 @@
 import CSS from 'csstype';
+import { isEqual } from 'lodash';
 import * as React from 'react';
+import { withRouter } from 'react-router-dom';
 import { Input } from 'semantic-ui-react';
 import { Card } from '../../App/types';
 import CardComponent from '../../components/Card';
@@ -8,19 +10,73 @@ import PlayerZones from '../Game/components/PlayerZones';
 import ColorButton from './components/ColorButton';
 import { SandboxProps } from './types';
 
-export const Sandbox = (props: SandboxProps) => {
-  // const { socket } = props;
+const styles: CSS.Properties = {
+  display: 'flex',
+  flexDirection: 'column',
+  height: '100%',
+  width: '100%',
+};
 
-  const colorOptions = [
-    'BLACK',
-    'BLUE',
-    'GREEN',
-    'ORANGE',
-    'PURPLE',
-    'RED',
-    'SILVER',
-    'YELLOW',
-  ];
+const filtersStyles = {
+  display: 'flex',
+  paddingBottom: 8,
+};
+
+const editorStyles = {
+  display: 'flex',
+  flexGrow: 1,
+};
+
+const cardListStyles = {
+  display: 'flex',
+  width: '20vw',
+  flexShrink: 0,
+};
+
+const boardStyle = {
+  display: 'flex',
+  flexGrow: 1,
+  overflow: 'hidden',
+  position: 'relative' as any,
+};
+const collectionContainerStyles = {
+  display: 'flex',
+  flexGrow: 1,
+  overflow: 'hidden',
+  position: 'relative' as any,
+};
+
+const collectionWrapperStyles = {
+  position: 'absolute' as any,
+  top: 0,
+  bottom: 0,
+  left: 0,
+  right: 0,
+  overflow: 'auto',
+};
+
+const colorOptions = [
+  'BLACK',
+  'BLUE',
+  'GREEN',
+  'ORANGE',
+  'PURPLE',
+  'RED',
+  'SILVER',
+  'YELLOW',
+];
+
+export const Sandbox = (props: SandboxProps) => {
+  const {
+    history,
+    match: {
+      params: { boardState },
+    },
+  } = props;
+
+  const getCardId = (card: Card | null) => card?.id || null;
+  const findCard = (cardId: number | null) => (item: Card | null) =>
+    item?.id === cardId;
 
   const [colorFilters, setFilters] = React.useState(colorOptions);
   const [search, setSearch] = React.useState('');
@@ -36,107 +92,71 @@ export const Sandbox = (props: SandboxProps) => {
     null,
   ]);
 
-  const boardIDs = board.map((card) => card?.id).join(', ');
-  // display a list of decks
-  // Click a card in the collection -> adds it to the current deck
-  // Click a card in the deck       -> removes it from the deck
-  // save the deck
-  // delete the deck
-  // Name a deck
-
-  const styles: CSS.Properties = {
-    display: 'flex',
-    flexDirection: 'column',
-    height: '100%',
-    width: '100%',
-  };
-
-  const filtersStyles = {
-    display: 'flex',
-    paddingBottom: 8,
-  };
-
-  const editorStyles = {
-    display: 'flex',
-    flexGrow: 1,
-  };
-
-  const cardListStyles = {
-    display: 'flex',
-    width: '20vw',
-    flexShrink: 0,
-  };
-
-  const boardStyle = {
-    display: 'flex',
-    flexGrow: 1,
-    overflow: 'hidden',
-    position: 'relative' as any,
-  };
-  const collectionContainerStyles = {
-    display: 'flex',
-    flexGrow: 1,
-    overflow: 'hidden',
-    position: 'relative' as any,
-  };
-
-  const collectionWrapperStyles = {
-    position: 'absolute' as any,
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-    overflow: 'auto',
-  };
+  const boardRef = React.useRef(board);
 
   React.useEffect(() => {
-    request({ url: 'cards/all' }).then(setCards);
+    request({ url: 'cards/all' }).then((allCards) => {
+      if (boardState) {
+        setBoard(
+          boardState
+            .split('-')
+            .map(
+              (id: string) =>
+                allCards.find((card: Card) => card.id === Number(id)) || null
+            )
+        );
+      }
+      setCards(allCards);
+    });
   }, []);
 
+  // TODO: debounce this
   const calculateScore = () => {
     request({
       method: 'post',
       url: 'sandbox/calculateScore',
-      data: { board: board.map((card) => (card ? card.id : null)) },
-    }).then((results) => {
-      setBoard(results['p1Cards']);
+      data: { board: board.map(getCardId) },
+    }).then(({ p1Cards }: any) => {
+      // only set the response into the board if its an exact match
+      // this fixes a race condition, where multiple requests are sent, but they complete out of order
+      if (isEqual(boardRef.current.map(getCardId), p1Cards.map(getCardId))) {
+        setBoard(p1Cards);
+      }
     });
   };
 
+  const boardIds = board.map(getCardId).join('-');
   React.useEffect(() => {
-    calculateScore();
-  }, [boardIDs]);
+    // dont do this until the cards are ready. this ensures we've loaded any initial route board into state
+    if (cards.length) {
+      boardRef.current = board;
+      history.replace(`/sandbox/${boardIds}`);
+      calculateScore();
+    }
+  }, [boardIds, cards]);
 
   const onCollectionCardClick = (cardId: number) => (e: React.MouseEvent) => {
+    const find = findCard(cardId);
     const newBoard = [...board];
 
     const emptySpace = newBoard.findIndex((card) => card === null);
-    const card = cards.find((item: Card) => item.id === cardId) as Card;
+    const card = cards.find(find) as Card;
 
-    if (
-      newBoard.find((card) => card && card.id === cardId) ||
-      emptySpace === -1
-    ) {
+    if (newBoard.find(find) || emptySpace === -1) {
       return;
     }
 
     newBoard.splice(emptySpace, 1, card);
-
-    //const newBoardIDs = newBoard.map((card) => card?.id).join(', ');
-
-    //setBoardIDs(newBoardIDs);
     setBoard(newBoard);
   };
 
   const removeCard = (cardId: number) => {
+    const find = findCard(cardId);
     const newBoard = [...board];
-    const index = newBoard.findIndex((card) => card && card.id === cardId);
 
+    const index = newBoard.findIndex(find);
     newBoard.splice(index, 1, null);
 
-    //const newBoardIDs = newBoard.map((card) => card?.id).join(', ');
-
-    //setBoardIDs(newBoardIDs);
     setBoard(newBoard);
   };
 
@@ -368,4 +388,4 @@ export const Sandbox = (props: SandboxProps) => {
   );
 };
 
-export default Sandbox;
+export default withRouter(Sandbox);

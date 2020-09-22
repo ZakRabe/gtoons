@@ -31,7 +31,7 @@ export default class Routes extends React.Component<RoutesProps> {
             <AuthRoute path="/lobbies" component={Lobbies} />
             <AuthRoute path="/deckBuilder/:deckId?" component={DeckBuilder} />
             <AuthRoute path="/deckList" component={DeckList} />
-            <AuthRoute path="/sandbox" component={Sandbox} />
+            <AuthRoute path="/sandbox/:boardState?" component={Sandbox} />
           </Switch>
         </Container>
       </main>
