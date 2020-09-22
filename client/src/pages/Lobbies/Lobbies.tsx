@@ -5,7 +5,7 @@ import { request } from '../../utils/api';
 import { useSocketNamespace } from '../../utils/hooks';
 import LobbyCard from './LobbyCard';
 import './styles.ts';
-import { LobbiesProps, SVGBackgrounProps } from './types';
+import { LobbiesProps, SVGBackgroundProps } from './types';
 import {
   createLobby as createLobbyStyle,
   lobbieContent,
@@ -38,7 +38,7 @@ const SVGBackgrounds = () => (
   </svg>
 );
 
-const SVGDisplay: React.FunctionComponent<SVGBackgrounProps> = ({
+const SVGDisplay: React.FunctionComponent<SVGBackgroundProps> = ({
   dataURI,
   width,
   height,

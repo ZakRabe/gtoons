@@ -4,7 +4,7 @@ export interface LobbiesProps
   extends HasSocket,
     HasRouter<{ lobbyId: string }> {}
 
-export interface SVGBackgrounProps {
+export interface SVGBackgroundProps {
   dataURI: string;
   width?: number;
   height?: number;
