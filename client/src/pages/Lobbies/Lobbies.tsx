@@ -236,11 +236,9 @@ export const Lobbies = (_props: LobbiesProps) => {
       <div>
         <div style={lobbieContent}>
           <h3>Active Lobbies</h3>
-          <TileGroup name="Lobbies">
-            {lobbies.map((lobby: any) => {
-              return <LobbyCard key={lobby.id} {...lobby}></LobbyCard>;
-            })}
-          </TileGroup>
+          {lobbies.map((lobby: any) => {
+            return <LobbyCard key={lobby.id} {...lobby}></LobbyCard>;
+          })}
         </div>
       </div>
     </>
