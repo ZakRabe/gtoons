@@ -125,11 +125,12 @@ const AppHeader: React.FunctionComponent<AppHeaderProps> = (props) => {
       <Header className="appHeader">
         <HeaderName
           // @ts-ignore
-          style={{ cursor: 'pointer' }}
+          style={{ cursor: 'pointer', position: 'relative' }}
           onClick={() => history.push('/')}
           prefix=""
+          title="0.1.0"
         >
-          reToons
+          reToons <span>α</span>
         </HeaderName>
         {isLoggedIn() ? renderLoggedInMenu() : renderLoggedOutMenu()}
       </Header>

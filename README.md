@@ -81,7 +81,7 @@ The reToons engine is made up of two components, an Express server for the backe
 Clone the Git repository:  
 `git clone https://github.com/ZakRabe/gtoons.git`
 
-Copy the example environemt variables from `deploy/dev/`into `server` and `client`
+Copy the example environment variables from `deploy/dev/`into `server` and `client`
 
 Install the backend:  
 `cd gtoons/server/`  
