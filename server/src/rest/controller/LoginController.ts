@@ -28,7 +28,11 @@ export class LoginController {
   ) => {
     const { username, password } = request.body;
 
-    const user = await this.userRepository.findOne({ username });
+    const user = await this.userRepository
+      .createQueryBuilder('user')
+      .addSelect('user.salt') // This allows access to "hidden" value
+      .where({ username })
+      .getOne();
 
     if (!user) {
       return this.loginFail(response);

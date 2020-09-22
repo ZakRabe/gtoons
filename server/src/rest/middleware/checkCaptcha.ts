@@ -17,13 +17,11 @@ export const checkCaptcha = (
   res: Response,
   next: NextFunction
 ) => {
-  console.log(process.env.NODE_ENV === 'development')
   if (process.env.NODE_ENV === 'development') {
     next();
     return;
   }
   verify(req).then(({ body: { success, score } }) => {
-    console.log(success, score);
     if (!success || score < 0.5) {
       res.status(422).json({ message: 'Failed ReCaptcha' }).send();
       return;

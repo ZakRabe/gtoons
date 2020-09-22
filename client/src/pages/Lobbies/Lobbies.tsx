@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../contexts/UserContext';
 import { isLoggedIn } from '../../utils/auth';
 import { request } from '../../utils/api';
 import { useSocketNamespace } from '../../utils/hooks';
 import LobbyCard from './LobbyCard';
 import './styles.ts';
-import { LobbiesProps } from './types';
+import { LobbiesProps, SVGBackgrounProps } from './types';
 import {
   createLobby as createLobbyStyle,
   lobbieContent,
@@ -14,13 +14,59 @@ import {
   newGameContentAction,
   profileContainer,
 } from './styles';
+
+import { renderToStaticMarkup } from 'react-dom/server';
 import { useHistory } from 'react-router-dom';
 import { Button, TextInput, TileGroup, Tooltip } from 'carbon-components-react';
 import { Add16, PlayFilledAlt32 } from '@carbon/icons-react';
 import { UserProfile } from '@carbon/pictograms-react';
 
+const SVGBackgrounds = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={100} height={100}>
+    <rect width={100} height={100} fill="#269" />
+    <g fill="#6494b7">
+      <rect width={100} height={1} y={20} />
+      <rect width={100} height={1} y={40} />
+      <rect width={100} height={1} y={60} />
+      <rect width={100} height={1} y={80} />
+      <rect width={1} height={100} x={20} />
+      <rect width={1} height={100} x={40} />
+      <rect width={1} height={100} x={60} />
+      <rect width={1} height={100} x={80} />
+    </g>
+    <rect width={100} height={100} fill="none" strokeWidth={2} stroke="#fff" />
+  </svg>
+);
+
+const SVGDisplay: React.FunctionComponent<SVGBackgrounProps> = ({
+  dataURI,
+  width,
+  height,
+}) => {
+  const svgString = encodeURIComponent(
+    renderToStaticMarkup(<SVGBackgrounds />)
+  );
+  const backgroundUrl = `url(${dataURI})`;
+
+  const profileContainer: React.CSSProperties = {
+    display: 'flex',
+    alignItems: 'center',
+    maxWidth: '256px' /* I should probably be using rem here because safari */,
+    maxHeight: '256px',
+    background: backgroundUrl,
+  };
+
+  const staticStyles: React.CSSProperties = {
+    width,
+    height,
+    background: backgroundUrl,
+  };
+
+  return <div style={width || height ? staticStyles : profileContainer} />;
+};
+
 const ProfileDisplay = () => {
-  const [profilePic, setProfilePic] = useState<HTMLElement>();
+  const [profilePicString, setProfilePicString] = useState<string>();
   const { user } = useContext(UserContext);
 
   // Should I being using suspense here instead?
@@ -30,10 +76,7 @@ const ProfileDisplay = () => {
     })
       .then((currentUser) => {
         const { profilePic } = currentUser;
-
-        const dom = new DOMParser();
-        const svg = dom.parseFromString(atob(profilePic), 'image/svg+xml');
-        setProfilePic(svg.documentElement);
+        setProfilePicString(profilePic);
       })
       .catch(console.error);
   }, []);
@@ -44,7 +87,11 @@ const ProfileDisplay = () => {
         <h4>Hola</h4>
         <h2>{user.username}</h2>
       </div>
-      <div>{profilePic || <UserProfile />}</div>
+      {profilePicString ? (
+        <SVGDisplay dataURI={profilePicString} />
+      ) : (
+        <UserProfile />
+      )}
     </div>
   );
 };

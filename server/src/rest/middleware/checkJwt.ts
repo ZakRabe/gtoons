@@ -6,7 +6,6 @@ export const checkJwt = (req: Request, res: Response, next: NextFunction) => {
   //Get the jwt token from the head
   const token = <string>req.headers['auth'];
   let jwtPayload;
-  console.log('--> Token:', token);
   //Try to validate the token and get data
   try {
     // TODO: load from environment variable
@@ -14,7 +13,6 @@ export const checkJwt = (req: Request, res: Response, next: NextFunction) => {
     res.locals.jwtPayload = jwtPayload;
   } catch (error) {
     //If token is not valid, respond with 401 (unauthorized)
-    console.log('--> Error:', error);
     res.status(401).send();
     return;
   }

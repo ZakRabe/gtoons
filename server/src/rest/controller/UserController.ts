@@ -132,7 +132,6 @@ export class UserController {
     next: NextFunction
   ) {
     const { user } = request.query;
-    console.log(user);
     return true;
   }
 }

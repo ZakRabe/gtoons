@@ -20,7 +20,8 @@ export default class User extends BaseEntity {
   @Column()
   password: string;
 
-  @Column()
+  // This prevents the salt from coming with any request
+  @Column({ select: false })
   salt: string;
 
   @Column({ nullable: true })
@@ -41,7 +42,7 @@ export default class User extends BaseEntity {
     return {
       id,
       username,
-      role
+      role,
     };
   };
 }
