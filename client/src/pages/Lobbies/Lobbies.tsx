@@ -152,7 +152,6 @@ export const Lobbies = (_props: LobbiesProps) => {
   }, [lobbiesSocket]);
 
   const createLobby = () => {
-    console.log(isLoggedIn());
     lobbiesSocket.emit('createLobby', {
       user: isLoggedIn(),
       name: lobbyName,
