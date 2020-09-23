@@ -1,3 +1,3 @@
-import { HasSocket } from '../../App/types';
+import { HasRouter, HasSocket } from '../../App/types';
 
-export interface SandboxProps extends HasSocket {}
+export interface SandboxProps extends HasRouter, HasSocket {}
