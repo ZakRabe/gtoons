@@ -1,10 +1,11 @@
-import { Button, TextInput, InlineNotification } from 'carbon-components-react';
+import { Button, InlineNotification, TextInput } from 'carbon-components-react';
 import * as React from 'react';
+import ReactGA from 'react-ga';
+import { withGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { request } from '../../utils/api';
 import { isLoggedIn } from '../../utils/auth';
 import './styles.css';
 import { LoginProps, LoginState } from './types';
-import { withGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 class Login extends React.Component<LoginProps, LoginState> {
   recaptchaToken = null;
@@ -65,8 +66,10 @@ class Login extends React.Component<LoginProps, LoginState> {
       url: 'login/submit',
       data: { username, password, recaptchaToken: this.recaptchaToken },
     })
-      .then(({ token, user }) => {
+      .then(({ token, gaUserId }) => {
         localStorage.setItem('authToken', token);
+        localStorage.setItem('gaUserId', gaUserId);
+
         history.push('/profile');
       })
       .catch(async (error) => {
