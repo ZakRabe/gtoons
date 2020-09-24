@@ -21,7 +21,7 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
   const card = model || {
     id: 'default',
     colors: ['SILVER'],
-    points: null,
+    points: 0,
   };
 
   const cardWrapperStyles = {
@@ -48,6 +48,7 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
+    opacity: card.disabled ? 0.25 : 1,
   };
 
   const pointStyles = {
@@ -66,6 +67,8 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
     boxSizing: 'border-box' as any,
     textShadow: '-2px -2px rgba(0,0,0,.7)',
   };
+
+  console.log(card);
 
   const renderCard = () => {
     return (
@@ -96,7 +99,10 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
         </CopyToClipboard>
         <div style={cardWrapperStyles} onClick={onClick}>
           <div style={cardBorderStyles}>
-            {card.points && <span style={pointStyles}>{card.points}</span>}
+            <span style={pointStyles}>{card.points}</span>
+            <div style={{ display: 'none' }}>
+              {card.modifiers?.map((mod) => JSON.stringify(mod))}
+            </div>
             <div style={cardStyles}></div>
           </div>
         </div>

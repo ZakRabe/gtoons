@@ -14,12 +14,14 @@ export interface Card {
   title: string;
   character: string;
   colors: string[];
+  disabled?: boolean;
   description: string;
   rarity: string;
   groups: string[];
   types: string[];
   points: number;
   basePoints: number;
+  modifiers: any[];
 }
 
 export interface Deck {
