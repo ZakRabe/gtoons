@@ -25,7 +25,7 @@ export default class User extends BaseEntity {
   salt: string;
 
   @Column({ nullable: true })
-  profilePic?: string;
+  profilePic?: '';
 
   @Column({ nullable: true })
   profilePicType?: 'SVG' | 'PNG';
