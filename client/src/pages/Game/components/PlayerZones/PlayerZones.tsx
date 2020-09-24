@@ -17,7 +17,7 @@ const styles: CSS.Properties = {
 export default class PlayerZones extends React.Component<PlayerZonesProps, {}> {
   render() {
     const { isOpponent, cards, onCardClick, onCardHover } = this.props;
-    console.log(cards);
+
     const rowOne = cards?.slice(0, 4);
     const rowTwo = cards?.slice(4);
 

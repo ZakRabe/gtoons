@@ -52,9 +52,9 @@ export class LoginController {
       { expiresIn: '1h' }
     );
 
-    return response.send({ token, user });
-  };
+    // generate non-identifying userId for analytics
+    const { passwordHash: gaUserId } = hashPassword(user.username, salt);
 
-  // TODO
-  // async forgotPassword() {}
+    return response.send({ token, user, gaUserId: gaUserId.substr(0, 10) });
+  };
 }

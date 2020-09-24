@@ -2,10 +2,14 @@ import {
   Header,
   HeaderGlobalAction,
   HeaderGlobalBar,
+  HeaderMenuButton,
   HeaderMenuItem,
   HeaderName,
   HeaderNavigation,
   HeaderPanel,
+  HeaderSideNavItems,
+  SideNav,
+  SideNavItems,
   Switcher,
   SwitcherItem,
 } from 'carbon-components-react/lib/components/UIShell';
@@ -41,6 +45,11 @@ const AppHeader: React.FunctionComponent<AppHeaderProps> = (props) => {
   });
 
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [isSideNavExpanded, setIsSideNavExpanded] = useState(false);
+
+  const onClickSideNavExpand = () => {
+    setIsSideNavExpanded((prev) => !prev);
+  };
 
   const renderLoggedInMenu = () => {
     return (
@@ -62,6 +71,26 @@ const AppHeader: React.FunctionComponent<AppHeaderProps> = (props) => {
             <i className="fas fa-flask"></i> &nbsp;Sandbox
           </HeaderMenuItem>
         </HeaderNavigation>
+        <SideNav
+          aria-label="Side navigation"
+          expanded={isSideNavExpanded}
+          isPersistent={false}
+        >
+          <SideNavItems>
+            <HeaderSideNavItems>
+              <HeaderMenuItem onClick={() => history.push('/lobbies')}>
+                <i className="fas fa-search"></i>&nbsp; Lobbies
+              </HeaderMenuItem>
+              <HeaderMenuItem onClick={() => history.push('/deckList')}>
+                <i className="fas fa-tools"></i>&nbsp; Decks
+              </HeaderMenuItem>
+              <HeaderMenuItem href="/sandbox">
+                <i className="fas fa-flask"></i> &nbsp;Sandbox
+              </HeaderMenuItem>
+            </HeaderSideNavItems>
+          </SideNavItems>
+        </SideNav>
+
         <HeaderGlobalBar
           style={{ fontSize: '1.25rem' }}
           className="appHeaderActions"
@@ -114,6 +143,23 @@ const AppHeader: React.FunctionComponent<AppHeaderProps> = (props) => {
             <i className="fas fa-user-plus"></i>&nbsp; Sign Up
           </HeaderMenuItem>
         </HeaderNavigation>
+        <SideNav
+          aria-label="Side navigation"
+          expanded={isSideNavExpanded}
+          isPersistent={false}
+        >
+          <SideNavItems>
+            <HeaderSideNavItems>
+              <HeaderMenuItem onClick={() => history.push('/login')}>
+                <i className="fas fa-sign-in-alt"></i>&nbsp; Log In
+              </HeaderMenuItem>
+              <HeaderMenuItem onClick={() => history.push('/register')}>
+                <i className="fas fa-user-plus"></i>&nbsp; Sign Up
+              </HeaderMenuItem>
+            </HeaderSideNavItems>
+          </SideNavItems>
+        </SideNav>
+
         <HeaderGlobalBar style={{ fontSize: '1.25rem' }}>
           <HeaderGlobalAction
             style={{ color: 'white' }}
@@ -129,13 +175,19 @@ const AppHeader: React.FunctionComponent<AppHeaderProps> = (props) => {
   const renderAppHeader = () => {
     return (
       <Header className="appHeader">
+        <HeaderMenuButton
+          aria-label="Open menu"
+          onClick={onClickSideNavExpand}
+          isActive={isSideNavExpanded}
+        />
         <HeaderName
           // @ts-ignore
-          style={{ cursor: 'pointer' }}
+          style={{ cursor: 'pointer', position: 'relative' }}
           onClick={() => history.push('/')}
           prefix=""
+          title="0.1.0"
         >
-          reToons
+          reToons <span>α</span>
         </HeaderName>
         {isLoggedIn() ? renderLoggedInMenu() : renderLoggedOutMenu()}
       </Header>
