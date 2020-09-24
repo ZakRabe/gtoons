@@ -7,6 +7,8 @@ import CopyToClipboard from 'react-copy-to-clipboard';
 export const Card: React.FunctionComponent<CardProps> = (props) => {
   const { model, onClick, onHover, width, height } = props;
 
+  const [isHovering, setIsHovering] = React.useState(false);
+
   if (!model) {
     return (
       <img
@@ -37,6 +39,7 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
   const cardBorderStyles = {
     borderRadius: '50%',
     border: '10px solid ' + card.colors[0],
+    position: 'relative' as 'relative', // ??
   };
 
   const cardStyles = {
@@ -68,6 +71,10 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
     textShadow: '-2px -2px rgba(0,0,0,.7)',
   };
 
+  const tableCellStyles = {
+    padding: 3,
+  };
+
   console.log(card);
 
   const renderCard = () => {
@@ -80,7 +87,11 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
           marginLeft: 'auto',
           marginRight: 'auto',
         }}
-        onMouseOver={onHover}
+        onMouseEnter={(e) => {
+          onHover && onHover(e);
+          setIsHovering(true);
+        }}
+        onMouseLeave={(e) => setIsHovering(false)}
       >
         <CopyToClipboard text={card.id.toString()}>
           <div
@@ -100,8 +111,56 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
         <div style={cardWrapperStyles} onClick={onClick}>
           <div style={cardBorderStyles}>
             <span style={pointStyles}>{card.points}</span>
-            <div style={{ display: 'none' }}>
-              {card.modifiers?.map((mod) => JSON.stringify(mod))}
+            <div
+              style={{
+                display: isHovering ? 'block' : 'none',
+                position: 'absolute',
+                backgroundColor: 'white',
+                padding: 3,
+              }}
+            >
+              <div>
+                <strong>{card.title}</strong>
+              </div>
+              <div>{card.description}</div>
+              <table
+                style={{
+                  borderTop: '3px solid rgba(0,0,0,.5)',
+                  borderBottom: '3px solid rgba(0,0,0,.5)',
+                }}
+              >
+                <tbody>
+                  <tr style={{}}>
+                    <td style={{ padding: 3 }}>Character</td>
+                    <td style={{ padding: 3, paddingLeft: 6 }}>
+                      {card.character}
+                    </td>
+                  </tr>
+
+                  <tr style={{}}>
+                    <td style={{ padding: 3 }}>Types</td>
+                    <td style={{ padding: 3, paddingLeft: 6 }}>
+                      {card.types.join(' - ')}
+                    </td>
+                  </tr>
+                  <tr style={{}}>
+                    <td style={{ padding: 3 }}>Groups</td>
+                    <td style={{ padding: 3, paddingLeft: 6 }}>
+                      {card.groups.join(' - ')}
+                    </td>
+                  </tr>
+                  <tr style={{}}>
+                    <td style={{ padding: 3 }}>Base Points</td>
+                    <td style={{ padding: 3, paddingLeft: 6 }}>
+                      {card.basePoints}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              {card.modifiers?.map((mod) => {
+                return <div>{JSON.stringify(mod)}</div>;
+              })}
             </div>
             <div style={cardStyles}></div>
           </div>
