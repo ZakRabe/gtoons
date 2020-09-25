@@ -1,4 +1,5 @@
 import {
+  AfterInsert,
   BaseEntity,
   Column,
   CreateDateColumn,
@@ -6,12 +7,26 @@ import {
   JoinColumn,
   OneToOne,
   PrimaryGeneratedColumn,
+  getRepository,
 } from 'typeorm';
 
 import Profile from './Profile';
 
 @Entity()
 export default class User extends BaseEntity {
+  @AfterInsert()
+  defaultProfile() {
+    const profileRepository = getRepository(Profile);
+    profileRepository
+      .save({
+        displayName: this.username,
+      })
+      .then((profile) => {
+        this.profile = profile;
+        this.save(); // Is this even necessary?
+      });
+  }
+
   @PrimaryGeneratedColumn()
   id: number;
 
