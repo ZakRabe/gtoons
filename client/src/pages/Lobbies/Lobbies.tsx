@@ -76,6 +76,7 @@ const ProfileDisplay = () => {
     })
       .then((currentUser) => {
         const { profilePic } = currentUser;
+        console.log(currentUser);
         setProfilePicString(profilePic);
       })
       .catch(console.error);

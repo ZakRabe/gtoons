@@ -1,10 +1,14 @@
 import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
   BaseEntity,
+  Column,
   CreateDateColumn,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
 } from 'typeorm';
+
+import Profile from './Profile';
 
 @Entity()
 export default class User extends BaseEntity {
@@ -24,11 +28,9 @@ export default class User extends BaseEntity {
   @Column({ select: false })
   salt: string;
 
-  @Column({ nullable: true })
-  profilePic?: '';
-
-  @Column({ nullable: true })
-  profilePicType?: 'SVG' | 'PNG';
+  @OneToOne((type) => Profile, { eager: true })
+  @JoinColumn()
+  profile: Profile;
 
   @Column({ default: 'PLAYER' })
   role?: 'PLAYER' | 'ADMIN';
