@@ -2,16 +2,21 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import ReactCrop, { Crop } from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
 import { ImageUploadProps, WorkerConversionReturn } from './types';
+import { Button, FileUploader } from 'carbon-components-react';
+import { Save32 } from '@carbon/icons-react';
+import { request } from '../../utils/api';
 
 const ImageUpload: React.FunctionComponent<ImageUploadProps> = (props) => {
-  const { endpoint } = props;
+  const { endpoint, maxHeight, maxWidth } = props;
 
   const [uploadImg, setUploadImg] = useState<string>('');
   const imgRef = useRef<HTMLImageElement | null>(null);
   const prevCanvasRef = useRef<HTMLCanvasElement>(null);
   const [crop, setCrop] = useState<Crop>({ unit: '%', aspect: 16 / 9 });
   const [completedCrop, setCompletedCrop] = useState<Crop>();
-  const [working, setWorking] = useState<boolean>(false);
+  const [uploadStatus, setUploadStatus] = useState<
+    'edit' | 'complete' | 'uploading' | undefined
+  >('edit');
   const worker = new Worker(`${process.env.PUBLIC_URL}/CanvasExport.js`);
 
   useEffect(() => {
@@ -70,12 +75,20 @@ const ImageUpload: React.FunctionComponent<ImageUploadProps> = (props) => {
   }, [completedCrop]);
 
   const handleFinishedGet = (event: MessageEvent) => {
+    console.log(event);
+    setUploadStatus('uploading');
     if (props.onCroppingFinished) {
       props.onCroppingFinished(event.data.result);
     }
+    request({
+      url: endpoint,
+      method: 'POST',
+      data: event.data.result,
+    }).then(() => setUploadStatus('complete'));
   };
 
   const onSelectFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUploadStatus('edit');
     if (event.target.files && event.target.files.length > 0) {
       const reader = new FileReader();
       reader.addEventListener('load', () =>
@@ -92,8 +105,17 @@ const ImageUpload: React.FunctionComponent<ImageUploadProps> = (props) => {
 
   return (
     <div>
-      <div>
-        <input type="file" accept="image/*" onChange={onSelectFile} />
+      <div className={'bx--file__container'}>
+        <FileUploader
+          accept={['image/*']}
+          buttonKind="secondary"
+          buttonLabel="Load Image..."
+          filenameStatus={uploadStatus}
+          iconDescription="Clear file"
+          labelDescription="Only image files allowed"
+          labelTitle="Image upload"
+          onChange={onSelectFile}
+        />
       </div>
       <ReactCrop
         src={uploadImg}
@@ -101,6 +123,8 @@ const ImageUpload: React.FunctionComponent<ImageUploadProps> = (props) => {
         crop={crop}
         onChange={(c) => setCrop(c)}
         onComplete={(c) => setCompletedCrop(c)}
+        maxHeight={maxHeight || 128}
+        maxWidth={maxWidth || 128}
       />
       <div>
         <canvas
@@ -111,6 +135,13 @@ const ImageUpload: React.FunctionComponent<ImageUploadProps> = (props) => {
           }}
         />
       </div>
+      <Button
+        hasIconOnly
+        renderIcon={Save32}
+        tooltipAlignment="center"
+        tooltipPosition="bottom"
+        iconDescription="Upload Cropped Image"
+      />
     </div>
   );
 };

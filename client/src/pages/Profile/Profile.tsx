@@ -12,7 +12,7 @@ class Profile extends React.Component<{ socket: any }, {}> {
     return (
       <>
         <Header as="h1">Profile</Header>
-        <ImageUpload endpoint={''} />
+        <ImageUpload endpoint={'users/profile/imageUpload'} />
         <button onClick={logOut}>Log Out</button>
       </>
     );
