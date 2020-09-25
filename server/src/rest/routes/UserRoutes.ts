@@ -1,4 +1,5 @@
 import { UserController } from '../controller/UserController';
+import { ProfileController } from '../controller/ProfileController';
 import { checkJwt } from '../middleware/checkJwt';
 import { checkRoles } from '../middleware/checkRoles';
 
@@ -61,5 +62,19 @@ export const UserRoutes = [
     middleware: [],
     controller: UserController,
     action: 'recaptcha',
+  },
+  {
+    method: 'get',
+    route: '/users/profile',
+    middleware: [],
+    controller: ProfileController,
+    action: 'getProfile',
+  },
+  {
+    method: 'post',
+    route: '/users/profile/imageUpload',
+    middleware: [],
+    controller: ProfileController,
+    action: 'imageUpload',
   },
 ];
