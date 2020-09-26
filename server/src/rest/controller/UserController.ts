@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from 'express';
+import { NextFunction, Request, response, Response } from 'express';
 import { getRepository } from 'typeorm';
 import PasswordReset from '../../common/entity/PasswordReset';
 import User from '../../common/entity/User';
@@ -123,6 +123,15 @@ export class UserController {
     // delete the update token
     await model.remove();
 
+    return true;
+  }
+
+  async updateProfilePic(
+    request: Request,
+    response: Response,
+    next: NextFunction
+  ) {
+    const { user } = request.query;
     return true;
   }
 }

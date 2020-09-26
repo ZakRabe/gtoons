@@ -1,5 +1,4 @@
 import { Button, TextInput } from 'carbon-components-react';
-import CSS from 'csstype';
 import * as React from 'react';
 import { Card } from '../../App/types';
 import CardComponent from '../../components/Card';
@@ -35,7 +34,7 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
   const [deck, setDeck] = React.useState<number[]>([]);
   const [face, setFace] = React.useState<number | null>(null);
 
-  const styles: CSS.Properties = {
+  const styles: React.CSSProperties = {
     display: 'flex',
     flexDirection: 'column',
     height: '100%',

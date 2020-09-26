@@ -20,6 +20,9 @@ export default class Lobby extends BaseEntity {
   @Column()
   name: string;
 
+  @Column({ nullable: true })
+  lobbyPic: '';
+
   @CreateDateColumn()
   created: string;
 

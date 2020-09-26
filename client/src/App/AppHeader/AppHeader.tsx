@@ -55,10 +55,16 @@ const AppHeader: React.FunctionComponent<AppHeaderProps> = (props) => {
     return (
       <>
         <HeaderNavigation>
-          <HeaderMenuItem onClick={() => history.push('/lobbies')}>
-            <i className="fas fa-search"></i>&nbsp; Lobbies
+          <HeaderMenuItem
+            onClick={() => history.push('/lobbies')}
+            className={'lobbies'}
+          >
+            <i className="fas fa-globe-americas"></i>&nbsp; Lobbies
           </HeaderMenuItem>
-          <HeaderMenuItem onClick={() => history.push('/deckList')}>
+          <HeaderMenuItem
+            onClick={() => history.push('/deckList')}
+            className={'decks'}
+          >
             <i className="fas fa-tools"></i>&nbsp; Decks
           </HeaderMenuItem>
           <HeaderMenuItem href="/sandbox">
@@ -107,7 +113,7 @@ const AppHeader: React.FunctionComponent<AppHeaderProps> = (props) => {
           </HeaderGlobalAction>
           <HeaderPanel expanded={userMenuOpen} className="profileMenu">
             <Switcher>
-              <SwitcherItem onClick={() => {}}>
+              <SwitcherItem onClick={() => history.push('/profile')}>
                 <i className="fas fa-user"></i>&nbsp; My Profile
               </SwitcherItem>
 

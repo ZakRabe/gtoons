@@ -10,6 +10,7 @@ export class LobbyController extends SockerController {
   private userRepository = getRepository(User);
 
   async createLobby({ user: token, name, capacity }) {
+    console.log('creating lobby');
     let userId;
     try {
       userId = verifyToken(token).userId;

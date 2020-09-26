@@ -4,6 +4,7 @@ import {
   socketConnect,
   // @ts-ignore: no types for this
 } from 'socket.io-react';
+import ImageUpload from '../../components/ImageUpload';
 import { logOut } from '../../utils/auth';
 
 class Profile extends React.Component<{ socket: any }, {}> {
@@ -11,6 +12,7 @@ class Profile extends React.Component<{ socket: any }, {}> {
     return (
       <>
         <Header as="h1">Profile</Header>
+        <ImageUpload endpoint={'users/profile/imageUpload'} />
         <button onClick={logOut}>Log Out</button>
       </>
     );

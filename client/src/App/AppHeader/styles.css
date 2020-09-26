@@ -1,5 +1,15 @@
-.appHeader {
+body {
+  --lobbies-background: #699de6 0% 0% no-repeat padding-box;
+  --decks-background: #416b81 0% 0% no-repeat padding-box;
+}
+
+/* .appHeader {
   border-bottom: 1px solid white;
+} */
+
+#App-wrapper > main {
+  padding: 49px 0px 15px 0px;
+  font: 'roboto';
 }
 
 .profileMenu {
@@ -16,8 +26,17 @@
   color: white;
 }
 a.bx--header__name {
-  font-size: 2rem;
-  font-family: 'Bebas Neue';
+  font-size: 1rem;
+  font-family: 'Bungee';
+  padding: 0 1rem 0 1rem;
+}
+
+.bx--header__nav {
+  padding-left: 0;
+}
+
+.bx--header__nav::before {
+  content: none;
 }
 
 .bx--header__action:focus {
@@ -29,4 +48,16 @@ a.bx--header__name {
   border-bottom: 1px solid #161616;
   border-left: 1px solid white;
   border-right: 1px solid white;
+}
+
+.bx--header__menu-item {
+  font: 'roboto';
+}
+
+.decks {
+  background: var(--decks-background);
+}
+
+.lobbies {
+  background: var(--lobbies-background);
 }
