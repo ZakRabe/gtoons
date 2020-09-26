@@ -83,6 +83,12 @@ Clone the Git repository:
 
 Copy the example environment variables from `deploy/dev/`into `server` and `client`
 
+linux:
+`cp .\deploy\prod\server\.env .\server; cp .\deploy\prod\client\.env .\client\`
+
+powershell:
+`Copy-Item ".\deploy\prod\server\.env" -Destination ".\server\"; Copy-Item ".\deploy\prod\client\.env" -Destination ".\client\"`
+
 Install the backend:  
 `cd gtoons/server/`  
 `npm install`

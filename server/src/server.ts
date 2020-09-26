@@ -10,12 +10,9 @@ import socket from './socket';
 import { RouteConfig } from './types';
 
 console.log('environment vars');
-console.log('recaptcha');
-console.log(process.env.RECAPTCHA_SECRET);
-console.log('jwt');
-console.log(process.env.JWT_SECRET);
-console.log('env');
-console.log(process.env.NODE_ENV);
+console.log(`env: ${process.env.NODE_ENV}`);
+console.log(`recaptcha: ${process.env.RECAPTCHA_SECRET}`);
+console.log(`jwt: ${process.env.JWT_SECRET}`);
 
 const app = express();
 app.use(helmet());
