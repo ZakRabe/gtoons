@@ -13,6 +13,7 @@ Did you know that we are on [Discord](https://discord.com/invite/W9Z9hSG)? Come 
 - [WLSN](https://github.com/WLSNprograms)
 - [Omni](https://github.com/omnims)
 - [i_d_k](https://github.com/AnujAsher)
+- [shafferchance](https://github.com/shafferchance)
 
 ### System Requirements:
 
