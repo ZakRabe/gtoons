@@ -38,9 +38,9 @@ Hopefully this should help me if I forget the proper steps for deployment.
 
 6. upload the builds to the server
 
-   `scp client/build/client.zip yourusername@retoons.gg:/var/www/`
+   `scp client/build/client.zip root@167.172.128.180:/var/www/`
 
-   `scp server/build/server.zip yourusername@retoons.gg:/var/www/`
+   `scp server/build/server.zip root@167.172.128.180:/var/www/`
 
 7. check status of running apps
 
