@@ -68,7 +68,7 @@ GRANT ALL PRIVILEGES ON `gtoons` . * TO 'gtoons'@'localhost';
 FLUSH PRIVILEGES;
 ```
 
-#### NOTE: Added 19/9/2020
+#### NOTE: Added 19/26/2020
 
 If you have a database from before 19/9/2020. You need to drop all your tables and run migrations from an empty database.
 
