@@ -9,7 +9,7 @@ import { Routes } from './rest/routes';
 import socket from './socket';
 import { RouteConfig } from './types';
 
-console.log('environment vars');
+console.log('environment variables');
 console.log(`env: ${process.env.NODE_ENV}`);
 console.log(`recaptcha: ${process.env.RECAPTCHA_SECRET}`);
 console.log(`jwt: ${process.env.JWT_SECRET}`);
