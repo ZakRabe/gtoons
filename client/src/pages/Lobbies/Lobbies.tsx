@@ -1,10 +1,101 @@
-import * as React from 'react';
-import { Button, Card, Divider, Header, Input, Popup } from 'semantic-ui-react';
+import React, { useContext, useEffect, useState } from 'react';
+import { UserContext } from '../../contexts/UserContext';
 import { isLoggedIn } from '../../utils/auth';
+import { request } from '../../utils/api';
 import { useSocketNamespace } from '../../utils/hooks';
 import LobbyCard from './LobbyCard';
-import { LobbiesProps } from './types';
+import './styles.ts';
+import { LobbiesProps, SVGBackgroundProps } from './types';
+import {
+  createLobby as createLobbyStyle,
+  lobbieContent,
+  newGame,
+  newGameContent,
+  newGameContentAction,
+  profileContainer,
+} from './styles';
+
+import { renderToStaticMarkup } from 'react-dom/server';
 import { useHistory } from 'react-router-dom';
+import { Button, TextInput, TileGroup, Tooltip } from 'carbon-components-react';
+import { Add16, PlayFilledAlt32 } from '@carbon/icons-react';
+import { UserProfile } from '@carbon/pictograms-react';
+
+const SVGBackgrounds = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={100} height={100}>
+    <rect width={100} height={100} fill="#269" />
+    <g fill="#6494b7">
+      <rect width={100} height={1} y={20} />
+      <rect width={100} height={1} y={40} />
+      <rect width={100} height={1} y={60} />
+      <rect width={100} height={1} y={80} />
+      <rect width={1} height={100} x={20} />
+      <rect width={1} height={100} x={40} />
+      <rect width={1} height={100} x={60} />
+      <rect width={1} height={100} x={80} />
+    </g>
+    <rect width={100} height={100} fill="none" strokeWidth={2} stroke="#fff" />
+  </svg>
+);
+
+const SVGDisplay: React.FunctionComponent<SVGBackgroundProps> = ({
+  dataURI,
+  width,
+  height,
+}) => {
+  const svgString = encodeURIComponent(
+    renderToStaticMarkup(<SVGBackgrounds />)
+  );
+  const backgroundUrl = `url(${dataURI})`;
+
+  const profileContainer: React.CSSProperties = {
+    display: 'flex',
+    alignItems: 'center',
+    maxWidth: '256px' /* I should probably be using rem here because safari */,
+    maxHeight: '256px',
+    background: backgroundUrl,
+  };
+
+  const staticStyles: React.CSSProperties = {
+    width,
+    height,
+    background: backgroundUrl,
+  };
+
+  return <div style={width || height ? staticStyles : profileContainer} />;
+};
+
+const ProfileDisplay = () => {
+  const [profilePicString, setProfilePicString] = useState<string>();
+  const { user } = useContext(UserContext);
+
+  // Should I being using suspense here instead?
+  useEffect(() => {
+    request({
+      url: `users/${user.userId}`,
+    })
+      .then((currentUser) => {
+        const { profilePic } = currentUser;
+        console.log(currentUser);
+        setProfilePicString(profilePic);
+      })
+      .catch(console.error);
+  }, []);
+
+  return (
+    <div style={profileContainer}>
+      <div>
+        <h4>Hola</h4>
+        <h2>{user.username}</h2>
+      </div>
+      {profilePicString ? (
+        <SVGDisplay dataURI={profilePicString} />
+      ) : (
+        <UserProfile />
+      )}
+    </div>
+  );
+};
 
 export const Lobbies = (_props: LobbiesProps) => {
   const lobbiesSocket = useSocketNamespace('/lobbies');
@@ -70,60 +161,87 @@ export const Lobbies = (_props: LobbiesProps) => {
     setIsOpen(false);
   };
 
-  const onNameChange = (e: React.ChangeEvent) => {
-    // @ts-ignore
+  const onNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value: newName } = e.target;
     if (newName.length <= 50) {
       setLobbyName(newName);
     }
   };
 
-  const onCapacityChange = (e: React.ChangeEvent) => {
-    // @ts-ignore
+  const onCapacityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value: newCapacity } = e.target;
+    // @ts-ignore
     if (newCapacity >= minCapacity && newCapacity <= maxCapacity) {
       setCapacity(newCapacity);
     }
   };
 
+  const onLobbyOpen = () => setIsOpen(!isOpen);
+
   const renderPopup = () => {
     return (
-      <Popup
-        on="click"
-        wide
-        trigger={<Button>Create a Lobby</Button>}
-        open={isOpen}
-        onOpen={() => setIsOpen(true)}
-        onClose={() => setIsOpen(false)}
-      >
-        <Popup.Header>Lobby Settings</Popup.Header>
-        <Popup.Content>
-          <Input label="Name" value={lobbyName} onChange={onNameChange}></Input>
-          <Input
+      <div style={{ display: 'flex' }}>
+        <Button
+          id={'createLobby'}
+          style={createLobbyStyle}
+          renderIcon={Add16}
+          onClick={onLobbyOpen}
+        >
+          Create a lobby
+        </Button>
+        <Tooltip
+          direction="bottom"
+          open={isOpen}
+          showIcon={false}
+          triggerId={'createLobby'}
+        >
+          <h3>Lobby Settings</h3>
+          <TextInput
+            id="lobbyName"
+            labelText="Name"
+            value={lobbyName}
+            onChange={onNameChange}
+          />
+          <TextInput
+            id="roomSize"
             type="number"
-            label="Room Size"
+            labelText="Room Size"
             value={capacity}
             onChange={onCapacityChange}
-          ></Input>
-          <Divider />
-          <Button floated="right" onClick={() => createLobby()}>
-            <i className="fas fa-play"></i>&nbsp; Go
-          </Button>
-        </Popup.Content>
-      </Popup>
+          />
+          <Button
+            hasIconOnly
+            renderIcon={PlayFilledAlt32}
+            tooltipAlignment={'center'}
+            tooltipPosition="bottom"
+            iconDescription="Go"
+            style={{ float: 'right' }}
+            onClick={() => createLobby()}
+          />
+        </Tooltip>
+      </div>
     );
   };
 
   return (
     <>
-      <Header as="h1">Play gToons Revived</Header>
-      {renderPopup()}
-      <Header as="h2">Active Lobbies</Header>
-      <Card.Group>
-        {lobbies.map((lobby: any) => {
-          return <LobbyCard key={lobby.id} {...lobby}></LobbyCard>;
-        })}
-      </Card.Group>
+      <div style={newGame}>
+        <div style={newGameContent}>
+          <div style={newGameContentAction}>
+            <h2>Play reToons Revived</h2>
+            {renderPopup()}
+          </div>
+          <ProfileDisplay />
+        </div>
+      </div>
+      <div>
+        <div style={lobbieContent}>
+          <h3>Active Lobbies</h3>
+          {lobbies.map((lobby: any) => {
+            return <LobbyCard key={lobby.id} {...lobby}></LobbyCard>;
+          })}
+        </div>
+      </div>
     </>
   );
 };
