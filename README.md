@@ -68,7 +68,7 @@ GRANT ALL PRIVILEGES ON `gtoons` . * TO 'gtoons'@'localhost';
 FLUSH PRIVILEGES;
 ```
 
-#### NOTE: Added 19/9/2020
+#### NOTE: Added 19/26/2020
 
 If you have a database from before 19/9/2020. You need to drop all your tables and run migrations from an empty database.
 
@@ -81,7 +81,13 @@ The reToons engine is made up of two components, an Express server for the backe
 Clone the Git repository:  
 `git clone https://github.com/ZakRabe/gtoons.git`
 
-Copy the example environment variables from `deploy/dev/`into `server` and `client`
+Copy the example environment variables from `deploy/dev/`into `server/src` and `client/src`
+
+linux:
+`cp ./deploy/prod/server/.env ./server/src; cp ./deploy/prod/client/.env ./client/src`
+
+powershell:
+`Copy-Item ".\deploy\prod\server\.env" -Destination ".\server\src"; Copy-Item ".\deploy\prod\client\.env" -Destination ".\client\src"`
 
 Install the backend:  
 `cd gtoons/server/`  

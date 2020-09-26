@@ -1,6 +1,5 @@
 import { Button, InlineNotification, TextInput } from 'carbon-components-react';
 import * as React from 'react';
-import ReactGA from 'react-ga';
 import { withGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { request } from '../../utils/api';
 import { isLoggedIn } from '../../utils/auth';

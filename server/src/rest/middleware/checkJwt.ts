@@ -6,7 +6,6 @@ export const checkJwt = (req: Request, res: Response, next: NextFunction) => {
   //Get the jwt token from the head
   const token = <string>req.headers['auth'];
   let jwtPayload;
-
   //Try to validate the token and get data
   try {
     // TODO: load from environment variable
@@ -23,7 +22,7 @@ export const checkJwt = (req: Request, res: Response, next: NextFunction) => {
   const { userId, username } = jwtPayload;
   // TODO: load from environment variable
   const newToken = jwt.sign({ userId, username }, process.env.JWT_SECRET, {
-    expiresIn: '1h',
+    expiresIn: '24h',
   });
   res.setHeader('token', newToken);
 
