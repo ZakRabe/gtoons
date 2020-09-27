@@ -5567,7 +5567,7 @@
         "conditions": [
           {
             "condition": "IS",
-            "attribute": "type",
+            "attribute": "types",
             "value": "PROP",
             "source": 119
           }
@@ -5588,9 +5588,9 @@
     "id": 12,
     "powers": [
       {
-        "type": "FOR_EACH",
-        "conditionRestriction": "NEIGHBOR",
-        "target": "NEIGHBOR",
+        "type": "SINGLE",
+        "conditionRestriction": "ADJACENT",
+        "target": "ADJACENT",
         "targetType": "ANY",
         "targetConditions": [
           {
@@ -5604,7 +5604,7 @@
         "conditions": [
           {
             "condition": "IS",
-            "attribute": "type",
+            "attribute": "types",
             "value": "VILLAIN",
             "source": 12
           }
@@ -5635,7 +5635,7 @@
         "conditions": [
           {
             "condition": "IS",
-            "attribute": "type",
+            "attribute": "types",
             "value": "VILLAIN",
             "source": 12
           }
@@ -5672,7 +5672,7 @@
         "conditions": [
           {
             "condition": "IS_NOT",
-            "attribute": "type",
+            "attribute": "types",
             "value": "HERO",
             "source": 27
           }
@@ -5739,7 +5739,7 @@
         "conditions": [
           {
             "condition": "IS",
-            "attribute": "type",
+            "attribute": "types",
             "value": "ANIMAL",
             "source": 363
           }
@@ -5874,7 +5874,7 @@
         "conditions": [
           {
             "condition": "IS",
-            "attribute": "type",
+            "attribute": "types",
             "value": "PROP",
             "source": 293
           }
