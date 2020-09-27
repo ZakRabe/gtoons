@@ -22,7 +22,7 @@ export default class PlayerZonesRowTwo extends React.Component<
         {cards?.map((card, index) => {
           return (
             <PlayerZone
-              key={card ? card.id : `empty_${index}`}
+              key={`boardSlot_row2_${index}`}
               card={card}
               onCardClick={onCardClick}
               onCardHover={onCardHover}
