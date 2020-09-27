@@ -175,7 +175,10 @@ function checkRestrictions(
     case 'SELF':
       // Add modifer to self
       if (card.id === playerBoard[powerPosition].id) {
+        console.log(card.title);
         matching = true;
+      } else {
+        matchingAll = false;
       }
       break;
     case 'OTHER':
@@ -355,6 +358,7 @@ function checkRestrictions(
   if ((mustMatchAll && matchingAll) || (!mustMatchAll && matching)) {
     //Add modifiers
     if (isTargetCondition) {
+      console.log([card.title, mustMatchAll, matchingAll, matching]);
       return card.modifiers ? [...card.modifiers, ...modifiers] : modifiers;
     } else {
       // TODO: Move condition check to this area.
@@ -370,7 +374,6 @@ function checkRestrictions(
   }
 
   if (isTargetCondition) {
-    //console.log(card.modifiers);
     return card.modifiers;
   }
   return modifiers;
