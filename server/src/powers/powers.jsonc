@@ -3050,7 +3050,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestriction": "NEIGHBOR",
+        "conditionRestriction": "ADJACENT",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -5775,9 +5775,9 @@
     "id": 363,
     "powers": [
       {
-        "type": "FOR_EACH",
-        "conditionRestriction": "NEIGHBOR",
-        "target": "NEIGHBOR",
+        "type": "SINGLE",
+        "conditionRestriction": "ADJACENT",
+        "target": "ADJACENT",
         "targetType": "ANY",
         "targetConditions": [
           {
@@ -5791,7 +5791,7 @@
         "conditions": [
           {
             "condition": "IS",
-            "attribute": "type",
+            "attribute": "types",
             "value": "ANIMAL",
             "source": 363
           }
