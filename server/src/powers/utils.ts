@@ -350,6 +350,11 @@ function checkRestrictions(
     if (matchingAll) {
       matchingAll = results[1];
     }
+  } else {
+    if (restriction !== 'SELF') {
+      matching = false;
+      matchingAll = false;
+    }
   }
 
   if ((mustMatchAll && matchingAll) || (!mustMatchAll && matching)) {
