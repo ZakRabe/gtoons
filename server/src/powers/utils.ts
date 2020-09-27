@@ -494,6 +494,10 @@ function modifyPoints(card: Card, modifier: any) {
       card.points += card.basePoints * modifier.value - card.basePoints;
       break;
   }
+
+  if (card.points < 0) {
+    card.points = 0;
+  }
 }
 
 function disableCard(card: Card) {
