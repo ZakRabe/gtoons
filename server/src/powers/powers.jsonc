@@ -945,12 +945,18 @@
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
-        "conditionType": "ANY",
+        "conditionType": "ALL",
         "conditions": [
           {
             "condition": "IS",
             "attribute": "groups",
             "value": "BEAN SCOUTS",
+            "source": 127
+          },
+          {
+            "condition": "IS_NOT",
+            "attribute": "title",
+            "value": "Edward",
             "source": 127
           }
         ],
@@ -1269,7 +1275,7 @@
           },
           {
             "condition": "IS_NOT",
-            "attribute": "character",
+            "attribute": "title",
             "value": "Robin",
             "source": 312
           }
@@ -1810,7 +1816,7 @@
     "id": 368,
     "powers": [
       {
-        "type": "FOR_EACH",
+        "type": "SINGLE",
         "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
@@ -1920,7 +1926,7 @@
     "id": 378,
     "powers": [
       {
-        "type": "FOR_EACH",
+        "type": "SINGLE",
         "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
@@ -2007,8 +2013,8 @@
           },
           {
             "condition": "IS_NOT",
-            "attribute": "character",
-            "value": "Bubbles",
+            "attribute": "title",
+            "value": "Bubbles Laughing",
             "source": 49
           }
         ],
@@ -2022,8 +2028,8 @@
           },
           {
             "condition": "IS_NOT",
-            "attribute": "character",
-            "value": "Bubbles",
+            "attribute": "title",
+            "value": "Bubbles Laughing",
             "source": 49
           }
         ],
@@ -2154,7 +2160,7 @@
     "id": 354,
     "powers": [
       {
-        "type": "FOR_EACH",
+        "type": "SINGLE",
         "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
@@ -2801,7 +2807,7 @@
     "powers": [
       {
         "type": "FOR_EACH",
-        "conditionRestriction": "NEIGHBOR",
+        "conditionRestriction": "ADJACENT",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -3044,7 +3050,7 @@
     "powers": [
       {
         "type": "SINGLE",
-        "conditionRestriction": "NEIGHBOR",
+        "conditionRestriction": "ADJACENT",
         "target": "SELF",
         "targetType": "ANY",
         "targetConditions": [],
@@ -3857,7 +3863,7 @@
           },
           {
             "condition": "IS_NOT",
-            "attribute": "character",
+            "attribute": "title",
             "value": "Hoss Delgado",
             "source": 179
           }
@@ -3872,7 +3878,7 @@
           },
           {
             "condition": "IS_NOT",
-            "attribute": "character",
+            "attribute": "title",
             "value": "Hoss Delgado",
             "source": 179
           }
@@ -3906,7 +3912,7 @@
           },
           {
             "condition": "IS_NOT",
-            "attribute": "character",
+            "attribute": "title",
             "value": "Wintergreen",
             "source": 381
           }
@@ -3921,7 +3927,7 @@
           },
           {
             "condition": "IS_NOT",
-            "attribute": "character",
+            "attribute": "title",
             "value": "Wintergreen",
             "source": 381
           }
@@ -3955,7 +3961,7 @@
           },
           {
             "condition": "IS_NOT",
-            "attribute": "character",
+            "attribute": "title",
             "value": "Common Cold",
             "source": 81
           }
@@ -3970,7 +3976,7 @@
           },
           {
             "condition": "IS_NOT",
-            "attribute": "character",
+            "attribute": "title",
             "value": "Common Cold",
             "source": 81
           }
@@ -4004,7 +4010,7 @@
           },
           {
             "condition": "IS_NOT",
-            "attribute": "character",
+            "attribute": "title",
             "value": "Knight Brace",
             "source": 218
           }
@@ -4019,7 +4025,7 @@
           },
           {
             "condition": "IS_NOT",
-            "attribute": "character",
+            "attribute": "title",
             "value": "Knight Brace",
             "source": 218
           }
@@ -4053,7 +4059,7 @@
           },
           {
             "condition": "IS_NOT",
-            "attribute": "character",
+            "attribute": "title",
             "value": "Stickybeard",
             "source": 353
           }
@@ -4068,7 +4074,7 @@
           },
           {
             "condition": "IS_NOT",
-            "attribute": "character",
+            "attribute": "title",
             "value": "Stickybeard",
             "source": 353
           }
@@ -4102,7 +4108,7 @@
           },
           {
             "condition": "IS_NOT",
-            "attribute": "character",
+            "attribute": "title",
             "value": "Green Loontern Dodgers",
             "source": 169
           }
@@ -4117,7 +4123,7 @@
           },
           {
             "condition": "IS_NOT",
-            "attribute": "character",
+            "attribute": "title",
             "value": "Green Loontern Dodgers",
             "source": 169
           }
@@ -4151,7 +4157,7 @@
           },
           {
             "condition": "IS_NOT",
-            "attribute": "character",
+            "attribute": "title",
             "value": "Baby Sylvester",
             "source": 20
           }
@@ -4166,7 +4172,7 @@
           },
           {
             "condition": "IS_NOT",
-            "attribute": "character",
+            "attribute": "title",
             "value": "Baby Sylvester",
             "source": 20
           }
@@ -4187,7 +4193,7 @@
     "id": 229,
     "powers": [
       {
-        "type": "FOR_EACH",
+        "type": "SINGLE",
         "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ALL",
@@ -4206,7 +4212,7 @@
           },
           {
             "condition": "IS_NOT",
-            "attribute": "character",
+            "attribute": "title",
             "value": "Liberty Belle",
             "source": 229
           }
@@ -4227,7 +4233,7 @@
           },
           {
             "condition": "IS_NOT",
-            "attribute": "character",
+            "attribute": "title",
             "value": "Liberty Belle",
             "source": 229
           }
@@ -4781,7 +4787,7 @@
     "id": 351,
     "powers": [
       {
-        "type": "FOR_EACH",
+        "type": "SINGLE",
         "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ANY",
@@ -5545,7 +5551,7 @@
     "id": 223,
     "powers": [
       {
-        "type": "FOR_EACH",
+        "type": "SINGLE",
         "conditionRestriction": "NONE",
         "target": "OTHER",
         "targetType": "ALL",
@@ -5613,7 +5619,7 @@
         "conditions": [
           {
             "condition": "IS",
-            "attribute": "type",
+            "attribute": "types",
             "value": "PROP",
             "source": 119
           }
@@ -5634,9 +5640,9 @@
     "id": 12,
     "powers": [
       {
-        "type": "FOR_EACH",
-        "conditionRestriction": "NEIGHBOR",
-        "target": "NEIGHBOR",
+        "type": "SINGLE",
+        "conditionRestriction": "ADJACENT",
+        "target": "ADJACENT",
         "targetType": "ANY",
         "targetConditions": [
           {
@@ -5650,7 +5656,7 @@
         "conditions": [
           {
             "condition": "IS",
-            "attribute": "type",
+            "attribute": "types",
             "value": "VILLAIN",
             "source": 12
           }
@@ -5681,7 +5687,7 @@
         "conditions": [
           {
             "condition": "IS",
-            "attribute": "type",
+            "attribute": "types",
             "value": "VILLAIN",
             "source": 12
           }
@@ -5718,7 +5724,7 @@
         "conditions": [
           {
             "condition": "IS_NOT",
-            "attribute": "type",
+            "attribute": "types",
             "value": "HERO",
             "source": 27
           }
@@ -5769,9 +5775,9 @@
     "id": 363,
     "powers": [
       {
-        "type": "FOR_EACH",
-        "conditionRestriction": "NEIGHBOR",
-        "target": "NEIGHBOR",
+        "type": "SINGLE",
+        "conditionRestriction": "ADJACENT",
+        "target": "ADJACENT",
         "targetType": "ANY",
         "targetConditions": [
           {
@@ -5785,7 +5791,7 @@
         "conditions": [
           {
             "condition": "IS",
-            "attribute": "type",
+            "attribute": "types",
             "value": "ANIMAL",
             "source": 363
           }
@@ -5920,7 +5926,7 @@
         "conditions": [
           {
             "condition": "IS",
-            "attribute": "type",
+            "attribute": "types",
             "value": "PROP",
             "source": 293
           }
@@ -6782,7 +6788,7 @@
       {
         "type": "SINGLE",
         "conditionRestriction": "NONE",
-        "target": "NEIGHBOR",
+        "target": "ADJACENT",
         "targetType": "ANY",
         "targetConditions": [
           {
@@ -7218,7 +7224,7 @@
           },
           {
             "condition": "IS_NOT",
-            "attribute": "character",
+            "attribute": "title",
             "value": "Fusilli",
             "source": 149
           }
@@ -7233,7 +7239,7 @@
           },
           {
             "condition": "IS_NOT",
-            "attribute": "character",
+            "attribute": "title",
             "value": "Fusilli",
             "source": 149
           }
