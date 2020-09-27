@@ -940,7 +940,7 @@
     "id": 127,
     "powers": [
       {
-        "type": "SINGLE",
+        "type": "FOR_EACH",
         "conditionRestriction": "NONE",
         "target": "SELF",
         "targetType": "ANY",

@@ -157,7 +157,7 @@ function checkRestrictions(
   // GENERAL
   let cardPosition = playerBoard.findIndex((_card) => _card?.id === card.id);
   let matching = false;
-  let mustMatchAll = power.targetType === 'ALL';
+  let mustMatchAll = conditionType === 'ALL';
   let matchingAll = true;
   let results = [];
 
@@ -395,6 +395,10 @@ function checkConditions(
     return [false, false];
   }
 
+  if (conditions.length === 0) {
+    return [true, true];
+  }
+
   conditions.map((condition) => {
     if ((mustMatchAll && matchingAll) || !mustMatchAll) {
       if (condition.attribute === 'position') {
@@ -436,6 +440,7 @@ function checkConditions(
             }
           } else {
             if (card[condition.attribute] !== condition.value) {
+              matching = true;
             } else {
               matchingAll = false;
             }
@@ -510,7 +515,7 @@ function checkForDisables(playerBoard: any[], opposingBoard: any[]) {
               attribute: 'disabled',
               type: 'disabled',
               value: 'disabled',
-              source: -1,
+              source: playerCard.id,
             },
           ];
 
@@ -520,7 +525,7 @@ function checkForDisables(playerBoard: any[], opposingBoard: any[]) {
               attribute: 'disabled',
               type: 'disabled',
               value: 'disabled',
-              source: -1,
+              source: card.id,
             },
           ];
         } else if (playerCard?.basePoints > card?.basePoints) {
@@ -530,7 +535,7 @@ function checkForDisables(playerBoard: any[], opposingBoard: any[]) {
               attribute: 'disabled',
               type: 'disabled',
               value: 'disabled',
-              source: -1,
+              source: card.id,
             },
           ];
         } else {
@@ -540,7 +545,7 @@ function checkForDisables(playerBoard: any[], opposingBoard: any[]) {
               attribute: 'disabled',
               type: 'disabled',
               value: 'disabled',
-              source: -1,
+              source: playerCard.id,
             },
           ];
         }
@@ -557,7 +562,7 @@ function checkForDisables(playerBoard: any[], opposingBoard: any[]) {
               attribute: 'disabled',
               type: 'disabled',
               value: 'disabled',
-              source: -1,
+              source: opponentCard.id,
             },
           ];
 
@@ -567,7 +572,7 @@ function checkForDisables(playerBoard: any[], opposingBoard: any[]) {
               attribute: 'disabled',
               type: 'disabled',
               value: 'disabled',
-              source: -1,
+              source: card.id,
             },
           ];
         } else if (opponentCard?.basePoints > card?.basePoints) {
@@ -577,7 +582,7 @@ function checkForDisables(playerBoard: any[], opposingBoard: any[]) {
               attribute: 'disabled',
               type: 'disabled',
               value: 'disabled',
-              source: -1,
+              source: card.id,
             },
           ];
         } else {
@@ -587,7 +592,7 @@ function checkForDisables(playerBoard: any[], opposingBoard: any[]) {
               attribute: 'disabled',
               type: 'disabled',
               value: 'disabled',
-              source: -1,
+              source: opponentCard.id,
             },
           ];
         }

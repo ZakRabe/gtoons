@@ -1083,7 +1083,7 @@
         "conditions": [
           {
             "condition": "IS",
-            "attribute": "group",
+            "attribute": "groups",
             "value": "POWERPUFF GIRLS",
             "source": 352
           }
