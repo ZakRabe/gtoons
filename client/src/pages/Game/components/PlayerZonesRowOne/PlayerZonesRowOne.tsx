@@ -8,7 +8,7 @@ const styles: CSS.Properties = {
   justifyContent: 'center',
   width: '100%',
   height: '50%',
-  backgroundColor: 'orange',
+  // backgroundColor: 'orange',
 };
 
 export default class PlayerZonesRowOne extends React.Component<
