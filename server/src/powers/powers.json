@@ -3965,7 +3965,7 @@
           {
             "condition": "IS_NOT",
             "attribute": "title",
-            "value": "Knight Brace",
+            "value": "Knightbrace",
             "source": 218
           }
         ],

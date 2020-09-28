@@ -4011,7 +4011,7 @@
           {
             "condition": "IS_NOT",
             "attribute": "title",
-            "value": "Knight Brace",
+            "value": "Knightbrace",
             "source": 218
           }
         ],
@@ -4026,7 +4026,7 @@
           {
             "condition": "IS_NOT",
             "attribute": "title",
-            "value": "Knight Brace",
+            "value": "Knightbrace",
             "source": 218
           }
         ],
