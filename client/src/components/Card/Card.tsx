@@ -75,8 +75,6 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
     padding: 3,
   };
 
-  console.log(card);
-
   const renderCard = () => {
     return (
       <section

@@ -8,7 +8,7 @@ const styles: CSS.Properties = {
   justifyContent: 'center',
   width: '100%',
   height: '50%',
-  backgroundColor: 'tomato',
+  // backgroundColor: 'tomato',
 };
 
 export default class PlayerZonesRowTwo extends React.Component<
@@ -22,7 +22,7 @@ export default class PlayerZonesRowTwo extends React.Component<
         {cards?.map((card, index) => {
           return (
             <PlayerZone
-              key={card ? card.id : index}
+              key={`boardSlot_row2_${index}`}
               card={card}
               onCardClick={onCardClick}
               onCardHover={onCardHover}

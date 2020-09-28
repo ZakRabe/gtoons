@@ -155,9 +155,10 @@ export const Sandbox = (props: SandboxProps) => {
     const newBoard = [...board];
 
     const index = newBoard.findIndex(find);
-    newBoard.splice(index, 1, null);
-
-    setBoard(newBoard);
+    if (index > -1) {
+      newBoard.splice(index, 1, null);
+      setBoard(newBoard);
+    }
   };
 
   const onHover = (card: Card) => {
