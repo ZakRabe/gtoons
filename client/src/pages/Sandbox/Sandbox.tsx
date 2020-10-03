@@ -214,11 +214,6 @@ export const Sandbox = (props: SandboxProps) => {
       return (acc = acc ? acc : attrContainsSearchTerms(value, searchTerm));
     }, false);
 
-    if (card.id === 12) {
-      console.log(fields);
-      console.log(isInFields);
-    }
-
     return isInFields || matchesColor || isPointMatch;
   };
 

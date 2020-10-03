@@ -90,11 +90,12 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
     });
     if (deckId != null) {
       request({ url: 'deckBuilder/myDeckList' }).then((decks: Deck[]) => {
-        let result = decks.find((deck) => {return (deck.id === Number(deckId))});
-        if(result == null) {
+        let result = decks.find((deck) => {
+          return deck.id === Number(deckId);
+        });
+        if (result == null) {
           deckId = null;
-        }
-        else {
+        } else {
           setDeck(result.cards);
           setDeckName(result.name);
           setFace(result.face);
@@ -130,32 +131,33 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
   };
 
   const saveDeck = () => {
-    if(deckId != null) {
+    if (deckId != null) {
       let data = { id: deckId, name: deckName, face, deck };
       console.log(data);
       request({
         method: 'post',
         url: 'deckBuilder/updateDeck',
         data: { id: deckId, name: deckName, face, deck },
-      }).then(() => {
-        console.log('save successful');
       })
-      .catch((error) => {
-        console.log('save failed', error);
-      });
-    }
-    else {
+        .then(() => {
+          console.log('save successful');
+        })
+        .catch((error) => {
+          console.log('save failed', error);
+        });
+    } else {
       request({
         method: 'post',
         url: 'deckBuilder/saveDeck',
         data: { name: deckName, face, deck },
-      }).then((deck: Deck) => {
-        deckId = deck.id;
-        console.log('save successful');
       })
-      .catch((error) => {
-        console.log('save failed', error);
-      });
+        .then((deck: Deck) => {
+          deckId = deck.id;
+          console.log('save successful');
+        })
+        .catch((error) => {
+          console.log('save failed', error);
+        });
     }
   };
 
@@ -182,7 +184,10 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
   };
 
   const attrContainsSearchTerms = (attr: string, searchTerm: string) => {
-    return attr.toLowerCase().includes(searchTerm.toLowerCase());
+    return searchTerm
+      .toLowerCase()
+      .split(' ')
+      .every((word) => attr.toLowerCase().includes(word));
   };
 
   const checkForTerm = (card: Card, searchTerm: string): boolean => {
@@ -190,13 +195,15 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
       card.title,
       card.character,
       card.description,
-      ...card.groups,
-      ...card.types,
+      card.groups.join(' '),
+      card.types.join(' '),
     ];
 
-    // dont match on points for examples like "+8"
+    // dont match on points for examples like "+8" or "-5"
     const isPointMatch =
-      card.points === Number(searchTerm) && !searchTerm.includes('+');
+      card.points === Number(searchTerm) &&
+      !searchTerm.includes('+') &&
+      !searchTerm.includes('-');
 
     let matchesColor = false;
     if (colorOptions.includes(searchTerm.toUpperCase())) {
@@ -310,8 +317,9 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
               }}
             >
               {deck.map((cardId) => {
-                const card =
-                  allCards.find((item: Card) => item.id === cardId) as Card;
+                const card = allCards.find(
+                  (item: Card) => item.id === cardId
+                ) as Card;
                 return card ? (
                   <li
                     key={cardId}
@@ -334,18 +342,20 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
                     ></div>
                     <div
                       style={{
-                        fontSize: '3vh'
+                        fontSize: '3vh',
                       }}
                     >
-                      <i 
-                        className={`${face === card.id ? 'fas'  : `far`}  fa-star`}
+                      <i
+                        className={`${
+                          face === card.id ? 'fas' : `far`
+                        }  fa-star`}
                         style={{
-                          color: 'gold'
+                          color: 'gold',
                         }}
                         onClick={onFaceClick(card.id)}
                       />
                     </div>
-                    
+
                     <div
                       style={{
                         display: 'flex',
