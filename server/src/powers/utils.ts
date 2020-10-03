@@ -27,7 +27,6 @@ export function evaluateBoardPowers(
     if (card) {
       card.powers.map((power) => {
         //Switch Case for each power type? SINGLE or FOR_EACH
-        //console.log(power);
         // @ts-ignore TODO: need better types for these
         check(p1Cards, p2Cards, power, card.id);
       });
@@ -37,7 +36,6 @@ export function evaluateBoardPowers(
     if (card) {
       card.powers.map((power) => {
         //Switch Case for each power type? SINGLE or FOR_EACH
-        //console.log(power);
         // @ts-ignore TODO: need better types for these
         check(p2Cards, p1Cards, power, card.id);
       });
@@ -175,7 +173,6 @@ function checkRestrictions(
     case 'SELF':
       // Add modifer to self
       if (card.id === playerBoard[powerPosition].id) {
-        console.log(card.title);
         matching = true;
       } else {
         matchingAll = false;
@@ -353,12 +350,16 @@ function checkRestrictions(
     if (matchingAll) {
       matchingAll = results[1];
     }
+  } else {
+    if (restriction !== 'SELF') {
+      matching = false;
+      matchingAll = false;
+    }
   }
 
   if ((mustMatchAll && matchingAll) || (!mustMatchAll && matching)) {
     //Add modifiers
     if (isTargetCondition) {
-      console.log([card.title, mustMatchAll, matchingAll, matching]);
       return card.modifiers ? [...card.modifiers, ...modifiers] : modifiers;
     } else {
       // TODO: Move condition check to this area.
