@@ -1,2 +1,2 @@
-import PlayerZone from './PlayerZone';
+import { PlayerZone } from './PlayerZone';
 export default PlayerZone;
