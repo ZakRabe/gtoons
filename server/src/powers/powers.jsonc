@@ -751,7 +751,7 @@
           {
             "condition": "IS",
             "attribute": "types",
-            "value": "FEMAlE",
+            "value": "FEMALE",
             "source": 67
           }
         ],
