@@ -184,7 +184,10 @@ export const Sandbox = (props: SandboxProps) => {
   };
 
   const attrContainsSearchTerms = (attr: string, searchTerm: string) => {
-    return attr.toLowerCase().includes(searchTerm.toLowerCase());
+    return searchTerm
+      .toLowerCase()
+      .split(' ')
+      .every((word) => attr.toLowerCase().includes(word));
   };
 
   const checkForTerm = (card: Card, searchTerm: string): boolean => {
@@ -192,13 +195,15 @@ export const Sandbox = (props: SandboxProps) => {
       card.title,
       card.character,
       card.description,
-      ...card.groups,
-      ...card.types,
+      card.groups.join(' '),
+      card.types.join(' '),
     ];
 
     // dont match on points for examples like "+8"
     const isPointMatch =
-      card.points === Number(searchTerm) && !searchTerm.includes('+');
+      card.points === Number(searchTerm) &&
+      !searchTerm.includes('+') &&
+      !searchTerm.includes('-');
 
     let matchesColor = false;
     if (colorOptions.includes(searchTerm.toUpperCase())) {
@@ -208,6 +213,12 @@ export const Sandbox = (props: SandboxProps) => {
     const isInFields = fields.reduce((acc: boolean, value: string) => {
       return (acc = acc ? acc : attrContainsSearchTerms(value, searchTerm));
     }, false);
+
+    if (card.id === 12) {
+      console.log(fields);
+      console.log(isInFields);
+    }
+
     return isInFields || matchesColor || isPointMatch;
   };
 
