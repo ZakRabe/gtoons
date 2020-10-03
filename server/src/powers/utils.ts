@@ -410,13 +410,15 @@ function checkConditions(
       if (condition.attribute === 'position') {
         // Checking IS or IS_NOT
         if (condition.condition === 'IS') {
-          if (cardPosition === condition.value) {
+          // we add 1 here, because we configure the power 1-indexed, but the position comes in 0-indexed
+          if (cardPosition + 1 === condition.value) {
             matching = true;
           } else {
             matchingAll = false;
           }
         } else {
-          if (cardPosition !== condition.value) {
+          // we add 1 here, because we configure the power 1-indexed, but the position comes in 0-indexed
+          if (cardPosition + 1 !== condition.value) {
             matching = true;
           } else {
             matchingAll = false;
