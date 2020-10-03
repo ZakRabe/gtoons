@@ -43,23 +43,29 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
       return ['#F2FD0A', '#E2C701'];
     }
 
+    if (color === 'RED') {
+      return ['#FD0D0D', '#E40101'];
+    }
+
     return ['fff', 'fff'];
   };
 
-  const [gradientColorLight, gradientColorDark] = colorToGradient(card.colors[0]);
+  const [gradientColorLight, gradientColorDark] = colorToGradient(
+    card.colors[0]
+  );
 
   const handleOnMouseEnter = (e: any) => {
     onHover && onHover(e);
     setIsHovering(true);
-  }
+  };
 
   const handleOnMouseLeave = (e: any) => {
     setIsHovering(false);
-  }
+  };
 
   const renderHover = () => (
     <div className={`info${isHovering ? ' show' : ''}`}>
-      <div className='header'>
+      <div className="header">
         <div className="title">
           <strong>{card.title}</strong>
           <CopyToClipboard text={card.id.toString()}>
@@ -76,15 +82,11 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
           </tr>
           <tr style={{}}>
             <td>Types</td>
-            <td>
-              {card.types.join(', ')}
-            </td>
+            <td>{card.types.join(', ')}</td>
           </tr>
           <tr style={{}}>
             <td>Groups</td>
-            <td>
-              {card.groups.join(', ')}
-            </td>
+            <td>{card.groups.join(', ')}</td>
           </tr>
           <tr style={{}}>
             <td>Base Points</td>
@@ -93,11 +95,13 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
         </tbody>
       </table>
       {card.modifiers?.length > 0 && (
-        <div className='modifiers'>
+        <div className="modifiers">
           <span>Modifiers</span>
-          {card.modifiers?.map((mod) => 
-            <pre><code>{JSON.stringify(mod, null, 2)}</code></pre>
-          )}
+          {card.modifiers?.map((mod) => (
+            <pre>
+              <code>{JSON.stringify(mod, null, 2)}</code>
+            </pre>
+          ))}
         </div>
       )}
     </div>
