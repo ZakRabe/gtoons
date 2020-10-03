@@ -14,6 +14,7 @@ Did you know that we are on [Discord](https://discord.com/invite/W9Z9hSG)? Come 
 - [Omni](https://github.com/omnims)
 - [i_d_k](https://github.com/AnujAsher)
 - [shafferchance](https://github.com/shafferchance)
+- [fmaiabatista](https://github.com/fmaiabatista)
 
 ### System Requirements:
 
