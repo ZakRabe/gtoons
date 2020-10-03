@@ -192,6 +192,7 @@ function checkRestrictions(
         conditions
       );
       break;
+    // @ts-ignore fall-through to neighbors is intended
     case 'ADJACENT':
       /* 
       Check cards positions adjacent to this powers card
@@ -266,7 +267,7 @@ function checkRestrictions(
           }
           break;
       }
-      break;
+
     case 'NEIGHBOR':
       /*
       Check +1,-1
