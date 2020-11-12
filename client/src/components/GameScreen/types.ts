@@ -21,7 +21,7 @@ export interface GameState {
   myHand: number[];
 }
 
-interface Game {
+export interface Game {
   color1: string | null;
   color2: string | null;
   id: number;
