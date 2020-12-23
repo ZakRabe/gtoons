@@ -35,7 +35,7 @@ export const roll = (min: number, max: number) => {
 
 export const cardsInCollection = (cards: number[], collection: number[]) => {
   console.log(cards);
-  console.log(collection);
+  //console.log(collection);
   return cards.reduce((acc, card) => {
     return (acc = acc && collection.includes(card));
   }, true);

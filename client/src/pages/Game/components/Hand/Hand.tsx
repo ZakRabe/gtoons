@@ -13,11 +13,17 @@ const styles: CSS.Properties = {
 
 export default class Hand extends React.Component<HandProps, {}> {
   render() {
-    const { cards } = this.props;
+    const { cards,onCardClick,onEmptyClick} = this.props;
+    onCardClick.bind(this)
     return (
       <div style={styles}>
-        {cards.map((card) => {
-          return <HandZone card={card} />;
+        {cards?.map((card, index) => {
+          return <HandZone 
+          card={card}
+          slot={index}
+          onCardClick={onCardClick}
+          onEmptyClick={()=>{onEmptyClick(index)}}
+          />;
         })}
       </div>
     );

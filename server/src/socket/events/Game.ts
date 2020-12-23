@@ -7,6 +7,16 @@ const socketConfigs: SocketConfig[] = [
     controller: GameController,
     action: 'playerConnected',
   },
+  {
+    event: 'lockIn',
+    controller: GameController,
+    action: 'lockIn',
+  },
+  {
+    event: 'discarding',
+    controller: GameController,
+    action: 'discarding',
+  },
 ];
 
 export default socketConfigs;

@@ -6,6 +6,7 @@ import {
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { evaluateBoardPowers } from '../../powers/utils';
 import Game from './Game';
 
 @Entity({ name: 'gamestate' })
@@ -77,15 +78,15 @@ export default class GameState extends BaseEntity {
     switch (turnNumber) {
       case 1:
         handSize = 6;
-
         break;
       case 2:
+        //I think this needs to be fixed
         handSize = 4 + discard.length;
-        offset = 5;
+        offset = 6;
         break;
     }
 
-    return deck.slice(offset, handSize);
+    return deck.slice(offset, handSize+offset);
   };
 
   static validCardCount(turnNumber: number, cardCount: number): boolean {
@@ -136,6 +137,8 @@ export default class GameState extends BaseEntity {
     const newBoardState = previous
       .slice(0, prevEnd)
       .concat(newCards.slice(0, newEnd));
+
+    return newBoardState;
   }
 
   // send an array of cardIds and an array for a deck

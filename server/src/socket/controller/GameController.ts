@@ -9,6 +9,7 @@ import GameState from '../../common/entity/GameState';
 import { cardsInCollection, verifyToken } from '../../util';
 import { AuthTokenUser } from '../../types';
 import { getCards } from '../../cards/utils';
+import { evaluateBoardPowers } from '../../powers/utils';
 
 export class GameController extends SockerController {
   private collectionRepository = getRepository(Collection);
@@ -117,7 +118,7 @@ export class GameController extends SockerController {
     const empty = JSON.stringify([]);
     const newGameState = {
       game: savedGame,
-      turn: 0,
+      turn: 1,
       player1ShuffledDeck: JSON.stringify(p1CutDeck),
       player2ShuffledDeck: JSON.stringify(p2CutDeck),
       player1Board: empty,
@@ -138,25 +139,89 @@ export class GameController extends SockerController {
     this.io.emit('lobbyUpdated', lobby.toJson());
   }
 
-  takeTurn = (turn: number, board: number[], player: User, game: Game) => {
+  async takeTurn(turn: number, board: number[], player: User, gameId: number){
+    const gameRoom = `game/${gameId}`;
+    const game = await this.gameRepository.findOne(gameId);
+    const gameState = await this.gameStateRepository.findOne({
+      where: { game },
+    });
+
     const {
       player1: { id: p1Id },
       player2: { id: p2Id },
     } = game;
 
+
+    //this.socket.join(gameRoom);
     if (!(p1Id === player.id || p2Id === player.id)) {
       // player not in game
       return this.cheater();
     }
 
     // did they send the right amount of cards
-    if (!GameState.validCardCount(turn, board.length)) {
+    // Turn needs to be either converted to 0 index or the switch values need to be shifted down
+    const cards = board.filter(e => e !== null)
+    const cardSum = cards.length
+    if (!GameState.validCardCount(turn, cardSum)) {
       return this.cheater();
     }
     // do they own the cards
     // are the cards in the deck
-    const deck = game.player1Deck;
-  };
+
+    if(p1Id === player.id){
+      const deck = game.player1Deck;
+      const deckIds : number[] = JSON.parse(deck.cards)
+      const prevCards : number[] = JSON.parse(game.gameState.player1Board)
+      // Check if card is in deck
+      if(!GameState.validateNewCards(cards,deckIds)){
+        // Card is not in deck 
+        return this.cheater()
+      }
+      
+      const newPlayer1board = JSON.stringify(GameState.updateBoardState(turn,prevCards,cards))
+      gameState.player1Board = newPlayer1board
+    } else {
+      const deck = game.player2Deck;
+      const deckIds :number[]= JSON.parse(deck.cards)
+      const prevCards : number[] = JSON.parse(game.gameState.player2Board)
+      // Check if card is in deck
+      if(!GameState.validateNewCards(cards,deckIds)){
+        // Card is not in deck 
+        return this.cheater()
+      }
+      
+      const newPlayer2Board = JSON.stringify(GameState.updateBoardState(turn,prevCards,cards))
+      gameState.player2Board = newPlayer2Board
+    }
+
+    await gameState.save();
+    await gameState.reload();
+
+    // Check if both players have sent their results
+    const p1Board:number[] = JSON.parse(gameState.player1Board)
+    const p2Board:number[] = JSON.parse(gameState.player2Board)
+    
+    // This will need to be modified to handle multiple cases eventually
+    // because turns will have different turn card counts and checking 
+    // if empty won't be useful after the first turn
+    if(p1Board === [] || p2Board === []){
+      return
+    }
+
+    if(p1Board.length === p2Board.length){
+      const {p1Cards,p2Cards} = evaluateBoardPowers(p1Board,p2Board)
+
+      console.log(gameState.turn)
+      gameState.turn += 1;
+      await gameState.save();
+      await gameState.reload();
+
+      console.log(turn)
+      this.io.to(gameRoom).emit('turnResults',gameState.turn,player.id,p1Cards, p2Cards);
+    } 
+
+    //
+  }; 
 
   cheater() {
     this.io.emit('cheater');
@@ -184,7 +249,7 @@ export class GameController extends SockerController {
       return;
     }
     this.socket.join(gameRoom);
-
+    
     const isPlayer1 = game.player1.id === user.userId;
     const isPlayer2 = game.player2.id === user.userId;
     if (isPlayer1 || isPlayer2) {
@@ -210,6 +275,112 @@ export class GameController extends SockerController {
         // Both players have connected.
         // show the shuffle/cut/color in the client
         this.io.to(gameRoom).emit('allPlayersConnected');
+      }
+    }
+  }
+
+  /**
+   * Lock in the results from the front-end and perform validation after both sides have sent their cards.
+   */
+  async lockIn({token, gameId,board}){
+    const gameRoom = `game/${gameId}`;
+    let user;
+    try {
+      user = verifyToken(token);
+    } catch (error) {
+      console.error(error);
+      return;
+    }
+
+    const game = await this.gameRepository.findOne(gameId);
+    const gameState = await this.gameStateRepository.findOne({
+      where: { game },
+    });
+
+    if (!game || !gameState) {
+      // WTF
+      console.error(
+        `user ${user.userId} attempted to connect to game ${game.id}, but it doesn't exist`
+      );
+      return;
+    }
+
+    this.socket.join(gameRoom);
+
+    const isPlayer1 = game.player1.id === user.userId;
+    const isPlayer2 = game.player2.id === user.userId;
+
+    if(isPlayer1||isPlayer2){
+      await gameState.save();
+      await gameState.reload();
+
+      if(isPlayer1){
+        this.takeTurn(game.gameState.turn,board,game.player1,gameId)
+      } else {
+        this.takeTurn(game.gameState.turn,board,game.player2,gameId)
+      }
+    }
+  }
+
+  async discarding({token, gameId, remainingCards,discardedCards}){
+    const gameRoom = `game/${gameId}`;
+    let user;
+    try {
+      user = verifyToken(token);
+    } catch (error) {
+      console.error(error);
+      return;
+    }
+
+    console.log("discarding")
+    const game = await this.gameRepository.findOne(gameId);
+    const gameState = await this.gameStateRepository.findOne({
+      where: { game },
+    });
+
+    if (!game || !gameState) {
+      // WTF
+      console.error(
+        `user ${user.userId} attempted to connect to game ${game.id}, but it doesn't exist`
+      );
+      return;
+    }
+
+    //this.socket.join(gameRoom);
+
+    const isPlayer1 = game.player1.id === user.userId;
+    const isPlayer2 = game.player2.id === user.userId;
+    const discarded = JSON.stringify(discardedCards)
+    if(isPlayer1||isPlayer2){
+      let playerRoom = ``;
+      if(isPlayer1){
+        playerRoom = `${gameRoom}_player1`;
+        //const p1Discard = JSON.stringify(discardedCards)
+        gameState.player1Discard = discarded;
+
+        await gameState.save();
+        await gameState.reload();
+
+        console.log('delivering new hand to player 1');
+        const newBoard = getCards([...remainingCards,...gameState.handJson(1, 2)]);
+        this.socket.join(playerRoom);
+        this.io
+          .to(playerRoom)
+          .emit('handUpdated', newBoard);
+      } else {
+        playerRoom = `${gameRoom}_player2`;
+        //const p2Discard = JSON.stringify(discardedCards)
+        gameState.player2Discard = discarded;
+
+        await gameState.save();
+        await gameState.reload();
+
+        console.log('delivering new hand to player 2');
+        const newBoard = getCards([...remainingCards,...gameState.handJson(2, 2)]);
+        this.socket.join(playerRoom);
+        this.io
+          .to(playerRoom)
+          .emit('handUpdated', newBoard);
       }
     }
   }

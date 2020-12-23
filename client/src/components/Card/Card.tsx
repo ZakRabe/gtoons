@@ -8,6 +8,9 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
   const { model, onClick, onHover, width, height } = props;
   const [isHovering, setIsHovering] = React.useState(false);
 
+  if(!model){
+    return null
+  }
   const card = model || {
     id: 'default',
     colors: ['SILVER'],
@@ -82,11 +85,11 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
           </tr>
           <tr style={{}}>
             <td>Types</td>
-            <td>{card.types.join(', ')}</td>
+            <td>{card.types?.join(', ')}</td>
           </tr>
           <tr style={{}}>
             <td>Groups</td>
-            <td>{card.groups.join(', ')}</td>
+            <td>{card.groups?.join(', ')}</td>
           </tr>
           <tr style={{}}>
             <td>Base Points</td>

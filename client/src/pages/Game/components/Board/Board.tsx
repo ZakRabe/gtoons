@@ -5,6 +5,7 @@ import { BoardProps } from './types';
 import { request } from '../../../../utils/api';
 import HandZone from '../HandZone';
 import Hand from '../Hand';
+import { Button } from 'semantic-ui-react';
 
 const styles: CSS.Properties = {
   display: 'flex',
@@ -15,7 +16,7 @@ const styles: CSS.Properties = {
 };
 
 const Board: React.FunctionComponent<BoardProps> = (props) => {
-  const { gameState, playerNumber, hand } = props;
+  const { gameState, playerNumber, hand,board,opponentBoard, onSubmit,onHandCardClick,onHandEmptyClick,onBoardCardClick,onBoardEmptyClick } = props;
   const isSpectator = playerNumber === -1;
 
   const [p1Board, setP1Board] = React.useState([]);
@@ -32,29 +33,35 @@ const Board: React.FunctionComponent<BoardProps> = (props) => {
     );
   }, [gameState.player2Board]);
 
-  let opponentBoard = p2Board;
-  let myBoard = p1Board;
-  if (playerNumber === 2) {
-    opponentBoard = p1Board;
-    myBoard = p2Board;
-  }
+  
+
 
   const render = () => {
     return (
       <section style={styles}>
-        {isSpectator && <Hand cards={[]} />}
+        {isSpectator && <Hand cards={[]} 
+        onCardClick={()=>{}}
+        onEmptyClick={()=>{}}/>}
         <PlayerZones
-          cards={opponentBoard}
+          board={opponentBoard}
           isOpponent={true}
-          onCardClick={() => {}}
-          onCardHover={() => {}}
+          onCardClick={()=>{}}
+          onEmptyClick={()=>{}}
+          onCardHover={()=>{}}
         />
+        <Button 
+        onClick={onSubmit}>Lock In</Button>
         <PlayerZones
-          cards={myBoard}
-          onCardClick={() => {}}
-          onCardHover={() => {}}
+          board={board}
+          hand={hand} 
+          onCardClick={onBoardCardClick}
+          onEmptyClick={onBoardEmptyClick}
+          onCardHover={()=>{}}
         />
-        <Hand cards={hand} />
+        <Hand 
+        cards={hand} 
+        onCardClick={onHandCardClick}
+        onEmptyClick={onHandEmptyClick}/>
       </section>
     );
   };

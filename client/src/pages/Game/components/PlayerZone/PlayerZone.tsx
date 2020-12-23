@@ -4,7 +4,7 @@ import './styles.scss';
 import Card from '../../../../components/Card';
 
 export const PlayerZone: React.FunctionComponent<PlayerZoneProps> = (props) => {
-  const { card, onCardClick, onCardHover } = props;
+  const { card, slot, onCardClick, onEmptyClick, onCardHover,} = props;
 
   const zoneEnabled = true;
 
@@ -16,6 +16,7 @@ export const PlayerZone: React.FunctionComponent<PlayerZoneProps> = (props) => {
         width="214"
         height="214"
         viewBox="0 0 214 214"
+        onClick={()=>{onEmptyClick(slot)}}
       >
         <defs>
           <radialGradient
@@ -81,7 +82,7 @@ export const PlayerZone: React.FunctionComponent<PlayerZoneProps> = (props) => {
       {card ? (
         <Card
           model={card}
-          onClick={() => onCardClick(card.id)}
+          onClick={() => onCardClick(card.id, slot)}
           onHover={() => onCardHover(card)}
           width={250}
           height={250}

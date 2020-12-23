@@ -6,7 +6,7 @@ import {
   Tooltip,
 } from 'carbon-components-react';
 import React, { useEffect, useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 import { Deck } from '../../App/types';
 import UserContext from '../../contexts/UserContext';
 import { request } from '../../utils/api';
@@ -314,8 +314,8 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
     return (
       <Button
         color="primary"
-        // disabled={!seat1.ready || !seat2.ready}
-        disabled
+         disabled={!seat1.ready || !seat2.ready}
+        //disabled
         onClick={startGame}
       >
         Start!
@@ -323,7 +323,7 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
     );
   };
 
-  const renderLobby = (user: any) => {
+  const renderLobby = (user: {userId: number}) => {
     if (!user) {
       return null;
     }
@@ -359,7 +359,7 @@ const Lobby: React.FunctionComponent<LobbyProps> = (props) => {
   return lobby ? (
     <UserContext.Consumer>
       {({ user }) => {
-        return renderLobby(user);
+        return user ? renderLobby(user):<Redirect to="/"/> ;
       }}
     </UserContext.Consumer>
   ) : null;

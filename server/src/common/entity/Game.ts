@@ -91,6 +91,7 @@ export default class Game extends BaseEntity {
   };
 
   static generateColors = (cards1: Card[], cards2: Card[]) => {
+    console.log('Generating colors')
     const bottom1 = cards1[cards1.length - 1];
     const bottom2 = cards2[cards2.length - 1];
 

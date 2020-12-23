@@ -16,10 +16,10 @@ const styles: CSS.Properties = {
 
 export default class PlayerZones extends React.Component<PlayerZonesProps, {}> {
   render() {
-    const { isOpponent, cards, onCardClick, onCardHover } = this.props;
+    const { isOpponent,board, onCardClick,onEmptyClick, onCardHover, hand  } = this.props;
 
-    const rowOne = cards?.slice(0, 4);
-    const rowTwo = cards?.slice(4);
+    const rowOne = board?.slice(0, 4);
+    const rowTwo = board?.slice(4);
 
     const container: CSS.Properties = {
       width: '100%',
@@ -35,11 +35,13 @@ export default class PlayerZones extends React.Component<PlayerZonesProps, {}> {
           <PlayerZonesRowOne
             cards={rowOne}
             onCardClick={onCardClick}
+            onEmptyClick={onEmptyClick}
             onCardHover={onCardHover}
           />
           <PlayerZonesRowTwo
             cards={rowTwo}
             onCardClick={onCardClick}
+            onEmptyClick={onEmptyClick}
             onCardHover={onCardHover}
           />
         </div>

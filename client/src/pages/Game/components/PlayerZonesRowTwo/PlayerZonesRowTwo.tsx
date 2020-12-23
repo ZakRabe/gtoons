@@ -16,15 +16,18 @@ export default class PlayerZonesRowTwo extends React.Component<
   {}
 > {
   render() {
-    const { cards, onCardClick, onCardHover } = this.props;
+    const { cards, onCardClick,onEmptyClick, onCardHover,} = this.props;
+    const offset = 4;
     return (
       <div style={styles}>
         {cards?.map((card, index) => {
           return (
             <PlayerZone
               key={`boardSlot_row2_${index}`}
+              slot={index+offset}
               card={card}
               onCardClick={onCardClick}
+              onEmptyClick={onEmptyClick}
               onCardHover={onCardHover}
             />
           );
