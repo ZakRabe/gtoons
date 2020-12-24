@@ -137,7 +137,6 @@ export default class GameState extends BaseEntity {
     const newBoardState = previous
       .slice(0, prevEnd)
       .concat(newCards.slice(0, newEnd));
-
     return newBoardState;
   }
 

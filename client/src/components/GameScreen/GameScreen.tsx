@@ -25,6 +25,7 @@ const GameScreen: React.FunctionComponent<GameScreenProps> = (props) => {
 
   const userContext = useContext(UserContext);
 
+  const [turn, setTurn] = useState(1)
   const [playersConnected, setPlayersConnected] = useState(false);
   const [introPlayed, setIntroPlayed] = useState(false);
   const [hand, setHand] = useState<(Card|null)[]>([]);
@@ -197,7 +198,7 @@ const GameScreen: React.FunctionComponent<GameScreenProps> = (props) => {
 
   const onBoardEmptyClick =(slot:number) =>{
     if(movingCard?.id){
-      if((game.gameState.turn === 1 && slot < 4) || (game.gameState.turn === 2 && slot > 3 ) ){
+      if((turn === 1 && slot < 4) || (turn === 2 && slot > 3 ) ){
         setBoard(prevBoard =>{
           const newBoard = [...prevBoard]
           const cardOnBoard = newBoard.findIndex(card => card?.id === movingCard.id)
@@ -223,15 +224,24 @@ const GameScreen: React.FunctionComponent<GameScreenProps> = (props) => {
   }
 
   const onSubmit = () =>{
+    console.log("submitting");
     if(socket){
       if((discarding)){
+        console.log("discarding");
         const remainingCards = hand.filter((card)=>card !== null && !discardedCards.includes(card.id)).map(card => card?.id)
 
         socket.emit('discarding',{token: isLoggedIn(), gameId: game.id,remainingCards:remainingCards, discardedCards:discardedCards});
         console.log(hand)
         return;
       }
-      const cards = [...board.map(card => {if(card) {return card.id}})]
+
+      const cards = [...board.map(card => {
+        if(card && turn === 1 && board.findIndex((c) => c?.id === card.id) < 4) {
+          return card.id;
+        }
+        else if(card && turn === 2 && board.findIndex((c) => c?.id === card.id) > 3){
+          return card.id;
+      }})];
       socket.emit("lockIn",{token: isLoggedIn(),gameId: game.id, board:cards})
     }
   }
@@ -255,24 +265,29 @@ const GameScreen: React.FunctionComponent<GameScreenProps> = (props) => {
         // be sure to validate server side
         setDiscarding(false);
 
+        console.log("The current turn is "+turn)
         const newHand = [...hand, ...newCards];
         setHand(newHand);
       });
 
-      socket.on('turnResults',(turn:number,playerId:number,p1Cards:Card[],p2Cards:Card[])=>{
+      socket.on('turnResults',(turnNumber:number,playerId:number,p1Cards:Card[],p2Cards:Card[])=>{
           let p1Board = [...p1Cards,...Array.from({length:7-p1Cards.length},()=> null)];
           let p2Board = [...p2Cards,...Array.from({length:7-p2Cards.length},()=> null)];
 
-          game.gameState.turn = turn;
-          if(turn === 2){
+          setTurn(turnNumber)
+          if(turnNumber === 2){
             setDiscarding(true)
           }
+          
+          const { user } = userContext;
 
-        if(game.player1.id === playerId){
+        if(game.player1.id === user?.userId){
+          console.log("The current turn is "+turn)
           console.log("player1");
           setBoard(p1Board);
           setOpponentBoard(p2Board);
         } else {
+          console.log("The current turn is "+turn)
           console.log("player2");
           setBoard(p2Board);
           setOpponentBoard(p1Board);

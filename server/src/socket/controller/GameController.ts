@@ -160,8 +160,9 @@ export class GameController extends SockerController {
 
     // did they send the right amount of cards
     // Turn needs to be either converted to 0 index or the switch values need to be shifted down
-    const cards = board.filter(e => e !== null)
-    const cardSum = cards.length
+    const cards = board.filter(e => e !== null);
+    const cardSum = cards.length;
+
     if (!GameState.validCardCount(turn, cardSum)) {
       return this.cheater();
     }
@@ -216,7 +217,8 @@ export class GameController extends SockerController {
       await gameState.save();
       await gameState.reload();
 
-      console.log(turn)
+    
+      console.log(gameState.turn)
       this.io.to(gameRoom).emit('turnResults',gameState.turn,player.id,p1Cards, p2Cards);
     } 
 
@@ -310,14 +312,15 @@ export class GameController extends SockerController {
     const isPlayer1 = game.player1.id === user.userId;
     const isPlayer2 = game.player2.id === user.userId;
 
+    console.log("current cards for player at turn " + gameState.turn)
     if(isPlayer1||isPlayer2){
       await gameState.save();
       await gameState.reload();
 
       if(isPlayer1){
-        this.takeTurn(game.gameState.turn,board,game.player1,gameId)
+        this.takeTurn(gameState.turn,board,game.player1,gameId)
       } else {
-        this.takeTurn(game.gameState.turn,board,game.player2,gameId)
+        this.takeTurn(gameState.turn,board,game.player2,gameId)
       }
     }
   }
