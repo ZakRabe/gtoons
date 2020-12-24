@@ -13,9 +13,9 @@ const socketConfigs: SocketConfig[] = [
     action: 'lockIn',
   },
   {
-    event: 'discarding',
+    event: 'discard',
     controller: GameController,
-    action: 'discarding',
+    action: 'discard',
   },
 ];
 

@@ -209,6 +209,7 @@ export class GameController extends SockerController {
       return
     }
 
+    // This works for everything but last case in which the boards are already the same length and you are just replacing a card.
     if(p1Board.length === p2Board.length){
       const {p1Cards,p2Cards} = evaluateBoardPowers(p1Board,p2Board)
 
@@ -325,7 +326,7 @@ export class GameController extends SockerController {
     }
   }
 
-  async discarding({token, gameId, remainingCards,discardedCards}){
+  async discard({token, gameId, remainingCards,discardedCards}){
     const gameRoom = `game/${gameId}`;
     let user;
     try {

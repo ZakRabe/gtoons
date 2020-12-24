@@ -149,6 +149,10 @@ const GameScreen: React.FunctionComponent<GameScreenProps> = (props) => {
   const onBoardCardClick = (cardId:number,slot?:number) =>{
     // 0 is detected as false
     if(slot !== undefined && slot > -1){
+      if((turn !== 1 && slot < 4) || (turn > 2 && slot < 6 )){
+        return
+      }
+
       if(!movingCard?.id){
         setMovingCard(board[slot])
        } else {
@@ -198,7 +202,7 @@ const GameScreen: React.FunctionComponent<GameScreenProps> = (props) => {
 
   const onBoardEmptyClick =(slot:number) =>{
     if(movingCard?.id){
-      if((turn === 1 && slot < 4) || (turn === 2 && slot > 3 ) ){
+      if((turn === 1 && slot < 4) || (turn === 2 && slot > 3 )){
         setBoard(prevBoard =>{
           const newBoard = [...prevBoard]
           const cardOnBoard = newBoard.findIndex(card => card?.id === movingCard.id)
@@ -227,10 +231,9 @@ const GameScreen: React.FunctionComponent<GameScreenProps> = (props) => {
     console.log("submitting");
     if(socket){
       if((discarding)){
-        console.log("discarding");
         const remainingCards = hand.filter((card)=>card !== null && !discardedCards.includes(card.id)).map(card => card?.id)
 
-        socket.emit('discarding',{token: isLoggedIn(), gameId: game.id,remainingCards:remainingCards, discardedCards:discardedCards});
+        socket.emit('discard',{token: isLoggedIn(), gameId: game.id,remainingCards:remainingCards, discardedCards:discardedCards});
         console.log(hand)
         return;
       }
@@ -241,7 +244,10 @@ const GameScreen: React.FunctionComponent<GameScreenProps> = (props) => {
         }
         else if(card && turn === 2 && board.findIndex((c) => c?.id === card.id) > 3){
           return card.id;
-      }})];
+        } else if(card && turn === 3 && board.findIndex((c) => c?.id === card.id) === 6){
+           return card.id;
+        }
+      })];
       socket.emit("lockIn",{token: isLoggedIn(),gameId: game.id, board:cards})
     }
   }
@@ -265,7 +271,6 @@ const GameScreen: React.FunctionComponent<GameScreenProps> = (props) => {
         // be sure to validate server side
         setDiscarding(false);
 
-        console.log("The current turn is "+turn)
         const newHand = [...hand, ...newCards];
         setHand(newHand);
       });
