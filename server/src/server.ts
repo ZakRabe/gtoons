@@ -63,6 +63,7 @@ createConnection()
               })
               .catch((error) => {
                 console.log(error);
+                res.json(500);
               });
           } else if (validResult(result)) {
             res.json(result);

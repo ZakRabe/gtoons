@@ -14,7 +14,7 @@ import {
   SwitcherItem,
 } from 'carbon-components-react/lib/components/UIShell';
 import React, { useState, useContext, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
+import { useHistory, withRouter } from 'react-router-dom';
 import { isLoggedIn, logOut } from '../../utils/auth';
 import { goto } from '../../utils/misc';
 import './styles.css';
@@ -26,13 +26,17 @@ const AppHeader: React.FunctionComponent<AppHeaderProps> = (props) => {
   const { history } = props;
   const { user, setUser } = useContext(UserContext);
 
+  const {
+    location: { pathname },
+  } = useHistory();
+
   useEffect(() => {
     request({
       url: 'login/validateToken',
     })
       .then(({ user: authdUser }) => {
         // console.log(user);
-        // this means the token was still valid, so there's no need to be on this page
+        // this means the token was still valid
 
         if (!user || user.userId !== authdUser.userId) {
           setUser(authdUser);
@@ -42,7 +46,7 @@ const AppHeader: React.FunctionComponent<AppHeaderProps> = (props) => {
         setUser(null);
         // the token was already cleared in the request helper upon recieveing a 401
       });
-  });
+  }, [pathname]);
 
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [isSideNavExpanded, setIsSideNavExpanded] = useState(false);

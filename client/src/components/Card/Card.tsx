@@ -123,8 +123,8 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
           y2="0.5"
           gradientUnits="objectBoundingBox"
         >
-          <stop offset="0" stop-color="#44759a" />
-          <stop offset="1" stop-color="#345f85" />
+          <stop offset="0" stopColor="#44759a" />
+          <stop offset="1" stopColor="#345f85" />
         </linearGradient>
         <radialGradient
           id={`b${card.id}`}
@@ -133,9 +133,9 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
           r="0.477"
           gradientUnits="objectBoundingBox"
         >
-          <stop offset="0" stop-color="#eef4f8" />
-          <stop offset="0.948" stop-color="#eef4f8" />
-          <stop offset="1" stop-color="#b1cdde" />
+          <stop offset="0" stopColor="#eef4f8" />
+          <stop offset="0.948" stopColor="#eef4f8" />
+          <stop offset="1" stopColor="#b1cdde" />
         </radialGradient>
         <linearGradient
           id={`d${card.id}`}
@@ -145,8 +145,8 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
           y2="0.231"
           gradientUnits="objectBoundingBox"
         >
-          <stop offset="0" stop-color={gradientColorLight} />
-          <stop offset="1" stop-color={gradientColorDark} />
+          <stop offset="0" stopColor={gradientColorLight} />
+          <stop offset="1" stopColor={gradientColorDark} />
         </linearGradient>
         <clipPath id={`e${card.id}`}>
           <circle
@@ -185,7 +185,7 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
         transform="translate(14 14)"
         fill="#afd2e3"
         stroke="#a0b4c0"
-        stroke-width="2"
+        strokeWidth="2"
       >
         <circle cx="86" cy="86" r="86" stroke="none" />
         <circle cx="86" cy="86" r="85" fill="none" />
@@ -197,7 +197,7 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
         transform="translate(22 22)"
         fill={`url(#d${card.id})`}
       />
-      <g transform="translate(-753 -271)" clip-path={`url(#e${card.id})`}>
+      <g transform="translate(-753 -271)" clipPath={`url(#e${card.id})`}>
         <image
           preserveAspectRatio="xMidYMid slice"
           width="148"
@@ -210,7 +210,7 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
         transform="translate(113 111)"
         fill="#fff"
         stroke="#afd2e3"
-        stroke-width="4"
+        strokeWidth="4"
       >
         <circle cx="26" cy="26" r="26" stroke="none" />
         <circle cx="26" cy="26" r="24" fill="none" />
@@ -218,7 +218,7 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
       <g
         transform="translate(116 114)"
         stroke="#8b9aa4"
-        stroke-width="1"
+        strokeWidth="1"
         fill={`url(#f${card.id})`}
       >
         <circle cx="23" cy="23" r="23" stroke="none" />
@@ -228,11 +228,11 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
         transform={`translate(${card.points > 9 ? '118' : '128'} 149)`}
         fill="#afd2e3"
         stroke="#8b9aa4"
-        stroke-width="1"
-        font-size="30"
-        font-family="Verdana-BoldItalic, Verdana"
-        font-weight="700"
-        font-style="italic"
+        strokeWidth="1"
+        fontSize="30"
+        fontFamily="Verdana-BoldItalic, Verdana"
+        fontWeight="700"
+        fontStyle="italic"
         textLength="40"
       >
         {card.points}
@@ -259,7 +259,10 @@ export const Card: React.FunctionComponent<CardProps> = (props) => {
   );
 };
 
-export default React.memo(Card, isEqual);
+export default React.memo(
+  Card,
+  (prev, next) => prev.model?.id === next.model?.id
+);
 
 // Todo
 
