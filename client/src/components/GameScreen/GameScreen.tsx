@@ -7,6 +7,7 @@ import Intro from './Intro/Intro';
 import Board from '../../pages/Game/components/Board';
 import UserContext from '../../contexts/UserContext';
 import { Card } from '../../App/types';
+import { Redirect } from 'react-router-dom';
 
 /*
 Starting animations: 
@@ -64,6 +65,10 @@ const GameScreen: React.FunctionComponent<GameScreenProps> = (props) => {
       return <Intro game={game} />;
     }
     const { user } = userContext;
+
+    if (!user) {
+      return <Redirect to="/" />;
+    }
 
     let playerNumber = -1;
     if (game.player1.id === user.userId) {

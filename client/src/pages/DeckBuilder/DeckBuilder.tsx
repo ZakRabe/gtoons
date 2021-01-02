@@ -82,13 +82,16 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
   };
 
   React.useEffect(() => {
-    request({
-      url: 'deckBuilder/myCollection',
-    }).then((collectionModel) => {
-      const newCollection = JSON.parse(collectionModel.cards);
-      setCollection(newCollection);
-    });
+    // not needed yet since players have access to all cards in alpha
+    // request({
+    //   url: 'deckBuilder/myCollection',
+    // }).then((collectionModel) => {
+    //   const newCollection = JSON.parse(collectionModel.cards);
+    //   setCollection(newCollection);
+    // });
     if (deckId != null) {
+      // why are we loading all the decks when we want to edit only one?
+      // TODO: change this to load exactly one deck by id
       request({ url: 'deckBuilder/myDeckList' }).then((decks: Deck[]) => {
         let result = decks.find((deck) => {
           return deck.id === Number(deckId);
@@ -96,13 +99,13 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
         if (result == null) {
           deckId = null;
         } else {
-          setDeck(result.cards);
-          setDeckName(result.name);
-          setFace(result.face);
+          const { cards, name, face } = result;
+          setDeck(cards);
+          setDeckName(name);
+          setFace(face);
         }
       });
     }
-
     request({ url: 'cards/all' }).then(setAllCards);
   }, []);
 
@@ -131,34 +134,23 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
   };
 
   const saveDeck = () => {
-    if (deckId != null) {
-      let data = { id: deckId, name: deckName, face, deck };
-      console.log(data);
-      request({
-        method: 'post',
-        url: 'deckBuilder/updateDeck',
-        data: { id: deckId, name: deckName, face, deck },
+    request({
+      method: 'post',
+      url: 'deckBuilder/saveDeck',
+      data: {
+        face,
+        deck,
+        name: deckName,
+        id: deckId,
+      },
+    })
+      .then((deck: Deck) => {
+        deckId = deck.id;
+        console.log('save successful');
       })
-        .then(() => {
-          console.log('save successful');
-        })
-        .catch((error) => {
-          console.log('save failed', error);
-        });
-    } else {
-      request({
-        method: 'post',
-        url: 'deckBuilder/saveDeck',
-        data: { name: deckName, face, deck },
-      })
-        .then((deck: Deck) => {
-          deckId = deck.id;
-          console.log('save successful');
-        })
-        .catch((error) => {
-          console.log('save failed', error);
-        });
-    }
+      .catch((error) => {
+        console.log('save failed', error);
+      });
   };
 
   const onHover = (card: Card) => {
@@ -264,6 +256,10 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
     });
   };
 
+  const renderedCollection = React.useMemo(() => renderCollection(), [
+    allMatches,
+  ]);
+
   const renderDeckList = () => {
     return (
       <>
@@ -320,69 +316,71 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
                 const card = allCards.find(
                   (item: Card) => item.id === cardId
                 ) as Card;
-                return card ? (
-                  <li
-                    key={cardId}
-                    onClick={onDeckCardClick(card.id)}
-                    onMouseOver={() => onHover(card)}
-                    style={{
-                      display: 'flex',
-                      height: '8.33%',
-                      alignItems: 'center',
-                      border: `1px solid ${card.colors[0]}`,
-                      fontWeight: 'bolder',
-                    }}
-                  >
-                    <div
+                return (
+                  card && (
+                    <li
+                      key={cardId}
+                      onClick={onDeckCardClick(card.id)}
+                      onMouseOver={() => onHover(card)}
                       style={{
-                        height: '100%',
-                        width: '5%',
-                        backgroundColor: `${card.colors[0]}`,
-                      }}
-                    ></div>
-                    <div
-                      style={{
-                        fontSize: '3vh',
+                        display: 'flex',
+                        height: '8.33%',
+                        alignItems: 'center',
+                        border: `1px solid ${card.colors[0]}`,
+                        fontWeight: 'bolder',
                       }}
                     >
-                      <i
-                        className={`${
-                          face === card.id ? 'fas' : `far`
-                        }  fa-star`}
+                      <div
                         style={{
-                          color: 'gold',
+                          height: '100%',
+                          width: '5%',
+                          backgroundColor: `${card.colors[0]}`,
                         }}
-                        onClick={onFaceClick(card.id)}
-                      />
-                    </div>
+                      ></div>
+                      <div
+                        style={{
+                          fontSize: '3vh',
+                        }}
+                      >
+                        <i
+                          className={`${
+                            face === card.id ? 'fas' : `far`
+                          }  fa-star`}
+                          style={{
+                            color: 'gold',
+                          }}
+                          onClick={onFaceClick(card.id)}
+                        />
+                      </div>
 
-                    <div
-                      style={{
-                        display: 'flex',
-                        height: '100%',
-                        maxWidth: '100%',
-                        flexGrow: 1,
-                        textAlign: 'center',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                      }}
-                    >
-                      {card.title}
-                    </div>
-                    <div
-                      style={{
-                        display: 'flex',
-                        height: '100%',
-                        width: '8%',
-                        textAlign: 'center',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                      }}
-                    >
-                      {card.points}
-                    </div>
-                  </li>
-                ) : null;
+                      <div
+                        style={{
+                          display: 'flex',
+                          height: '100%',
+                          maxWidth: '100%',
+                          flexGrow: 1,
+                          textAlign: 'center',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                        }}
+                      >
+                        {card.title}
+                      </div>
+                      <div
+                        style={{
+                          display: 'flex',
+                          height: '100%',
+                          width: '8%',
+                          textAlign: 'center',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                        }}
+                      >
+                        {card.points}
+                      </div>
+                    </li>
+                  )
+                );
               })}
             </ul>
           </div>
@@ -397,6 +395,7 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
         {colorOptions.map((color) => {
           return (
             <ColorButton
+              key={color}
               color={color}
               active={colorFilters.includes(color)}
               onClick={toggleColor(color)}
@@ -418,7 +417,7 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
       <section style={editorStyles}>
         <section style={collectionContainerStyles}>
           <section style={collectionWrapperStyles}>
-            {renderCollection()}
+            {renderedCollection}
           </section>
         </section>
         <section style={deckListStyles}>{renderDeckList()} </section>

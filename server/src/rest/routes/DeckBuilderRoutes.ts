@@ -24,12 +24,4 @@ export const DeckBuilderRoutes = [
     controller: DeckBuilderController,
     action: 'myDeckList',
   },
-
-  {
-    method: 'post',
-    route: '/deckBuilder/updateDeck',
-    middleware: [checkJwt],
-    controller: DeckBuilderController,
-    action: 'updateDeck',
-  },
 ];

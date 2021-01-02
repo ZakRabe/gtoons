@@ -18,30 +18,45 @@ export class DeckBuilderController {
     return collection;
   }
 
-  // TODO: Make this method update the deck if it exists
   async saveDeck(request: Request, response: Response, next: NextFunction) {
     const { userId } = response.locals.jwtPayload;
     const user = await this.userRepository.findOne(userId);
 
-    const deckName = request.body.name;
-    const newDeck = JSON.stringify(request.body.deck);
-    let deckFace = null;
-    if (newDeck.length > 0) {
-      const random = roll(0, newDeck.length - 1);
-      deckFace = request.body.face || newDeck[random];
+    const { name, deck, face, id } = request.body;
+
+    // must be between 1 and 12 cards long
+    const invalidDeckSize = deck.length > 12 || !deck.length;
+    // the face card if set, must exist in the deck
+    const invalidFaceCard = face != null && !deck.includes(face);
+    const isEdit = !!id;
+    let existingDeck: Deck = null;
+    if (isEdit) {
+      existingDeck = await this.deckRepository.findOne({ id });
     }
 
-    // TODO: If updating: validate the deck belongs to them
+    // if we're editing a deck, you can only edit your own deck
+    const notMyDeck = isEdit && existingDeck.player.id !== userId;
 
-    const deck = {
+    if (invalidDeckSize || invalidFaceCard || notMyDeck) {
+      return response.sendStatus(422);
+    }
+
+    let faceId = face;
+    if (deck.length && !faceId) {
+      const random = roll(0, deck.length - 1);
+      faceId = deck[random];
+    }
+
+    const newDeck = {
+      id: id ? Number(id) : undefined,
+      name,
       player: user,
-      name: deckName,
-      face: deckFace,
-      cards: newDeck,
+      face: faceId,
+      cards: JSON.stringify(deck),
     };
-    const { id } = await this.deckRepository.save(deck);
+    const { id: savedDeckId } = await this.deckRepository.save(newDeck);
     const savedDeck = await this.deckRepository.findOne({
-      id,
+      id: savedDeckId,
     });
 
     return savedDeck.toJson();
@@ -54,34 +69,5 @@ export class DeckBuilderController {
     });
 
     return deckLists.map((deck) => deck.toJson());
-  }
-
-  // TODO: Remove this. use the same save endpoint for update.
-  async updateDeck(request: Request, response: Response, next: NextFunction) {
-
-    if (request.body.deck.count > 12 || (request.body.face != null && !request.body.deck.includes(request.body.face))) {
-      return response.sendStatus(422);
-    }
-
-    const user = response.locals.jwtPayload;
-    const {
-      id:deckId, 
-      name:deckName, 
-      deck:newDeck,
-      face:deckFace
-    } = request.body
-    const JSONDeck = JSON.stringify(newDeck);
-
-    const oldDeck = await this.deckRepository.findOne(deckId);
-    if (oldDeck.player.id !== user.userId) {
-      return response.sendStatus(401);
-    }
-
-    oldDeck.name = deckName;
-    oldDeck.face = deckFace;
-    oldDeck.cards = JSONDeck;
-    await oldDeck.save();
-
-    return oldDeck.toJson();
   }
 }

@@ -9,11 +9,13 @@ This doc serves to break down and plan all the events and data needs of a full P
   - There are 4 rooms required for the game to prevent sending confidential data to the wrong people
   - These can be circumvented by spectating your own game, but we cant really stop that
 
-    | room name                | purpose      | event examples |
-    | ------------------------ | ------------ | -------------- |
-    | `game/${gameId}`         | public data  | `revealBoard`  |
-    | `game/${gameId}_player1` | player1 only | `updateHand`   |
-    | `game/${gameId}_player2` | player2 only | `updateHand`   |
+    | room name                           | purpose              | event examples  |
+    | ----------------------------------- | -------------------- | --------------- |
+    | `game/${gameId}`                    | public data          | `revealBoard`   |
+    | `game/${gameId}_player1_spectators` | player1 + spectators | `updateHand`    |
+    | `game/${gameId}_player2_spectators` | player2 + spectators | `updateHand`    |
+    | `game/${gameId}_player1`            | player1 only         | `p2BoardPlaced` |
+    | `game/${gameId}_player2`            | player2 only         | `p1BoardPlaced` |
 
   - Helpers
 

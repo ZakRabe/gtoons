@@ -16,7 +16,7 @@ import {
 } from './styles';
 
 import { renderToStaticMarkup } from 'react-dom/server';
-import { useHistory } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { Button, TextInput, TileGroup, Tooltip } from 'carbon-components-react';
 import { Add16, PlayFilledAlt32 } from '@carbon/icons-react';
 import { UserProfile } from '@carbon/pictograms-react';
@@ -71,6 +71,9 @@ const ProfileDisplay = () => {
 
   // Should I being using suspense here instead?
   useEffect(() => {
+    if (!user) {
+      return;
+    }
     request({
       url: `users/${user.userId}`,
     })
@@ -81,6 +84,9 @@ const ProfileDisplay = () => {
       })
       .catch(console.error);
   }, []);
+  if (!user) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <div style={profileContainer}>
