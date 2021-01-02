@@ -7,8 +7,6 @@ import ColorButton from './components/ColorButton';
 import { DeckBuilderProps } from './types';
 import { Deck } from '../../App/types';
 
-// TODO: why is this screen suddenly so laggy
-
 export const DeckBuilder = (props: DeckBuilderProps) => {
   var {
     match: {

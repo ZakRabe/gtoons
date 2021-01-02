@@ -24,7 +24,7 @@ export class DeckBuilderController {
 
     const { name, deck, face, id } = request.body;
 
-    // must be between 1 and 12 cards ling
+    // must be between 1 and 12 cards long
     const invalidDeckSize = deck.length > 12 || !deck.length;
     // the face card if set, must exist in the deck
     const invalidFaceCard = face != null && !deck.includes(face);
