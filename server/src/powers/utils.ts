@@ -144,7 +144,7 @@ function checkRestrictions(
   power: any,
   powerPosition: number,
   restriction: any,
-  conditionType: any,
+  conditionType: Power['conditionType'],
   conditions: any[],
   modifiers: any[],
   playerBoard: (Card | null)[],
@@ -163,14 +163,7 @@ function checkRestrictions(
 
   switch (restriction) {
     case 'NONE':
-      results = checkConditions(
-        card,
-        cardPosition,
-        power,
-        powerPosition,
-        conditionType,
-        conditions
-      );
+      results = checkConditions(card, cardPosition, conditionType, conditions);
       break;
     case 'SELF':
       // Add modifer to self
@@ -185,14 +178,7 @@ function checkRestrictions(
       Check target type and  target conditions to make sure 
       that the targeted card meets the criteria.
       */
-      results = checkConditions(
-        card,
-        cardPosition,
-        power,
-        powerPosition,
-        conditionType,
-        conditions
-      );
+      results = checkConditions(card, cardPosition, conditionType, conditions);
       break;
     // @ts-ignore fall-through to neighbors is intended
     case 'ADJACENT':
@@ -216,8 +202,6 @@ function checkRestrictions(
             results = checkConditions(
               card,
               cardPosition,
-              power,
-              powerPosition,
               conditionType,
               conditions
             );
@@ -232,8 +216,6 @@ function checkRestrictions(
             results = checkConditions(
               card,
               cardPosition,
-              power,
-              powerPosition,
               conditionType,
               conditions
             );
@@ -244,8 +226,6 @@ function checkRestrictions(
             results = checkConditions(
               card,
               cardPosition,
-              power,
-              powerPosition,
               conditionType,
               conditions
             );
@@ -261,8 +241,6 @@ function checkRestrictions(
             results = checkConditions(
               card,
               cardPosition,
-              power,
-              powerPosition,
               conditionType,
               conditions
             );
@@ -286,8 +264,6 @@ function checkRestrictions(
             results = checkConditions(
               card,
               cardPosition,
-              power,
-              powerPosition,
               conditionType,
               conditions
             );
@@ -299,8 +275,6 @@ function checkRestrictions(
             results = checkConditions(
               card,
               cardPosition,
-              power,
-              powerPosition,
               conditionType,
               conditions
             );
@@ -314,8 +288,6 @@ function checkRestrictions(
             results = checkConditions(
               card,
               cardPosition,
-              power,
-              powerPosition,
               conditionType,
               conditions
             );
@@ -328,8 +300,6 @@ function checkRestrictions(
         results = checkConditions(
           card,
           powerPosition,
-          power,
-          powerPosition,
           conditionType,
           conditions
         );
@@ -340,8 +310,6 @@ function checkRestrictions(
         results = checkConditions(
           card,
           cardPosition,
-          power,
-          powerPosition,
           conditionType,
           conditions
         );
