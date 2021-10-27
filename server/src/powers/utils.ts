@@ -1,5 +1,7 @@
 import { getCards } from '../cards/utils';
 import Card from '../common/entity/Card';
+import Condition from '../common/entity/Condition';
+import Power from '../common/entity/Power';
 import powers from './powers.json';
 
 export function getPower(id: number) {
@@ -157,7 +159,7 @@ function checkRestrictions(
   let matching = false;
   let mustMatchAll = conditionType === 'ALL';
   let matchingAll = true;
-  let results = [];
+  let results = {};
 
   switch (restriction) {
     case 'NONE':
@@ -389,76 +391,32 @@ Returns matching and matchingAll as results
 function checkConditions(
   card: Card,
   cardPosition: number,
-  power: any,
-  powerPosition: number,
-  conditionType: any,
-  conditions: any[]
+  conditionType: Power['conditionType'],
+  conditions: Condition[]
 ) {
   let mustMatchAll = conditionType === 'ALL';
-  let matching = false;
-  let matchingAll = true;
+  let matchesAny = false;
+  let matchesAll = true;
+
   if (card.disabled) {
-    return [false, false];
+    return false;
   }
 
   if (conditions.length === 0) {
-    return [true, true];
+    return true;
   }
 
-  conditions.map((condition) => {
-    if ((mustMatchAll && matchingAll) || !mustMatchAll) {
-      if (condition.attribute === 'position') {
-        // Checking IS or IS_NOT
-        if (condition.condition === 'IS') {
-          // we add 1 here, because we configure the power 1-indexed, but the position comes in 0-indexed
-          if (cardPosition + 1 === condition.value) {
-            matching = true;
-          } else {
-            matchingAll = false;
-          }
-        } else {
-          // we add 1 here, because we configure the power 1-indexed, but the position comes in 0-indexed
-          if (cardPosition + 1 !== condition.value) {
-            matching = true;
-          } else {
-            matchingAll = false;
-          }
-        }
-      } else {
-        if (condition.condition === 'IS') {
-          if (Array.isArray(card[condition.attribute])) {
-            if (card[condition.attribute].indexOf(condition.value) > -1) {
-              matching = true;
-            } else {
-              matchingAll = false;
-            }
-          } else {
-            if (card[condition.attribute] === condition.value) {
-              matching = true;
-            } else {
-              matchingAll = false;
-            }
-          }
-        } else {
-          if (Array.isArray(card[condition.attribute])) {
-            if (card[condition.attribute].indexOf(condition.value) === -1) {
-              matching = true;
-            } else {
-              matchingAll = false;
-            }
-          } else {
-            if (card[condition.attribute] !== condition.value) {
-              matching = true;
-            } else {
-              matchingAll = false;
-            }
-          }
-        }
+  conditions
+    .map((condition) => new Condition(condition))
+    .forEach((condition) => {
+      const match = condition.match(card, cardPosition);
+      if (mustMatchAll && !match) {
+        matchesAll = false;
       }
-    }
-  });
+      matchesAny = match || matchesAny;
+    });
 
-  return [matching, matchingAll];
+  return matchesAny || matchesAll;
 }
 
 /*

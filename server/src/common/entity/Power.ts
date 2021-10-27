@@ -1,16 +1,22 @@
 import { Conditional } from './Conditional';
 import { Modifier } from './Modifer';
 import Card from './Card';
+import Condition from './Condition';
 
 //Add check for different conditional combinations?
 export default class Power {
   id: number;
-  type: string;
-  conditionRestriction: string;
-  target: string;
-  targetType: string;
-  targetConditions: any[];
-  conditionType: string;
+  type: 'SINGLE' | 'FOR_EACH';
+  conditionRestriction:
+    | 'NONE'
+    | 'ADJACENT'
+    | 'OPPOSING'
+    | 'NEIGHBOR'
+    | 'OPPONENT';
+  target: 'SELF' | 'OTHER' | 'NEIGHBOR' | 'ADJACENT' | 'OPPOSING' | 'OPPONENT';
+  targetType: 'ANY' | 'ALL';
+  targetConditions: Condition[];
+  conditionType: 'ALL' | 'ANY';
   conditions: any[];
   modifiers: any[];
 
