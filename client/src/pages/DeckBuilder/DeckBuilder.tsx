@@ -6,6 +6,7 @@ import { request } from '../../utils/api';
 import ColorButton from './components/ColorButton';
 import { DeckBuilderProps } from './types';
 import { Deck } from '../../App/types';
+import { useCallback, useRef } from 'react';
 
 export const DeckBuilder = (props: DeckBuilderProps) => {
   var {
@@ -109,11 +110,17 @@ export const DeckBuilder = (props: DeckBuilderProps) => {
     request({ url: 'cards/all' }).then(setAllCards);
   }, []);
 
+  const latestDeck = useRef(deck);
+  
+  React.useEffect(()=>{latestDeck.current = deck},[deck]);
+
   const onCollectionCardClick = (cardId: number) => (e: React.MouseEvent) => {
-    if (deck.includes(cardId) || deck.length >= 12) {
+    const currentDeck = latestDeck.current;
+    if (currentDeck.includes(cardId) || currentDeck.length >= 12) {
       return;
     }
-    const newDeck = [...deck];
+
+    const newDeck = [...currentDeck];
     newDeck.push(cardId);
     setDeck(newDeck);
   };

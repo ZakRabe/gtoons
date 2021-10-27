@@ -1,0 +1,17 @@
+{
+  "type": "mysql",
+  "host": "localhost",
+  "port": 3306,
+  "username": "gtoons",
+  "password": "test",
+  "database": "gtoons",
+  "logging": false,
+  "entities": ["src/common/entity/**/*.ts", "common/entity/**/*.js"],
+  "migrations": ["src/common/migration/**/*.ts", "common/migration/**/*.js"],
+  "subscribers": ["src/common/subscriber/**/*.ts", "common/subscriber/**/*.js"],
+  "cli": {
+    "entitiesDir": "src/common/entity",
+    "migrationsDir": "src/common/migration",
+    "subscribersDir": "src/common/subscriber"
+  }
+}
