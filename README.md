@@ -86,10 +86,10 @@ Clone the Git repository:
 Copy the example environment variables from `deploy/dev/`into `server/src` and `client/src`
 
 linux:
-`cp ./deploy/prod/server/.env ./server/src; cp ./deploy/prod/client/.env ./client/src`
+`cp ./deploy/dev/server/.env ./server/src; cp ./deploy/dev/client/.env ./client/src`
 
 powershell:
-`Copy-Item ".\deploy\prod\server\.env" -Destination ".\server\src"; Copy-Item ".\deploy\prod\client\.env" -Destination ".\client\src"`
+`Copy-Item ".\deploy\dev\server\.env" -Destination ".\server\src"; Copy-Item ".\deploy\dev\client\.env" -Destination ".\client\src"`
 
 Install the backend:  
 `cd gtoons/server/`  
