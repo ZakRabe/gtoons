@@ -19,39 +19,94 @@ export function addCardPowers(card: Card): Card {
   return new Card({ ...card, ...power });
 }
 
-export function getCardsAndPowers = (cardIds: (number|null)[])=>{
+export function getCardsAndPowers(cardIds: (number | null)[]) {
   return getCards(cardIds).map(addCardPowers);
 }
+
+const addModifiers = (board1: Card[], board2: Card[]) => {
+  //
+};
 
 export function evaluateBoardPowers(
   p1Board: (number | null)[],
   p2Board: (number | null)[]
 ) {
-  let p1Cards = getCardsAndPowers(p1Board);
-  let p2Cards = getCardsAndPowers(p2Board);
+  const p1Cards = getCardsAndPowers(p1Board);
+  const p2Cards = getCardsAndPowers(p2Board);
 
   addDisabledModifiers(p1Cards, p2Cards);
 
+  addModifiers(p1Cards, p2Cards);
+
+  const p1ActivePowers: Power[] = [];
   p1Cards.map((card) => {
     if (card) {
       card.powers.map((power) => {
-        //Switch Case for each power type? SINGLE or FOR_EACH
-        check(p1Cards, p2Cards, power, card.id);
+        if (power.isActive(p1Cards, p2Cards)) {
+          p1ActivePowers.push(power);
+        }
       });
     }
   });
+  const p2ActivePowers: Power[] = [];
   p2Cards.map((card) => {
     if (card) {
       card.powers.map((power) => {
-        //Switch Case for each power type? SINGLE or FOR_EACH
-        // @ts-ignore TODO: need better types for these
-        check(p2Cards, p1Cards, power, card.id);
+        if (power.isActive(p2Cards, p1Cards)) {
+          p2ActivePowers.push(power);
+        }
       });
     }
   });
 
-  p1Cards.map(applyModifiers);
-  p2Cards.map(applyModifiers);
+  // TODO: Instead of resolving one board, then the other : resolve one card at a time for each board
+  // Check board1 card 1, apply modifiers
+  // check board2 card 1, apply modifiers
+  // check board2 card 1, stop
+
+  // p1Cards.map(applyModifiers);
+  const p1Targets = p1ActivePowers.map((power) =>
+    power.getTargets(p1Cards, p2Cards)
+  );
+  // p2Cards.map(applyModifiers);
+  const p2Targets = p2ActivePowers.map((power) =>
+    power.getTargets(p2Cards, p1Cards)
+  );
+
+  // this needs to be alternating
+
+  // push modifiers from powers into target cards on the board
+  p1Targets.map(({ boardTargetIds, enemyBoardTargetIds }, index) => {
+    const power = p1ActivePowers[index];
+    p1Cards.forEach((card) => {
+      if (!boardTargetIds.includes(card.id)) {
+        return;
+      }
+      card.modifiers = [...card.modifiers, ...power.modifiers];
+    });
+    p2Cards.forEach((card) => {
+      if (!enemyBoardTargetIds.includes(card.id)) {
+        return;
+      }
+      card.modifiers = [...card.modifiers, ...power.modifiers];
+    });
+  });
+  // push modifiers from powers into target cards on the board
+  p2Targets.map(({ boardTargetIds, enemyBoardTargetIds }, index) => {
+    const power = p1ActivePowers[index];
+    p2Cards.forEach((card) => {
+      if (!boardTargetIds.includes(card.id)) {
+        return;
+      }
+      card.modifiers = [...card.modifiers, ...power.modifiers];
+    });
+    p1Cards.forEach((card) => {
+      if (!enemyBoardTargetIds.includes(card.id)) {
+        return;
+      }
+      card.modifiers = [...card.modifiers, ...power.modifiers];
+    });
+  });
 
   return { p1Cards, p2Cards };
 }
@@ -320,7 +375,7 @@ function checkRestrictions(
       break;
   }
 
-  if (results.length > 0) {
+  if (results) {
     matching = results[0];
     if (matchingAll) {
       matchingAll = results[1];

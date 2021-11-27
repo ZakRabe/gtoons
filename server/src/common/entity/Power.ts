@@ -5,7 +5,6 @@ import Condition from './Condition';
 
 //Add check for different conditional combinations?
 export default class Power {
-  id: number;
   type: 'SINGLE' | 'FOR_EACH';
   conditionRestriction:
     | 'NONE'
@@ -22,7 +21,6 @@ export default class Power {
 
   constructor(other: any) {
     if (other) {
-      this.id = other.id;
       this.type = other.type;
       this.conditionRestriction = other.conditionRestriction;
       this.target = other.target;
@@ -34,12 +32,26 @@ export default class Power {
     }
   }
 
-  check(board: (Card | null)[]): Boolean {
+  isActive(board: (Card | null)[], enemyBoard: (Card | null)[]): boolean {
     var d = this.conditions.map((condition) => {
       condition.check(board);
     });
 
     console.log(d);
     return true;
+  }
+
+  // check a board, return array of cardIds that should recieve this powers modifier
+  getTargets(
+    board: (Card | null)[],
+    enemyBoard: (Card | null)[]
+  ): {
+    boardTargetIds: number[];
+    enemyBoardTargetIds: number[];
+  } {
+    return {
+      boardTargetIds: [],
+      enemyBoardTargetIds: [],
+    };
   }
 }
