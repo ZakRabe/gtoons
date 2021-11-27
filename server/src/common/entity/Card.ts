@@ -1,7 +1,7 @@
 // these causing circular dep?
-// import { getPower } from '../../powers/utils';
-// import { Modifier } from './Modifer';
-// import Power from './Power';
+import { getPower } from '../../powers/utils';
+import { Modifier } from './Modifer';
+import Power from './Power';
 
 export enum Color {
   RED = 'RED',
@@ -23,21 +23,18 @@ export enum Rarity {
 }
 
 export default class Card {
-  id: number;
-  title: string;
-  description: string;
+  readonly id: number;
+  readonly title: string;
+  readonly description: string;
   character: string;
   colors: Color[];
-  rarity: Rarity;
+  readonly rarity: Rarity;
   groups: string[];
   types: string[];
-  powers: any[];
-  modifiers: any[];
-  // powers: Power[];
-  // modifiers: Modifier[];
-  basePoints: number;
+  readonly powers: Power[];
+  modifiers: Modifier[];
+  readonly basePoints: number;
   points: number;
-  disabled: boolean;
 
   constructor(other: any) {
     //console.log(other);
@@ -54,8 +51,11 @@ export default class Card {
       this.modifiers = other.modifiers;
       this.basePoints = other.basePoints;
       this.points = other.points;
-      this.disabled = false;
     }
+  }
+
+  get disabled() {
+    return !!this.modifiers.filter((mod) => mod.type === 'disabled').length;
   }
 
   applyAttributeModifiers = () => {

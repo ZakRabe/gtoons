@@ -3,7 +3,8 @@ import Card, { Color } from './Card';
 // base interface all modifiers implement
 export interface Modifier {
   attribute: 'character' | 'colors' | 'groups' | 'types' | 'points';
-  type?: 'add' | 'replace';
+
+  type?: 'add' | 'replace' | 'disabled';
   value: string | Color | number;
   source: number;
   apply: (card: Card) => Card;
@@ -62,7 +63,7 @@ export class ReplaceModifer implements ReplaceMod {
   }
 
   apply(card: Card) {
-    const copy = { ...card };
+    const copy = new Card(card);
     copy[this.attribute] = this.value as any;
     return copy;
   }
@@ -99,7 +100,7 @@ export class VariableModifer implements VariableMod {
   }
 
   apply(card: Card) {
-    const copy = { ...card };
+    const copy = new Card(card);
     switch (this.type) {
       case 'add':
         copy[this.attribute] = [...card[this.attribute], this.value as any];
@@ -140,8 +141,25 @@ export class PointsModifier implements PointsMod {
   }
 
   apply(card: Card) {
-    const copy = { ...card };
+    const copy = new Card(card);
     copy[this.attribute] = copy[this.attribute] + this.value;
+    return copy;
+  }
+}
+
+export class DisableModifier implements Modifier {
+  type: 'disabled';
+  attribute: 'points';
+  value: 0;
+  source: number;
+
+  constructor(source: number) {
+    this.source = source;
+  }
+
+  apply(card: Card) {
+    const copy = new Card(card);
+    copy[this.attribute] = 0;
     return copy;
   }
 }
@@ -161,7 +179,7 @@ export class PointsMultiplierModifier implements PointsMod {
   }
 
   apply(card: Card) {
-    const copy = { ...card };
+    const copy = new Card(card);
     copy[this.attribute] = this.value * copy[this.attribute];
     return copy;
   }

@@ -16,6 +16,7 @@
     "esModuleInterop": true,
     "pretty": true,
     "jsx": "preserve",
+    "lib": ["ESNext", "DOM.Iterable"],
     "resolveJsonModule": true
   },
   "exclude": ["node_modules", "build"]

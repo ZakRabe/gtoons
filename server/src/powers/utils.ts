@@ -1,40 +1,42 @@
 import { getCards } from '../cards/utils';
 import Card from '../common/entity/Card';
 import Condition from '../common/entity/Condition';
+import { DisableModifier, Modifier } from '../common/entity/Modifer';
 import Power from '../common/entity/Power';
 import powers from './powers.json';
 
-export function getPower(id: number) {
+export function getPower(id: number): Pick<Card, 'id' | 'powers'> {
   const foundPower = (powers as any[]).find((power) => power.id === id);
-  return foundPower ? { ...foundPower } : null;
+  return foundPower ? { ...foundPower } : { id, powers: [] };
 }
 
 export function getPowers(ids: number[]) {
   return ids.map(getPower);
 }
 
+export function addCardPowers(card: Card): Card {
+  const power = getPower(card.id);
+  return new Card({ ...card, ...power });
+}
+
 export function evaluateBoardPowers(
   p1Board: (number | null)[],
   p2Board: (number | null)[]
 ) {
-  let p1Cards = getCards(p1Board);
-  let p1Powers = getPowers(p1Board);
+  let p1Cards = getCards(p1Board).map(addCardPowers);
+  let p2Cards = getCards(p2Board).map(addCardPowers);
 
-  let p2Cards = getCards(p2Board);
-  let p2Powers = getPowers(p2Board);
+  addDisabledModifiers(p1Cards, p2Cards);
 
-  checkForDisables(p1Cards, p2Cards);
-
-  p1Powers.map((card) => {
+  p1Cards.map((card) => {
     if (card) {
       card.powers.map((power) => {
         //Switch Case for each power type? SINGLE or FOR_EACH
-        // @ts-ignore TODO: need better types for these
         check(p1Cards, p2Cards, power, card.id);
       });
     }
   });
-  p2Powers.map((card) => {
+  p2Cards.map((card) => {
     if (card) {
       card.powers.map((power) => {
         //Switch Case for each power type? SINGLE or FOR_EACH
@@ -59,13 +61,10 @@ function check(
   let modifiers = [];
 
   //Check if condition is position based
-
   const powerPosition = playerBoard.findIndex((card) => card?.id === powerId);
-
   if (playerBoard[powerPosition].disabled) {
     return;
   }
-
   // CHECKING INITIAL CONDITIONS
   playerBoard.map((card) => {
     if (card) {
@@ -438,103 +437,77 @@ function disableCard(card: Card) {
 /*
 Check board to see if any cards should be negated and add the negation
 modifier to it. */
-function checkForDisables(playerBoard: any[], opposingBoard: any[]) {
-  playerBoard.map((card) => {
-    // If you find a matching character that is not this card in the player board
-    playerBoard.map((playerCard) => {
-      if (
-        playerCard?.character === card?.character &&
-        playerCard?.title !== card?.title
-      ) {
-        if (playerCard?.basePoints === card?.basePoints) {
-          card.disabled = true;
-          card.modifiers = [
-            {
-              attribute: 'disabled',
-              type: 'disabled',
-              value: 'disabled',
-              source: playerCard.id,
-            },
-          ];
+function addDisabledModifiers(
+  playerBoard: (Card | null)[],
+  opposingBoard: (Card | null)[]
+) {
+  // remove nulls
+  const bothBoards = [...playerBoard, ...opposingBoard].filter(
+    (card) => !!card
+  );
 
-          playerCard.disabled = true;
-          playerCard.modifiers = [
-            {
-              attribute: 'disabled',
-              type: 'disabled',
-              value: 'disabled',
-              source: card.id,
-            },
-          ];
-        } else if (playerCard?.basePoints > card?.basePoints) {
-          playerCard.disabled = true;
-          playerCard.modifiers = [
-            {
-              attribute: 'disabled',
-              type: 'disabled',
-              value: 'disabled',
-              source: card.id,
-            },
-          ];
-        } else {
-          card.disabled = true;
-          card.modifiers = [
-            {
-              attribute: 'disabled',
-              type: 'disabled',
-              value: 'disabled',
-              source: playerCard.id,
-            },
-          ];
-        }
-      }
-    });
+  // find duplicates by title - disable all
+  const duplicatedTitleCards = bothBoards.filter(
+    (needle, index) =>
+      index !== bothBoards.findIndex((card) => card.id === needle.id)
+  );
 
-    // If you find a matching character in the opposing board
-    opposingBoard.map((opponentCard) => {
-      if (opponentCard?.character === card?.character) {
-        if (opponentCard?.basePoints === card?.basePoints) {
-          card.disabled = true;
-          card.modifiers = [
-            {
-              attribute: 'disabled',
-              type: 'disabled',
-              value: 'disabled',
-              source: opponentCard.id,
-            },
-          ];
+  // find duplicate card.character - disable all but the lowest
+  const duplicatedCharacters = bothBoards
+    .filter(
+      (needle, index) =>
+        index !==
+        bothBoards.findIndex((card) => card.character === needle.character)
+    )
+    .map((card) => card.character);
 
-          opponentCard.disabled = true;
-          opponentCard.modifiers = [
-            {
-              attribute: 'disabled',
-              type: 'disabled',
-              value: 'disabled',
-              source: card.id,
-            },
-          ];
-        } else if (opponentCard?.basePoints > card?.basePoints) {
-          opponentCard.disabled = true;
-          opponentCard.modifiers = [
-            {
-              attribute: 'disabled',
-              type: 'disabled',
-              value: 'disabled',
-              source: card.id,
-            },
-          ];
-        } else {
-          card.disabled = true;
-          card.modifiers = [
-            {
-              attribute: 'disabled',
-              type: 'disabled',
-              value: 'disabled',
-              source: opponentCard.id,
-            },
-          ];
-        }
-      }
-    });
-  });
+  const uniqueDuplicatedCharacters = Array.from(new Set(duplicatedCharacters));
+
+  const characterDuplicatedCards = uniqueDuplicatedCharacters.map((character) =>
+    bothBoards.filter((card) => card.character === character)
+  );
+
+  const disabledSourceCards: Card[] = [];
+
+  // if the lowest is a tie  - figure out later
+  const characterDisabledCards = characterDuplicatedCards
+    .map((cards) => {
+      // sort by base points
+      const disabled = [...cards].sort(
+        (cardA, cardB) => cardA.basePoints - cardB.basePoints
+      );
+      // remove the lowest basePoints card. the rest should be disabled
+      const disabledSource = disabled.shift();
+      disabledSourceCards.push(disabledSource);
+      return disabled;
+    })
+    .flat();
+
+  const allDisabledCardIds = [
+    ...duplicatedTitleCards,
+    ...characterDisabledCards,
+  ].map((card) => card.id);
+
+  const disableCards = (card) => {
+    if (!card) {
+      return;
+    }
+    if (allDisabledCardIds.includes(card.id)) {
+      const isCardDisabledByCharacter = !!characterDisabledCards.find(
+        (disabledCard) => disabledCard.id === card.id
+      );
+
+      const disabledSourceId = isCardDisabledByCharacter
+        ? disabledSourceCards.find(
+            (source) => source.character === card.character
+          )?.id
+        : card.id;
+
+      const disabledMod = new DisableModifier(disabledSourceId);
+      card.modifiers.push(disabledMod);
+    }
+  };
+
+  playerBoard.forEach(disableCards);
+  opposingBoard.forEach(disableCards);
 }
