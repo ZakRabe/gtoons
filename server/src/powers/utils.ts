@@ -19,12 +19,16 @@ export function addCardPowers(card: Card): Card {
   return new Card({ ...card, ...power });
 }
 
+export function getCardsAndPowers = (cardIds: (number|null)[])=>{
+  return getCards(cardIds).map(addCardPowers);
+}
+
 export function evaluateBoardPowers(
   p1Board: (number | null)[],
   p2Board: (number | null)[]
 ) {
-  let p1Cards = getCards(p1Board).map(addCardPowers);
-  let p2Cards = getCards(p2Board).map(addCardPowers);
+  let p1Cards = getCardsAndPowers(p1Board);
+  let p2Cards = getCardsAndPowers(p2Board);
 
   addDisabledModifiers(p1Cards, p2Cards);
 
@@ -55,7 +59,7 @@ export function evaluateBoardPowers(
 function check(
   playerBoard: (Card | null)[],
   opposingBoard: (Card | null)[],
-  power: any,
+  power: Power,
   powerId: number
 ) {
   let modifiers = [];
