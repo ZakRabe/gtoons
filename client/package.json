@@ -29,7 +29,7 @@
     "@types/carbon__pictograms-react": "^10.17.0",
     "@types/react-image-crop": "^8.1.2",
     "@types/react-recaptcha-v3": "^1.1.1",
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "carbon-components": "^10.20.0",
     "carbon-components-react": "^7.20.0",
     "carbon-icons": "^7.0.7",
