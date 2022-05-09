@@ -1,25 +1,26 @@
 import Card, { Color } from './Card';
 
 // base interface all modifiers implement
-export interface Modifier {
+export interface IModifier {
   attribute: 'character' | 'colors' | 'groups' | 'types' | 'points';
 
-  type?: 'add' | 'replace' | 'disabled';
+  type: 'add' | 'replace' | 'disabled';
   value: string | Color | number;
   source: number;
   apply: (card: Card) => Card;
 }
 
 // a modifier that only replaces, currently only used on the character attribute
-export interface ReplaceMod extends Modifier {
+export interface ReplaceMod extends IModifier {
+  type: 'replace';
   attribute: 'character';
   value: string | Color;
 }
 
 // a modifer that can replace or add attributes
-export interface VariableMod extends Modifier {
-  attribute: 'groups' | 'types' | 'colors';
-  value: string;
+export interface VariableMod extends IModifier {
+  attribute: 'groups' | 'types' | 'colors' | 'points';
+  value: string | number;
 }
 
 // modifer for the character attribute
@@ -35,7 +36,7 @@ export interface ColorsMod extends VariableMod {
 }
 
 // modifer for points attirbute, adds or subtracts the value to the existing points values
-export interface PointsMod extends Modifier {
+export interface PointsMod extends VariableMod {
   attribute: 'points';
   value: number;
 }
@@ -50,17 +51,31 @@ export interface TypesMod extends VariableMod {
   attribute: 'types';
 }
 
-// class for replace onlly modifiers (character)
-export class ReplaceModifer implements ReplaceMod {
-  attribute: 'character';
-  value: string | Color;
-  source: number;
+// This needs to look up the apply functions based on type
+export class Modifier implements IModifier {
+  type;
+  attribute;
+  value;
+  source;
 
-  constructor(value: string | Color, source: number) {
-    this.attribute = 'character';
+  constructor({ type, attribute, value, source }: Omit<IModifier, 'apply'>) {
+    this.type = type;
+    this.attribute = attribute;
     this.value = value;
     this.source = source;
   }
+  apply(card: Card) {
+    const copy = new Card(card);
+    copy[this.attribute] = this.value as any;
+    return copy;
+  }
+}
+
+export class ReplaceModifer implements ReplaceMod {
+  type = 'replace' as const;
+  attribute = 'character' as const;
+  value: string | Color;
+  source: number;
 
   apply(card: Card) {
     const copy = new Card(card);

@@ -1,7 +1,6 @@
-import { Conditional } from './Conditional';
-import { Modifier } from './Modifer';
 import Card from './Card';
 import Condition from './Condition';
+import { Modifier } from './Modifer';
 
 //Add check for different conditional combinations?
 export default class Power {
@@ -16,8 +15,8 @@ export default class Power {
   targetType: 'ANY' | 'ALL';
   targetConditions: Condition[];
   conditionType: 'ALL' | 'ANY';
-  conditions: any[];
-  modifiers: any[];
+  conditions: Condition[];
+  modifiers: Modifier[];
 
   constructor(other: any) {
     if (other) {
@@ -28,7 +27,17 @@ export default class Power {
       this.targetConditions = other.targetConditions;
       this.conditionType = other.conditionType;
       this.conditions = other.conditions;
-      this.modifiers = other.modifiers;
+      this.modifiers = (other.modifiers as Modifier[]).map(mod=> {
+        switch(mod.type){
+          case 'add':
+            return new 
+            break;
+            case 'replace':
+              break;
+              case 'disabled':
+              break;
+        }
+      } );
     }
   }
 

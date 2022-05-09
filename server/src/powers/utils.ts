@@ -1,13 +1,16 @@
 import { getCards } from '../cards/utils';
 import Card from '../common/entity/Card';
 import Condition from '../common/entity/Condition';
-import { DisableModifier, Modifier } from '../common/entity/Modifer';
+import { DisableModifier } from '../common/entity/Modifer';
 import Power from '../common/entity/Power';
 import powers from './powers.json';
 
 export function getPower(id: number): Pick<Card, 'id' | 'powers'> {
-  const foundPower = (powers as any[]).find((power) => power.id === id);
-  return foundPower ? { ...foundPower } : { id, powers: [] };
+  const cardPower = (powers as any[]).find((power) => power.id === id);
+  return {
+    id,
+    powers: cardPower ? cardPower.powers.map((power) => new Power(power)) : [],
+  };
 }
 
 export function getPowers(ids: number[]) {
@@ -23,7 +26,31 @@ export function getCardsAndPowers(cardIds: (number | null)[]) {
   return getCards(cardIds).map(addCardPowers);
 }
 
-const addModifiers = (board1: Card[], board2: Card[]) => {
+// TODO: Instead of resolving one board, then the other : resolve one card at a time for each board
+// Check board1 card 1, apply modifiers
+// check board2 card 1, apply modifiers
+// check board2 card 1, stop
+
+/**
+ * Enemy
+ *          [Z] [Y] [X] [W] [V] [U] [T]
+ * Player
+ *          [A] [B] [C] [D] [E] [F] [G]
+ *
+ * Find Targets for A
+ *    A.applyAttributeModifiers()
+ * Find Targets for Z
+ *    A, Z
+ * Find Targets for B
+ *    A, Z, B
+ * Find Targets for Y
+ *    A, Z, B, Y
+ */
+interface EvalBoard {
+  cards: Card[];
+  powers: Power[];
+}
+const addModifiers = (board: EvalBoard, enemyBoard: EvalBoard) => {
   //
 };
 
@@ -35,8 +62,6 @@ export function evaluateBoardPowers(
   const p2Cards = getCardsAndPowers(p2Board);
 
   addDisabledModifiers(p1Cards, p2Cards);
-
-  addModifiers(p1Cards, p2Cards);
 
   const p1ActivePowers: Power[] = [];
   p1Cards.map((card) => {
@@ -59,10 +84,10 @@ export function evaluateBoardPowers(
     }
   });
 
-  // TODO: Instead of resolving one board, then the other : resolve one card at a time for each board
-  // Check board1 card 1, apply modifiers
-  // check board2 card 1, apply modifiers
-  // check board2 card 1, stop
+  addModifiers(
+    { cards: p1Cards, powers: p1ActivePowers },
+    { cards: p2Cards, powers: p2ActivePowers }
+  );
 
   // p1Cards.map(applyModifiers);
   const p1Targets = p1ActivePowers.map((power) =>
@@ -456,9 +481,9 @@ function applyModifiers(card: Card) {
       case 'points':
         modifyPoints(card, modifier);
         break;
-      case 'disabled':
-        disableCard(card);
-        break;
+      // case 'disabled':
+      //   disableCard(card);
+      //   break;
     }
   });
 }

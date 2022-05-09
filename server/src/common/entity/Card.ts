@@ -1,5 +1,4 @@
 // these causing circular dep?
-import { getPower } from '../../powers/utils';
 import { Modifier } from './Modifer';
 import Power from './Power';
 
@@ -59,10 +58,11 @@ export default class Card {
   }
 
   applyAttributeModifiers = () => {
-    let copy;
+    let copy: Card;
     this.modifiers.map((mod) => {
-      copy = mod.apply(this);
+      copy = new Card(mod.apply(this));
     });
+    console.log(copy);
   };
 
   checkPower = (board: (Card | null)[]) => {
